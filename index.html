@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="only light">
+<meta name="supported-color-schemes" content="light">
+<title>Haz clic — Consultoría, hábitos y VIBRA | Abraham</title>
+<meta name="description" content="Tres formas de salir del piloto automático: consultoría 1:1, checklist de hábitos diarios y acceso anticipado a VIBRA.">
+
+<!-- ============================================================
+     TODO-ABRAHAM · 2 ENLACES PENDIENTES
+     Busca "TODO-ABRAHAM" en este archivo:
+     1. Botón lista espera (tarjeta) -> URL de tu formulario de onboarding
+     2. Botón lista espera (banda final) -> misma URL del formulario
+     Ya puestos: Stripe consultoría (97€), Stripe checklist (49€)
+     y WhatsApp del Método VIBRA
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================
+   SISTEMA VIBRA · 3 voces tipográficas
+   Fraunces  = la voz que vibra (titulares)
+   Inter     = la voz que explica (cuerpo)
+   Plex Mono = la voz del piloto automático (etiquetas, precios)
+   Par semántico: --apagado (piloto automático) vs --vibra (el clic)
+   ========================================================== */
+:root{
+  color-scheme: only light;
+  --papel:#F7F1E6;
+  --tinta:#26201A;
+  --apagado:#7D7265;
+  --vibra:#E8650E;
+  --vibra-osc:#C4520A;
+  --oliva:#5A6248;
+  --carbon:#211A14;
+  --linea:rgba(38,32,26,.14);
+  --radio:18px;
+  --ancho:1080px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;color-scheme:only light;background:#F7F1E6 !important}
+body{background:#F7F1E6 !important;color:#26201A !important}
+/* Aunque el móvil esté en modo oscuro, la página se queda en claro */
+@media (prefers-color-scheme: dark){
+  :root{color-scheme:only light}
+  html,body{background:#F7F1E6 !important;color:#26201A !important}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{
+  background:var(--papel);
+  color:var(--tinta);
+  font-family:'Inter',system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--vibra);color:var(--papel)}
+
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--ancho);margin:0 auto;padding:0 22px}
+
+/* ---------- voces ---------- */
+.mono{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--apagado);
+}
+.display{
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;
+  font-weight:600;
+  line-height:1.06;
+  letter-spacing:-0.015em;
+}
+.apagado{color:var(--apagado)}
+.ignite{color:var(--vibra)}
+em.vibra{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-weight:600;
+  color:var(--vibra);
+}
+
+/* ---------- botones ---------- */
+.btn{
+  display:inline-block;
+  font-family:'Inter',sans-serif;
+  font-weight:600;
+  font-size:16px;
+  text-decoration:none;
+  padding:15px 28px;
+  border-radius:999px;
+  border:2px solid var(--tinta);
+  transition:transform .15s ease, background .15s ease, color .15s ease;
+  cursor:pointer;
+}
+.btn:active{transform:scale(.98)}
+.btn-tinta{background:var(--tinta);color:var(--papel)}
+.btn-tinta:hover{background:var(--vibra-osc);border-color:var(--vibra-osc)}
+.btn-vibra{background:var(--vibra);color:var(--carbon);border-color:var(--vibra)}
+.btn-vibra:hover{background:#F5730F}
+.btn-linea{background:transparent;color:var(--tinta)}
+.btn-linea:hover{background:var(--tinta);color:var(--papel)}
+a:focus-visible,.btn:focus-visible,summary:focus-visible{
+  outline:3px solid var(--vibra);
+  outline-offset:3px;
+  border-radius:6px;
+}
+
+/* ---------- aparición por scroll ---------- */
+#opciones{scroll-margin-top:26px}
+html.js-anim .reveal{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+html.js-anim .reveal.visto{opacity:1;transform:none}
+html.js-anim .grid .card:nth-child(2){transition-delay:.13s}
+html.js-anim .grid .card:nth-child(3){transition-delay:.26s}
+html.js-anim .noes .reveal:nth-child(2){transition-delay:.12s}
+html.js-anim .noes .reveal:nth-child(3){transition-delay:.24s}
+
+/* ---------- foco de conversión en CTAs ---------- */
+.btn-vibra:hover{background:#F5730F;transform:translateY(-2px);box-shadow:0 12px 26px rgba(232,101,14,.35)}
+.btn-tinta:hover{background:var(--vibra-osc);border-color:var(--vibra-osc);transform:translateY(-2px);box-shadow:0 12px 26px rgba(38,32,26,.22)}
+.card:hover{border-color:rgba(232,101,14,.5)}
+
+/* ==========================================================
+   HERO
+   ========================================================== */
+header.hero{
+  min-height:88vh;
+  display:flex;
+  align-items:center;
+  padding:130px 0 70px;
+  position:relative;
+}
+/* cinta en bucle: el piloto automático, literal */
+.marquee{
+  position:absolute;
+  top:0;left:0;right:0;
+  overflow:hidden;
+  border-bottom:1px solid var(--linea);
+  padding:13px 0;
+  background:var(--papel);
+}
+.marquee-track{
+  display:flex;
+  width:max-content;
+  animation:rodar 26s linear infinite;
+}
+.marquee .copia{white-space:nowrap}
+@keyframes rodar{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* entrada del hero */
+@keyframes entrar{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero h1 .l1{animation:entrar .7s ease both}
+.hero h1 .l2{animation:entrar .7s .15s ease both}
+.hero p.sub{animation:entrar .7s .3s ease both}
+.hero .acciones{animation:entrar .7s .45s ease both}
+.hero .nota-mono{animation:entrar .7s .6s ease both}
+.hero h1{
+  font-size:clamp(44px, 9vw, 96px);
+  max-width:11ch;
+}
+.hero h1 .l1{display:block;color:var(--apagado);transition:color .6s ease}
+.hero h1 .l2{display:block}
+.hero h1 .l2 .clic-word{
+  font-style:italic;
+  color:var(--vibra);
+  position:relative;
+  white-space:nowrap;
+}
+.hero h1 .l2 .clic-word::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:.04em;
+  height:.09em;
+  background:var(--vibra);
+  transform:scaleX(0);
+  transform-origin:left;
+  animation:subrayar .7s .9s ease forwards;
+}
+@keyframes subrayar{to{transform:scaleX(1)}}
+.hero p.sub{
+  margin-top:30px;
+  max-width:52ch;
+  font-size:18px;
+  color:var(--tinta);
+}
+.hero .acciones{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero .nota-mono{margin-top:26px}
+
+/* ==========================================================
+   EL CLIC · bloque "no es X, es Y"
+   ========================================================== */
+section{padding:90px 0}
+.clic{border-top:1px solid var(--linea)}
+.clic .intro{max-width:56ch;font-size:19px;margin:18px 0 50px}
+.noes{display:flex;flex-direction:column;gap:26px}
+.noes .par{
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:clamp(26px, 4.6vw, 44px);
+  line-height:1.15;
+}
+.noes .par .x{color:var(--apagado);font-weight:400}
+.noes .par .y{color:var(--tinta)}
+.noes .par .y strong{color:var(--vibra);font-weight:600;font-style:italic}
+
+/* ==========================================================
+   LAS 3 PUERTAS
+   ========================================================== */
+.puertas{border-top:1px solid var(--linea)}
+.puertas .cabecera{margin-bottom:54px}
+.puertas h2{font-size:clamp(34px,5.5vw,58px);margin-top:16px}
+.puertas .cabecera p{max-width:54ch;margin-top:16px;font-size:18px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  align-items:stretch;
+}
+.card{
+  background:#FCF8F0;
+  border:1px solid var(--linea);
+  border-radius:var(--radio);
+  padding:34px 28px 30px;
+  display:flex;
+  flex-direction:column;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(38,32,26,.10)}
+.card .etiqueta{margin-bottom:22px}
+.card h3{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:27px;
+  line-height:1.15;
+  margin-bottom:12px;
+}
+.card .gancho{font-size:16px;margin-bottom:24px}
+.card ul{list-style:none;margin-bottom:28px}
+.card ul li{
+  padding-left:26px;
+  position:relative;
+  margin-bottom:12px;
+  font-size:15.5px;
+}
+.card ul li::before{
+  content:"—";
+  position:absolute;left:0;
+  color:var(--vibra);
+  font-weight:600;
+}
+.card .pie{margin-top:auto}
+.card .precio{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:34px;
+  font-weight:500;
+  margin-bottom:16px;
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+}
+.card .precio .tacha{font-size:14px;color:var(--apagado)}
+.card .btn{width:100%;text-align:center}
+.card .micro{margin-top:14px;font-size:13px;color:var(--apagado);text-align:center}
+
+/* destacada: consultoría, en carbón */
+.card.destacada{
+  background:var(--carbon);
+  color:var(--papel);
+  border-color:var(--carbon);
+}
+.card.destacada .mono{color:#B3A899}
+.card.destacada .precio .tacha{color:#B3A899}
+.card.destacada ul li::before{color:var(--vibra)}
+.card.destacada .micro{color:#B3A899}
+
+/* gratuita: matiz oliva */
+.card.gratis{background:#F2F0E4}
+.card.gratis .etiqueta{color:var(--oliva)}
+.card.gratis ul li::before{color:var(--oliva)}
+.card.gratis .precio .cero{color:var(--oliva)}
+
+/* ==========================================================
+   FAQ
+   ========================================================== */
+.faq{border-top:1px solid var(--linea)}
+.faq h2{font-size:clamp(30px,4.5vw,44px);margin-top:16px;margin-bottom:40px}
+.faq details{
+  border-bottom:1px solid var(--linea);
+  padding:24px 0;
+}
+.faq summary{
+  font-family:'Fraunces',serif;
+  font-size:21px;
+  font-weight:500;
+  cursor:pointer;
+  list-style:none;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";
+  font-family:'IBM Plex Mono',monospace;
+  font-size:22px;
+  color:var(--vibra);
+  flex-shrink:0;
+  transition:transform .2s ease;
+}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin-top:14px;max-width:60ch;color:var(--tinta)}
+
+/* ==========================================================
+   MÉTODO VIBRA · para comunidades (mundo aparte, en carbón)
+   ========================================================== */
+.metodo{background:var(--carbon);color:var(--papel)}
+.metodo .mono{color:#B3A899}
+.metodo .puente{color:#B3A899;font-size:15.5px;margin-top:14px;max-width:58ch}
+.metodo h2{font-size:clamp(34px,5.5vw,58px);margin-top:18px}
+.metodo h2 em.vibra{color:var(--vibra)}
+.metodo .sub{margin-top:20px;max-width:56ch;font-size:18px;color:#EDE6D8}
+.metodo .par{
+  font-family:'Fraunces',serif;
+  font-weight:500;
+  font-size:clamp(24px,4vw,38px);
+  line-height:1.15;
+  margin-top:36px;
+}
+.metodo .par .x{color:#8A7F72;font-weight:400}
+.metodo .par .y strong{color:var(--vibra);font-weight:600;font-style:italic}
+.metodo .planes{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:26px;
+  margin-top:54px;
+}
+.metodo .plan{
+  border-top:2px solid var(--vibra);
+  padding-top:18px;
+}
+.metodo .plan .mono{color:var(--vibra);letter-spacing:.12em}
+.metodo .plan p{margin-top:10px;font-size:15.5px;color:#EDE6D8}
+.metodo .cta-zona{margin-top:52px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.metodo .cta-zona .mono{font-size:11.5px}
+.btn-wa{display:inline-flex;align-items:center;gap:10px}
+.btn-wa svg{flex-shrink:0}
+
+/* ==========================================================
+   BANDA FINAL
+   ========================================================== */
+.banda{
+  background:var(--vibra);
+  color:var(--carbon);
+  padding:100px 0;
+  text-align:center;
+}
+.banda .mono{color:var(--carbon);opacity:.8}
+.banda h2{
+  font-size:clamp(40px,8vw,84px);
+  margin:20px auto 36px;
+  max-width:14ch;
+}
+.banda .btn{border-color:var(--carbon)}
+.banda .btn-tinta{background:var(--carbon)}
+.banda .btn-tinta:hover{background:#000;border-color:#000}
+
+footer{
+  padding:34px 0;
+  text-align:center;
+}
+footer .mono{font-size:11px}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width:940px){
+  .grid{grid-template-columns:1fr;max-width:520px;margin:0 auto}
+  .metodo .planes{grid-template-columns:1fr;gap:30px}
+  section{padding:70px 0}
+  header.hero{min-height:auto;padding:80px 0 60px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="copia mono">06:00 · alarma · café · oficina · repetir · 06:00 · alarma · café · oficina · repetir · 06:00 · alarma · café · oficina · repetir · 06:00 · alarma · café · oficina · repetir · </span>
+      <span class="copia mono">06:00 · alarma · café · oficina · repetir · 06:00 · alarma · café · oficina · repetir · 06:00 · alarma · café · oficina · repetir · 06:00 · alarma · café · oficina · repetir · </span>
+    </div>
+  </div>
+  <div class="wrap">
+    <h1 class="display">
+      <span class="l1">Tu vida funciona.</span>
+      <span class="l2">Pero no <span class="clic-word">vibra</span>.</span>
+    </h1>
+    <p class="sub">Trabajo en una oficina. Y aun así estoy construyendo la vida que quiero. No hace falta dejarlo todo para salir del piloto automático: hace falta hacer clic. Aquí tienes tres formas de empezar.</p>
+    <div class="acciones">
+      <a class="btn btn-tinta" href="#opciones">Elige tu puerta ↓</a>
+    </div>
+    <p class="nota-mono mono">sin humo · sin gurús · sin dejar tu trabajo mañana</p>
+  </div>
+</header>
+
+<!-- ================= EL CLIC ================= -->
+<section class="clic">
+  <div class="wrap">
+    <span class="mono">El clic</span>
+    <p class="intro reveal">Hay un momento en el que dejas de ver tu vida desde fuera y vuelves a estar dentro. Yo lo llamo el clic. No se compra: se provoca. Y esto es lo que he aprendido provocándolo.</p>
+    <div class="noes">
+      <p class="par reveal"><span class="x">No es motivación.</span> <span class="y">Es un <strong>plan</strong>.</span></p>
+      <p class="par reveal"><span class="x">No es dejarlo todo.</span> <span class="y">Es <strong>empezar algo</strong>.</span></p>
+      <p class="par reveal"><span class="x">No es hacerlo solo.</span> <span class="y">Es hacerlo con <strong>tu gente</strong>.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LAS 3 PUERTAS ================= -->
+<section class="puertas" id="puertas">
+  <div class="wrap">
+    <div class="cabecera reveal">
+      <span class="mono">Tres puertas · un mismo sitio</span>
+      <h2 class="display">Elige por dónde<br>quieres <em class="vibra">empezar</em>.</h2>
+      <p>Cada puerta corresponde a una de las tres frases de arriba. Un plan contigo delante, un sistema para tu día a día, o tu gente esperándote. Ninguna es la correcta: la correcta es la que abras.</p>
+    </div>
+
+    <div class="grid" id="opciones">
+
+      <!-- CARD 1 · CONSULTORÍA (destacada) -->
+      <article class="card destacada reveal">
+        <span class="mono etiqueta">El plan · sesión 1:1</span>
+        <h3>Consultoría 1:1 conmigo</h3>
+        <p class="gancho">Una hora, tú y yo. Miramos qué te tiene en piloto automático y sales con pasos, no con frases bonitas.</p>
+        <ul>
+          <li>60 minutos por videollamada, solo tú y yo</li>
+          <li>Hacemos juntos tu VIBRA Card: tu punto de partida en este camino</li>
+          <li>Plan de acción concreto para tus próximas 4 semanas</li>
+          <li>La checklist de hábitos diarios incluida (los 49 € van dentro)</li>
+          <li>Resumen por escrito después de la sesión</li>
+        </ul>
+        <div class="pie">
+          <div class="precio">97 € <span class="tacha">checklist de 49 € incluida</span></div>
+          <a class="btn btn-vibra" href="https://buy.stripe.com/3cI3cvdbm8enbyKgXxgfu00">Reservar mi sesión</a>
+          <p class="micro">Las hago yo, una a una. Plazas limitadas cada mes.</p>
+        </div>
+      </article>
+
+      <!-- CARD 2 · CHECKLIST -->
+      <article class="card reveal">
+        <span class="mono etiqueta">El sistema · hazlo tú</span>
+        <h3>Checklist de hábitos diarios</h3>
+        <p class="gancho">El sistema que uso yo cada día para no volver al piloto automático. En tu móvil, desde hoy.</p>
+        <ul>
+          <li>Checklist digital lista para usar desde el primer día</li>
+          <li>Hábitos de mañana, de jornada y de cierre del día</li>
+          <li>Pensada para gente con trabajo y poco tiempo</li>
+          <li>Acceso para siempre, con sus actualizaciones</li>
+        </ul>
+        <div class="pie">
+          <div class="precio">49 €</div>
+          <a class="btn btn-tinta" href="https://buy.stripe.com/00wdR9dbm9irbyK36Hgfu01">Quiero la checklist</a>
+          <p class="micro">Acceso inmediato tras el pago. Va incluida en la consultoría 1:1.</p>
+        </div>
+      </article>
+
+      <!-- CARD 3 · LISTA DE ESPERA VIBRA -->
+      <article class="card gratis reveal">
+        <span class="mono etiqueta">Tu gente · acceso anticipado</span>
+        <h3>Lista de espera de VIBRA</h3>
+        <p class="gancho">Lo que estoy construyendo de verdad: el lugar donde encuentras viajes, planes y gente que vibra como tú.</p>
+        <ul>
+          <li>Descubre tu arquetipo y llévate tu VIBRA Card</li>
+          <li>Acceso prioritario cuando abramos la puerta</li>
+          <li>Sin coste y sin compromiso</li>
+        </ul>
+        <div class="pie">
+          <div class="precio"><span class="cero">Gratis</span></div>
+          <!-- TODO-ABRAHAM: pega aquí la URL de tu formulario de onboarding -->
+          <a class="btn btn-linea" href="#">Unirme a la lista</a>
+          <p class="micro">Que nunca te quiten tu vibra.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="faq">
+  <div class="wrap reveal">
+    <span class="mono">Dudas rápidas</span>
+    <h2 class="display">Antes de abrir una puerta</h2>
+
+    <details>
+      <summary>¿Por dónde empiezo si estoy dudando?</summary>
+      <p>Por la lista de espera de VIBRA. Es gratis, tardas 2 minutos y te llevas tu VIBRA Card. Si después quieres ir más al grano, la checklist o la consultoría siguen aquí.</p>
+    </details>
+
+    <details>
+      <summary>¿Cómo funciona la consultoría 1:1?</summary>
+      <p>Reservas tu plaza y te escribo para cerrar día y hora. En la videollamada de 60 minutos analizamos tu situación, hacemos juntos tu VIBRA Card para fijar tu punto de partida y montamos tu plan para las próximas 4 semanas. Te llevas además la checklist de hábitos incluida y un resumen por escrito de todo.</p>
+    </details>
+
+    <details>
+      <summary>¿Cómo recibo la checklist?</summary>
+      <p>Nada más completar el pago te llega un email con el acceso. La abres desde el móvil o el ordenador y empiezas ese mismo día.</p>
+    </details>
+
+    <details>
+      <summary>¿Qué es VIBRA exactamente?</summary>
+      <p>Una plataforma donde comunidades reales publican viajes y experiencias, y tú las descubres por afinidad: por cómo eres, no por lo que aparentas. Está en prelanzamiento y la lista de espera te da acceso prioritario.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ================= MÉTODO VIBRA · COMUNIDADES ================= -->
+<section class="metodo" id="metodo">
+  <div class="wrap reveal">
+    <span class="mono">Cambio de tercio · Método VIBRA</span>
+    <p class="puente">Hasta aquí, las tres puertas para personas. Lo que viene ahora es para los que están al otro lado:</p>
+    <h2 class="display">¿Lideras una <em class="vibra">comunidad</em>?</h2>
+    <p class="sub">Método VIBRA es mi sistema para crear, hacer crecer y escalar comunidades sin que pierdan su alma. Growth e IA aplicados a comunidades reales — lo mismo que uso cada día en la mía.</p>
+    <p class="par"><span class="x">No es una agencia.</span> <span class="y">Es un <strong>método</strong>.</span></p>
+
+    <div class="planes">
+      <div class="plan">
+        <span class="mono">Freemium</span>
+        <p>Para comunidades que empiezan. Acceso a la plataforma y recursos gratuitos para dar el primer paso.</p>
+      </div>
+      <div class="plan">
+        <span class="mono">Growth</span>
+        <p>Para las que quieren crecer en serio. Metodología completa de eventos (pre, durante y post), escaparate digital, funnel y CRM. Lo gestionas tú, a tu ritmo.</p>
+      </div>
+      <div class="plan">
+        <span class="mono">Corporate</span>
+        <p>Para las que quieren acompañamiento. Todo lo de Growth más horas mías y de mi equipo: consultoría 1:1, ads, staff en tus eventos e IA y automatización.</p>
+      </div>
+    </div>
+
+    <div class="cta-zona">
+      <a class="btn btn-vibra btn-wa" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20saber%20m%C3%A1s%20del%20M%C3%A9todo%20VIBRA">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Hablemos de tu comunidad
+      </a>
+      <span class="mono">co-lidero liveokey · 12 años en growth · casos reales, no teoría</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BANDA FINAL ================= -->
+<section class="banda">
+  <div class="wrap reveal">
+    <span class="mono">Última llamada</span>
+    <h2 class="display">Que nunca te quiten tu vibra.</h2>
+    <!-- TODO-ABRAHAM: pega aquí la URL de tu formulario de onboarding (mismo enlace que la tarjeta gratis) -->
+    <a class="btn btn-tinta" href="#">Únete gratis a la lista de espera</a>
+  </div>
+</section>
+
+<footer>
+  <span class="mono">VIBRA · hecho con clic desde una oficina · 2026</span>
+</footer>
+
+<script>
+(function(){
+  // Solo animamos si el sistema no pide movimiento reducido
+  if(!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+  document.documentElement.classList.add('js-anim');
+  var obs = new IntersectionObserver(function(entradas){
+    entradas.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('visto');
+        obs.unobserve(e.target);
+      }
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+})();
+</script>
+</body>
+</html>
