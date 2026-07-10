@@ -22,6 +22,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&family=Caveat:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+<!-- Adelantar conexiones para que el vídeo de intro cargue antes -->
+<link rel="preconnect" href="https://www.youtube.com">
+<link rel="preconnect" href="https://s.ytimg.com">
+<link rel="preconnect" href="https://i.ytimg.com">
+<link rel="preconnect" href="https://www.google.com">
+
 <style>
 /* ==========================================================
    SISTEMA VIBRA · 3 voces tipográficas
@@ -534,8 +540,22 @@ header.hero{background:radial-gradient(130% 95% at 50% -12%, rgba(255,90,31,.17)
 #intro-video{background:#160d07;border-bottom:1px solid rgba(255,90,31,.35)}
 #intro-video .iv-wrap{max-width:1180px;margin:0 auto}
 #iv-holder{position:relative;width:100%;aspect-ratio:16 / 9}
-#iv-marco{position:absolute;inset:0;overflow:hidden;background:#000}
+#iv-marco{position:absolute;inset:0;overflow:hidden;background:#000 url('https://i.ytimg.com/vi/VD6mYkCeX2I/hqdefault.jpg') center/cover no-repeat}
 #iv-player, #iv-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+#iv-cargando{
+  position:absolute;inset:0;z-index:2;
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  background:rgba(22,13,7,.55);pointer-events:none;
+  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#FBF4E9;
+  transition:opacity .4s ease;
+}
+#iv-cargando.oculto{opacity:0}
+#iv-cargando .sp{
+  width:22px;height:22px;border-radius:50%;
+  border:2.5px solid rgba(255,255,255,.25);border-top-color:#FF5A1F;
+  animation:iv-giro .8s linear infinite;
+}
+@keyframes iv-giro{to{transform:rotate(360deg)}}
 #iv-sonido{
   position:absolute;z-index:4;left:50%;bottom:22px;transform:translateX(-50%);
   display:inline-flex;align-items:center;gap:9px;
@@ -581,6 +601,7 @@ header.hero{background:radial-gradient(130% 95% at 50% -12%, rgba(255,90,31,.17)
     <div id="iv-holder">
       <div id="iv-marco">
         <div id="iv-player"></div>
+        <div id="iv-cargando"><span class="sp"></span><span>cargando vídeo…</span></div>
         <button id="iv-sonido" type="button">🔊 Activar sonido</button>
         <button id="iv-cerrar" type="button" aria-label="Cerrar vídeo">✕</button>
       </div>
@@ -800,10 +821,16 @@ header.hero{background:radial-gradient(130% 95% at 50% -12%, rgba(255,90,31,.17)
   window.onYouTubeIframeAPIReady=function(){
     player=new YT.Player('iv-player',{
       videoId:VIDEO_ID,
-      playerVars:{autoplay:1,mute:1,controls:1,playsinline:1,rel:0,modestbranding:1,iv_load_policy:3},
+      playerVars:{autoplay:1,mute:1,controls:1,playsinline:1,rel:0,modestbranding:1,iv_load_policy:3,cc_load_policy:0},
       events:{
         onReady:function(e){ try{ e.target.mute(); e.target.playVideo(); }catch(err){} },
-        onStateChange:function(e){ if(e.data===YT.PlayerState.PLAYING) started=true; }
+        onStateChange:function(e){
+          if(e.data===YT.PlayerState.PLAYING){
+            started=true;
+            var carg=document.getElementById('iv-cargando');
+            if(carg) carg.classList.add('oculto');
+          }
+        }
       }
     });
   };
