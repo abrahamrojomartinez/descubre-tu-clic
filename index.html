@@ -530,76 +530,64 @@ header.hero{background:radial-gradient(130% 95% at 50% -12%, rgba(255,90,31,.17)
 .card.gratis .nota-mano{display:block;text-align:center;margin-bottom:8px;font-size:22px}
 .nota-banda{display:block;margin-top:20px;color:rgba(251,244,233,.95);font-size:27px}
 
-/* ============ PORTÓN DE VÍDEO (intro) ============ */
-#video-gate{
-  position:fixed; inset:0; z-index:100000;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  gap:22px; padding:24px;
-  background:rgba(18,11,6,.6);
-  transition:opacity .6s ease, visibility .6s ease;
+/* ============ VÍDEO DE INTRO (cabecera) ============ */
+#intro-video{background:#160d07;border-bottom:1px solid rgba(255,90,31,.35)}
+#intro-video .iv-wrap{max-width:1180px;margin:0 auto}
+#iv-holder{position:relative;width:100%;aspect-ratio:16 / 9}
+#iv-marco{position:absolute;inset:0;overflow:hidden;background:#000}
+#iv-player, #iv-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+#iv-sonido{
+  position:absolute;z-index:4;left:50%;bottom:22px;transform:translateX(-50%);
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--f-cuerpo);font-weight:700;font-size:15px;
+  color:#2B1D14;background:#FF5A1F;border:none;
+  padding:13px 24px;border-radius:999px;cursor:pointer;
+  box-shadow:0 10px 28px rgba(229,25,95,.45);
+  animation:iv-latido 1.8s ease-in-out infinite;
 }
-#video-gate.cerrado{opacity:0; visibility:hidden; pointer-events:none}
-body.gate-activo{overflow:hidden}
-body.gate-activo > *:not(#video-gate){
-  filter:blur(15px) saturate(.92);
-  transform:scale(1.03);
-  pointer-events:none;
-  user-select:none;
+#iv-sonido:hover{background:#E5195F;color:#FBF4E9}
+#iv-sonido.oculto{display:none}
+@keyframes iv-latido{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.06)}}
+#iv-hint{
+  text-align:center;padding:14px 22px 2px;
+  font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#FF7A45;
 }
-#vg-marco{
-  position:relative;
-  width:min(94vw, calc(88vh * 16 / 9));
-  max-width:1180px;
-  aspect-ratio:16 / 9;
-  border-radius:16px;
-  overflow:hidden;
-  box-shadow:0 30px 80px rgba(0,0,0,.55);
-  background:#000;
+#iv-cerrar{
+  position:absolute;z-index:5;top:6px;right:6px;display:none;
+  width:28px;height:28px;border-radius:50%;
+  background:rgba(0,0,0,.6);color:#fff;border:none;cursor:pointer;font-size:14px;line-height:1;
 }
-#vg-player, #vg-player iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
-#vg-bloqueo{position:absolute; inset:0; z-index:2; cursor:default}
-#vg-inicio{
-  position:absolute; inset:0; z-index:3;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;
-  background:radial-gradient(120% 120% at 50% 30%, #2b1d14 0%, #160d07 100%);
-  text-align:center; padding:20px;
+/* mini-reproductor flotante al hacer scroll */
+#intro-video.sticky #iv-marco{
+  position:fixed;z-index:9998;right:18px;bottom:18px;
+  width:min(340px,74vw);height:auto;aspect-ratio:16 / 9;
+  border-radius:14px;box-shadow:0 18px 44px rgba(0,0,0,.5);border:2px solid var(--vibra);
 }
-#vg-inicio.oculto{display:none}
-#vg-empezar{font-size:19px; padding:17px 40px}
-#vg-empezar[disabled]{opacity:.6; cursor:default}
-#vg-hint{font-family:var(--f-mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#FF9A6B}
-#vg-controles{display:none}
-#vg-controles.visible{display:block}
-#vg-rewind{
-  font-family:var(--f-cuerpo); font-weight:600; font-size:14px;
-  color:#FBF4E9; background:transparent; border:1.5px solid rgba(251,244,233,.5);
-  padding:10px 20px; border-radius:999px; cursor:pointer;
-  transition:background .15s ease, border-color .15s ease;
-}
-#vg-rewind:hover{background:rgba(251,244,233,.12); border-color:#FBF4E9}
-@media (prefers-reduced-motion: reduce){
-  body.gate-activo > *:not(#video-gate){transform:none}
+#intro-video.sticky #iv-cerrar{display:block}
+#intro-video.sticky #iv-sonido{position:fixed;z-index:9999;left:auto;right:34px;bottom:150px;transform:none;animation:none;font-size:13px;padding:9px 16px}
+@media (max-width:600px){
+  #iv-sonido{font-size:14px;padding:11px 18px;bottom:14px}
+  #intro-video.sticky #iv-marco{right:10px;bottom:10px;width:64vw}
+  #intro-video.sticky #iv-sonido{right:14px;bottom:120px}
 }
 
 </style>
 </head>
 <body>
 
-<!-- ================= PORTÓN DE VÍDEO (intro) ================= -->
-<div id="video-gate" role="dialog" aria-label="Vídeo de bienvenida">
-  <div id="vg-marco">
-    <div id="vg-player"></div>
-    <div id="vg-bloqueo" aria-hidden="true"></div>
-    <div id="vg-inicio">
-      <button id="vg-empezar" class="btn btn-vibra" type="button" disabled>▶ Empezar</button>
-      <p id="vg-hint">🔊 Con sonido · sube el volumen</p>
+<!-- ================= VÍDEO DE INTRO ================= -->
+<section id="intro-video">
+  <div class="iv-wrap">
+    <div id="iv-holder">
+      <div id="iv-marco">
+        <div id="iv-player"></div>
+        <button id="iv-sonido" type="button">🔊 Activar sonido</button>
+        <button id="iv-cerrar" type="button" aria-label="Cerrar vídeo">✕</button>
+      </div>
     </div>
   </div>
-  <div id="vg-controles">
-    <button id="vg-rewind" type="button">↺ Volver a empezar</button>
-  </div>
-</div>
-<script>document.body.classList.add('gate-activo');</script>
+  <p id="iv-hint">míralo con sonido antes de seguir ↓</p>
+</section>
 
 <!-- ================= HERO ================= -->
 <header class="hero">
@@ -795,73 +783,56 @@ body.gate-activo > *:not(#video-gate){
 })();
 </script>
 
-<!-- ================= PORTÓN DE VÍDEO · lógica (YouTube IFrame API) ================= -->
+<!-- ================= VÍDEO DE INTRO · lógica (YouTube IFrame API) ================= -->
 <script>
 (function(){
   var VIDEO_ID='VD6mYkCeX2I';
-  var gate=document.getElementById('video-gate');
-  var inicio=document.getElementById('vg-inicio');
-  var btnEmpezar=document.getElementById('vg-empezar');
-  var btnRewind=document.getElementById('vg-rewind');
-  var controles=document.getElementById('vg-controles');
-  var player=null, started=false, ended=false, pedirPlay=false, watchdog=null;
+  var band=document.getElementById('intro-video');
+  var holder=document.getElementById('iv-holder');
+  var btnSonido=document.getElementById('iv-sonido');
+  var btnCerrar=document.getElementById('iv-cerrar');
+  var player=null, started=false, stickyOff=false;
 
-  // Fail-open: si algo va mal, dejamos entrar a la landing (nunca la bloqueamos para siempre)
-  function cerrarGate(){
-    if(!gate || ended) return;
-    ended=true;
-    gate.classList.add('cerrado');
-    document.body.classList.remove('gate-activo');
-    try{ if(player && player.stopVideo) player.stopVideo(); }catch(e){}
-    setTimeout(function(){ if(gate && gate.parentNode) gate.parentNode.removeChild(gate); }, 700);
-  }
-
-  function arrancar(){
-    if(!player){ pedirPlay=true; btnEmpezar.textContent='Cargando…'; return; }
-    inicio.classList.add('oculto');
-    controles.classList.add('visible');
-    try{ player.unMute(); player.setVolume(100); player.playVideo(); }catch(e){}
-    watchdog=setTimeout(function(){ if(!started && !ended) cerrarGate(); }, 9000);
-  }
-
-  btnEmpezar.addEventListener('click', arrancar);
-  btnRewind.addEventListener('click', function(){
-    if(player && player.seekTo){ try{ player.seekTo(0, true); player.playVideo(); }catch(e){} }
-  });
-
-  // Cargar la API de YouTube
   var tag=document.createElement('script');
   tag.src='https://www.youtube.com/iframe_api';
-  tag.onerror=cerrarGate;
   document.head.appendChild(tag);
-  // Si la API no aparece en 8s, no bloqueamos el sitio
-  var apiWatch=setTimeout(function(){ if(!player) cerrarGate(); }, 8000);
 
   window.onYouTubeIframeAPIReady=function(){
-    clearTimeout(apiWatch);
-    player=new YT.Player('vg-player',{
+    player=new YT.Player('iv-player',{
       videoId:VIDEO_ID,
-      playerVars:{controls:0,disablekb:1,modestbranding:1,rel:0,playsinline:1,fs:0,iv_load_policy:3,autoplay:0},
+      playerVars:{autoplay:1,mute:1,controls:1,playsinline:1,rel:0,modestbranding:1,iv_load_policy:3},
       events:{
-        onReady:function(){
-          btnEmpezar.disabled=false;
-          if(pedirPlay) arrancar();
-        },
-        onStateChange:function(e){
-          if(e.data===YT.PlayerState.ENDED){ cerrarGate(); }
-          else if(e.data===YT.PlayerState.PLAYING){
-            started=true;
-            if(watchdog){ clearTimeout(watchdog); watchdog=null; }
-          }
-          else if(e.data===YT.PlayerState.PAUSED && started && !ended){
-            // no se puede pausar: reanudamos
-            try{ player.playVideo(); }catch(err){}
-          }
-        },
-        onError:cerrarGate
+        onReady:function(e){ try{ e.target.mute(); e.target.playVideo(); }catch(err){} },
+        onStateChange:function(e){ if(e.data===YT.PlayerState.PLAYING) started=true; }
       }
     });
   };
+
+  // Activar sonido: rebobina al inicio para que lo oigan entero
+  btnSonido.addEventListener('click', function(){
+    if(!player) return;
+    try{ player.unMute(); player.setVolume(100); player.seekTo(0,true); player.playVideo(); }catch(e){}
+    btnSonido.classList.add('oculto');
+  });
+
+  // Cerrar el mini-reproductor flotante
+  btnCerrar.addEventListener('click', function(){
+    stickyOff=true;
+    band.classList.remove('sticky');
+    if(player){ try{ player.pauseVideo(); }catch(e){} }
+  });
+
+  // Al hacer scroll y salir de vista, el vídeo se queda flotando (te sigue)
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(ents){
+      ents.forEach(function(en){
+        if(stickyOff) return;
+        if(!en.isIntersecting && started){ band.classList.add('sticky'); }
+        else if(en.isIntersecting){ band.classList.remove('sticky'); }
+      });
+    }, {threshold:0.2});
+    io.observe(holder);
+  }
 })();
 </script>
 </body>
