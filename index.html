@@ -530,9 +530,76 @@ header.hero{background:radial-gradient(130% 95% at 50% -12%, rgba(255,90,31,.17)
 .card.gratis .nota-mano{display:block;text-align:center;margin-bottom:8px;font-size:22px}
 .nota-banda{display:block;margin-top:20px;color:rgba(251,244,233,.95);font-size:27px}
 
+/* ============ PORTÓN DE VÍDEO (intro) ============ */
+#video-gate{
+  position:fixed; inset:0; z-index:100000;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:22px; padding:24px;
+  background:rgba(18,11,6,.6);
+  transition:opacity .6s ease, visibility .6s ease;
+}
+#video-gate.cerrado{opacity:0; visibility:hidden; pointer-events:none}
+body.gate-activo{overflow:hidden}
+body.gate-activo > *:not(#video-gate){
+  filter:blur(15px) saturate(.92);
+  transform:scale(1.03);
+  pointer-events:none;
+  user-select:none;
+}
+#vg-marco{
+  position:relative;
+  width:min(94vw, calc(88vh * 16 / 9));
+  max-width:1180px;
+  aspect-ratio:16 / 9;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  background:#000;
+}
+#vg-player, #vg-player iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+#vg-bloqueo{position:absolute; inset:0; z-index:2; cursor:default}
+#vg-inicio{
+  position:absolute; inset:0; z-index:3;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;
+  background:radial-gradient(120% 120% at 50% 30%, #2b1d14 0%, #160d07 100%);
+  text-align:center; padding:20px;
+}
+#vg-inicio.oculto{display:none}
+#vg-empezar{font-size:19px; padding:17px 40px}
+#vg-empezar[disabled]{opacity:.6; cursor:default}
+#vg-hint{font-family:var(--f-mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#FF9A6B}
+#vg-controles{display:none}
+#vg-controles.visible{display:block}
+#vg-rewind{
+  font-family:var(--f-cuerpo); font-weight:600; font-size:14px;
+  color:#FBF4E9; background:transparent; border:1.5px solid rgba(251,244,233,.5);
+  padding:10px 20px; border-radius:999px; cursor:pointer;
+  transition:background .15s ease, border-color .15s ease;
+}
+#vg-rewind:hover{background:rgba(251,244,233,.12); border-color:#FBF4E9}
+@media (prefers-reduced-motion: reduce){
+  body.gate-activo > *:not(#video-gate){transform:none}
+}
+
 </style>
 </head>
 <body>
+
+<!-- ================= PORTÓN DE VÍDEO (intro) ================= -->
+<div id="video-gate" role="dialog" aria-label="Vídeo de bienvenida">
+  <div id="vg-marco">
+    <div id="vg-player"></div>
+    <div id="vg-bloqueo" aria-hidden="true"></div>
+    <div id="vg-inicio">
+      <button id="vg-empezar" class="btn btn-vibra" type="button" disabled>▶ Empezar</button>
+      <p id="vg-hint">🔊 Con sonido · sube el volumen</p>
+    </div>
+  </div>
+  <div id="vg-controles">
+    <button id="vg-rewind" type="button">↺ Volver a empezar</button>
+  </div>
+</div>
+<script>document.body.classList.add('gate-activo');</script>
 
 <!-- ================= HERO ================= -->
 <header class="hero">
@@ -725,6 +792,76 @@ header.hero{background:radial-gradient(130% 95% at 50% -12%, rgba(255,90,31,.17)
     var m = document.querySelector('.marquee');
     if(m){ m.classList.add('rota'); }
   }, 1500);
+})();
+</script>
+
+<!-- ================= PORTÓN DE VÍDEO · lógica (YouTube IFrame API) ================= -->
+<script>
+(function(){
+  var VIDEO_ID='VD6mYkCeX2I';
+  var gate=document.getElementById('video-gate');
+  var inicio=document.getElementById('vg-inicio');
+  var btnEmpezar=document.getElementById('vg-empezar');
+  var btnRewind=document.getElementById('vg-rewind');
+  var controles=document.getElementById('vg-controles');
+  var player=null, started=false, ended=false, pedirPlay=false, watchdog=null;
+
+  // Fail-open: si algo va mal, dejamos entrar a la landing (nunca la bloqueamos para siempre)
+  function cerrarGate(){
+    if(!gate || ended) return;
+    ended=true;
+    gate.classList.add('cerrado');
+    document.body.classList.remove('gate-activo');
+    try{ if(player && player.stopVideo) player.stopVideo(); }catch(e){}
+    setTimeout(function(){ if(gate && gate.parentNode) gate.parentNode.removeChild(gate); }, 700);
+  }
+
+  function arrancar(){
+    if(!player){ pedirPlay=true; btnEmpezar.textContent='Cargando…'; return; }
+    inicio.classList.add('oculto');
+    controles.classList.add('visible');
+    try{ player.unMute(); player.setVolume(100); player.playVideo(); }catch(e){}
+    watchdog=setTimeout(function(){ if(!started && !ended) cerrarGate(); }, 9000);
+  }
+
+  btnEmpezar.addEventListener('click', arrancar);
+  btnRewind.addEventListener('click', function(){
+    if(player && player.seekTo){ try{ player.seekTo(0, true); player.playVideo(); }catch(e){} }
+  });
+
+  // Cargar la API de YouTube
+  var tag=document.createElement('script');
+  tag.src='https://www.youtube.com/iframe_api';
+  tag.onerror=cerrarGate;
+  document.head.appendChild(tag);
+  // Si la API no aparece en 8s, no bloqueamos el sitio
+  var apiWatch=setTimeout(function(){ if(!player) cerrarGate(); }, 8000);
+
+  window.onYouTubeIframeAPIReady=function(){
+    clearTimeout(apiWatch);
+    player=new YT.Player('vg-player',{
+      videoId:VIDEO_ID,
+      playerVars:{controls:0,disablekb:1,modestbranding:1,rel:0,playsinline:1,fs:0,iv_load_policy:3,autoplay:0},
+      events:{
+        onReady:function(){
+          btnEmpezar.disabled=false;
+          if(pedirPlay) arrancar();
+        },
+        onStateChange:function(e){
+          if(e.data===YT.PlayerState.ENDED){ cerrarGate(); }
+          else if(e.data===YT.PlayerState.PLAYING){
+            started=true;
+            if(watchdog){ clearTimeout(watchdog); watchdog=null; }
+          }
+          else if(e.data===YT.PlayerState.PAUSED && started && !ended){
+            // no se puede pausar: reanudamos
+            try{ player.playVideo(); }catch(err){}
+          }
+        },
+        onError:cerrarGate
+      }
+    });
+  };
 })();
 </script>
 </body>
