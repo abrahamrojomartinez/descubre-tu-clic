@@ -591,6 +591,27 @@ header.hero{background:radial-gradient(130% 95% at 50% -12%, rgba(255,90,31,.17)
   #intro-video.sticky #iv-sonido{right:14px;bottom:120px}
 }
 
+/* ============ MÁS DIRECTO (opciones de pago, secundario) ============ */
+.mas-directo{margin-top:44px;padding-top:30px;border-top:1px solid var(--linea);text-align:center}
+.md-linea{font-size:15px;color:var(--apagado);max-width:64ch;margin:0 auto;line-height:1.55}
+.md-wa{color:var(--vibra-osc);font-weight:600;text-decoration:none;white-space:nowrap;border-bottom:1px solid transparent}
+.md-wa:hover{border-bottom-color:currentColor}
+.md-detalles{margin-top:14px}
+.md-detalles summary{
+  cursor:pointer;list-style:none;display:inline-block;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--apagado);
+}
+.md-detalles summary::-webkit-details-marker{display:none}
+.md-detalles summary::after{content:" +";color:var(--vibra);font-weight:600}
+.md-detalles[open] summary::after{content:" –"}
+.md-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;max-width:780px;margin:24px auto 0;text-align:left}
+.md-item h4{font-family:var(--f-display);font-weight:600;font-size:19px;margin-bottom:8px;color:var(--tinta)}
+.md-item>p{font-size:14.5px;color:var(--apagado);margin-bottom:14px}
+.md-item ul{list-style:none}
+.md-item li{padding-left:22px;position:relative;font-size:14px;color:var(--apagado);margin-bottom:9px;line-height:1.45}
+.md-item li::before{content:"—";position:absolute;left:0;color:var(--vibra)}
+@media (max-width:700px){.md-grid{grid-template-columns:1fr;gap:26px}}
+
 </style>
 </head>
 <body>
@@ -627,7 +648,7 @@ header.hero{background:radial-gradient(130% 95% at 50% -12%, rgba(255,90,31,.17)
     <p class="sub">Trabajo en una oficina. Y aun así estoy construyendo la vida que quiero. No hace falta dejarlo todo para salir del piloto automático: hace falta hacer clic. Empieza gratis en 2 minutos: descubre tu arquetipo y llévate tu Carta VIBRA, tu punto de partida.</p>
     <div class="acciones">
       <a class="btn btn-vibra" href="https://que-nunca-te-quiten-tu-vibra.netlify.app/?utm_source=descubre-tu-clic">Entrar a VIBRA →</a>
-      <a class="enlace-suave" href="#opciones">o mira las 3 formas de empezar</a>
+      <a class="enlace-suave" href="#opciones">o mira las opciones ↓</a>
     </div>
     <p class="nota-mono mono">sin humo · sin gurús · sin dejar tu trabajo mañana</p>
   </div>
@@ -651,9 +672,9 @@ header.hero{background:radial-gradient(130% 95% at 50% -12%, rgba(255,90,31,.17)
 <section class="puertas" id="puertas">
   <div class="wrap">
     <div class="cabecera reveal">
-      <span class="mono">Tres puertas · un mismo sitio</span>
-      <h2 class="display">Elige por dónde<br>quieres <em class="vibra">empezar</em>.</h2>
-      <p>Cada puerta corresponde a una de las tres frases de arriba. Si estás dudando, empieza por la gratuita: descubres tu punto de partida en 2 minutos y las otras dos seguirán aquí cuando las quieras.</p>
+      <span class="mono">Empieza por aquí</span>
+      <h2 class="display">Tu punto de partida<br>es <em class="vibra">VIBRA</em>.</h2>
+      <p>Descubre tu arquetipo y llévate tu Carta VIBRA en 2 minutos, gratis. Y si quieres algo más directo conmigo, lo tienes justo debajo.</p>
     </div>
 
     <div class="grid" id="opciones">
@@ -683,43 +704,37 @@ header.hero{background:radial-gradient(130% 95% at 50% -12%, rgba(255,90,31,.17)
         </div>
       </article>
 
-      <!-- CARD 2 · CONSULTORÍA -->
-      <article class="card destacada reveal">
-        <span class="mono etiqueta">El plan · sesión 1:1</span>
-        <h3>Consultoría 1:1 conmigo</h3>
-        <p class="gancho">Una hora, tú y yo. Miramos qué te tiene en piloto automático y sales con pasos, no con frases bonitas.</p>
-        <ul>
-          <li>60 minutos por videollamada, solo tú y yo</li>
-          <li>Hacemos juntos tu Carta VIBRA: tu punto de partida en este camino</li>
-          <li>Plan de acción concreto para tus próximas 4 semanas</li>
-          <li>La checklist de hábitos diarios incluida (los 49 € van dentro)</li>
-          <li>Resumen por escrito después de la sesión</li>
-        </ul>
-        <div class="pie">
-          <div class="precio">97 € <span class="tacha">checklist de 49 € incluida</span></div>
-          <a class="btn btn-vibra" href="https://buy.stripe.com/3cI3cvdbm8enbyKgXxgfu00">Reservar mi sesión</a>
-          <p class="micro">Las hago yo, una a una. Plazas limitadas cada mes.</p>
-        </div>
-      </article>
+    </div>
 
-      <!-- CARD 3 · CHECKLIST -->
-      <article class="card reveal">
-        <span class="mono etiqueta">El sistema · hazlo tú</span>
-        <h3>Checklist de hábitos diarios</h3>
-        <p class="gancho">El sistema que uso yo cada día para no volver al piloto automático. En tu móvil, desde hoy.</p>
-        <ul>
-          <li>Checklist digital lista para usar desde el primer día</li>
-          <li>Hábitos de mañana, de jornada y de cierre del día</li>
-          <li>Pensada para gente con trabajo y poco tiempo</li>
-          <li>Acceso para siempre, con sus actualizaciones</li>
-        </ul>
-        <div class="pie">
-          <div class="precio">49 €</div>
-          <a class="btn btn-tinta" href="https://buy.stripe.com/00wdR9dbm9irbyK36Hgfu01">Quiero la checklist</a>
-          <p class="micro">Acceso inmediato tras el pago. Va incluida en la consultoría 1:1.</p>
+    <!-- MÁS DIRECTO · opciones de pago, en segundo plano -->
+    <div class="mas-directo reveal">
+      <p class="md-linea">¿Quieres algo más directo conmigo? Consultoría 1:1 y checklist de hábitos diarios — <a class="md-wa" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20quiero%20saber%20m%C3%A1s%20sobre%20la%20consultor%C3%ADa%201%3A1%20o%20la%20checklist%20de%20h%C3%A1bitos">hablamos por WhatsApp →</a></p>
+      <details class="md-detalles">
+        <summary>ver detalles</summary>
+        <div class="md-grid">
+          <div class="md-item">
+            <h4>Consultoría 1:1 conmigo</h4>
+            <p>Una hora, tú y yo. Miramos qué te tiene en piloto automático y sales con pasos, no con frases bonitas.</p>
+            <ul>
+              <li>60 minutos por videollamada, solo tú y yo</li>
+              <li>Hacemos juntos tu Carta VIBRA: tu punto de partida en este camino</li>
+              <li>Plan de acción concreto para tus próximas 4 semanas</li>
+              <li>La checklist de hábitos diarios incluida</li>
+              <li>Resumen por escrito después de la sesión</li>
+            </ul>
+          </div>
+          <div class="md-item">
+            <h4>Checklist de hábitos diarios</h4>
+            <p>El sistema que uso yo cada día para no volver al piloto automático. En tu móvil, desde hoy.</p>
+            <ul>
+              <li>Checklist digital lista para usar desde el primer día</li>
+              <li>Hábitos de mañana, de jornada y de cierre del día</li>
+              <li>Pensada para gente con trabajo y poco tiempo</li>
+              <li>Acceso para siempre, con sus actualizaciones</li>
+            </ul>
+          </div>
         </div>
-      </article>
-
+      </details>
     </div>
   </div>
 </section>
