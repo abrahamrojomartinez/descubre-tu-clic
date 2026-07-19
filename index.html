@@ -579,16 +579,16 @@ header.hero{background:radial-gradient(130% 95% at 50% -12%, rgba(255,90,31,.17)
 }
 /* mini-reproductor flotante al hacer scroll */
 #intro-video.sticky #iv-marco{
-  position:fixed;z-index:9998;right:18px;bottom:18px;
+  position:fixed;z-index:9998;right:18px;top:18px;bottom:auto;
   width:min(340px,74vw);height:auto;aspect-ratio:16 / 9;
   border-radius:14px;box-shadow:0 18px 44px rgba(0,0,0,.5);border:2px solid var(--vibra);
 }
 #intro-video.sticky #iv-cerrar{display:block}
-#intro-video.sticky #iv-sonido{position:fixed;z-index:9999;left:auto;right:34px;bottom:150px;transform:none;animation:none;font-size:13px;padding:9px 16px}
+/* en modo mini el botón de sonido estorba; se usan los controles del propio vídeo */
+#intro-video.sticky #iv-sonido{display:none}
 @media (max-width:600px){
   #iv-sonido{font-size:14px;padding:11px 18px;bottom:14px}
-  #intro-video.sticky #iv-marco{right:10px;bottom:10px;width:64vw}
-  #intro-video.sticky #iv-sonido{right:14px;bottom:120px}
+  #intro-video.sticky #iv-marco{right:10px;top:10px;bottom:auto;width:64vw}
 }
 
 /* ============ MÁS DIRECTO (opciones de pago, secundario) ============ */
@@ -611,6 +611,34 @@ header.hero{background:radial-gradient(130% 95% at 50% -12%, rgba(255,90,31,.17)
 .md-item li{padding-left:22px;position:relative;font-size:14px;color:var(--apagado);margin-bottom:9px;line-height:1.45}
 .md-item li::before{content:"—";position:absolute;left:0;color:var(--vibra)}
 @media (max-width:700px){.md-grid{grid-template-columns:1fr;gap:26px}}
+
+/* ============ BANNER FLOTANTE · ENTRAR EN VIBRA ============ */
+#banner-vibra{
+  position:fixed; z-index:9997;
+  left:50%; bottom:20px; transform:translateX(-50%);
+  display:inline-flex; align-items:center; gap:14px;
+  max-width:calc(100vw - 28px);
+  padding:11px 13px 11px 22px;
+  background:linear-gradient(115deg,#FF5A1F 8%,#E5195F 92%);
+  color:#FBF4E9; text-decoration:none;
+  border-radius:999px;
+  box-shadow:0 14px 36px rgba(229,25,95,.42);
+  animation:bv-in .5s .9s ease both;
+}
+@keyframes bv-in{from{opacity:0;transform:translate(-50%,22px)}to{opacity:1;transform:translate(-50%,0)}}
+#banner-vibra .bv-txt{font-weight:600;font-size:15px;white-space:nowrap}
+#banner-vibra .bv-cta{
+  display:inline-block;background:#2B1D14;color:#FBF4E9;font-weight:700;font-size:14px;
+  padding:9px 18px;border-radius:999px;white-space:nowrap;transition:transform .15s ease;
+}
+#banner-vibra:hover{box-shadow:0 18px 44px rgba(229,25,95,.52)}
+#banner-vibra:hover .bv-cta{transform:translateX(3px)}
+#banner-vibra:focus-visible{outline:3px solid #2B1D14;outline-offset:3px}
+@media (max-width:560px){
+  #banner-vibra{gap:9px;padding:9px 11px 9px 17px;bottom:12px}
+  #banner-vibra .bv-txt{font-size:13px}
+  #banner-vibra .bv-cta{font-size:12.5px;padding:8px 13px}
+}
 
 </style>
 </head>
@@ -867,5 +895,11 @@ header.hero{background:radial-gradient(130% 95% at 50% -12%, rgba(255,90,31,.17)
   }
 })();
 </script>
+
+<!-- ================= BANNER FLOTANTE · ENTRAR EN VIBRA ================= -->
+<a id="banner-vibra" href="https://que-nunca-te-quiten-tu-vibra.netlify.app/?utm_source=descubre-tu-clic&utm_medium=banner-flotante" aria-label="Entrar en la comunidad VIBRA">
+  <span class="bv-txt">Entra en la comunidad</span>
+  <span class="bv-cta">Entrar a VIBRA →</span>
+</a>
 </body>
 </html>
