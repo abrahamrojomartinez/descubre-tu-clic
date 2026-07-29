@@ -95,13 +95,8 @@ nav{position:sticky;top:0;z-index:90;background:rgba(247,242,233,.92);backdrop-f
 .dentro li{padding:10px 0 10px 34px;position:relative;font-size:16.5px;border-bottom:1px solid var(--line)}
 .dentro li:last-child{border-bottom:none}
 .dentro li::before{content:"→";position:absolute;left:0;color:var(--coral);font-weight:700}
-.carta-mini{background:var(--ink);color:var(--paper);border-radius:24px;padding:36px 30px;text-align:center;box-shadow:0 20px 50px var(--shadow);position:relative}
-.carta-mini .cm-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);margin-bottom:18px;display:block}
-.carta-mini .cm-name{font-family:'Fraunces',serif;font-size:26px;font-weight:600;margin-bottom:6px}
-.carta-mini .cm-name em{font-style:italic;color:var(--coral)}
-.carta-mini .cm-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0 22px}
-.carta-mini .cm-tag{font-size:12.5px;padding:6px 14px;border:1px solid rgba(247,242,233,.3);border-radius:100px}
-.carta-mini .cm-seal{font-family:'Fraunces',serif;font-style:italic;font-size:14.5px;color:rgba(247,242,233,.75);border-top:1px solid rgba(247,242,233,.15);padding-top:16px}
+.carta-real{margin:0;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px var(--shadow);max-width:340px;width:100%;justify-self:center}
+.carta-real img{display:block;width:100%;height:auto}
 
 /* ===== social ===== */
 .social{padding:70px 0;background:var(--ink);color:var(--paper);text-align:center}
@@ -248,12 +243,9 @@ footer{padding:34px 0 110px;text-align:center;font-size:13.5px;color:var(--ink-s
         <p class="hero-note" style="margin-top:12px">tu Carta VIBRA es la puerta · gratis</p>
       </div>
     </div>
-    <div class="carta-mini reveal" aria-hidden="true">
-      <span class="cm-label">Carta VIBRA · tu llave de entrada</span>
-      <div class="cm-name">El Explorador<br>con alma de <em>Conector</em></div>
-      <div class="cm-tags"><span class="cm-tag">Surf</span><span class="cm-tag">Fotografía</span><span class="cm-tag">Tu gente</span></div>
-      <div class="cm-seal">No eres tu rutina. Eres todo esto que aún no has empezado a vivir.</div>
-    </div>
+    <figure class="carta-real reveal">
+      <img src="carta-vibra-abraham.webp" width="760" height="1351" alt="Carta VIBRA de Abraham (Madrid): Sereno con alma de Explorador — Surf, Gym, Pádel; sueña con California." loading="lazy">
+    </figure>
   </div>
 </section>
 
@@ -304,6 +296,7 @@ footer{padding:34px 0 110px;text-align:center;font-size:13.5px;color:var(--ink-s
           <li>Hacemos juntos tu Carta VIBRA a fondo</li>
           <li>Plan de acción para tus próximas 4 semanas</li>
           <li>La checklist de hábitos incluida</li>
+          <li>Plan profesional / emprendimiento</li>
           <li>Resumen por escrito después</li>
         </ul>
         <a class="btn btn-ink" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20quiero%20agendar%20una%20llamada%20de%20consultor%C3%ADa%201%3A1">Agendar llamada</a>
