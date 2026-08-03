@@ -6,6 +6,8 @@
 <meta name="color-scheme" content="only light">
 <title>Haz clic — Entra a VIBRA | Abraham × VIBRA</title>
 <meta name="description" content="Sal del piloto automático y entra a VIBRA: tu Carta VIBRA en 2 minutos y dentro. Gratis, sin humo, sin gurús.">
+<!-- Simple Analytics: cola de eventos. El script principal lo inyecta la extensión de Netlify (no añadirlo aquí). -->
+<script>window.sa_event=window.sa_event||function(){var a=[].slice.call(arguments);window.sa_event.q?window.sa_event.q.push(a):window.sa_event.q=[a]};</script>
 <link rel="preconnect" href="https://www.youtube.com">
 <link rel="preconnect" href="https://i.ytimg.com">
 <style>
@@ -364,6 +366,16 @@ footer{padding:34px 0 110px;text-align:center;font-size:13.5px;color:var(--ink-s
 </div>
 
 <script>
+// Simple Analytics: clic en cualquier CTA que lleve a la plataforma (los 7
+// "Entrar a VIBRA"). Delegado, en captura, para que se registre aunque otro
+// handler pare la propagación. Nunca bloquea ni cancela la navegación.
+document.addEventListener('click',e=>{
+  try{
+    const t=e.target;
+    const a=t&&t.closest&&t.closest('a[href*="que-nunca-te-quiten-tu-vibra"]');
+    if(a) window.sa_event('clic_entrar_vibra');
+  }catch(_){/* la analítica nunca rompe la navegación */}
+},true);
 // reveals
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*.07)+'s';io.observe(el)});
