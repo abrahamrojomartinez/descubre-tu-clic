@@ -143,6 +143,20 @@
 
   html.js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
   html.js .rv.on{opacity:1;transform:none}
+
+  /* ===== embudo real, pantalla a pantalla ===== */
+  .fnl-intro{color:var(--ink-soft);max-width:660px;margin:0 0 30px;font-size:17px;line-height:1.6}
+  .fnl-scroll{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding:4px 0 18px;margin:0 -22px;scrollbar-width:thin}
+  .fnl-rail{display:flex;gap:18px;padding:0 22px;width:max-content}
+  .fnl-step{flex:0 0 208px;scroll-snap-align:start;display:flex;flex-direction:column}
+  .fnl-n{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:9px}
+  .fnl-n b{width:23px;height:23px;border-radius:50%;background:var(--coral);color:var(--paper);display:grid;place-items:center;font-size:12px;letter-spacing:0}
+  .fnl-shot{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--ink);box-shadow:0 12px 30px rgba(33,28,30,.10);margin-bottom:11px}
+  .fnl-shot img{display:block;width:100%;height:auto}
+  .fnl-step p{font-size:14.5px;line-height:1.5;color:var(--ink-soft);margin:0}
+  .fnl-hint{font-size:13.5px;color:var(--ink-soft);opacity:.75;margin:0 0 16px}
+  .fnl-cierre{margin:24px 0 0;font-size:16.5px;line-height:1.6;max-width:680px}
+  @media(max-width:640px){.fnl-step{flex-basis:170px}}
 </style>
 </head>
 <body>
@@ -262,6 +276,58 @@
       <span class="chip">Un <b>estudio audiovisual</b> · marca, web y SEO</span>
       <span class="chip">Un <b>glamping</b> · ocupación</span>
     </div>
+  </div>
+</section>
+
+<!-- EMBUDO REAL, PANTALLA A PANTALLA (el de VIBRA) -->
+<section id="embudo">
+  <div class="wrap">
+    <div class="sec-kicker rv">El embudo, por dentro</div>
+    <h2 class="sec-title rv">Un embudo entero, de principio a fin. El mío.</h2>
+    <p class="fnl-intro rv">Te lo puedo contar o te lo puedo enseñar. Este es el de VIBRA y lo puedes recorrer tú ahora mismo: empieza en Instagram y termina con una persona dentro del grupo de WhatsApp, habiendo dicho ya qué le gusta y qué sabe aportar. Dos minutos. Este es el tipo de sistema que monto para otras comunidades.</p>
+    <p class="fnl-hint rv">Desliza para verlo →</p>
+    <div class="fnl-scroll rv">
+      <div class="fnl-rail">
+
+        <div class="fnl-step">
+          <span class="fnl-n"><b>1</b> La landing</span>
+          <figure class="fnl-shot"><img src="funnel-2-landing.webp" width="430" height="931" loading="lazy" alt="Landing de VIBRA en móvil"></figure>
+          <p>Una página, una decisión. Sin menús ni salidas laterales: o entras, o no entras.</p>
+        </div>
+
+        <div class="fnl-step">
+          <span class="fnl-n"><b>2</b> El gancho</span>
+          <figure class="fnl-shot"><img src="funnel-3-hook.webp" width="430" height="931" loading="lazy" alt="Primera pantalla: la mayoría vive en piloto automático"></figure>
+          <p>La primera pantalla no explica nada. Te señala. Y quien se siente señalado, sigue.</p>
+        </div>
+
+        <div class="fnl-step">
+          <span class="fnl-n"><b>3</b> Las preguntas</span>
+          <figure class="fnl-shot"><img src="funnel-4-pregunta.webp" width="430" height="931" loading="lazy" alt="Pregunta: ¿cuándo fue la última vez que hiciste algo por primera vez?"></figure>
+          <p>No es un formulario: es una conversación que apetece terminar.</p>
+        </div>
+
+        <div class="fnl-step">
+          <span class="fnl-n"><b>4</b> La segmentación</span>
+          <figure class="fnl-shot"><img src="funnel-5-gustos.webp" width="430" height="931" loading="lazy" alt="Selección de gustos: lo que te enciende"></figure>
+          <p>Cada respuesta es un dato. Sé quién eres <em>antes</em> de que llegues al grupo.</p>
+        </div>
+
+        <div class="fnl-step">
+          <span class="fnl-n"><b>5</b> El dato</span>
+          <figure class="fnl-shot"><img src="funnel-6-contacto.webp" width="430" height="931" loading="lazy" alt="Pantalla de datos de contacto"></figure>
+          <p>El contacto se pide al final, cuando ya quiere lo que hay dentro. Por eso lo da.</p>
+        </div>
+
+        <div class="fnl-step">
+          <span class="fnl-n"><b>6</b> La entrada</span>
+          <figure class="fnl-shot"><img src="funnel-7-carta.webp" width="430" height="931" loading="lazy" alt="Carta VIBRA generada y botón para entrar al grupo de WhatsApp"></figure>
+          <p>Se lleva algo suyo que compartir y entra al grupo. Ahí es donde empieza la comunidad.</p>
+        </div>
+
+      </div>
+    </div>
+    <p class="fnl-cierre rv">Ninguna pantalla está puesta por gusto: cada una existe para que la siguiente cueste menos. Eso es todo el truco — <b>orden, y montarlo una sola vez</b>.</p>
   </div>
 </section>
 
