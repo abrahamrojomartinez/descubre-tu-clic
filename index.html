@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="only light">
-<title>Haz clic — Entra a VIBRA | Abraham × VIBRA</title>
+<title>Haz clic — Entra a VIBRA</title>
 <meta name="description" content="Sal del piloto automático y entra a VIBRA: tu Carta VIBRA en 2 minutos y dentro. Gratis, sin humo, sin gurús.">
 <!-- Simple Analytics: cola de eventos. El script principal lo inyecta la extensión de Netlify (no añadirlo aquí). -->
 <script>window.sa_event=window.sa_event||function(){var a=[].slice.call(arguments);window.sa_event.q?window.sa_event.q.push(a):window.sa_event.q=[a]};</script>
@@ -443,7 +443,6 @@ footer{padding:34px 0 110px;text-align:center;font-size:13.5px;color:var(--ink-s
     <span class="kicker reveal">Última llamada</span>
     <h2 class="reveal">Que nunca te quiten<br>tu <em>vibra</em>.</h2>
     <a class="btn btn-coral reveal" href="https://que-nunca-te-quiten-tu-vibra.netlify.app/?utm_source=descubre-tu-clic&utm_medium=cierre">Entrar a VIBRA →</a>
-    <div class="firma hand reveal">— Abraham</div>
   </div>
 </section>
 
@@ -470,9 +469,9 @@ document.addEventListener('click',e=>{
 try{ if(matchMedia('(prefers-reduced-motion: reduce)').matches){
   document.querySelectorAll('.franja-media video').forEach(v=>{v.removeAttribute('autoplay');v.pause()});
 } }catch(_){}
-// los clips del carrusel solo se reproducen mientras están en pantalla
+// todos los vídeos se reproducen solos mientras están en pantalla y se paran al salir
 try{
-  const clips=document.querySelectorAll('.dentro-fotos video');
+  const clips=document.querySelectorAll('video');
   const quieto=matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(clips.length && 'IntersectionObserver' in window && !quieto){
     const cio=new IntersectionObserver(es=>es.forEach(e=>{
