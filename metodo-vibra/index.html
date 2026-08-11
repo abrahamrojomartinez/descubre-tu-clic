@@ -165,6 +165,19 @@
   .hoja-pie{padding:16px 30px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-soft);font-style:italic}
   .hoja-nota{max-width:860px;margin:16px auto 0;font-size:13.5px;color:var(--ink-soft);opacity:.8}
   @media(max-width:720px){.hoja-cuerpo{grid-template-columns:1fr}.hoja-col+.hoja-col{border-left:none;border-top:1px solid var(--line)}.hoja-top,.hoja-col,.hoja-plan,.hoja-pie{padding-left:20px;padding-right:20px}}
+  /* ===== botón y ventana de ejemplo ===== */
+  .ver-ej{display:inline-flex;align-items:center;gap:7px;margin-top:12px;background:transparent;border:1.5px solid var(--line);border-radius:100px;padding:8px 17px;font:inherit;font-size:13.5px;font-weight:600;color:var(--ink);cursor:pointer;transition:border-color .2s,color .2s}
+  .ver-ej:hover{border-color:var(--coral);color:var(--coral-deep)}
+  .ej-dlg{border:none;padding:0;background:transparent;width:min(980px,94vw);max-width:none}
+  .ej-dlg::backdrop{background:rgba(33,28,30,.6)}
+  .ej-box{position:relative;background:var(--paper);border-radius:22px;padding:30px 26px 34px;max-height:88vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .ej-x{position:absolute;top:14px;right:15px;z-index:4;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--paper-soft);color:var(--ink);font-size:15px;line-height:1;cursor:pointer}
+  .ej-x:hover{border-color:var(--coral);color:var(--coral-deep)}
+  .ej-box .sec-kicker{margin-right:44px}
+  .ej-box .hoja{box-shadow:none;margin-top:4px}
+  .ej-box .fnl-scroll{margin:0}
+  .ej-box .fnl-rail{padding:0}
+  @media(max-width:720px){.ej-box{padding:26px 16px 28px;max-height:92vh}.ej-dlg{width:96vw}}
   html.js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
   html.js .rv.on{opacity:1;transform:none}
 
@@ -216,8 +229,8 @@
     <h2 class="sec-title rv">Cinco pasos. Se empieza por el uno.</h2>
     <p class="sec-intro rv">No es una agencia que te entrega cosas y se va. Es montar la máquina, encenderla contigo y quedarme dentro mientras crece.</p>
     <div class="pasos">
-      <div class="paso rv"><span class="n">1</span><div><b>Auditoría y consultoría<span class="marca">con ejemplo ↓</span></b><p>Miro lo que ya tienes — web, redes, grupos, lista, forma de lanzar — y te digo qué funciona, qué falta y qué está roto. Nos sentamos a verlo juntos: sales de ahí con el diagnóstico y el plan en la mano, sigas conmigo o no.</p></div></div>
-      <div class="paso rv"><span class="n">2</span><div><b>Implantación llave en mano<span class="marca">con ejemplo ↓</span></b><p>Web, embudo conectado al CRM, grupos de WhatsApp, automatizaciones y contenido. Montado y funcionando, no en diapositivas. Y todo queda tuyo.</p></div></div>
+      <div class="paso rv"><span class="n">1</span><div><b>Auditoría y consultoría</b><p>Miro lo que ya tienes — web, redes, grupos, lista, forma de lanzar — y te digo qué funciona, qué falta y qué está roto. Nos sentamos a verlo juntos: sales de ahí con el diagnóstico y el plan en la mano, sigas conmigo o no.</p><button class="ver-ej" data-abrir="ej-diagnostico">Ver un caso real →</button></div></div>
+      <div class="paso rv"><span class="n">2</span><div><b>Implantación llave en mano</b><p>Web, embudo conectado al CRM, grupos de WhatsApp, automatizaciones y contenido. Montado y funcionando, no en diapositivas. Y todo queda tuyo.</p><button class="ver-ej" data-abrir="ej-embudo">Ver un ejemplo montado →</button></div></div>
       <div class="paso rv"><span class="n">3</span><div><b>Primer lanzamiento</b><p>Lanzamos con el sistema ya montado y las métricas puestas antes de gastar el primer euro. Con los criterios de seguir, ajustar o parar escritos desde el principio.</p></div></div>
       <div class="paso destacado rv"><span class="n">4</span><div><b>Lanzamiento conjunto<span class="marca">solo aquí</span></b><p>Mi comunidad empuja tu lanzamiento. Es lo que no te va a dar ninguna agencia: no solo te monto el canal, te traigo gente de verdad por él.</p></div></div>
       <div class="paso rv"><span class="n">5</span><div><b>Crecimiento continuo</b><p>Me quedo como growth partner: cada mes una pieza nueva funcionando y los números encima de la mesa. Revisión mensual y salida fácil, siempre.</p></div></div>
@@ -225,106 +238,9 @@
   </div>
 </section>
 
-<!-- EJEMPLO DEL PASO 1 — hoja de diagnóstico. MOCKUP: contenido de muestra, sustituir por
-     un caso real anonimizado cuando lo haya. La etiqueta "Ejemplo" debe quedarse siempre
-     que el contenido no sea de un cliente real. -->
-<section id="diagnostico">
-  <div class="wrap">
-    <div class="sec-kicker rv">Paso 1 · un ejemplo</div>
-    <h2 class="sec-title rv">Esto es lo que te llevas de la primera sesión.</h2>
-    <p class="fnl-intro rv">No una grabación ni un PDF de 40 páginas: una hoja con lo que funciona, lo que te está costando dinero y por dónde empezaría yo. Escrita delante de ti, y tuya sigas conmigo o no.</p>
 
-    <div class="hoja rv">
-      <span class="hoja-et">Ejemplo</span>
-      <div class="hoja-top">
-        <div class="k">Diagnóstico · sesión 1</div>
-        <h3>Comunidad de viajes · 4.200 seguidores</h3>
-        <div class="meta">Instagram + un grupo de WhatsApp + lista de correo sin usar</div>
-      </div>
 
-      <div class="hoja-cuerpo">
-        <div class="hoja-col">
-          <h4>Lo que ya funciona</h4>
-          <div class="hoja-li"><span class="ic ok">✓</span><div>El contenido conecta: los directos tienen más comentarios que publicaciones de cuentas cinco veces mayores.</div></div>
-          <div class="hoja-li"><span class="ic ok">✓</span><div>La gente que ya ha viajado repite. El producto es bueno; el problema no está ahí.</div></div>
-          <div class="hoja-li"><span class="ic ok">✓</span><div>Hay una comunidad real en el grupo, no una lista de espectadores.</div></div>
-        </div>
-        <div class="hoja-col">
-          <h4>Lo que te está costando dinero</h4>
-          <div class="hoja-li"><span class="ic no">!</span><div>El enlace de la bio lleva a un Linktree: entra tráfico y no se queda nada. <b>Cero captación.</b></div></div>
-          <div class="hoja-li"><span class="ic no">!</span><div>Un solo grupo para todos: quien ya ha viajado recibe lo mismo que quien no te conoce.</div></div>
-          <div class="hoja-li"><span class="ic no">!</span><div>Se lanza por impulso, sin métricas puestas antes: no sabes qué funcionó ni por qué.</div></div>
-          <div class="hoja-li"><span class="ic no">!</span><div>1.800 correos sin escribir desde hace ocho meses.</div></div>
-        </div>
-      </div>
 
-      <div class="hoja-plan">
-        <h4 style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:700">Por dónde empezaría · próximos 30 días</h4>
-        <ol>
-          <li><div><b>Cambiar el Linktree por una página que capte.</b> Es el agujero más grande y el más barato de tapar. <span class="tag">1 semana</span></div></li>
-          <li><div><b>Partir el grupo en dos niveles:</b> quien ya ha viajado y quien todavía no. Los primeros se enteran antes, siempre. <span class="tag">2 semanas</span></div></li>
-          <li><div><b>Escribir a esos 1.800 correos</b> antes del próximo lanzamiento, con algo útil y sin vender. <span class="tag">3 semanas</span></div></li>
-        </ol>
-      </div>
-
-      <div class="hoja-pie">Esto es tuyo desde el minuto uno. Si lo montas por tu cuenta, perfecto. Si quieres que lo monte yo, ese es el paso 2.</div>
-    </div>
-
-    <p class="hoja-nota rv">Ejemplo ilustrativo. Los diagnósticos reales no se publican: son de cada comunidad.</p>
-  </div>
-</section>
-
-<!-- EMBUDO REAL, PANTALLA A PANTALLA (el de VIBRA) -->
-<section id="embudo">
-  <div class="wrap">
-    <div class="sec-kicker rv">Paso 2 · un ejemplo real</div>
-    <h2 class="sec-title rv">Así se ve el paso 2 cuando ya está montado.</h2>
-    <p class="fnl-intro rv">Esto es «implantación llave en mano» dejando de ser una frase. El embudo de VIBRA, que puedes recorrer tú ahora mismo: empieza en Instagram y termina con una persona dentro del grupo de WhatsApp, habiendo dicho ya qué le gusta y qué sabe aportar. Dos minutos. Este es el tipo de sistema que monto para otras comunidades.</p>
-    <p class="fnl-hint rv">Desliza para verlo →</p>
-    <div class="fnl-scroll rv">
-      <div class="fnl-rail">
-
-        <div class="fnl-step">
-          <span class="fnl-n"><b>1</b> La landing</span>
-          <figure class="fnl-shot"><img src="funnel-2-landing.webp" width="430" height="931" loading="lazy" alt="Landing de VIBRA en móvil"></figure>
-          <p>Una página, una decisión. Sin menús ni salidas laterales: o entras, o no entras.</p>
-        </div>
-
-        <div class="fnl-step">
-          <span class="fnl-n"><b>2</b> El gancho</span>
-          <figure class="fnl-shot"><img src="funnel-3-hook.webp" width="430" height="931" loading="lazy" alt="Primera pantalla: la mayoría vive en piloto automático"></figure>
-          <p>La primera pantalla no explica nada. Te señala. Y quien se siente señalado, sigue.</p>
-        </div>
-
-        <div class="fnl-step">
-          <span class="fnl-n"><b>3</b> Las preguntas</span>
-          <figure class="fnl-shot"><img src="funnel-4-pregunta.webp" width="430" height="931" loading="lazy" alt="Pregunta: ¿cuándo fue la última vez que hiciste algo por primera vez?"></figure>
-          <p>No es un formulario: es una conversación que apetece terminar.</p>
-        </div>
-
-        <div class="fnl-step">
-          <span class="fnl-n"><b>4</b> La segmentación</span>
-          <figure class="fnl-shot"><img src="funnel-5-gustos.webp" width="430" height="931" loading="lazy" alt="Selección de gustos: lo que te enciende"></figure>
-          <p>Cada respuesta es un dato. Sé quién eres <em>antes</em> de que llegues al grupo.</p>
-        </div>
-
-        <div class="fnl-step">
-          <span class="fnl-n"><b>5</b> El dato</span>
-          <figure class="fnl-shot"><img src="funnel-6-contacto.webp" width="430" height="931" loading="lazy" alt="Pantalla de datos de contacto"></figure>
-          <p>El contacto se pide al final, cuando ya quiere lo que hay dentro. Por eso lo da.</p>
-        </div>
-
-        <div class="fnl-step">
-          <span class="fnl-n"><b>6</b> La entrada</span>
-          <figure class="fnl-shot"><img src="funnel-7-carta.webp" width="430" height="931" loading="lazy" alt="Carta VIBRA generada y botón para entrar al grupo de WhatsApp"></figure>
-          <p>Se lleva algo suyo que compartir y entra al grupo. Ahí es donde empieza la comunidad.</p>
-        </div>
-
-      </div>
-    </div>
-    <p class="fnl-cierre rv">Ninguna pantalla está puesta por gusto: cada una existe para que la siguiente cueste menos. Eso es todo el truco — <b>orden, y montarlo una sola vez</b>.</p>
-  </div>
-</section>
 
 <section id="pruebas" style="padding-top:6px">
   <div class="wrap">
@@ -494,6 +410,134 @@
       });
     });
   }catch(e){document.documentElement.classList.remove('js')}
+</script>
+
+<!-- VENTANAS DE EJEMPLO — se abren desde los pasos para no alargar la página -->
+<dialog class="ej-dlg" id="ej-diagnostico" aria-label="Ejemplo del paso 1">
+  <div class="ej-box">
+    <button class="ej-x" data-cerrar aria-label="Cerrar">✕</button>
+    <div class="sec-kicker">Paso 1 · un caso real</div>
+    <h2 class="sec-title">Esto es lo que te llevas de la primera sesión.</h2>
+    <p class="fnl-intro">No una grabación ni un PDF de 40 páginas: una hoja con lo que funciona, lo que te está costando dinero y por dónde empezaría yo. Escrita delante de ti, y tuya sigas conmigo o no.</p>
+
+    <div class="hoja">
+      <span class="hoja-et">Caso real</span>
+      <div class="hoja-top">
+        <div class="k">Diagnóstico · sesión 1</div>
+        <h3>Comunidad del Sol · coliving en El Escorial</h3>
+        <div class="meta">Vendían casas para vivir en comunidad… antes de que existiera la comunidad</div>
+      </div>
+
+      <div class="hoja-cuerpo">
+        <div class="hoja-col">
+          <h4>Lo que ya funcionaba</h4>
+          <div class="hoja-li"><span class="ic ok">✓</span><div>El proyecto es bueno y el sitio también: quien pisa la casa lo entiende en cinco minutos.</div></div>
+          <div class="hoja-li"><span class="ic ok">✓</span><div>Conecta con un deseo real: hay gente que quiere vivir así, no solo alquilar un cuarto.</div></div>
+          <div class="hoja-li"><span class="ic ok">✓</span><div>El modelo de microinversión está pensado: la pieza que faltaba no era el producto.</div></div>
+        </div>
+        <div class="hoja-col">
+          <h4>Lo que faltaba</h4>
+          <div class="hoja-li"><span class="ic no">!</span><div>Se vendía comunidad <b>sin comunidad</b>: se pedía confianza antes de haber dado ninguna.</div></div>
+          <div class="hoja-li"><span class="ic no">!</span><div>El salto era enorme — de conocer el proyecto a invertir en una casa, sin nada en medio.</div></div>
+          <div class="hoja-li"><span class="ic no">!</span><div>No había forma de <b>probar la experiencia</b> antes de comprometerse con algo grande.</div></div>
+          <div class="hoja-li"><span class="ic no">!</span><div>Sin eventos no hay comunidad. Y sin comunidad, no hay quien invierta.</div></div>
+        </div>
+      </div>
+
+      <div class="hoja-plan">
+        <h4 style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:700">Por dónde empezamos</h4>
+        <ol>
+          <li><div><b>Montar el motor de eventos.</b> No lo tenían, y es lo único que crea comunidad de verdad. Antes de vender nada. <span class="tag">primero</span></div></li>
+          <li><div><b>Que cada evento sea la puerta de entrada:</b> quien viene, entra al grupo y se queda dentro de la conversación. <span class="tag">después</span></div></li>
+          <li><div><b>La casa, al final del recorrido.</b> Se invierte en un trozo de casa cuando ya has vivido allí un fin de semana y conoces a la gente. <span class="tag">al final</span></div></li>
+        </ol>
+      </div>
+
+      <div class="hoja-pie">Hoy los eventos son lo que mejor les está funcionando: es por donde está creciendo la comunidad, y sobre eso se apoya la oferta de la casa.</div>
+    </div>
+
+    <p class="hoja-nota">Caso real, publicado con su permiso. El diagnóstico se entrega como un panel que puedes abrir y consultar cuando quieras.</p>
+  </div>
+</dialog>
+
+<dialog class="ej-dlg" id="ej-embudo" aria-label="Ejemplo del paso 2">
+  <div class="ej-box">
+    <button class="ej-x" data-cerrar aria-label="Cerrar">✕</button>
+    <div class="sec-kicker">Paso 2 · un ejemplo real</div>
+    <h2 class="sec-title">Así se ve el paso 2 cuando ya está montado.</h2>
+    <p class="fnl-intro">Esto es «implantación llave en mano» dejando de ser una frase. El embudo de VIBRA, que puedes recorrer tú ahora mismo: empieza en Instagram y termina con una persona dentro del grupo de WhatsApp, habiendo dicho ya qué le gusta y qué sabe aportar. Dos minutos. Este es el tipo de sistema que monto para otras comunidades.</p>
+    <p class="fnl-hint">Desliza para verlo →</p>
+    <div class="fnl-scroll">
+      <div class="fnl-rail">
+
+        <div class="fnl-step">
+          <span class="fnl-n"><b>1</b> La landing</span>
+          <figure class="fnl-shot"><img src="funnel-2-landing.webp" width="430" height="931" loading="lazy" alt="Landing de VIBRA en móvil"></figure>
+          <p>Una página, una decisión. Sin menús ni salidas laterales: o entras, o no entras.</p>
+        </div>
+
+        <div class="fnl-step">
+          <span class="fnl-n"><b>2</b> El gancho</span>
+          <figure class="fnl-shot"><img src="funnel-3-hook.webp" width="430" height="931" loading="lazy" alt="Primera pantalla: la mayoría vive en piloto automático"></figure>
+          <p>La primera pantalla no explica nada. Te señala. Y quien se siente señalado, sigue.</p>
+        </div>
+
+        <div class="fnl-step">
+          <span class="fnl-n"><b>3</b> Las preguntas</span>
+          <figure class="fnl-shot"><img src="funnel-4-pregunta.webp" width="430" height="931" loading="lazy" alt="Pregunta: ¿cuándo fue la última vez que hiciste algo por primera vez?"></figure>
+          <p>No es un formulario: es una conversación que apetece terminar.</p>
+        </div>
+
+        <div class="fnl-step">
+          <span class="fnl-n"><b>4</b> La segmentación</span>
+          <figure class="fnl-shot"><img src="funnel-5-gustos.webp" width="430" height="931" loading="lazy" alt="Selección de gustos: lo que te enciende"></figure>
+          <p>Cada respuesta es un dato. Sé quién eres <em>antes</em> de que llegues al grupo.</p>
+        </div>
+
+        <div class="fnl-step">
+          <span class="fnl-n"><b>5</b> El dato</span>
+          <figure class="fnl-shot"><img src="funnel-6-contacto.webp" width="430" height="931" loading="lazy" alt="Pantalla de datos de contacto"></figure>
+          <p>El contacto se pide al final, cuando ya quiere lo que hay dentro. Por eso lo da.</p>
+        </div>
+
+        <div class="fnl-step">
+          <span class="fnl-n"><b>6</b> La entrada</span>
+          <figure class="fnl-shot"><img src="funnel-7-carta.webp" width="430" height="931" loading="lazy" alt="Carta VIBRA generada y botón para entrar al grupo de WhatsApp"></figure>
+          <p>Se lleva algo suyo que compartir y entra al grupo. Ahí es donde empieza la comunidad.</p>
+        </div>
+
+      </div>
+    </div>
+    <p class="fnl-cierre">Ninguna pantalla está puesta por gusto: cada una existe para que la siguiente cueste menos. Eso es todo el truco — <b>orden, y montarlo una sola vez</b>.</p>
+  </div>
+</dialog>
+
+<script>
+// Ejemplos en ventana: mantienen la página corta y cargan solo al abrirse.
+(function(){
+  var abrir=document.querySelectorAll('[data-abrir]');
+  for(var i=0;i<abrir.length;i++){
+    abrir[i].addEventListener('click',function(){
+      var d=document.getElementById(this.getAttribute('data-abrir'));
+      if(!d) return;
+      if(d.showModal){ d.showModal(); } else { d.setAttribute('open',''); }
+      document.body.style.overflow='hidden';
+    });
+  }
+  var cerrar=document.querySelectorAll('[data-cerrar]');
+  for(var j=0;j<cerrar.length;j++){
+    cerrar[j].addEventListener('click',function(){
+      var d=this.closest('dialog');
+      if(d.close){ d.close(); } else { d.removeAttribute('open'); }
+    });
+  }
+  var dlgs=document.querySelectorAll('.ej-dlg');
+  for(var k=0;k<dlgs.length;k++){
+    // clic en el fondo = cerrar
+    dlgs[k].addEventListener('click',function(e){ if(e.target===this) this.close&&this.close(); });
+    dlgs[k].addEventListener('close',function(){ document.body.style.overflow=''; });
+  }
+})();
 </script>
 </body>
 </html>
