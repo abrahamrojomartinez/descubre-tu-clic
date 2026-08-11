@@ -141,6 +141,30 @@
   footer.pie .fin{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;align-items:center}
   footer.pie a{color:var(--ink-soft)}
 
+  /* ===== hoja de diagnóstico (ejemplo del paso 1) ===== */
+  .hoja{max-width:860px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 18px 44px rgba(33,28,30,.09);overflow:hidden;position:relative}
+  .hoja-et{position:absolute;top:16px;right:16px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);background:var(--paper);border:1px solid var(--line);border-radius:100px;padding:4px 11px}
+  .hoja-top{padding:26px 30px 20px;border-bottom:1px solid var(--line);background:var(--paper-soft)}
+  .hoja-top .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);font-weight:700}
+  .hoja-top h3{font-family:'Fraunces',serif;font-size:23px;font-weight:600;margin:7px 0 3px}
+  .hoja-top .meta{font-size:13.5px;color:var(--ink-soft)}
+  .hoja-cuerpo{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .hoja-col{padding:24px 30px}
+  .hoja-col+.hoja-col{border-left:1px solid var(--line)}
+  .hoja-col h4{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px;font-family:'Hanken Grotesk',sans-serif;font-weight:700}
+  .hoja-li{display:flex;gap:11px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14.5px;line-height:1.45}
+  .hoja-li:last-child{border-bottom:none}
+  .hoja-li .ic{flex:0 0 19px;height:19px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;margin-top:2px}
+  .hoja-li .ok{background:rgba(44,122,109,.14);color:var(--verde)}
+  .hoja-li .no{background:rgba(232,114,76,.16);color:var(--coral-deep)}
+  .hoja-plan{padding:24px 30px;border-top:1px solid var(--line);background:var(--paper-soft)}
+  .hoja-plan ol{list-style:none;counter-reset:h;display:grid;gap:11px;margin-top:13px}
+  .hoja-plan li{counter-increment:h;display:flex;gap:12px;font-size:14.5px;line-height:1.45}
+  .hoja-plan li::before{content:counter(h);flex:0 0 22px;height:22px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-size:12px;font-weight:700;margin-top:1px}
+  .hoja-plan .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--verde);background:rgba(44,122,109,.12);border-radius:100px;padding:2px 8px;margin-left:6px;vertical-align:1px}
+  .hoja-pie{padding:16px 30px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-soft);font-style:italic}
+  .hoja-nota{max-width:860px;margin:16px auto 0;font-size:13.5px;color:var(--ink-soft);opacity:.8}
+  @media(max-width:720px){.hoja-cuerpo{grid-template-columns:1fr}.hoja-col+.hoja-col{border-left:none;border-top:1px solid var(--line)}.hoja-top,.hoja-col,.hoja-plan,.hoja-pie{padding-left:20px;padding-right:20px}}
   html.js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
   html.js .rv.on{opacity:1;transform:none}
 
@@ -192,12 +216,61 @@
     <h2 class="sec-title rv">Cinco pasos. Se empieza por el uno.</h2>
     <p class="sec-intro rv">No es una agencia que te entrega cosas y se va. Es montar la máquina, encenderla contigo y quedarme dentro mientras crece.</p>
     <div class="pasos">
-      <div class="paso rv"><span class="n">1</span><div><b>Auditoría y consultoría</b><p>Miro lo que ya tienes — web, redes, grupos, lista, forma de lanzar — y te digo qué funciona, qué falta y qué está roto. Nos sentamos a verlo juntos: sales de ahí con el diagnóstico y el plan en la mano, sigas conmigo o no.</p></div></div>
+      <div class="paso rv"><span class="n">1</span><div><b>Auditoría y consultoría<span class="marca">con ejemplo ↓</span></b><p>Miro lo que ya tienes — web, redes, grupos, lista, forma de lanzar — y te digo qué funciona, qué falta y qué está roto. Nos sentamos a verlo juntos: sales de ahí con el diagnóstico y el plan en la mano, sigas conmigo o no.</p></div></div>
       <div class="paso rv"><span class="n">2</span><div><b>Implantación llave en mano<span class="marca">con ejemplo ↓</span></b><p>Web, embudo conectado al CRM, grupos de WhatsApp, automatizaciones y contenido. Montado y funcionando, no en diapositivas. Y todo queda tuyo.</p></div></div>
       <div class="paso rv"><span class="n">3</span><div><b>Primer lanzamiento</b><p>Lanzamos con el sistema ya montado y las métricas puestas antes de gastar el primer euro. Con los criterios de seguir, ajustar o parar escritos desde el principio.</p></div></div>
       <div class="paso destacado rv"><span class="n">4</span><div><b>Lanzamiento conjunto<span class="marca">solo aquí</span></b><p>Mi comunidad empuja tu lanzamiento. Es lo que no te va a dar ninguna agencia: no solo te monto el canal, te traigo gente de verdad por él.</p></div></div>
       <div class="paso rv"><span class="n">5</span><div><b>Crecimiento continuo</b><p>Me quedo como growth partner: cada mes una pieza nueva funcionando y los números encima de la mesa. Revisión mensual y salida fácil, siempre.</p></div></div>
     </div>
+  </div>
+</section>
+
+<!-- EJEMPLO DEL PASO 1 — hoja de diagnóstico. MOCKUP: contenido de muestra, sustituir por
+     un caso real anonimizado cuando lo haya. La etiqueta "Ejemplo" debe quedarse siempre
+     que el contenido no sea de un cliente real. -->
+<section id="diagnostico">
+  <div class="wrap">
+    <div class="sec-kicker rv">Paso 1 · un ejemplo</div>
+    <h2 class="sec-title rv">Esto es lo que te llevas de la primera sesión.</h2>
+    <p class="fnl-intro rv">No una grabación ni un PDF de 40 páginas: una hoja con lo que funciona, lo que te está costando dinero y por dónde empezaría yo. Escrita delante de ti, y tuya sigas conmigo o no.</p>
+
+    <div class="hoja rv">
+      <span class="hoja-et">Ejemplo</span>
+      <div class="hoja-top">
+        <div class="k">Diagnóstico · sesión 1</div>
+        <h3>Comunidad de viajes · 4.200 seguidores</h3>
+        <div class="meta">Instagram + un grupo de WhatsApp + lista de correo sin usar</div>
+      </div>
+
+      <div class="hoja-cuerpo">
+        <div class="hoja-col">
+          <h4>Lo que ya funciona</h4>
+          <div class="hoja-li"><span class="ic ok">✓</span><div>El contenido conecta: los directos tienen más comentarios que publicaciones de cuentas cinco veces mayores.</div></div>
+          <div class="hoja-li"><span class="ic ok">✓</span><div>La gente que ya ha viajado repite. El producto es bueno; el problema no está ahí.</div></div>
+          <div class="hoja-li"><span class="ic ok">✓</span><div>Hay una comunidad real en el grupo, no una lista de espectadores.</div></div>
+        </div>
+        <div class="hoja-col">
+          <h4>Lo que te está costando dinero</h4>
+          <div class="hoja-li"><span class="ic no">!</span><div>El enlace de la bio lleva a un Linktree: entra tráfico y no se queda nada. <b>Cero captación.</b></div></div>
+          <div class="hoja-li"><span class="ic no">!</span><div>Un solo grupo para todos: quien ya ha viajado recibe lo mismo que quien no te conoce.</div></div>
+          <div class="hoja-li"><span class="ic no">!</span><div>Se lanza por impulso, sin métricas puestas antes: no sabes qué funcionó ni por qué.</div></div>
+          <div class="hoja-li"><span class="ic no">!</span><div>1.800 correos sin escribir desde hace ocho meses.</div></div>
+        </div>
+      </div>
+
+      <div class="hoja-plan">
+        <h4 style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:700">Por dónde empezaría · próximos 30 días</h4>
+        <ol>
+          <li><div><b>Cambiar el Linktree por una página que capte.</b> Es el agujero más grande y el más barato de tapar. <span class="tag">1 semana</span></div></li>
+          <li><div><b>Partir el grupo en dos niveles:</b> quien ya ha viajado y quien todavía no. Los primeros se enteran antes, siempre. <span class="tag">2 semanas</span></div></li>
+          <li><div><b>Escribir a esos 1.800 correos</b> antes del próximo lanzamiento, con algo útil y sin vender. <span class="tag">3 semanas</span></div></li>
+        </ol>
+      </div>
+
+      <div class="hoja-pie">Esto es tuyo desde el minuto uno. Si lo montas por tu cuenta, perfecto. Si quieres que lo monte yo, ese es el paso 2.</div>
+    </div>
+
+    <p class="hoja-nota rv">Ejemplo ilustrativo. Los diagnósticos reales no se publican: son de cada comunidad.</p>
   </div>
 </section>
 
