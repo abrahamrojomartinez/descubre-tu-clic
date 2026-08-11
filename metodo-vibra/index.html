@@ -168,16 +168,25 @@
   /* ===== botón y ventana de ejemplo ===== */
   .ver-ej{display:inline-flex;align-items:center;gap:7px;margin-top:12px;background:transparent;border:1.5px solid var(--line);border-radius:100px;padding:8px 17px;font:inherit;font-size:13.5px;font-weight:600;color:var(--ink);cursor:pointer;transition:border-color .2s,color .2s}
   .ver-ej:hover{border-color:var(--coral);color:var(--coral-deep)}
-  .ej-dlg{border:none;padding:0;background:transparent;width:min(980px,94vw);max-width:none}
-  .ej-dlg::backdrop{background:rgba(33,28,30,.6)}
-  .ej-box{position:relative;background:var(--paper);border-radius:22px;padding:30px 26px 34px;max-height:88vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
-  .ej-x{position:absolute;top:14px;right:15px;z-index:4;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--paper-soft);color:var(--ink);font-size:15px;line-height:1;cursor:pointer}
+  /* la ventana ocupa toda la pantalla y centra la caja con flex: así queda
+     centrada siempre, sin depender del margin:auto del navegador */
+  .ej-dlg{border:none;padding:0;margin:0;background:transparent;width:100vw;max-width:100vw;height:100%;max-height:100%;inset:0;overflow:hidden}
+  .ej-dlg[open]{display:flex;align-items:center;justify-content:center}
+  .ej-dlg::backdrop{background:rgba(33,28,30,.62)}
+  .ej-wrap{position:relative;width:min(980px,94vw)}
+  .ej-box{background:var(--paper);border-radius:22px;padding:30px 26px 44px;max-height:86vh;max-height:86dvh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .ej-x{position:absolute;top:-14px;right:-8px;z-index:5;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--paper-soft);color:var(--ink);font-size:15px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(33,28,30,.18)}
   .ej-x:hover{border-color:var(--coral);color:var(--coral-deep)}
-  .ej-box .sec-kicker{margin-right:44px}
+  /* flechita de "sigue bajando" */
+  .ej-mas{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-size:15px;pointer-events:none;opacity:.92;transition:opacity .3s ease;animation:ejbota 1.5s ease-in-out infinite;box-shadow:0 5px 16px rgba(33,28,30,.28)}
+  .ej-mas.oculto{opacity:0}
+  @keyframes ejbota{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(5px)}}
+  @media(prefers-reduced-motion:reduce){.ej-mas{animation:none}}
+  .ej-box .sec-kicker{margin-right:40px}
   .ej-box .hoja{box-shadow:none;margin-top:4px}
   .ej-box .fnl-scroll{margin:0}
   .ej-box .fnl-rail{padding:0}
-  @media(max-width:720px){.ej-box{padding:26px 16px 28px;max-height:92vh}.ej-dlg{width:96vw}}
+  @media(max-width:720px){.ej-box{padding:26px 16px 44px;max-height:90dvh}.ej-wrap{width:94vw}.ej-x{top:-12px;right:-4px}}
   html.js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
   html.js .rv.on{opacity:1;transform:none}
 
@@ -414,8 +423,10 @@
 
 <!-- VENTANAS DE EJEMPLO — se abren desde los pasos para no alargar la página -->
 <dialog class="ej-dlg" id="ej-diagnostico" aria-label="Ejemplo del paso 1">
-  <div class="ej-box">
+  <div class="ej-wrap">
     <button class="ej-x" data-cerrar aria-label="Cerrar">✕</button>
+    <div class="ej-box">
+    
     <div class="sec-kicker">Paso 1 · un caso real</div>
     <h2 class="sec-title">Esto es lo que te llevas de la primera sesión.</h2>
     <p class="fnl-intro">No una grabación ni un PDF de 40 páginas: una hoja con lo que funciona, lo que te está costando dinero y por dónde empezaría yo. Escrita delante de ti, y tuya sigas conmigo o no.</p>
@@ -458,11 +469,15 @@
 
     <p class="hoja-nota">Caso real, publicado con su permiso. El diagnóstico se entrega como un panel que puedes abrir y consultar cuando quieras.</p>
   </div>
+  <div class="ej-mas" aria-hidden="true">↓</div>
+  </div>
 </dialog>
 
 <dialog class="ej-dlg" id="ej-embudo" aria-label="Ejemplo del paso 2">
-  <div class="ej-box">
+  <div class="ej-wrap">
     <button class="ej-x" data-cerrar aria-label="Cerrar">✕</button>
+    <div class="ej-box">
+    
     <div class="sec-kicker">Paso 2 · un ejemplo real</div>
     <h2 class="sec-title">Así se ve el paso 2 cuando ya está montado.</h2>
     <p class="fnl-intro">Esto es «implantación llave en mano» dejando de ser una frase. El embudo de VIBRA, que puedes recorrer tú ahora mismo: empieza en Instagram y termina con una persona dentro del grupo de WhatsApp, habiendo dicho ya qué le gusta y qué sabe aportar. Dos minutos. Este es el tipo de sistema que monto para otras comunidades.</p>
@@ -510,33 +525,50 @@
     </div>
     <p class="fnl-cierre">Ninguna pantalla está puesta por gusto: cada una existe para que la siguiente cueste menos. Eso es todo el truco — <b>orden, y montarlo una sola vez</b>.</p>
   </div>
+  <div class="ej-mas" aria-hidden="true">↓</div>
+  </div>
 </dialog>
 
 <script>
 // Ejemplos en ventana: mantienen la página corta y cargan solo al abrirse.
 (function(){
-  var abrir=document.querySelectorAll('[data-abrir]');
-  for(var i=0;i<abrir.length;i++){
-    abrir[i].addEventListener('click',function(){
+  function pista(dlg){
+    var caja=dlg.querySelector('.ej-box'), fle=dlg.querySelector('.ej-mas');
+    if(!caja||!fle) return;
+    var queda = caja.scrollHeight - caja.scrollTop - caja.clientHeight;
+    fle.classList.toggle('oculto', queda < 28);
+  }
+  document.querySelectorAll('[data-abrir]').forEach(function(b){
+    b.addEventListener('click',function(){
       var d=document.getElementById(this.getAttribute('data-abrir'));
       if(!d) return;
       if(d.showModal){ d.showModal(); } else { d.setAttribute('open',''); }
       document.body.style.overflow='hidden';
+      var caja=d.querySelector('.ej-box');
+      if(caja) caja.scrollTop=0;
+      // esperar a que pinte (y a que carguen las imágenes) para medir bien
+      setTimeout(function(){ pista(d) },60);
+      setTimeout(function(){ pista(d) },700);
     });
-  }
-  var cerrar=document.querySelectorAll('[data-cerrar]');
-  for(var j=0;j<cerrar.length;j++){
-    cerrar[j].addEventListener('click',function(){
+  });
+  document.querySelectorAll('[data-cerrar]').forEach(function(b){
+    b.addEventListener('click',function(){
       var d=this.closest('dialog');
       if(d.close){ d.close(); } else { d.removeAttribute('open'); }
     });
-  }
-  var dlgs=document.querySelectorAll('.ej-dlg');
-  for(var k=0;k<dlgs.length;k++){
-    // clic en el fondo = cerrar
-    dlgs[k].addEventListener('click',function(e){ if(e.target===this) this.close&&this.close(); });
-    dlgs[k].addEventListener('close',function(){ document.body.style.overflow=''; });
-  }
+  });
+  document.querySelectorAll('.ej-dlg').forEach(function(d){
+    d.addEventListener('click',function(e){ if(e.target===this && this.close) this.close(); });
+    d.addEventListener('close',function(){ document.body.style.overflow=''; });
+    var caja=d.querySelector('.ej-box');
+    if(caja) caja.addEventListener('scroll',function(){ pista(d) },{passive:true});
+    // la flecha lleva abajo si alguien la toca (por si el navegador la deja pulsable)
+    var fle=d.querySelector('.ej-mas');
+    if(fle&&caja) fle.addEventListener('click',function(){ caja.scrollBy({top:caja.clientHeight*.8,behavior:'smooth'}) });
+  });
+  window.addEventListener('resize',function(){
+    document.querySelectorAll('.ej-dlg[open]').forEach(pista);
+  });
 })();
 </script>
 </body>
