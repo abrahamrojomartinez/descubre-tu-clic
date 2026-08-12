@@ -208,10 +208,18 @@
   .caso-embudo{margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
   .caso-embudo .ce-t{display:block;font-weight:700;font-size:15.5px;margin-bottom:5px}
   .caso-embudo .ce-s{display:block;color:var(--ink-soft);font-size:14.5px;line-height:1.55;margin-bottom:15px;max-width:62ch}
-  .caso .fnl-scroll{margin:0 -30px}
-  .caso .fnl-rail{padding:0 30px}
+  /* sin sangrado: el carril respeta el margen de la tarjeta y queda alineado
+     con el texto. Con padding en el carril, scroll-snap lo desplaza y recorta
+     la primera captura, así que aquí va a cero. */
+  .caso .fnl-scroll{margin:0}
+  .caso .fnl-rail{padding:0}
   .caso-embudo .fnl-cierre{margin-top:15px;font-size:15.5px;max-width:62ch}
-  @media(max-width:640px){.caso .fnl-scroll{margin:0 -20px}.caso .fnl-rail{padding:0 20px}}
+  .caso-fotos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+  .caso-fotos figure{margin:0}
+  .caso-fotos img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;
+    border-radius:14px;border:1px solid var(--line);background:var(--paper-soft)}
+  .caso-fotos figcaption{margin-top:9px;font-size:13.5px;line-height:1.5;color:var(--ink-soft)}
+  @media(max-width:520px){.caso-fotos{gap:11px}.caso-fotos figcaption{font-size:12.5px}}
 </style>
 </head>
 <body>
@@ -332,6 +340,16 @@
         <span class="chip"><b>+3M€</b> en un año</span>
         <span class="chip"><b>+5.000</b> clientes activos/mes</span>
         <span class="chip">CRM implantado en <b>2 semanas</b></span>
+      </div>
+      <div class="caso-fotos">
+        <figure>
+          <img src="caso-guo-1-evento.webp" width="720" height="900" loading="lazy" alt="Stand de GÜO en una feria del sector, con la app y una presentación en pantalla">
+          <figcaption>Los eventos presenciales, que aquí no eran escaparate: eran el sitio donde cerraba gente que ya llevaba meses calentándose.</figcaption>
+        </figure>
+        <figure>
+          <img src="caso-guo-2-contenido.webp" width="720" height="900" loading="lazy" alt="Grabación de contenido en formato entrevista">
+          <figcaption>Y el contenido que alimenta al CRM: lo que hace que, cuando llega el lanzamiento, no haya que convencer a nadie.</figcaption>
+        </figure>
       </div>
       <details><summary>Por qué te importa esto</summary><div class="detalle">
         <p>Porque es exactamente la misma máquina que monto para una comunidad — solo cambia la escala y el producto. Los eslabones son los mismos: captar, aterrizar, calentar, lanzar. Y porque significa que lo que te propongo no lo he leído en ningún sitio: lo he construido con las manos, respondiendo de una cifra.</p>
