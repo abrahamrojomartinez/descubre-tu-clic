@@ -50,12 +50,24 @@
   .hero .cta-note{font-size:13.5px;color:var(--ink-soft)}
 
   /* miedo */
-  .miedo{background:var(--ink);color:var(--paper);border-radius:24px;padding:44px 42px;margin-top:44px}
-  @media(max-width:640px){.miedo{padding:32px 24px}}
+  /* el bloque de la objeción: menos negro plano, con foto y guiño de marca */
+  .miedo{background:linear-gradient(152deg,#33292C 0%,#241F21 52%,#1E1A1C 100%);color:var(--paper);border-radius:24px;padding:44px 42px;margin-top:44px;display:grid;grid-template-columns:1.35fr .65fr;gap:38px;align-items:center;position:relative;overflow:hidden}
+  .miedo::before{content:"";position:absolute;top:-120px;right:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(232,114,76,.22),transparent 68%);pointer-events:none}
+  .miedo-txt{position:relative;z-index:1}
+  .miedo-nota{font-family:'Caveat',cursive;font-size:20px;color:#F4B79F;margin-bottom:6px}
   .miedo .q{font-family:'Fraunces',serif;font-size:clamp(23px,3.4vw,32px);color:#fff;font-style:italic;max-width:24ch}
   .miedo .q span{color:#F4B79F}
   .miedo p{margin-top:18px;color:#CFC7BE;max-width:62ch;font-size:16px}
   .miedo p b{color:#fff}
+  .miedo-ola{display:block;margin-top:24px;opacity:.9}
+  .miedo-foto{margin:0;position:relative;z-index:1}
+  .miedo-foto img{display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 18px 40px rgba(0,0,0,.34)}
+  @media(max-width:860px){.miedo{grid-template-columns:1fr;gap:26px;padding:36px 28px}.miedo-foto{max-width:330px}}
+  @media(max-width:640px){.miedo{padding:30px 22px}}
+  /* logotipo igual que en la landing principal */
+  .logo.wordmark{display:inline-flex;flex-direction:column;align-items:center;gap:2px;line-height:1}
+  .logo.wordmark svg{display:block}
+  .logo.wordmark .wm-text{font-family:'Fraunces',serif;font-weight:700;font-size:22px;letter-spacing:.01em;line-height:1;color:var(--ink)}
 
   section{padding:56px 0}
   .sec-kicker{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-deep);margin-bottom:10px}
@@ -227,7 +239,10 @@
 
 <nav>
   <div class="nav-in">
-    <a class="logo" href="/">VIBRA<span>.</span></a>
+    <a class="logo wordmark" href="/" aria-label="vibra">
+      <svg width="58" height="13" viewBox="0 0 64 14" fill="none" aria-hidden="true"><path d="M2 8 C6 8,7 4,11 4 C15 4,15 11,19 11 C23 11,23 2,28 2 C33 2,33 12,38 12 C43 12,43 5,47 5 C51 5,52 8,56 8 C59 8,60 7,62 7" stroke="#E8724C" stroke-width="2.6" stroke-linecap="round"/></svg>
+      <span class="wm-text">vibra</span>
+    </a>
     <a class="nav-back" href="/">← Volver a VIBRA</a>
     <a class="nav-cta" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20saber%20m%C3%A1s%20del%20M%C3%A9todo%20VIBRA" target="_blank" rel="noopener">Hablemos</a>
   </div>
@@ -244,9 +259,16 @@
     </div>
 
     <div class="miedo rv">
-      <p class="q">«¿Y este de fuera no me va a <span>despersonalizar</span> la comunidad?»</p>
-      <p>Es la primera pregunta que me hacen. Y es la correcta. La respuesta está en la regla con la que trabajo: <b>no se automatiza lo humano.</b> Los mensajes, los audios, las bienvenidas, la cara — eso es tuyo y ahí no entro. Lo que automatizo es todo lo demás: que la gente entre sola, que no se te escape nadie, que llenar deje de depender de que tú te acuerdes.</p>
-    </div>
+        <div class="miedo-txt">
+          <p class="miedo-nota">(me lo preguntan siempre)</p>
+          <p class="q">«¿Y este de fuera no me va a <span>despersonalizar</span> la comunidad?»</p>
+          <p>Es la primera pregunta que me hacen. Y es la correcta. La respuesta está en la regla con la que trabajo: <b>no se automatiza lo humano.</b> Los mensajes, los audios, las bienvenidas, la cara — eso es tuyo y ahí no entro. Lo que automatizo es todo lo demás: que la gente entre sola, que no se te escape nadie, que llenar deje de depender de que tú te acuerdes.</p>
+          <svg class="miedo-ola" width="72" height="16" viewBox="0 0 64 14" fill="none" aria-hidden="true"><path d="M2 8 C6 8,7 4,11 4 C15 4,15 11,19 11 C23 11,23 2,28 2 C33 2,33 12,38 12 C43 12,43 5,47 5 C51 5,52 8,56 8 C59 8,60 7,62 7" stroke="#E8724C" stroke-width="2.6" stroke-linecap="round"/></svg>
+        </div>
+        <figure class="miedo-foto">
+          <img src="abraham-surf.webp" width="720" height="900" loading="lazy" alt="Abraham remando sobre la tabla de surf">
+        </figure>
+      </div>
   </div>
 </header>
 
