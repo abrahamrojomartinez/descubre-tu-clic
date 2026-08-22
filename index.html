@@ -286,7 +286,7 @@ footer{padding:34px 0 110px;text-align:center;font-size:13.5px;color:var(--ink-s
         <li><span class="n">3</span><div><strong>Entras al grupo de WhatsApp</strong><span class="t">Donde empiezan todos los planes.</span></div></li>
       </ol>
       <div style="margin-top:28px">
-        <a class="btn btn-coral" href="https://que-nunca-te-quiten-tu-vibra.netlify.app/?utm_source=descubre-tu-clic&utm_medium=dentro">Entrar a VIBRA →</a>
+        <a class="btn btn-coral" href="https://que-nunca-te-quiten-tu-vibra.netlify.app/?utm_source=descubre-tu-clic&utm_medium=dentro">Empezar — son 2 minutos →</a>
         <p class="hero-note" style="margin-top:12px">tu Carta VIBRA es la puerta · gratis</p>
       </div>
     </div>
@@ -344,7 +344,7 @@ footer{padding:34px 0 110px;text-align:center;font-size:13.5px;color:var(--ink-s
   <div class="narrow">
     <h2 class="reveal">Únete a la gente que ya está dentro.</h2>
     <p class="reveal">2 minutos. Tu Carta VIBRA. Sin spam, sin humo.</p>
-    <a class="btn btn-coral reveal" href="https://que-nunca-te-quiten-tu-vibra.netlify.app/?utm_source=descubre-tu-clic&utm_medium=cta-band">Entrar a VIBRA →</a>
+    <a class="btn btn-coral reveal" href="https://que-nunca-te-quiten-tu-vibra.netlify.app/?utm_source=descubre-tu-clic&utm_medium=cta-band">Entrar a la comunidad →</a>
   </div>
 </section>
 
@@ -434,7 +434,7 @@ footer{padding:34px 0 110px;text-align:center;font-size:13.5px;color:var(--ink-s
   <div class="narrow">
     <span class="kicker reveal">Última llamada</span>
     <h2 class="reveal">Que nunca te quiten<br>tu <em>vibra</em>.</h2>
-    <a class="btn btn-coral reveal" href="https://que-nunca-te-quiten-tu-vibra.netlify.app/?utm_source=descubre-tu-clic&utm_medium=cierre">Entrar a VIBRA →</a>
+    <a class="btn btn-coral reveal" href="https://que-nunca-te-quiten-tu-vibra.netlify.app/?utm_source=descubre-tu-clic&utm_medium=cierre">Quiero entrar →</a>
   </div>
 </section>
 
@@ -454,7 +454,12 @@ document.addEventListener('click',e=>{
   try{
     const t=e.target;
     const a=t&&t.closest&&t.closest('a[href*="que-nunca-te-quiten-tu-vibra"]');
-    if(a) window.sa_event('clic_entrar_vibra');
+    if(!a) return;
+    // total (serie historica, no tocar el nombre)
+    window.sa_event('clic_entrar_vibra');
+    // y ademas por posicion, para saber que texto se pulsa mas
+    var m=/utm_medium=([a-z0-9-]+)/i.exec(a.getAttribute('href')||'');
+    if(m) window.sa_event('cta_'+m[1].toLowerCase().replace(/-/g,'_'));
   }catch(_){/* la analítica nunca rompe la navegación */}
 },true);
 // si el sistema pide reducir movimiento, el clip no se reproduce solo
