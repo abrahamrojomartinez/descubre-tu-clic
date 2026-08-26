@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Método VIBRA — Crecer sin perder el alma | Abraham Rojo</title>
-<meta name="description" content="Monto el sistema que hace crecer tu comunidad — sin automatizar lo humano. Auditoría, implantación llave en mano, primer lanzamiento y crecimiento continuo.">
+<meta name="description" content="Construyo la máquina de crecimiento que llena tus viajes, tus retiros o tus plazas — y la manejas hablando. Consultoría, máquina llave en mano y lanzamiento conjunto: si tú no ganas, yo no gano.">
 <meta property="og:title" content="Método VIBRA — Crecer sin perder el alma">
 <meta property="og:description" content="Monto el sistema que hace crecer tu comunidad. Lo humano no se toca.">
 <meta property="og:type" content="website">
@@ -199,6 +199,27 @@
   .ej-box .fnl-scroll{margin:0}
   .ej-box .fnl-rail{padding:0}
   @media(max-width:720px){.ej-box{padding:26px 16px 44px;max-height:90dvh}.ej-wrap{width:94vw}.ej-x{top:-12px;right:-4px}}
+  /* ===== te va a sonar (citas de consultorías) ===== */
+  #sonar{padding-top:10px}
+  .sonar-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  .sonar-q{margin:0;background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 26px 20px;position:relative}
+  .sonar-q::before{content:"«";position:absolute;top:6px;right:18px;font-family:'Fraunces',serif;font-size:52px;color:var(--coral);opacity:.22;line-height:1}
+  .sonar-q blockquote{margin:0;font-family:'Fraunces',serif;font-style:italic;font-size:17.5px;line-height:1.5;color:var(--ink)}
+  .sonar-q figcaption{margin-top:12px;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .sonar-pie{margin:26px auto 0;max-width:640px;text-align:center;color:var(--ink-soft);font-size:16px}
+  .sonar-pie b{color:var(--ink)}
+  @media(max-width:720px){.sonar-grid{grid-template-columns:1fr}}
+  /* ===== sobre mi mesa (planes vivos) ===== */
+  #planes{padding-top:6px}
+  .plan-list{display:grid;gap:12px;margin-top:6px}
+  .plan{background:var(--paper-soft);border:1px solid var(--line);border-radius:16px;padding:18px 22px;display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+  .plan p{margin:0;font-size:15.5px;color:var(--ink-soft);flex:1;min-width:240px}
+  .plan p b{color:var(--ink)}
+  .plan-chip{flex:0 0 auto;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;border-radius:100px;padding:5px 12px;margin-top:2px;background:#fff;border:1px solid var(--line);color:var(--ink-soft)}
+  .plan-chip.on{background:var(--verde);border-color:var(--verde);color:#fff}
+  .plan.tuyo{margin-top:14px;border:1.5px dashed var(--coral);background:transparent;display:block}
+  .plan.tuyo p{margin-bottom:16px}
+  .plan.tuyo .btn{display:inline-block}
   html.js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
   html.js .rv.on{opacity:1;transform:none}
 
@@ -252,7 +273,7 @@
   <div class="wrap">
     <span class="kicker">Método VIBRA · para <i>líderes de comunidad</i></span>
     <h1>Tu comunidad puede crecer <em>sin perder el alma.</em></h1>
-    <p class="sub">Monto el sistema que llena tus viajes, tus retiros o tus plazas — y me quedo a hacerlo crecer contigo. Lo humano lo sigues escribiendo tú.</p>
+    <p class="sub">Construyo la máquina que llena tus viajes, tus retiros o tus plazas — y la manejas <b>hablando</b>, como quien manda un audio. Lo humano lo sigues escribiendo tú.</p>
     <div class="cta-row">
       <a class="btn coral" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20saber%20m%C3%A1s%20del%20M%C3%A9todo%20VIBRA" target="_blank" rel="noopener">Cuéntame tu comunidad</a>
       <span class="cta-note">Sin compromiso. La primera conversación es una consultoría, no una venta.</span>
@@ -272,20 +293,56 @@
   </div>
 </header>
 
+<!-- TE VA A SONAR — frases verbatim de las consultorías, anonimizadas.
+     Regla: sin nombres, sin destinos, sin cifras que identifiquen a nadie. -->
+<section id="sonar">
+  <div class="wrap">
+    <div class="sec-kicker rv">De mis consultorías</div>
+    <h2 class="sec-title rv">Si diriges una comunidad,<br>esto te va a sonar.</h2>
+    <div class="sonar-grid">
+      <figure class="sonar-q rv"><blockquote>«Mucha gente me pide información y luego nunca acabo de hacer el enganche final. Ese es mi mayor problema.»</blockquote><figcaption>organiza retiros internacionales</figcaption></figure>
+      <figure class="sonar-q rv"><blockquote>«"Sí, quiero venir, quiero venir." Vale, pues hazme la paga y señal… y de repente, cri cri.»</blockquote><figcaption>llena sus plazas a mano</figcaption></figure>
+      <figure class="sonar-q rv"><blockquote>«La comunicación para mí es un trabajón.»</blockquote><figcaption>lidera retiros de yoga</figcaption></figure>
+      <figure class="sonar-q rv"><blockquote>«Esto se vende solo, está tirado… y luego no te escribe ni títere.»</blockquote><figcaption>lanzó su primer viaje en grupo</figcaption></figure>
+      <figure class="sonar-q rv"><blockquote>«Todo ha recaído sobre mí. Y estoy cansada de delegar: me ha funcionado mal, pésimo.»</blockquote><figcaption>marca personal con seis cifras de comunidad</figcaption></figure>
+      <figure class="sonar-q rv"><blockquote>«El hotel ya me pide la señal — y yo necesito que la gente se apunte antes de pagarla.»</blockquote><figcaption>adelanta los depósitos de su bolsillo</figcaption></figure>
+    </div>
+    <p class="sonar-pie rv">Ninguna es inventada: salen de mis consultorías de las últimas semanas. Y en casi ningún caso el problema era el producto — el producto era buenísimo. <b>Lo que no había era nada debajo.</b></p>
+  </div>
+</section>
+
 <section id="metodo">
   <div class="wrap">
     <div class="sec-kicker rv">Cómo funciona</div>
-    <h2 class="sec-title rv">Cinco pasos. Se empieza por el uno.</h2>
-    <p class="sec-intro rv">No es una agencia que te entrega cosas y se va. Es montar la máquina, encenderla contigo y quedarme dentro mientras crece.</p>
+    <h2 class="sec-title rv">Tres fases. Se empieza por la primera.</h2>
+    <p class="sec-intro rv">No es una agencia que te entrega cosas y se va. Es abrir tu negocio, montar la máquina, encenderla contigo — y que todo lo construido quede tuyo.</p>
     <div class="pasos">
-      <div class="paso rv"><span class="n">1</span><div><b>Auditoría y consultoría</b><p>Miro lo que ya tienes — web, redes, grupos, lista, forma de lanzar — y te digo qué funciona, qué falta y qué está roto. Nos sentamos a verlo juntos: sales de ahí con el diagnóstico y el plan en la mano, sigas conmigo o no.</p><button class="ver-ej" data-abrir="ej-diagnostico">Ver un caso real →</button></div></div>
-      <div class="paso rv"><span class="n">2</span><div><b>Implantación llave en mano</b><p>Web, embudo conectado al CRM, grupos de WhatsApp, automatizaciones y contenido. Montado y funcionando, no en diapositivas. Y todo queda tuyo.</p><button class="ver-ej" data-abrir="ej-embudo">Ver un ejemplo montado →</button></div></div>
-      <div class="paso rv"><span class="n">3</span><div><b>Primer lanzamiento</b><p>Lanzamos con el sistema ya montado y las métricas puestas antes de gastar el primer euro. Con los criterios de seguir, ajustar o parar escritos desde el principio.</p></div></div>
-      <div class="paso destacado rv"><span class="n">4</span><div><b>Lanzamiento conjunto con mi comunidad VIBRA<span class="marca">solo aquí</span></b><p>Mi comunidad empuja tu lanzamiento. Es lo que no te va a dar ninguna agencia: no solo te monto el canal, te traigo gente de verdad por él. <b class="opt">Es opcional:</b> lo activamos solo si tu comunidad y la mía encajan, y si no encaja, nos lo saltamos sin coste.</p></div></div>
-      <div class="paso rv"><span class="n">5</span><div><b>Crecimiento continuo</b><p>Me quedo como growth partner: cada mes una pieza nueva funcionando y los números encima de la mesa. Revisión mensual y salida fácil, siempre.</p></div></div>
+      <div class="paso rv"><span class="n">1</span><div><b>Consultoría y auditoría</b><p>Tu negocio abierto entero encima de la mesa: qué te da cada línea, qué embudo tiene cada una, qué funciona y qué está roto. Sales con <b>un plan de acción escrito</b> — tuyo, sigas conmigo o no. Y con cosas que puedes aplicar esa misma semana.</p><button class="ver-ej" data-abrir="ej-diagnostico">Ver un caso real →</button></div></div>
+      <div class="paso rv"><span class="n">2</span><div><b>Te construyo la máquina, llave en mano</b><p>Todo lo que hoy te come horas — la web, los cobros, el grupo, el contenido, los datos, la publicidad — montado, conectado y funcionando. Tú aquí no construyes nada: la pruebas, te la explico y <b>la manejas hablando</b>. La lista de piezas no está en esta página a propósito: tu máquina se diseña sobre tu negocio, no sobre una plantilla. Y se queda <b>tuya para siempre</b>, sin permanencia y con herramientas casi todas gratuitas.</p><button class="ver-ej" data-abrir="ej-embudo">Ver un ejemplo montado →</button></div></div>
+      <div class="paso destacado rv"><span class="n">3</span><div><b>Lanzamiento conjunto</b><p>Lanzamos con mi metodología y los tiempos marcados: cuándo se calienta, cuándo se abre y cuándo se cierra. Donde encaja, <b>mi comunidad VIBRA empuja detrás</b>. Y esta fase va en variable: <b>si tú no ganas, yo no gano.</b></p></div></div>
+      <div class="paso rv"><span class="n">+</span><div><b>Y si quieres, me quedo</b><p>Growth partner: cada mes una pieza nueva funcionando y los números encima de la mesa. Revisión mensual y salida fácil, siempre.</p></div></div>
     </div>
   </div>
 </section>
+
+<!-- SOBRE MI MESA — planes reales en marcha, anonimizados por sector. Hype sin revelar piezas. -->
+<section id="planes">
+  <div class="wrap">
+    <div class="sec-kicker rv">Ahora mismo, sobre mi mesa</div>
+    <h2 class="sec-title rv">Planes de crecimiento vivos, esta semana.</h2>
+    <div class="plan-list">
+      <div class="plan rv"><span class="plan-chip on">comprado · en marcha</span><p><b>Retiros internacionales de yoga y escalada.</b> De llenar a mano a un objetivo con cifra, con la máquina detrás y calendario hacia atrás desde el día del viaje.</p></div>
+      <div class="plan rv"><span class="plan-chip">propuesta entregada</span><p><b>Una marca personal de nutrición con seis cifras de comunidad.</b> De tres webs, doce enlaces y diez líneas… a una sola puerta.</p></div>
+      <div class="plan rv"><span class="plan-chip">propuesta entregada</span><p><b>Un equipo lanzando su primer viaje en grupo.</b> De estrellarse contra un muro a relanzar con método, número y tiempos.</p></div>
+      <div class="plan rv"><span class="plan-chip">propuesta entregada</span><p><b>Retiros de yoga entre España y Latinoamérica.</b> Que comunicar deje de depender de que sobre energía.</p></div>
+    </div>
+    <div class="plan tuyo rv">
+      <p><b>Cada plan es una página viva, hecha para un solo negocio:</b> su punto A, su punto B, su número y su calendario semana a semana. No hay dos iguales y no hay plantilla. <b>El tuyo todavía no existe</b> — se escribe después de la primera llamada.</p>
+      <a class="btn coral" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20mi%20plan%20de%20crecimiento" target="_blank" rel="noopener">Quiero mi plan →</a>
+    </div>
+  </div>
+</section>
+
 
 
 
@@ -469,7 +526,7 @@
   <div class="wrap">
     <div class="cierre rv">
       <h2>Cuéntame tu comunidad.</h2>
-      <p>Escríbeme y hablamos sin compromiso: qué tienes montado, qué te está costando y si esto tiene sentido para ti. Si veo que no puedo ayudarte, te lo digo.</p>
+      <p>Escríbeme y hablamos sin compromiso: qué tienes montado, qué te está costando y si esto tiene sentido para ti. De esa llamada sales con dos o tres movimientos para aplicar esa misma semana, decidas lo que decidas. Y si veo que no puedo ayudarte, te lo digo.</p>
       <span class="caveat">Y si te sirve, seguimos ✳</span>
       <div class="botones">
         <a class="btn coral" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20saber%20m%C3%A1s%20del%20M%C3%A9todo%20VIBRA" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
