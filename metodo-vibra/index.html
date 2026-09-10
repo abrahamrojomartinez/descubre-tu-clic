@@ -267,6 +267,11 @@
   .plazas-msg{margin-top:14px;font-size:16.5px;line-height:1.5;color:var(--ink-soft);min-height:1.2em}
   .plazas-msg b{color:var(--ink)}
   .plazas-msg .rem{font-family:'Fraunces',serif;font-style:italic;font-size:19px;color:var(--coral-deep)}
+  .plazas-sig{display:inline-flex;align-items:center;gap:9px;margin-top:16px;background:var(--coral);color:#fff;text-decoration:none;border-radius:100px;padding:11px 22px;font-size:15px;font-weight:700;animation:sigEntra .45s ease both}
+  .plazas-sig span{font-size:17px}
+  .plazas-sig[hidden]{display:none}
+  @keyframes sigEntra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.plazas-sig{animation:none}}
   /* ===== el relato de la caída ===== */
   .caida{list-style:none;margin:6px 0 4px;display:grid;max-width:620px}
   .caida li{display:flex;gap:18px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
@@ -340,6 +345,8 @@
       <div class="plazas-fila" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
       <button class="plazas-btn" id="plazasBtn">Toca para llenarlas →</button>
       <p class="plazas-msg" id="plazasMsg" role="status"></p>
+      <!-- Cuando exista el vídeo, este botón pasa a abrirlo. Hoy lleva al método. -->
+      <a class="plazas-sig" id="plazasSig" href="#metodo" hidden>Cómo se llenan esas siete <span>↓</span></a>
     </div>
 
     <div class="miedo rv">
@@ -876,6 +883,8 @@
       llenar(8,puntos.length,function(){
         msg.innerHTML='Quince. <span class="rem">Esa diferencia es todo el trabajo.</span>';
         btn.hidden=true;
+        var sig=document.getElementById('plazasSig');
+        if(sig){ sig.hidden=false; }
       });
     }
   });
