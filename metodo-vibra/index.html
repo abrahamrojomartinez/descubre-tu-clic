@@ -209,6 +209,52 @@
   .sonar-pie{margin:26px auto 0;max-width:640px;text-align:center;color:var(--ink-soft);font-size:16px}
   .sonar-pie b{color:var(--ink)}
   @media(max-width:720px){.sonar-grid{grid-template-columns:1fr}}
+  /* ===== capítulos de fase (numeral gigante + mancha) ===== */
+  .capitulos{margin-top:36px;display:grid;gap:14px}
+  .cap{display:grid;grid-template-columns:1fr 300px;gap:30px;align-items:center;background:var(--paper-soft);border:1px solid var(--line);border-radius:24px;padding:36px 38px;overflow:hidden}
+  .cap-n{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:10px}
+  .cap h3{font-family:'Fraunces',serif;font-size:clamp(26px,3.6vw,38px);font-weight:600;line-height:1.1;margin-bottom:14px}
+  .cap p{color:var(--ink-soft);font-size:16.5px;line-height:1.6}
+  .cap p b{color:var(--ink)}
+  .cap-num{position:relative;display:grid;place-items:center;min-height:200px}
+  .cap-num::before{content:"";position:absolute;inset:0;border-radius:52% 48% 44% 56%/48% 52% 48% 52%}
+  .cap-num span{position:relative;z-index:1;font-family:'Hanken Grotesk',sans-serif;font-size:120px;font-weight:700;line-height:1;color:#fff}
+  .mancha-1::before{background:radial-gradient(120% 120% at 30% 25%,#F0855F,#D45F38)}
+  .mancha-2::before{background:radial-gradient(120% 120% at 30% 25%,#3E8C7E,#2C7A6D)}
+  .mancha-3::before{background:radial-gradient(120% 120% at 30% 25%,#4A3F52,#2E2633)}
+  .cap-extra{margin-top:4px;border:1.5px dashed var(--line);border-radius:20px;padding:24px 30px}
+  .cap-extra p{color:var(--ink-soft);font-size:16px;margin:0}
+  .cap-extra p b{color:var(--ink)}
+  @media(max-width:820px){
+    .cap{grid-template-columns:1fr;gap:22px;padding:30px 24px}
+    .cap-num{min-height:150px;order:-1;max-width:200px}
+    .cap-num span{font-size:88px}
+  }
+  /* ===== contraste antes / después ===== */
+  .dos{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px}
+  .lado{border-radius:22px;padding:30px 30px 32px}
+  .lado h3{font-family:'Fraunces',serif;font-size:21px;font-weight:600;margin-bottom:18px}
+  .lado ul{list-style:none;display:grid;gap:13px}
+  .lado li{font-size:15.5px;line-height:1.5;padding-left:26px;position:relative}
+  .lado.malo{background:linear-gradient(155deg,#33292C,#211C1E);color:#CFC7BE}
+  .lado.malo h3{color:#fff}
+  .lado.malo li::before{content:"−";position:absolute;left:0;top:-1px;color:#E89B7F;font-weight:700;font-size:18px}
+  .lado.bueno{background:var(--paper-soft);border:1px solid var(--line);color:var(--ink-soft)}
+  .lado.bueno h3{color:var(--ink)}
+  .lado.bueno li::before{content:"+";position:absolute;left:0;top:-1px;color:var(--verde);font-weight:700;font-size:17px}
+  .lado.bueno li b{color:var(--ink)}
+  @media(max-width:820px){.dos{grid-template-columns:1fr}}
+  /* ===== faqs ===== */
+  .faq-list{margin-top:10px;display:grid;gap:10px}
+  .faq-list details{background:var(--paper-soft);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .faq-list summary{cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;font-size:16.5px;display:flex;gap:14px;align-items:flex-start}
+  .faq-list summary::-webkit-details-marker{display:none}
+  .faq-list summary::before{content:"+";color:var(--coral);font-weight:700;font-size:19px;line-height:1.2;flex:none}
+  .faq-list details[open] summary::before{content:"−"}
+  .faq-list details[open] summary{padding-bottom:6px}
+  .faq-c{padding:0 22px 20px 50px}
+  .faq-c p{color:var(--ink-soft);font-size:15.5px;line-height:1.6}
+  .faq-c p b{color:var(--ink)}
   html.js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
   html.js .rv.on{opacity:1;transform:none}
 
@@ -300,16 +346,78 @@
   </div>
 </section>
 
+<!-- CONTRASTE — el lado oscuro sale de frases reales de las consultorías; el luminoso,
+     de lo que entregan las propuestas. -->
+<section id="contraste">
+  <div class="wrap">
+    <div class="sec-kicker rv">Dos caminos</div>
+    <h2 class="sec-title rv">Lo que pasa si todo sigue<br>dependiendo de ti.</h2>
+    <div class="dos">
+      <div class="lado malo rv">
+        <h3>Si no cambias nada</h3>
+        <ul>
+          <li>Seguirás contestando mensajes uno a uno — y aun así se te caerán en el último paso.</li>
+          <li>Llenarás a mano, tarde, y con el alojamiento pidiéndote la señal antes de tener a la gente dentro.</li>
+          <li>Comunicar seguirá dependiendo de que te sobre energía. Y cuando no sobre, el lanzamiento se moverá tarde.</li>
+          <li>La gente que preguntó y no vino se perderá, otra vez.</li>
+          <li>Y te compararán con cualquier otro, porque quien no te conoce solo ve el precio.</li>
+        </ul>
+      </div>
+      <div class="lado bueno rv">
+        <h3>Con la máquina montada</h3>
+        <ul>
+          <li>Un objetivo con cifra, y un calendario construido hacia atrás desde el día del viaje.</li>
+          <li>La señal entra sola, con enlace propio — y sabes quién ha pagado sin perseguir a nadie.</li>
+          <li>Un grupo donde la gente se calienta antes de que abras plazas.</li>
+          <li>Cada interesado con su ficha: quién es, qué le gusta y qué te preguntó.</li>
+          <li>Y todo lo pilotas <b>hablando</b>, sin entrar en ninguna herramienta.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="metodo">
   <div class="wrap">
     <div class="sec-kicker rv">Cómo funciona</div>
     <h2 class="sec-title rv">Tres fases. Se empieza por la primera.</h2>
     <p class="sec-intro rv">No es una agencia que te entrega cosas y se va. Es abrir tu negocio, montar la máquina, encenderla contigo — y que todo lo construido quede tuyo.</p>
-    <div class="pasos">
-      <div class="paso rv"><span class="n">1</span><div><b>Consultoría y auditoría</b><p>Tu negocio abierto entero encima de la mesa: qué te da cada línea, qué embudo tiene cada una, qué funciona y qué está roto. Sales con <b>un plan de acción escrito</b> — tuyo, sigas conmigo o no. Y con cosas que puedes aplicar esa misma semana.</p><button class="ver-ej" data-abrir="ej-diagnostico">Ver un caso real →</button></div></div>
-      <div class="paso rv"><span class="n">2</span><div><b>Te construyo la máquina, llave en mano</b><p>Todo lo que hoy te come horas — la web, los cobros, el grupo, el contenido, los datos, la publicidad — montado, conectado y funcionando. Tú aquí no construyes nada: la pruebas, te la explico y <b>la manejas hablando</b>. La lista de piezas no está en esta página a propósito: tu máquina se diseña sobre tu negocio, no sobre una plantilla. Y se queda <b>tuya para siempre</b>, sin permanencia y con herramientas casi todas gratuitas.</p><button class="ver-ej" data-abrir="ej-embudo">Ver un ejemplo montado →</button></div></div>
-      <div class="paso destacado rv"><span class="n">3</span><div><b>Lanzamiento conjunto</b><p>Lanzamos con mi metodología y los tiempos marcados: cuándo se calienta, cuándo se abre y cuándo se cierra. Donde encaja, <b>mi comunidad VIBRA empuja detrás</b>. Y esta fase va en variable: <b>si tú no ganas, yo no gano.</b></p></div></div>
-      <div class="paso rv"><span class="n">+</span><div><b>Y si quieres, me quedo</b><p>Growth partner: cada mes una pieza nueva funcionando y los números encima de la mesa. Revisión mensual y salida fácil, siempre.</p></div></div>
+    <div class="capitulos">
+
+      <article class="cap rv">
+        <div class="cap-txt">
+          <span class="cap-n">Fase 1</span>
+          <h3>Consultoría y auditoría</h3>
+          <p>Tu negocio abierto entero encima de la mesa: qué te da cada línea, qué embudo tiene cada una, qué funciona y qué está roto. Sales con <b>un plan de acción escrito</b> — tuyo, sigas conmigo o no. Y con cosas que puedes aplicar esa misma semana.</p>
+          <button class="ver-ej" data-abrir="ej-diagnostico">Ver un caso real →</button>
+        </div>
+        <div class="cap-num mancha-1"><span>1</span></div>
+      </article>
+
+      <article class="cap rv">
+        <div class="cap-txt">
+          <span class="cap-n">Fase 2</span>
+          <h3>Te construyo la máquina</h3>
+          <p>Todo lo que hoy te come horas — la web, los cobros, el grupo, el contenido, los datos, la publicidad — montado, conectado y funcionando. Tú aquí no construyes nada: la pruebas, te la explico y <b>la manejas hablando</b>. La lista de piezas no está en esta página a propósito: tu máquina se diseña sobre tu negocio, no sobre una plantilla. Y se queda <b>tuya para siempre</b>, sin permanencia.</p>
+          <button class="ver-ej" data-abrir="ej-embudo">Ver un ejemplo montado →</button>
+        </div>
+        <div class="cap-num mancha-2"><span>2</span></div>
+      </article>
+
+      <article class="cap rv">
+        <div class="cap-txt">
+          <span class="cap-n">Fase 3</span>
+          <h3>Lanzamiento conjunto</h3>
+          <p>Lanzamos con mi metodología y los tiempos marcados: cuándo se calienta, cuándo se abre y cuándo se cierra. Donde encaja, <b>mi comunidad VIBRA empuja detrás</b>. Y esta fase va en variable: <b>si tú no ganas, yo no gano.</b></p>
+        </div>
+        <div class="cap-num mancha-3"><span>3</span></div>
+      </article>
+
+      <div class="cap-extra rv">
+        <span class="cap-n">Y si quieres, me quedo</span>
+        <p><b>Growth partner:</b> cada mes una pieza nueva funcionando y los números encima de la mesa. Revisión mensual y salida fácil, siempre.</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -491,6 +599,24 @@
     </div>
     <div class="granquote rv">
       <p>«No se automatiza <span>lo humano</span>. Se automatiza todo lo demás.»</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQs — objeciones reales que salen en las consultorías. -->
+<section id="faqs">
+  <div class="wrap">
+    <div class="sec-kicker rv">Antes de escribirme</div>
+    <h2 class="sec-title rv">Lo que suelen preguntarme.</h2>
+    <div class="faq-list rv">
+      <details><summary>He delegado antes y me ha ido mal. ¿Por qué esto va a ser distinto?</summary><div class="faq-c"><p>Porque no te pido que sueltes lo tuyo: te pido una hora a la semana y los accesos. Yo construyo, tú pruebas y te lo explico en sesión — nada se monta a puerta cerrada. Y todo queda a tu nombre desde el primer día, así que si un día te vas, te lo llevas funcionando.</p></div></details>
+      <details><summary>¿Esto no me va a despersonalizar la comunidad?</summary><div class="faq-c"><p>Es la primera pregunta que me hacen y es la correcta. <b>No se automatiza lo humano:</b> los mensajes, los audios, las bienvenidas y la cara siguen siendo tuyos. Lo que automatizo es todo lo demás — que la gente entre sola, que no se escape nadie y que llenar deje de depender de que te acuerdes.</p></div></details>
+      <details><summary>Es mi proyecto y no lo quiero perder. ¿De quién es lo que se construye?</summary><div class="faq-c"><p>Tuyo. Web, CRM, cobros, newsletter, cuentas, contenidos y datos: a tu nombre y en tus cuentas desde el día uno. Yo no guardo nada ni retengo accesos. Lo único que sigue siendo mío es mi metodología.</p></div></details>
+      <details><summary>¿Cuánto dura cada fase?</summary><div class="faq-c"><p>La consultoría, unas dos semanas. La máquina, entre dos y cuatro semanas según el negocio. El lanzamiento va en paralelo — no se construye primero y se lanza después, porque casi siempre hay una fecha encima.</p></div></details>
+      <details><summary>¿Qué cuesta mantenerlo después?</summary><div class="faq-c"><p>Poco, y a propósito: casi todas las herramientas que uso tienen plan gratuito. El gasto fijo real son unos pocos euros al mes. Nada de cuotas conmigo: <b>no hay permanencia.</b></p></div></details>
+      <details><summary>¿Me garantizas que voy a llenar?</summary><div class="faq-c"><p>No, y desconfía de quien te lo garantice: depende de tu producto, tu precio, tu destino y lo que inviertas. Lo que sí garantizo es lo que entrego, con plazos escritos. Y si termino y no está lo que dice el plan, te devuelvo lo pagado.</p></div></details>
+      <details><summary>¿Y si aún no tengo claro qué vender?</summary><div class="faq-c"><p>Entonces todavía no es momento de máquina, y te lo diré en la primera llamada. Primero hay que tener qué vender; montar un embudo antes de eso solo acelera el problema.</p></div></details>
+      <details><summary>¿Cuánto cuesta?</summary><div class="faq-c"><p>Depende del negocio, y por eso no hay precio en esta página: el número sale con tus cifras delante, en el plan escrito. Lo que sí es fijo es el modelo — la fase de lanzamiento va en variable: <b>si tú no ganas, yo no gano.</b></p></div></details>
     </div>
   </div>
 </section>
