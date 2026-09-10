@@ -255,6 +255,28 @@
   .faq-c{padding:0 22px 20px 50px}
   .faq-c p{color:var(--ink-soft);font-size:15.5px;line-height:1.6}
   .faq-c p b{color:var(--ink)}
+  /* ===== plazas que se llenan (interacción del hero) ===== */
+  .plazas{margin-top:34px;padding:26px 28px;border:1.5px dashed var(--line);border-radius:20px;background:var(--paper-soft)}
+  .plazas-fila{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+  .plazas-fila span{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);background:transparent;transition:transform .28s ease,background-color .28s ease,border-color .28s ease}
+  .plazas-fila span.lleno{background:var(--coral);border-color:var(--coral);transform:scale(1.14)}
+  .plazas-fila span.tope{background:var(--verde);border-color:var(--verde)}
+  .plazas-btn{background:transparent;border:1.5px solid var(--coral);color:var(--coral-deep);border-radius:100px;padding:9px 20px;font:inherit;font-size:14.5px;font-weight:700;cursor:pointer;transition:background-color .2s,color .2s}
+  .plazas-btn:hover{background:var(--coral);color:#fff}
+  .plazas-btn[hidden]{display:none}
+  .plazas-msg{margin-top:14px;font-size:16.5px;line-height:1.5;color:var(--ink-soft);min-height:1.2em}
+  .plazas-msg b{color:var(--ink)}
+  .plazas-msg .rem{font-family:'Fraunces',serif;font-style:italic;font-size:19px;color:var(--coral-deep)}
+  /* ===== el relato de la caída ===== */
+  .caida{list-style:none;margin:6px 0 4px;display:grid;max-width:620px}
+  .caida li{display:flex;gap:18px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
+  .caida li:last-child{border-bottom:none}
+  .caida li span{flex:none;font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--coral);font-family:'Hanken Grotesk',sans-serif}
+  .caida li p{margin:0;font-size:16.5px;line-height:1.5;color:var(--ink-soft)}
+  .caida li p b{color:var(--ink)}
+  .caida li:last-child p b{color:var(--coral-deep);font-size:18px}
+  .caida-pie{margin:18px 0 30px;max-width:620px;color:var(--ink-soft);font-size:16px}
+  .caida-pie b{color:var(--ink)}
   html.js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
   html.js .rv.on{opacity:1;transform:none}
 
@@ -314,6 +336,12 @@
       <span class="cta-note">Sin compromiso. La primera conversación es una consultoría, no una venta.</span>
     </div>
 
+    <div class="plazas rv" id="plazas">
+      <div class="plazas-fila" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <button class="plazas-btn" id="plazasBtn">Toca para llenarlas →</button>
+      <p class="plazas-msg" id="plazasMsg" role="status"></p>
+    </div>
+
     <div class="miedo rv">
         <div class="miedo-txt">
           <p class="miedo-nota">(me lo preguntan siempre)</p>
@@ -334,14 +362,21 @@
   <div class="wrap">
     <div class="sec-kicker rv">De mis consultorías</div>
     <h2 class="sec-title rv">Si diriges una comunidad,<br>esto te va a sonar.</h2>
+    <ol class="caida rv">
+      <li><span>01</span><p>Alguien te escribe: <b>«me interesa, mándame info».</b></p></li>
+      <li><span>02</span><p>Le mandas el dossier. Contesta que le encanta.</p></li>
+      <li><span>03</span><p><b>«Sí, quiero ir.»</b> Y tú ya cuentas con esa plaza.</p></li>
+      <li><span>04</span><p>Le pides la señal.</p></li>
+      <li><span>05</span><p><b>Cri cri.</b> Y vuelta a empezar con el siguiente.</p></li>
+    </ol>
+    <p class="caida-pie rv">Se repite en casi todas las consultorías que hago. No falla el producto: falla que <b>entre el interés y la reserva no hay nada</b> — solo tú, contestando mensajes.</p>
+
     <div class="sonar-grid">
       <figure class="sonar-q rv"><blockquote>«Mucha gente me pide información y luego nunca acabo de hacer el enganche final. Ese es mi mayor problema.»</blockquote><figcaption>organiza retiros internacionales</figcaption></figure>
       <figure class="sonar-q rv"><blockquote>«"Sí, quiero venir, quiero venir." Vale, pues hazme la paga y señal… y de repente, cri cri.»</blockquote><figcaption>llena sus plazas a mano</figcaption></figure>
       <figure class="sonar-q rv"><blockquote>«La comunicación para mí es un trabajón.»</blockquote><figcaption>lidera retiros de yoga</figcaption></figure>
       <figure class="sonar-q rv"><blockquote>«Esto se vende solo, está tirado… y luego no te escribe ni títere.»</blockquote><figcaption>lanzó su primer viaje en grupo</figcaption></figure>
-      <figure class="sonar-q rv"><blockquote>«Todo ha recaído sobre mí. Y estoy cansada de delegar: me ha funcionado mal, pésimo.»</blockquote><figcaption>marca personal con seis cifras de comunidad</figcaption></figure>
-      <figure class="sonar-q rv"><blockquote>«El hotel ya me pide la señal — y yo necesito que la gente se apunte antes de pagarla.»</blockquote><figcaption>adelanta los depósitos de su bolsillo</figcaption></figure>
-    </div>
+                </div>
     <p class="sonar-pie rv">Ninguna es inventada: salen de mis consultorías de las últimas semanas. Y en casi ningún caso el problema era el producto — el producto era buenísimo. <b>Lo que no había era nada debajo.</b></p>
   </div>
 </section>
@@ -809,6 +844,40 @@
   });
   window.addEventListener('resize',function(){
     document.querySelectorAll('.ej-dlg[open]').forEach(pista);
+  });
+})();
+</script>
+<script>
+// Las plazas del hero: dos toques, como el cristal de Sepia pero en positivo.
+(function(){
+  var cont=document.getElementById('plazas'); if(!cont) return;
+  var btn=document.getElementById('plazasBtn'), msg=document.getElementById('plazasMsg');
+  var puntos=cont.querySelectorAll('.plazas-fila span'), fase=0;
+  var quieto=false; try{ quieto=matchMedia('(prefers-reduced-motion: reduce)').matches }catch(e){}
+  function llenar(desde,hasta,cb){
+    var i=desde;
+    (function paso(){
+      if(i>=hasta){ cb&&cb(); return }
+      puntos[i].classList.add('lleno');
+      if(hasta===puntos.length && i>=8) puntos[i].classList.add('tope');
+      i++;
+      if(quieto){ paso() } else { setTimeout(paso,90) }
+    })();
+  }
+  btn.addEventListener('click',function(){
+    if(fase===0){
+      fase=1;
+      llenar(0,8,function(){
+        msg.innerHTML='Ocho. <b>Y aquí es donde se suele quedar</b> — con el alojamiento ya pagado.';
+        btn.textContent='¡Toca otra vez!';
+      });
+    } else if(fase===1){
+      fase=2;
+      llenar(8,puntos.length,function(){
+        msg.innerHTML='Quince. <span class="rem">Esa diferencia es todo el trabajo.</span>';
+        btn.hidden=true;
+      });
+    }
   });
 })();
 </script>
