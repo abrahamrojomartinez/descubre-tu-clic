@@ -282,6 +282,12 @@
   .caida li:last-child p b{color:var(--coral-deep);font-size:18px}
   .caida-pie{margin:18px 0 30px;max-width:620px;color:var(--ink-soft);font-size:16px}
   .caida-pie b{color:var(--ink)}
+  /* ===== la guia: Abraham aparece a lo largo de la pagina, con su voz ===== */
+  .guia{display:flex;align-items:center;gap:16px;max-width:620px;margin:30px 0 0;padding:15px 22px 15px 15px;background:var(--paper-soft);border:1px solid var(--line);border-left:3px solid var(--coral);border-radius:0 20px 20px 0}
+  .guia-cara{flex:none;width:64px;height:64px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--paper-soft),0 0 0 4px var(--coral)}
+  .guia p{margin:0;font-family:'Caveat',cursive;font-weight:600;font-size:21px;line-height:1.35;color:var(--ink)}
+  .guia-n{display:block;font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-deep);margin-bottom:3px}
+  @media(max-width:640px){.guia{gap:13px;padding:13px 16px 13px 13px}.guia-cara{width:54px;height:54px}.guia p{font-size:19px}}
   html.js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
   html.js .rv.on{opacity:1;transform:none}
 
@@ -378,6 +384,11 @@
     </ol>
     <p class="caida-pie rv">Se repite en casi todas las consultorías que hago. No falla el producto: falla que <b>entre el interés y la reserva no hay nada</b> — solo tú, contestando mensajes.</p>
 
+    <aside class="guia rv">
+      <img class="guia-cara" src="guia-abraham.webp" alt="Abraham Rojo" width="320" height="320" loading="lazy" decoding="async">
+      <p><span class="guia-n">Abraham</span>Esto no lo he leído en ningún sitio. Lo veo cada semana en las consultorías — y lo vivo desde dentro de una comunidad desde 2021.</p>
+    </aside>
+
     <div class="sonar-grid">
       <figure class="sonar-q rv"><blockquote>«Mucha gente me pide información y luego nunca acabo de hacer el enganche final. Ese es mi mayor problema.»</blockquote><figcaption>organiza retiros internacionales</figcaption></figure>
       <figure class="sonar-q rv"><blockquote>«"Sí, quiero venir, quiero venir." Vale, pues hazme la paga y señal… y de repente, cri cri.»</blockquote><figcaption>llena sus plazas a mano</figcaption></figure>
@@ -424,6 +435,11 @@
     <div class="sec-kicker rv">Cómo funciona</div>
     <h2 class="sec-title rv">Tres fases. Se empieza por la primera.</h2>
     <p class="sec-intro rv">No es una agencia que te entrega cosas y se va. Es abrir tu negocio, montar la máquina, encenderla contigo — y que todo lo construido quede tuyo.</p>
+    <aside class="guia rv">
+      <img class="guia-cara" src="guia-abraham.webp" alt="Abraham Rojo" width="320" height="320" loading="lazy" decoding="async">
+      <p><span class="guia-n">Abraham</span>Tres fases y un orden. Si te saltas la primera, las otras dos se montan a ciegas. Por eso empezamos siempre por ahí.</p>
+    </aside>
+
     <div class="capitulos">
 
       <article class="cap rv">
@@ -650,6 +666,11 @@
   <div class="wrap">
     <div class="sec-kicker rv">Antes de escribirme</div>
     <h2 class="sec-title rv">Lo que suelen preguntarme.</h2>
+    <aside class="guia rv">
+      <img class="guia-cara" src="guia-abraham.webp" alt="Abraham Rojo" width="320" height="320" loading="lazy" decoding="async">
+      <p><span class="guia-n">Abraham</span>Estas ocho salen en casi todas las primeras llamadas. Te las contesto ya y nos ahorramos ese rato.</p>
+    </aside>
+
     <div class="faq-list rv">
       <details><summary>He delegado antes y me ha ido mal. ¿Por qué esto va a ser distinto?</summary><div class="faq-c"><p>Porque no te pido que sueltes lo tuyo: te pido una hora a la semana y los accesos. Yo construyo, tú pruebas y te lo explico en sesión — nada se monta a puerta cerrada. Y todo queda a tu nombre desde el primer día, así que si un día te vas, te lo llevas funcionando.</p></div></details>
       <details><summary>¿Esto no me va a despersonalizar la comunidad?</summary><div class="faq-c"><p>Es la primera pregunta que me hacen y es la correcta. <b>No se automatiza lo humano:</b> los mensajes, los audios, las bienvenidas y la cara siguen siendo tuyos. Lo que automatizo es todo lo demás — que la gente entre sola, que no se escape nadie y que llenar deje de depender de que te acuerdes.</p></div></details>
