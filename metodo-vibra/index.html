@@ -141,6 +141,11 @@
   .granquote p{font-family:'Fraunces',serif;font-size:clamp(24px,4vw,38px);font-style:italic;max-width:22ch;margin:0 auto}
   .granquote p span{color:var(--coral-deep)}
 
+  .cierre-zona{display:flex;align-items:flex-end;gap:0}
+  .cierre-zona .cierre{flex:1 1 auto;min-width:0}
+  .cierre-pj{flex:none;height:300px;width:auto;display:block;margin:0 -14px -6px -60px;order:2;transform:scaleX(-1);filter:drop-shadow(0 18px 26px rgba(33,28,30,.22)) drop-shadow(0 0 3px rgba(247,242,233,.6))}
+  @media(max-width:820px){.cierre-zona{display:block}
+    .cierre-pj{height:190px;margin:0 14px -20px auto;transform:scaleX(-1);position:relative;z-index:1}}
   .cierre{background:var(--ink);color:var(--paper);border-radius:24px;padding:50px 40px;text-align:center}
   @media(max-width:640px){.cierre{padding:38px 24px}}
   .cierre h2{color:#fff;font-size:clamp(25px,3.8vw,35px);max-width:20ch;margin:0 auto}
@@ -258,9 +263,9 @@
   /* ===== plazas que se llenan (interacción del hero) ===== */
   .plazas-zona{display:flex;align-items:flex-end;gap:2px;margin-top:34px}
   .plazas-zona .plazas{margin-top:0;flex:1 1 auto;min-width:0}
-  .plazas-pj{flex:none;width:188px;height:auto;display:block;margin:0 -12px -4px -10px;filter:drop-shadow(0 18px 26px rgba(33,28,30,.20))}
+  .plazas-pj{flex:none;height:268px;width:auto;display:block;margin:0 -6px -4px -8px;filter:drop-shadow(0 18px 26px rgba(33,28,30,.20))}
   @media(max-width:820px){.plazas-zona{display:block}
-    .plazas-pj{width:126px;margin:0 0 -18px 2px;position:relative;z-index:1}}
+    .plazas-pj{height:186px;margin:0 0 -18px 2px;position:relative;z-index:1}}
   .plazas{margin-top:34px;padding:26px 28px;border:1.5px dashed var(--line);border-radius:20px;background:var(--paper-soft)}
   .plazas-fila{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
   .plazas-fila span{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);background:transparent;transition:transform .28s ease,background-color .28s ease,border-color .28s ease}
@@ -289,19 +294,16 @@
   .caida-pie b{color:var(--ink)}
   /* ===== la guia: Abraham aparece a lo largo de la pagina, con su voz ===== */
   .guia{display:flex;align-items:center;gap:16px;max-width:620px;margin:30px 0 0;padding:15px 22px 15px 15px;background:var(--paper-soft);border:1px solid var(--line);border-left:3px solid var(--coral);border-radius:0 20px 20px 0}
-  .guia-cara{flex:none;width:64px;height:64px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--paper-soft),0 0 0 4px var(--coral)}
   .guia p{margin:0;font-family:'Caveat',cursive;font-weight:600;font-size:21px;line-height:1.35;color:var(--ink)}
   .guia-n{display:block;font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral-deep);margin-bottom:3px}
-  @media(max-width:640px){.guia{gap:13px;padding:13px 16px 13px 13px}.guia-cara{width:54px;height:54px}.guia p{font-size:19px}}
-  /* Variante con personaje de cuerpo entero. Para activarla en un bloque .guia:
-     1) anade la clase  guia--pj  al <aside>
-     2) cambia la <img class="guia-cara" ...> por
-        <img class="guia-pj" src="pj-2-senala.png" alt="" aria-hidden="true" width="600" height="800">
-     El PNG debe tener fondo transparente y el personaje de pie, sin recortar pies. */
-  .guia--pj{align-items:flex-end;gap:8px;padding:15px 22px 15px 0;overflow:visible}
-  .guia--pj .guia-pj{flex:none;width:132px;height:auto;display:block;margin:-54px -4px -15px -16px;filter:drop-shadow(0 16px 24px rgba(33,28,30,.20))}
-  @media(max-width:640px){.guia--pj{position:relative;gap:0;padding:15px 18px 15px 92px;min-height:128px}
-    .guia--pj .guia-pj{position:absolute;left:-12px;bottom:-14px;width:104px;margin:0}}
+  @media(max-width:640px){.guia{gap:13px;padding:13px 16px 13px 13px}.guia p{font-size:19px}}
+  /* Variante con personaje de cuerpo entero. Las cinco poses comparten lienzo
+     (560x1007, cuerpo de 900 px anclado abajo a la izquierda), asi que se miden
+     por altura y el cuerpo sale igual de grande en todas. */
+  .guia--pj{align-items:flex-end;gap:8px;padding:15px 22px 15px 0;overflow:visible;margin-top:80px}
+  .guia--pj .guia-pj{flex:none;height:196px;width:auto;display:block;margin:-64px -2px -15px -12px;filter:drop-shadow(0 16px 24px rgba(33,28,30,.20))}
+  @media(max-width:640px){.guia--pj{position:relative;gap:0;padding:15px 18px 15px 92px;min-height:128px;margin-top:34px;margin-bottom:20px}
+    .guia--pj .guia-pj{position:absolute;left:-10px;bottom:-14px;height:158px;margin:0}}
   html.js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
   html.js .rv.on{opacity:1;transform:none}
 
@@ -402,8 +404,8 @@
     </ol>
     <p class="caida-pie rv">Se repite en casi todas las consultorías que hago. No falla el producto: falla que <b>entre el interés y la reserva no hay nada</b> — solo tú, contestando mensajes.</p>
 
-    <aside class="guia rv">
-      <img class="guia-cara" src="guia-abraham.webp" alt="Abraham Rojo" width="320" height="320" loading="lazy" decoding="async">
+    <aside class="guia guia--pj rv">
+      <img class="guia-pj" src="pj-2-senala.webp" alt="" aria-hidden="true" width="560" height="1007" loading="lazy" decoding="async">
       <p><span class="guia-n">Abraham</span>Esto no lo he leído en ningún sitio. Lo veo cada semana en las consultorías — y lo vivo desde dentro de una comunidad desde 2021.</p>
     </aside>
 
@@ -453,8 +455,8 @@
     <div class="sec-kicker rv">Cómo funciona</div>
     <h2 class="sec-title rv">Tres fases. Se empieza por la primera.</h2>
     <p class="sec-intro rv">No es una agencia que te entrega cosas y se va. Es abrir tu negocio, montar la máquina, encenderla contigo — y que todo lo construido quede tuyo.</p>
-    <aside class="guia rv">
-      <img class="guia-cara" src="guia-abraham.webp" alt="Abraham Rojo" width="320" height="320" loading="lazy" decoding="async">
+    <aside class="guia guia--pj rv">
+      <img class="guia-pj" src="pj-3-tres.webp" alt="" aria-hidden="true" width="560" height="1007" loading="lazy" decoding="async">
       <p><span class="guia-n">Abraham</span>Tres fases y un orden. Si te saltas la primera, las otras dos se montan a ciegas. Por eso empezamos siempre por ahí.</p>
     </aside>
 
@@ -684,8 +686,8 @@
   <div class="wrap">
     <div class="sec-kicker rv">Antes de escribirme</div>
     <h2 class="sec-title rv">Lo que suelen preguntarme.</h2>
-    <aside class="guia rv">
-      <img class="guia-cara" src="guia-abraham.webp" alt="Abraham Rojo" width="320" height="320" loading="lazy" decoding="async">
+    <aside class="guia guia--pj rv">
+      <img class="guia-pj" src="pj-4-pregunta.webp" alt="" aria-hidden="true" width="560" height="1007" loading="lazy" decoding="async">
       <p><span class="guia-n">Abraham</span>Estas ocho salen en casi todas las primeras llamadas. Te las contesto ya y nos ahorramos ese rato.</p>
     </aside>
 
@@ -704,6 +706,9 @@
 
 <section id="hablemos" style="padding-top:10px">
   <div class="wrap">
+    <div class="cierre-zona">
+      <img class="cierre-pj" src="pj-5-invita.webp" alt="" aria-hidden="true"
+           width="560" height="1007" loading="lazy" decoding="async">
     <div class="cierre rv">
       <h2>Cuéntame tu comunidad.</h2>
       <p>Escríbeme y hablamos sin compromiso: qué tienes montado, qué te está costando y si esto tiene sentido para ti. De esa llamada sales con dos o tres movimientos para aplicar esa misma semana, decidas lo que decidas. Y si seguimos, lo primero que recibes es <b>un plan escrito para tu negocio</b>: tu punto de partida, tu objetivo con cifra y tu calendario. No hay plantilla, y no hay dos iguales. Y si veo que no puedo ayudarte, te lo digo.</p>
@@ -711,6 +716,7 @@
       <div class="botones">
         <a class="btn coral" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20saber%20m%C3%A1s%20del%20M%C3%A9todo%20VIBRA" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
       </div>
+    </div>
     </div>
   </div>
 </section>
