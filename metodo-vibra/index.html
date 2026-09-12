@@ -256,6 +256,11 @@
   .faq-c p{color:var(--ink-soft);font-size:15.5px;line-height:1.6}
   .faq-c p b{color:var(--ink)}
   /* ===== plazas que se llenan (interacción del hero) ===== */
+  .plazas-zona{display:flex;align-items:flex-end;gap:2px;margin-top:34px}
+  .plazas-zona .plazas{margin-top:0;flex:1 1 auto;min-width:0}
+  .plazas-pj{flex:none;width:188px;height:auto;display:block;margin:0 -12px -4px -10px;filter:drop-shadow(0 18px 26px rgba(33,28,30,.20))}
+  @media(max-width:820px){.plazas-zona{display:block}
+    .plazas-pj{width:126px;margin:0 0 -18px 2px;position:relative;z-index:1}}
   .plazas{margin-top:34px;padding:26px 28px;border:1.5px dashed var(--line);border-radius:20px;background:var(--paper-soft)}
   .plazas-fila{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
   .plazas-fila span{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);background:transparent;transition:transform .28s ease,background-color .28s ease,border-color .28s ease}
@@ -356,12 +361,16 @@
       <span class="cta-note">Sin compromiso. La primera conversación es una consultoría, no una venta.</span>
     </div>
 
+    <div class="plazas-zona">
+      <img class="plazas-pj" src="pj-1-presenta.webp" alt="" aria-hidden="true"
+           width="560" height="776" fetchpriority="high" decoding="async">
     <div class="plazas rv" id="plazas">
       <div class="plazas-fila" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
       <button class="plazas-btn" id="plazasBtn">Toca para llenarlas →</button>
       <p class="plazas-msg" id="plazasMsg" role="status"></p>
       <!-- Cuando exista el vídeo, este botón pasa a abrirlo. Hoy lleva al método. -->
       <a class="plazas-sig" id="plazasSig" href="#metodo" hidden>Cómo se llenan esas siete <span>↓</span></a>
+    </div>
     </div>
 
     <div class="miedo rv">
