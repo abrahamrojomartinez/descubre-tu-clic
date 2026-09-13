@@ -218,7 +218,13 @@
   .ej-box .hoja{box-shadow:none;margin-top:4px}
   .ej-box .fnl-scroll{margin:0}
   .ej-box .fnl-rail{padding:0}
-  @media(max-width:720px){.ej-box{padding:26px 16px 44px;max-height:90dvh}.ej-wrap{width:94vw}.ej-x{top:-12px;right:-4px}}
+  /* variante marco: dentro va un iframe que se desplaza solo, sin relleno */
+  .ej-marco{padding:0;overflow:hidden;height:min(84dvh,820px)}
+  .ej-iframe{display:block;width:100%;height:100%;border:0;background:var(--paper)}
+  .ej-pie{margin:12px 2px 0;color:var(--paper);font-size:13.5px;line-height:1.5;text-align:center;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+  .ej-pie a{color:#F4B79F}
+  @media(max-width:720px){.ej-box{padding:26px 16px 44px;max-height:90dvh}.ej-wrap{width:94vw}.ej-x{top:-12px;right:-4px}
+    .ej-marco{padding:0;height:min(80dvh,720px)}}
   /* ===== te va a sonar (citas de consultorías) ===== */
   #sonar{padding-top:10px}
   .sonar-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
@@ -536,6 +542,10 @@
           <span class="cap-n">Fase 3</span>
           <h3>Lanzamiento conjunto</h3>
           <p>Lanzamos con mi metodología y los tiempos marcados: cuándo se calienta, cuándo se abre y cuándo se cierra. Donde encaja, <b>mi comunidad VIBRA empuja detrás</b>. Y esta fase va en variable: <b>si tú no ganas, yo no gano.</b></p>
+          <!-- OCULTO: la pagina del itinerario publica hoy los moviles de 20
+               participantes. En cuanto se quite ese bloque, se borra el
+               style="display:none" y el boton entra. -->
+          <button class="ver-ej" data-abrir="ej-planning" style="display:none">Ver cómo queda un viaje montado →</button>
         </div>
         <div class="cap-num mancha-3"><span>3</span></div>
       </article>
@@ -926,6 +936,20 @@
   </div>
 </dialog>
 
+<dialog class="ej-dlg" id="ej-planning" aria-label="Ejemplo del paso 3: el planning de un viaje">
+  <div class="ej-wrap">
+    <button class="ej-x" data-cerrar aria-label="Cerrar">✕</button>
+    <div class="ej-box ej-marco">
+      <!-- El src se pone al abrir: asi la pagina de fuera no se descarga hasta que se pide. -->
+      <iframe class="ej-iframe" data-src="https://vibra-con-liveokey-trip.netlify.app/itinerario/"
+              title="Planning hora a hora del viaje a Asturias, VIBRA × LiveOkey"
+              referrerpolicy="no-referrer" loading="lazy"></iframe>
+    </div>
+    <p class="ej-pie">Un trozo real del entregable: el planning hora a hora del viaje que estamos lanzando con LiveOkey.</p>
+  </div>
+</dialog>
+
+
 <script>
 // Ejemplos en ventana: mantienen la página corta y cargan solo al abrirse.
 (function(){
@@ -943,6 +967,9 @@
       document.body.style.overflow='hidden';
       var caja=d.querySelector('.ej-box');
       if(caja) caja.scrollTop=0;
+      // la ventana con marco no descarga la pagina de fuera hasta el primer clic
+      var ifr=d.querySelector('iframe[data-src]');
+      if(ifr && !ifr.getAttribute('src')) ifr.setAttribute('src', ifr.getAttribute('data-src'));
       // esperar a que pinte (y a que carguen las imágenes) para medir bien
       setTimeout(function(){ pista(d) },60);
       setTimeout(function(){ pista(d) },700);
