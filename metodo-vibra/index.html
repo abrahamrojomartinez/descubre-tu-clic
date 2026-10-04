@@ -90,6 +90,15 @@
   .caso-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:7px}
   .caso .tag{font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#fff;background:var(--coral);border-radius:100px;padding:4px 11px}
   .caso .tag.lab{background:var(--verde)}
+  /* Enlace al Instagram del cliente: va en la cabecera, junto a la etiqueta,
+     para no romper la pareja "de donde partia -> que consiguio" de debajo. */
+  .caso-ava{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:none;
+    border:2px solid #fff;box-shadow:0 2px 10px rgba(33,28,30,.16);background:var(--paper-soft)}
+  .caso-ig{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;
+    color:var(--ink-soft);text-decoration:none;border:1px solid var(--line);background:#fff;
+    border-radius:100px;padding:4px 11px 4px 8px;transition:border-color .2s,color .2s}
+  .caso-ig:hover{border-color:var(--coral);color:var(--coral-deep)}
+  .caso-ig svg{flex:none}
   .caso h3{font-size:clamp(19px,2.5vw,24px);width:100%}
   /* ===== columna vertebral de las fichas de cliente =====
      Todas llevan lo mismo y en el mismo orden: de donde partia -> que
@@ -127,6 +136,11 @@
   .tray{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
   .tray .chip{font-weight:500;color:var(--ink-soft);font-size:12.5px}
   .tray .chip b{color:var(--ink);font-weight:700}
+  /* Chip con enlace al Instagram. Los de este grupo no dicen "que hice":
+     su ficha no esta escrita todavia, asi que solo nombran al cliente. */
+  .tray a.chip{text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:border-color .2s,color .2s}
+  .tray a.chip:hover{border-color:var(--coral);color:var(--coral-deep)}
+  .tray a.chip svg{flex:none;opacity:.8}
 
   /* quien soy */
   #quien{background:linear-gradient(180deg,#FBEDE4 0%,#F9E3D6 100%);border-top:2px solid var(--coral);border-bottom:2px solid var(--coral);padding:56px 0}
@@ -572,7 +586,7 @@
     <h2 class="sec-title rv">Esto no es teoría. Es lo que hago cada semana.</h2>
 
     <article class="caso destacado rv">
-      <div class="caso-head"><span class="tag">Growth partner desde 2024</span><h3>LiveOkey — la comunidad de viajes de surf de la que soy growth partner</h3></div>
+      <div class="caso-head"><span class="tag">Growth partner desde 2024</span><a class="caso-ig" href="https://www.instagram.com/liveokeypeople/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de LiveOkey, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@liveokeypeople</a><h3>LiveOkey — la comunidad de viajes de surf de la que soy growth partner</h3></div>
       <div class="ad">
         <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Un año llevándole la web como proveedor externo. No sirvió de nada: el fundador estuvo a punto de dejarlo todo.</p></div>
         <span class="ad-flecha" aria-hidden="true">→</span>
@@ -640,7 +654,7 @@
     </article>
 
     <article class="caso rv">
-      <div class="caso-head"><span class="tag">A escala</span><h3>GÜO Tech — de idea a +3M€ facturados en un año</h3></div>
+      <div class="caso-head"><span class="tag">A escala</span><a class="caso-ig" href="https://www.instagram.com/guotech.io/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de GÜO Tech, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@guotech.io</a><h3>GÜO Tech — de idea a +3M€ facturados en un año</h3></div>
       <div class="ad">
         <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Una idea y ninguna máquina: ni captación, ni CRM, ni lanzamientos.</p></div>
         <span class="ad-flecha" aria-hidden="true">→</span>
@@ -667,7 +681,7 @@
     </article>
 
     <article class="caso rv">
-      <div class="caso-head"><span class="tag">Comunidad + eventos</span><h3>Comunidad del Sol — covivienda consciente</h3></div>
+      <div class="caso-head"><span class="tag">Comunidad + eventos</span><a class="caso-ig" href="https://www.instagram.com/comunidaddelsol.madrid/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Comunidad del Sol, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@comunidaddelsol.madrid</a><h3>Comunidad del Sol — covivienda consciente</h3></div>
       <div class="ad">
         <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Vendían algo enorme —una forma de vivir, con ticket de vivienda— y <b>no había camino</b> entre descubrirles y comprar.</p></div>
         <span class="ad-flecha" aria-hidden="true">→</span>
@@ -696,6 +710,18 @@
       </div></details>
     </article>
 
+    <article class="caso rv">
+      <div class="caso-head"><img class="caso-ava" src="cli-sara.webp" alt="Logotipo de Reviondo" width="176" height="176" loading="lazy" decoding="async"><span class="tag">Comunidad + IA + retiros</span><a class="caso-ig" href="https://www.instagram.com/reviondo.r/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Sara · Reviondo, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@reviondo.r</a><h3>Sara · Reviondo — desconexión digital</h3></div>
+    </article>
+
+    <article class="caso rv">
+      <div class="caso-head"><img class="caso-ava" src="cli-elena.webp" alt="Retrato de Elena Isa" width="176" height="176" loading="lazy" decoding="async"><span class="tag">Comunidad + IA + retiros</span><a class="caso-ig" href="https://www.instagram.com/elenaisa_yoga/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Elena Isa, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@elenaisa_yoga</a><h3>Elena Isa — yoga y retiros</h3></div>
+    </article>
+
+    <article class="caso rv">
+      <div class="caso-head"><img class="caso-ava" src="cli-paloma.webp" alt="Retrato de Paloma Quintana" width="176" height="176" loading="lazy" decoding="async"><span class="tag">Crecimiento + suscripción</span><a class="caso-ig" href="https://www.instagram.com/nutricionconq/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Paloma Quintana, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@nutricionconq</a><h3>Paloma Quintana — nutrición integrativa y deportiva</h3></div>
+    </article>
+
     <div class="otros-label rv"><b>Otros clientes y proyectos</b><span>de estos 12 años</span><i></i></div>
     <div class="tray rv">
       <span class="chip"><b>Orange</b> · marketing automation</span>
@@ -707,6 +733,7 @@
       <span class="chip">Un <b>estudio audiovisual</b> · marca, web y SEO</span>
       <span class="chip">Un <b>glamping</b> · ocupación</span>
     </div>
+
   </div>
 </section>
 
