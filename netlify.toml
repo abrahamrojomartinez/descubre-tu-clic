@@ -26,14 +26,8 @@
 
 # /flow-fest → Flow Fest, sitio flowfest-madrid (repo vibra-business,
 # eventos/2026-11-07-phoenix/prerreserva). Proxy con la misma ruta: allí
-# _redirects quita el prefijo. La barra final hace falta para que sus
-# rutas relativas resuelvan dentro de /flow-fest/.
-[[redirects]]
-  from = "/flow-fest"
-  to = "/flow-fest/"
-  status = 301
-  force = true
-
+# _redirects quita el prefijo. Sin regla de «añadir barra final»: Netlify
+# trata igual /x y /x/ y la regla se redirigía a sí misma (bucle).
 [[redirects]]
   from = "/flow-fest/*"
   to = "https://flowfest-madrid.netlify.app/flow-fest/:splat"
@@ -43,12 +37,6 @@
 # /viaje-vibra-con-liveokey → el viaje VIBRA × LiveOkey, sitio
 # vibra-con-liveokey-trip (repo brief-viajero-liveokeypeople). Igual que
 # Flow Fest: proxy con la misma ruta y allí se quita el prefijo.
-[[redirects]]
-  from = "/viaje-vibra-con-liveokey"
-  to = "/viaje-vibra-con-liveokey/"
-  status = 301
-  force = true
-
 [[redirects]]
   from = "/viaje-vibra-con-liveokey/*"
   to = "https://vibra-con-liveokey-trip.netlify.app/viaje-vibra-con-liveokey/:splat"
