@@ -16,6 +16,45 @@
   status = 301
   force = true
 
+# La dirección antigua de esta web (descubre-tu-clic.netlify.app, también
+# /metodo-vibra/) → la misma ruta en vibrasociety.es.
+[[redirects]]
+  from = "https://descubre-tu-clic.netlify.app/*"
+  to = "https://vibrasociety.es/:splat"
+  status = 301
+  force = true
+
+# /flow-fest → Flow Fest, sitio flowfest-madrid (repo vibra-business,
+# eventos/2026-11-07-phoenix/prerreserva). Proxy con la misma ruta: allí
+# _redirects quita el prefijo. La barra final hace falta para que sus
+# rutas relativas resuelvan dentro de /flow-fest/.
+[[redirects]]
+  from = "/flow-fest"
+  to = "/flow-fest/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/flow-fest/*"
+  to = "https://flowfest-madrid.netlify.app/flow-fest/:splat"
+  status = 200
+  force = true
+
+# /viaje-vibra-con-liveokey → el viaje VIBRA × LiveOkey, sitio
+# vibra-con-liveokey-trip (repo brief-viajero-liveokeypeople). Igual que
+# Flow Fest: proxy con la misma ruta y allí se quita el prefijo.
+[[redirects]]
+  from = "/viaje-vibra-con-liveokey"
+  to = "/viaje-vibra-con-liveokey/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/viaje-vibra-con-liveokey/*"
+  to = "https://vibra-con-liveokey-trip.netlify.app/viaje-vibra-con-liveokey/:splat"
+  status = 200
+  force = true
+
 # /comunidad → el formulario de entrada a VIBRA y la plataforma, que es OTRO
 # proyecto de Netlify (repo vibra-platform-pre-release, Next.js con
 # basePath /comunidad). Proxy (200): la dirección sigue siendo
