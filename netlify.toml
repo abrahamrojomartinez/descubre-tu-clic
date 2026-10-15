@@ -1,0 +1,37 @@
+# vibrasociety.es — esta web (Descubre tu clic) es la dueña del dominio.
+# Sin build: Netlify publica la raíz del repo tal cual. Aquí SOLO van las
+# redirecciones; no pongas [build] ni publish.
+
+# vibrasociety.app (con y sin www) → vibrasociety.es, conservando la ruta.
+# (www.vibrasociety.es → vibrasociety.es lo hace Netlify solo.)
+[[redirects]]
+  from = "https://vibrasociety.app/*"
+  to = "https://vibrasociety.es/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.vibrasociety.app/*"
+  to = "https://vibrasociety.es/:splat"
+  status = 301
+  force = true
+
+# /comunidad → el formulario de entrada a VIBRA y la plataforma, que es OTRO
+# proyecto de Netlify (repo vibra-platform-pre-release, Next.js con
+# basePath /comunidad). Proxy (200): la dirección sigue siendo
+# vibrasociety.es/comunidad. X-Vibra-Host le dice a esa app el dominio
+# público para que sus redirecciones (p. ej. a /comunidad/entrar) no saquen
+# a nadie del dominio.
+[[redirects]]
+  from = "/comunidad"
+  to = "https://que-nunca-te-quiten-tu-vibra.netlify.app/comunidad"
+  status = 200
+  force = true
+  headers = {X-Vibra-Host = "vibrasociety.es"}
+
+[[redirects]]
+  from = "/comunidad/*"
+  to = "https://que-nunca-te-quiten-tu-vibra.netlify.app/comunidad/:splat"
+  status = 200
+  force = true
+  headers = {X-Vibra-Host = "vibrasociety.es"}
