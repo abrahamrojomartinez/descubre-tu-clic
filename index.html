@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="img/hero-maldivas-m.webp" imagesrcset="img/hero-maldivas-m-800.webp 800w, img/hero-maldivas-m.webp 1200w" imagesizes="100vw" media="(max-width: 767px)" fetchpriority="high">
 <link rel="preload" as="image" href="img/hero-maldivas-d.webp" imagesrcset="img/hero-maldivas-d-1280.webp 1280w, img/hero-maldivas-d.webp 1920w" imagesizes="100vw" media="(min-width: 768px)" fetchpriority="high">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,800&family=Hanken+Grotesk:wght@400..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Hanken+Grotesk:wght@400..800&display=swap">
 <!-- Simple Analytics: solo la cola de eventos. El script lo inyecta Netlify (no añadirlo aquí). -->
 <script>window.sa_event=window.sa_event||function(){var a=[].slice.call(arguments);window.sa_event.q?window.sa_event.q.push(a):window.sa_event.q=[a]};document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"VIBRA Society","url":"https://vibrasociety.es/","logo":"https://vibrasociety.es/apple-touch-icon.png","email":"staff@vibrasociety.com","sameAs":["https://www.instagram.com/vibra.society/"]}</script>
@@ -69,7 +69,7 @@
 @media (min-width:768px){:root{--gutter:24px;--seccion-y:96px;--t-texto:1.0625rem;--t-ante:.8125rem;--cab-h:72px}}
 @media (min-width:1200px){:root{--gutter:32px;--seccion-y:128px}}
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%;text-size-adjust:100%} /* 80 px bajo la cabecera fija: anclas y foco con teclado */
 body{margin:0;background:var(--vibra-crema);color:var(--vibra-noche);font:400 var(--t-texto)/1.55 var(--font-texto);-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:var(--cab-h)}
 h1,h2{text-wrap:balance;max-width:16ch}
 h1,h2,h3,p,ol,ul,figure,blockquote{margin:0}
@@ -78,7 +78,6 @@ img{display:block;max-width:100%;height:auto}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--vibra-noche);outline-offset:3px}
 .sobre-oscuro :focus-visible{outline-color:var(--vibra-crema)}
-[id]{scroll-margin-top:80px}
 .contenedor{max-width:var(--contenedor);margin:0 auto}
 .seccion{padding:var(--seccion-y) var(--gutter)}
 .salto{position:absolute;left:var(--gutter);top:-80px;z-index:100;background:var(--vibra-noche);color:var(--vibra-crema);padding:14px 20px;border-radius:var(--vibra-radio-pastilla);font-weight:600;text-decoration:none}
@@ -164,11 +163,11 @@ a{color:inherit}
 .calendario{background:var(--vibra-noche);color:var(--vibra-crema);padding:0 var(--gutter) var(--seccion-y)}
 .cal-cab{position:relative;isolation:isolate;text-align:center;margin:0 calc(-1 * var(--gutter)) 40px;padding:var(--seccion-y) var(--gutter) 56px}
 .cal-cab > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;z-index:-2}
-.cal-cab::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(43,50,45,.66),rgba(43,50,45,.70) 70%,#2B322D)}
+.cal-cab::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(43,50,45,.70),rgba(43,50,45,.70) 70%,#2B322D)}
 .cal-cab-in{max-width:640px;margin:0 auto}
-.cal-ante{color:var(--vibra-coral);display:inline-flex;align-items:center;gap:12px;margin-right:-.3em}
+.cal-ante{color:var(--vibra-crema);display:inline-flex;align-items:center;gap:12px;margin-right:-.3em}
 .cal-ante::before{margin:0}
-.cal-ante::after{content:"";width:28px;height:2px;background:var(--vibra-coral)}
+.cal-ante::after{content:"";width:28px;height:2px;background:var(--vibra-coral)} /* sobre foto el texto va en crema; el coral, solo en los filetes */
 .calendario h2{font-size:clamp(3rem,1.6rem + 6vw,5.5rem);margin:12px auto 16px;max-width:none}
 .cal-sub{color:var(--vibra-crema-suave);font-size:var(--t-lead);line-height:1.45}
 .cal-sub strong{color:var(--vibra-crema);font-weight:600}
@@ -177,8 +176,8 @@ a{color:inherit}
 .plan:focus-visible{outline:3px solid var(--vibra-crema);outline-offset:3px}
 .plan-fecha{grid-area:fecha;margin:0;background:var(--vibra-coral);color:var(--vibra-noche);display:grid;place-items:center;text-align:center;padding:14px 4px}
 .plan-dia{display:block;font:800 var(--t-cifra)/1 var(--font-titular);font-variation-settings:"opsz" 96;letter-spacing:-.015em;white-space:nowrap}
-.plan-dia.rango{font-variation-settings:"opsz" 96,"wdth" 80;letter-spacing:-.03em}
-.plan-mes{display:block;margin-top:6px;font:800 var(--t-ante)/1 var(--font-titular);letter-spacing:.2em;text-transform:uppercase;margin-right:-.2em}
+.plan-dia.rango{letter-spacing:-.03em}
+.plan-mes{display:block;margin-top:6px;font:800 1.1875rem/1 var(--font-titular);letter-spacing:.2em;text-transform:uppercase;margin-right:-.2em} /* 19 px: negro verdoso sobre coral, en negrita desde 18 px (manual §2) */
 .plan-nota{display:block;margin-top:6px;font:800 10px/1.2 var(--font-titular);letter-spacing:.15em;text-transform:uppercase}
 .plan-cuerpo{grid-area:cuerpo;padding:14px 16px 0 20px;min-width:0}
 .plan-t{margin:0;font:800 var(--t-h3)/1.05 var(--font-titular);font-variation-settings:"opsz" 96;letter-spacing:-.015em}
@@ -186,7 +185,7 @@ a{color:inherit}
 .plan-con{margin:6px 0 0;color:var(--vibra-coral-texto);font-weight:600;font-size:var(--t-nota);line-height:1.4}
 .plan-aliados{grid-area:aliados;display:none}
 .disco{width:52px;height:52px;border-radius:50%;object-fit:cover;margin-left:-12px;box-shadow:0 0 0 2px var(--vibra-crema)}
-.disco:first-child{margin-left:0}
+.disco:first-child{margin-left:0;position:relative;z-index:1} /* el primero encima: su logo llega al borde */
 .plan-accion{grid-area:accion;align-self:end;padding:8px 16px 14px 20px;font:600 var(--t-nota)/1.2 var(--font-texto);color:var(--vibra-coral-texto);white-space:nowrap}
 .flecha{display:inline-block;transition:transform .15s}
 .plan:hover .plan-accion-t{text-decoration:underline;text-underline-offset:3px}
@@ -195,7 +194,7 @@ a{color:inherit}
 .cal-nota{text-align:center;color:var(--vibra-crema-suave);font-size:var(--t-nota);margin:14px 0 0}
 .cal-pie{text-align:center;color:var(--vibra-crema-suave);font-size:var(--t-nota);line-height:1.5;margin:28px auto 0;max-width:46ch}
 .cal-pie a{color:var(--vibra-crema);font-weight:600;text-underline-offset:3px;display:inline-block;padding:12px 0;margin:-12px 0}
-@media (max-width:599px){.plan-nota{letter-spacing:.06em;font-variation-settings:"wdth" 80;white-space:nowrap}}
+@media (max-width:599px){.plan-nota{letter-spacing:0;white-space:nowrap}} /* cabe en la celda de 88 px sin el eje wdth */
 @media (min-width:600px){
   .plan{grid-template-columns:clamp(88px,20vw,180px) minmax(0,1fr) 108px 9.5rem;grid-template-areas:"fecha cuerpo aliados accion";grid-template-rows:auto}
   .plan-fecha{padding:14px 8px}
@@ -227,12 +226,17 @@ a{color:inherit}
   .carrusel:focus-visible{outline-offset:-3px}
 }
 @media (min-width:768px){
-  .vivido-rejilla{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+  .vivido-rejilla{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
   .carrusel{display:contents}
-  .t-a{grid-column:span 2}
+  .t-a{grid-column:1 / -1}
   .t-a img{aspect-ratio:16/10}
-  .t-c img{aspect-ratio:4/5;object-position:60% 50%}
+  .tarjeta img{flex:1 0 auto} /* la foto crece hasta el alto de la fila: sin hueco crema bajo el texto */
   .desliza{display:none}
+}
+@media (min-width:1024px){
+  .vivido-rejilla{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .t-a{grid-column:span 2}
+  .t-c img{aspect-ratio:4/5;object-position:60% 50%}
 }
 
 /* ── 6 · Banda a sangre ── */
@@ -327,7 +331,10 @@ a{color:inherit}
 .barra.visible{opacity:1;visibility:visible;transition:opacity .2s}
 .barra-txt{margin:0;color:var(--vibra-crema);font-weight:600;font-size:15px;line-height:1.25}
 .barra .btn{flex:none;padding:14px 20px}
-@media (max-width:767px){body{padding-bottom:calc(72px + env(safe-area-inset-bottom))}}
+@media (max-width:767px){
+  html{scroll-padding-bottom:calc(88px + env(safe-area-inset-bottom))} /* el foco no queda bajo la barra */
+  .pie{padding-bottom:calc(32px + 72px + env(safe-area-inset-bottom))} /* reserva de la barra, en noche: sin franja crema al final */
+}
 @media (min-width:768px){.barra{display:none}}
 
 /* ── 14 · Microinteracciones ── */
@@ -523,7 +530,7 @@ a{color:inherit}
     </header>
     <div class="vivido-rejilla">
       <article class="tarjeta t-a reveal">
-        <img src="img/vivido-gente.webp" srcset="img/vivido-gente-720.webp 720w, img/vivido-gente.webp 1080w" sizes="(min-width: 1200px) 750px, (min-width: 768px) 66vw, calc(100vw - 32px)" width="1080" height="862" loading="lazy" decoding="async" alt="Una docena de personas de la comunidad VIBRA sonríen en una terraza con palmeras">
+        <img src="img/vivido-gente.webp" srcset="img/vivido-gente-720.webp 720w, img/vivido-gente.webp 1080w" sizes="(min-width: 1200px) 740px, (min-width: 1024px) calc(66vw - 40px), (min-width: 768px) calc(100vw - 48px), calc(100vw - 32px)" width="1080" height="862" loading="lazy" decoding="async" alt="Una docena de personas de la comunidad VIBRA sonríen en una terraza con palmeras">
         <div class="tarjeta-txt">
           <h3>La gente de VIBRA.</h3>
           <p>Con trabajo, con poco tiempo y con ganas de más.</p>
@@ -531,7 +538,7 @@ a{color:inherit}
       </article>
       <div class="carrusel" role="region" aria-label="Más planes vividos" tabindex="0">
         <article class="tarjeta t-c reveal">
-          <img src="img/vivido-asturias.webp" srcset="img/vivido-asturias-600.webp 600w, img/vivido-asturias.webp 1000w" sizes="(min-width: 1200px) 680px, (min-width: 768px) 50vw, 82vw" width="1000" height="667" loading="lazy" decoding="async" alt="El grupo del viaje estira con los brazos en alto, al amanecer, en el césped de una casa frente al mar">
+          <img src="img/vivido-asturias.webp" srcset="img/vivido-asturias-600.webp 600w, img/vivido-asturias.webp 1000w" sizes="(min-width: 1200px) 680px, (min-width: 1024px) 56vw, (min-width: 768px) 51vw, 82vw" width="1000" height="667" loading="lazy" decoding="async" alt="El grupo del viaje estira con los brazos en alto, al amanecer, en el césped de una casa frente al mar">
           <div class="tarjeta-txt">
             <p class="t-ante">Asturias · con @liveokeypeople</p>
             <h3>Viaje VIBRA × LiveOkey.</h3>
@@ -540,21 +547,21 @@ a{color:inherit}
           </div>
         </article>
         <article class="tarjeta t-b reveal">
-          <img src="plan-comida.webp" srcset="plan-comida.webp 880w" sizes="(min-width: 1200px) 360px, (min-width: 768px) 33vw, 82vw" width="880" height="660" loading="lazy" decoding="async" alt="Mesa larga de tardeo: unas quince personas brindan y ríen a cámara">
+          <img src="plan-comida.webp" srcset="img/plan-comida-600.webp 600w, plan-comida.webp 880w" sizes="(min-width: 1200px) 400px, (min-width: 1024px) 31vw, (min-width: 768px) 55vw, 82vw" width="880" height="660" loading="lazy" decoding="async" alt="Mesa larga de tardeo: unas quince personas brindan y ríen a cámara">
           <div class="tarjeta-txt">
             <h3>Gente normal.</h3>
             <p>Con trabajo y con poco tiempo, haciendo un plan distinto en tu ciudad.</p>
           </div>
         </article>
         <article class="tarjeta t-d reveal">
-          <img src="img/vivido-taller.webp" srcset="img/vivido-taller.webp 700w" sizes="(min-width: 1200px) 360px, (min-width: 768px) 33vw, 82vw" width="700" height="607" loading="lazy" decoding="async" alt="Un grupo sentado en esterillas, sobre una tarima de madera bajo los árboles, junto a una casa de piedra">
+          <img src="img/vivido-taller.webp" srcset="img/vivido-taller.webp 700w" sizes="(min-width: 1200px) 400px, (min-width: 1024px) 31vw, (min-width: 768px) 55vw, 82vw" width="700" height="607" loading="lazy" decoding="async" alt="Un grupo sentado en esterillas, sobre una tarima de madera bajo los árboles, junto a una casa de piedra">
           <div class="tarjeta-txt">
             <h3>Un taller, una clase, algo que probar.</h3>
             <p>De eso van las experiencias.</p>
           </div>
         </article>
         <article class="tarjeta t-e reveal">
-          <img src="foto-coworking.webp" srcset="foto-coworking.webp 880w" sizes="(min-width: 1200px) 360px, (min-width: 768px) 33vw, 82vw" width="880" height="660" loading="lazy" decoding="async" alt="Abraham y tres amigos sonríen trabajando con portátiles en un coworking luminoso">
+          <img src="foto-coworking.webp" srcset="img/foto-coworking-600.webp 600w, foto-coworking.webp 880w" sizes="(min-width: 1200px) 400px, (min-width: 1024px) 31vw, (min-width: 768px) 55vw, 82vw" width="880" height="660" loading="lazy" decoding="async" alt="Abraham y tres amigos sonríen trabajando con portátiles en un coworking luminoso">
           <div class="tarjeta-txt">
             <h3>Trabajando desde otro sitio.</h3>
             <p>Un día de curro normal, pero no en tu oficina de siempre.</p>
@@ -592,7 +599,7 @@ a{color:inherit}
       <li class="paso reveal"><span class="paso-n" aria-hidden="true">3</span><div><h3>Recibe tu Carta VIBRA y entra al grupo.</h3><p>Te llega a tu correo y entras al grupo de WhatsApp, donde nacen todos los planes.</p></div></li>
     </ol>
     <figure class="carta reveal">
-      <img src="carta-vibra-abraham.webp" srcset="carta-vibra-abraham.webp 760w" sizes="(min-width: 768px) 300px, 240px" width="760" height="1351" loading="lazy" decoding="async" alt="Ejemplo de Carta VIBRA: la de Abraham">
+      <img src="carta-vibra-abraham.webp" srcset="img/carta-vibra-600.webp 600w, carta-vibra-abraham.webp 760w" sizes="(min-width: 768px) 300px, 240px" width="760" height="1351" loading="lazy" decoding="async" alt="Ejemplo de Carta VIBRA: la de Abraham">
       <figcaption class="nota">La Carta de Abraham. La tuya sale de tus respuestas.</figcaption>
     </figure>
     <div class="entrar-cta">
@@ -606,7 +613,7 @@ a{color:inherit}
 <section class="detras seccion" aria-labelledby="detras-t">
   <div class="contenedor detras-rejilla">
     <figure class="detras-foto reveal">
-      <img src="metodo-vibra/abraham-surf.webp" srcset="metodo-vibra/abraham-surf.webp 720w" sizes="(min-width: 768px) 360px, 120px" width="720" height="900" loading="lazy" decoding="async" alt="Abraham, fundador de VIBRA, rema tumbado en su tabla">
+      <img src="metodo-vibra/abraham-surf.webp" srcset="img/abraham-surf-240.webp 240w, img/abraham-surf-360.webp 360w, metodo-vibra/abraham-surf.webp 720w" sizes="(min-width: 768px) 360px, 120px" width="720" height="900" loading="lazy" decoding="async" alt="Abraham, fundador de VIBRA, rema tumbado en su tabla">
       <figcaption class="nota">Mi oficina, últimamente.</figcaption>
     </figure>
     <header class="detras-cab">
