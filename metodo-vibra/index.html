@@ -537,6 +537,184 @@ details[open] summary::before{transform:rotate(90deg)}
 .hoja-nota{max-width:860px;margin:16px auto 0;font-size:14px;color:var(--vibra-tinta-2)}
 @media (max-width:720px){.hoja-cuerpo{grid-template-columns:1fr}.hoja-col+.hoja-col{border-left:none;border-top:1px solid var(--vibra-linea)}.hoja-top,.hoja-col,.hoja-plan,.hoja-pie{padding-left:18px;padding-right:18px}}
 
+/* ══ Escritorio (16/10). Todo va en media queries ≥1024 px (y ajuste fino ≥1280 / ≥1600).
+     El móvil (≤767 px) no cambia: lo único que se aplica por debajo es ocultar el marcado
+     nuevo de escritorio (anclas de la cabecera y foto del hero). ══ */
+.cab-nav .cab-esc,.hero-foto{display:none}
+/* El sello del pie es un SVG con currentColor cargado como <img>: pinta negro sobre noche.
+   Desde tableta se pasa a crema con un filtro (en móvil sigue como estaba: pendiente de Abraham). */
+@media (min-width:768px){.pie-sello img{filter:invert(95%) sepia(9%) saturate(320%) hue-rotate(350deg) brightness(101%)}}
+
+@media (min-width:1024px){
+  :root{--contenedor:1120px}
+
+  /* Cabecera: logo a la izquierda; anclas, vibrasociety.es y «Hablemos» agrupados a la derecha */
+  .cab-nav{gap:2px}
+  .cab-nav .cab-esc{display:inline-flex}
+  .cab-enl{padding:0 10px}
+  .cab-sep{margin-left:10px}
+  .cab-sep::before{content:"";display:block;width:1px;height:22px;background:var(--vibra-linea);margin-right:20px}
+  .cab-nav .btn{margin-left:14px}
+
+  /* Hero a dos columnas: texto a la izquierda, foto de Abraham a la derecha */
+  .hero{display:flex;align-items:center;min-height:clamp(560px,calc(100vh - var(--cab-h)),820px);min-height:clamp(560px,calc(100svh - var(--cab-h)),820px);padding:56px 0 64px}
+  .hero .wrap{width:100%;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-rows:1fr repeat(4,auto) 1fr;column-gap:64px}
+  .hero .vibra-antetitulo{grid-column:1;grid-row:2}
+  .hero h1{grid-column:1;grid-row:3;margin:30px 0 22px}
+  .hero .sub{grid-column:1;grid-row:4}
+  .hero .cta-row{grid-column:1;grid-row:5}
+  .cta-row .btn{white-space:nowrap;flex:none}
+  .cta-note{max-width:36ch}
+  .hero-foto{display:block;grid-column:2;grid-row:1 / -1;align-self:center;justify-self:end;width:100%;max-width:430px;margin:0;position:relative}
+  .hero-foto::before{content:"";position:absolute;inset:22px 22px -22px -22px;border:1px solid var(--vibra-linea-oscura);border-radius:var(--vibra-radio);z-index:-1}
+  .hero-foto img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--vibra-radio)}
+
+  /* Plazas + la objeción, en la misma fila (la foto de .miedo ya está en el hero) */
+  .arranque{padding-top:48px}
+  .arranque .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;align-items:center}
+  .plazas-zona{padding-top:40px}
+  .plazas-btn{white-space:nowrap}
+  .miedo{margin-top:0;grid-template-columns:1fr;padding:34px 38px}
+  .miedo-foto{display:none}
+  .miedo .q{max-width:24ch}
+
+  /* Te va a sonar: la caída a la izquierda, las frases reales a la derecha */
+  #sonar .wrap{display:grid;grid-template-columns:minmax(0,13fr) minmax(0,11fr);grid-template-rows:repeat(4,auto) 1fr;column-gap:64px}
+  #sonar .wrap > *{grid-column:1}
+  #sonar .caida,#sonar .caida-pie,#sonar .guia{max-width:none}
+  #sonar .caida-pie{margin-bottom:0}
+  #sonar .sonar-grid{grid-column:2;grid-row:1 / -1;align-self:start;grid-template-columns:1fr;gap:14px;margin-top:0;position:sticky;top:calc(var(--cab-h) + 24px)}
+
+  /* Dos caminos: cabecera en fila y comparador a todo el ancho */
+  #contraste .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:56px}
+  #contraste .sec-kicker,#contraste .sec-title{grid-column:1}
+  #contraste .sec-title{margin-bottom:0}
+  #contraste .cam-hint{grid-column:2;grid-row:1 / span 2;align-self:end;justify-self:end;text-align:right;margin:0 0 6px}
+  #contraste .camino{grid-column:1 / -1;margin-top:26px}
+  .cam-lado{padding:30px 36px 32px}
+
+  /* Tres fases */
+  .met-cab .sec-title{max-width:20ch}
+  .met-cab .sec-intro{max-width:56ch}
+  .met-pj{height:320px}
+  .cap{padding:40px 44px;column-gap:56px;row-gap:0;align-items:start}
+  .cap-ej{display:contents}
+  .cap-num{grid-column:1;grid-row:1;order:0;min-height:0;display:block;justify-items:start;text-align:left;margin:0 0 6px}
+  .cap-num span{display:block;font-size:112px}
+  .cap-txt{grid-column:1;grid-row:2}
+  .cap-ej-t{grid-row:1;align-self:start;margin:6px 0 0}
+  .ej-pasos-hint{display:none}
+  /* Fase 1: texto y gráfico a la izquierda, el menú del panel a la derecha */
+  .capitulos .cap:nth-child(1){grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-rows:auto auto auto 1fr}
+  .capitulos .cap:nth-child(1) .cap-ej-t{grid-column:2}
+  .capitulos .cap:nth-child(1) .mk-fig.menu{grid-column:2;grid-row:1 / -1;margin-top:38px;max-width:none}
+  .capitulos .cap:nth-child(1) .mk-fig.ancha{grid-column:1;grid-row:3;margin-top:30px}
+  /* Fases 2 y 3: texto a la izquierda, los tres móviles a la derecha */
+  .capitulos .cap:nth-child(n+2){grid-template-columns:minmax(0,4fr) minmax(0,8fr);grid-template-rows:auto auto auto 1fr}
+  .capitulos .cap:nth-child(n+2) .cap-ej-t{grid-column:2}
+  .capitulos .cap:nth-child(n+2) .ej-pasos{grid-column:2;grid-row:1 / -1;margin-top:38px;max-width:none;gap:18px}
+  .capitulos .cap:nth-child(n+2) .cap-ej-acc{grid-column:1;grid-row:3;margin-top:26px;flex-direction:column;align-items:flex-start}
+
+  /* Clientes: cabecera en fila; tarjetas cortas a pares y las largas a todo el ancho */
+  #pruebas .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:20px;align-items:start}
+  #pruebas .wrap > *{grid-column:1 / -1}
+  #pruebas .sec-kicker{grid-column:1 / span 7;grid-row:1}
+  #pruebas .sec-title{grid-column:1 / span 7;grid-row:2;margin-bottom:0}
+  #pruebas .sec-intro{grid-column:8 / -1;grid-row:1 / span 2;align-self:end;font-size:1.1875rem}
+  #pruebas .sec-intro + .caso{margin-top:36px}
+  #pruebas .caso:is(:nth-of-type(1),:nth-of-type(2),:nth-of-type(7),:nth-of-type(8)){grid-column:span 6;align-self:stretch}
+  #pruebas .caso:nth-of-type(2){margin-top:36px}
+  #pruebas .caso:is(:nth-of-type(1),:nth-of-type(2),:nth-of-type(3),:nth-of-type(7),:nth-of-type(8)) .ad{grid-template-columns:1fr}
+  #pruebas .caso:is(:nth-of-type(1),:nth-of-type(2),:nth-of-type(3),:nth-of-type(7),:nth-of-type(8)) .ad-flecha{justify-self:center;padding:6px 0;transform:rotate(90deg)}
+  .caso{padding:28px 32px}
+  /* LiveOkey: el caso a la izquierda, el embudo real a la derecha */
+  #pruebas .caso:nth-of-type(3){display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-rows:repeat(4,auto) 1fr;column-gap:40px}
+  #pruebas .caso:nth-of-type(3) > *{grid-column:1}
+  #pruebas .caso:nth-of-type(3) .caso-embudo{grid-column:2;grid-row:1 / -1;margin:0;padding:0 0 0 40px;border-top:0;border-left:1px solid var(--vibra-linea)}
+  .caso-embudo .fnl-scroll{overflow:visible;padding-bottom:0}
+  .caso-embudo .fnl-rail{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:auto;gap:14px}
+  .caso-embudo .fnl-step{flex:none;min-width:0}
+  /* VIBRA: el calendario, más grande */
+  .caso.con-shot{grid-template-columns:minmax(0,1fr) 184px;column-gap:48px;align-items:start}
+  .caso.con-shot .ad{grid-template-columns:1fr}
+  .caso.con-shot .ad-flecha{justify-self:center;padding:6px 0;transform:rotate(90deg)}
+  /* Paloma: una sola línea de texto, en horizontal para no dejar una franja vacía */
+  #pruebas .caso:nth-of-type(5){display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:40px;align-items:center}
+  #pruebas .caso:nth-of-type(5) .caso-head{margin-bottom:0}
+  #pruebas .caso:nth-of-type(5) .caso-txt{margin:0;justify-self:end;font-size:16.5px}
+  /* GÜO: fotos más grandes */
+  .caso-fotos{gap:18px 32px}
+  .caso-fotos figure{gap:18px}
+  .caso-fotos img{width:176px;height:220px}
+  .caso-fotos figcaption{font-size:14.5px;align-self:center}
+
+  /* Quién te lo dice: foto grande a la izquierda (como la landing) */
+  .yo{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);column-gap:72px;align-items:center}
+  .yo img.retrato{width:100%;height:auto;aspect-ratio:1;border-width:5px;box-shadow:0 18px 40px -24px rgba(43,50,45,.55)}
+  .yo p{font-size:1.125rem}
+  .yo .txt{min-width:0}
+  .yo p{max-width:62ch}
+
+  /* Encajamos / no encajamos */
+  #encaje .sec-title{max-width:none}
+  .col{padding:30px 32px}
+  .col li{font-size:16px}
+
+  /* Las dos líneas: cabecera en fila */
+  #lineas .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:56px}
+  #lineas .wrap > *{grid-column:1 / -1}
+  #lineas .sec-kicker,#lineas .sec-title{grid-column:1}
+  #lineas .sec-title{margin-bottom:0}
+  #lineas .sec-intro{grid-column:2;grid-row:1 / span 2;align-self:end;font-size:1.1875rem}
+  .linea{padding:34px 36px 36px}
+
+  /* FAQs: título y Abraham a la izquierda, las preguntas a la derecha */
+  #faqs .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-rows:auto auto 1fr;column-gap:64px;align-items:start}
+  #faqs .sec-kicker,#faqs .sec-title,#faqs .guia{grid-column:1}
+  #faqs .sec-title{max-width:12ch}
+  #faqs .guia{margin-top:84px}
+  #faqs .faq-list{grid-column:2;grid-row:1 / -1;margin-top:0}
+
+  /* Cierre: titular a la izquierda, texto y botón a la derecha; Abraham invitando, más grande */
+  .cierre-pj{height:380px;margin:0 -14px 0 -48px}
+  .cierre{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:48px;align-items:start;text-align:left;padding:52px 48px}
+  .cierre{grid-template-rows:auto 1fr auto}
+  .cierre h2{grid-column:1;grid-row:1;margin:0;max-width:11ch}
+  .cierre .remate{grid-column:1;grid-row:2;align-self:end;margin-top:28px}
+  .cierre .botones{grid-column:1;grid-row:3;justify-content:flex-start;margin-top:18px}
+  .cierre p{grid-column:2;grid-row:1 / -1;align-self:center;margin:0;max-width:58ch}
+
+  /* Ventana del embudo: las seis pantallas en fila, sin scroll horizontal */
+  .ej-box .fnl-scroll{overflow:visible;padding-bottom:0}
+  .ej-box .fnl-rail{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;width:auto}
+  .ej-box .fnl-step{flex:none;min-width:0}
+  .ej-box .fnl-hint{display:none}
+}
+/* Cabecera entre 1024 y 1239: no caben las cuatro anclas */
+@media (min-width:1024px) and (max-width:1239px){
+  .cab-logo img{width:196px}
+  .cab-nav .cab-esc:nth-child(n+3){display:none}
+}
+/* Pie: logo y frase a la izquierda, columnas a la derecha (desde 1240: antes no cabe el correo) */
+@media (min-width:1240px){
+  .pie .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);grid-template-rows:auto 1fr;column-gap:56px}
+  .pie-logo{grid-column:1;grid-row:1}
+  .pie-frase{grid-column:1;grid-row:2}
+  .pie-cols{grid-column:2;grid-row:1 / span 2;margin-top:0;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.35fr);column-gap:32px}
+  .pie-final{grid-column:1 / -1}
+}
+@media (min-width:1280px){
+  .hero h1{font-size:5rem}
+  .cam-lado li{font-size:24px}
+  .impacto .cifra-txt{max-width:30ch}
+  .impacto-v{width:140px;height:140px}
+}
+@media (min-width:1600px){
+  :root{--contenedor:1200px;--gutter:40px}
+  .hero h1{font-size:5.5rem}
+  .hero-foto{max-width:470px}
+}
+
 /* ── Aparición al hacer scroll y movimiento reducido ── */
 html.js .rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
 html.js .rv.on{opacity:1;transform:none}
@@ -558,7 +736,12 @@ html.js .rv.on{opacity:1;transform:none}
       <img src="../marca/logos/vibra-business-horizontal-sobre-crema.svg" width="786" height="100" alt="">
     </a>
     <nav class="cab-nav" aria-label="Principal">
-      <a class="cab-enl" href="/">vibrasociety.es</a>
+      <!-- Anclas solo en escritorio (≥1024 px, .cab-esc); en móvil no se pintan -->
+      <a class="cab-enl cab-esc" href="#metodo">Cómo funciona</a>
+      <a class="cab-enl cab-esc" href="#pruebas">Clientes</a>
+      <a class="cab-enl cab-esc" href="#lineas">Retiros corporativos</a>
+      <a class="cab-enl cab-esc" href="#faqs">Preguntas</a>
+      <a class="cab-enl cab-sep" href="/">vibrasociety.es</a>
       <a class="btn btn-principal" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20saber%20m%C3%A1s%20del%20M%C3%A9todo%20VIBRA" target="_blank" rel="noopener" data-evento="clic_whatsapp_metodo">Hablemos</a>
     </nav>
   </div>
@@ -576,6 +759,10 @@ html.js .rv.on{opacity:1;transform:none}
       <a class="btn btn-acento" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20saber%20m%C3%A1s%20del%20M%C3%A9todo%20VIBRA" target="_blank" rel="noopener" data-evento="clic_whatsapp_metodo">Cuéntame tu comunidad</a>
       <span class="cta-note">Sin compromiso. La primera conversación es una consultoría, no una venta.</span>
     </div>
+    <!-- Solo escritorio (≥1024 px): la foto de .miedo sube aquí para equilibrar la portada; en móvil no se pinta ni se descarga (lazy + display:none) -->
+    <figure class="hero-foto">
+      <img src="abraham-surf.webp" width="720" height="900" loading="lazy" decoding="async" alt="Abraham remando sobre la tabla de surf">
+    </figure>
   </div>
 </header>
 
