@@ -724,6 +724,14 @@ html.js .rv.on{opacity:1;transform:none}
   html.js .rv{opacity:1;transform:none}
   .ej-mas,.plazas-sig{animation:none}
 }
+
+/* Pie de conversión (16/10): un solo CTA a WhatsApp, sin enlaces de salida */
+.pie-solo{display:grid;justify-items:start;gap:18px}
+.pie-solo .pie-frase{max-width:52ch;margin:0}
+.pie-wa{background:var(--vibra-crema);color:var(--vibra-noche);font-weight:600}
+.pie-wa:hover{background:#fff}
+.pie-solo .pie-final{width:100%}
+@media (min-width:1024px){.pie-solo{grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:56px}.pie-solo .pie-logo{grid-column:1 / -1}.pie-solo .pie-final{grid-column:1 / -1}}
 </style>
 </head>
 <body>
@@ -739,10 +747,8 @@ html.js .rv.on{opacity:1;transform:none}
       <!-- Anclas solo en escritorio (≥1024 px, .cab-esc); en móvil no se pintan -->
       <a class="cab-enl cab-esc" href="#metodo">Cómo funciona</a>
       <a class="cab-enl cab-esc" href="#pruebas">Clientes</a>
-      <a class="cab-enl cab-esc" href="#lineas">Retiros corporativos</a>
       <a class="cab-enl cab-esc" href="#faqs">Preguntas</a>
-      <a class="cab-enl cab-sep" href="/">vibrasociety.es</a>
-      <a class="btn btn-principal" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20saber%20m%C3%A1s%20del%20M%C3%A9todo%20VIBRA" target="_blank" rel="noopener" data-evento="clic_whatsapp_metodo">Hablemos</a>
+      <a class="btn btn-principal" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20agendar%20una%20llamada%20para%20hablar%20del%20M%C3%A9todo%20VIBRA" target="_blank" rel="noopener" data-evento="clic_whatsapp_metodo">Hablemos</a>
     </nav>
   </div>
 </header>
@@ -756,7 +762,7 @@ html.js .rv.on{opacity:1;transform:none}
     <h1>Tu comunidad puede crecer sin perder el <span class="coral">alma.</span></h1>
     <p class="sub">Construyo la máquina que llena tus viajes, tus retiros o tus plazas — y la manejas <b>hablando</b>, como quien manda un audio. Lo humano lo sigues escribiendo tú.</p>
     <div class="cta-row">
-      <a class="btn btn-acento" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20saber%20m%C3%A1s%20del%20M%C3%A9todo%20VIBRA" target="_blank" rel="noopener" data-evento="clic_whatsapp_metodo">Cuéntame tu comunidad</a>
+      <a class="btn btn-acento" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20agendar%20una%20llamada%20para%20hablar%20del%20M%C3%A9todo%20VIBRA" target="_blank" rel="noopener" data-evento="clic_whatsapp_metodo">Cuéntame tu comunidad</a>
       <span class="cta-note">Sin compromiso. La primera conversación es una consultoría, no una venta.</span>
     </div>
     <!-- Solo escritorio (≥1024 px): la foto de .miedo sube aquí para equilibrar la portada; en móvil no se pinta ni se descarga (lazy + display:none) -->
@@ -976,7 +982,7 @@ html.js .rv.on{opacity:1;transform:none}
     <p class="sec-intro rv">Líderes de comunidades como la tuya, mi propia comunidad y los sistemas a más escala de los que sale el método.</p>
 
     <article class="caso cliente rv">
-      <div class="caso-head"><img class="caso-ava" src="cli-sara.webp" alt="Logotipo de Reviondo" width="176" height="176" loading="lazy" decoding="async"><span class="tag">Comunidad + IA + retiros</span><a class="caso-ig" href="https://www.instagram.com/reviondo.r/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Sara · Reviondo, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@reviondo.r</a><h3>Sara · Reviondo — desconexión digital</h3></div>
+      <div class="caso-head"><img class="caso-ava" src="cli-sara.webp" alt="Logotipo de Reviondo" width="176" height="176" loading="lazy" decoding="async"><span class="tag">Comunidad + IA + retiros</span><span class="caso-ig"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@reviondo.r</span><h3>Sara · Reviondo — desconexión digital</h3></div>
       <div class="ad">
         <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Retiros de fin de semana que funcionaban, y <b>la temporada por decidir</b>: sin calendario y sin programa detrás.</p></div>
         <span class="ad-flecha" aria-hidden="true">→</span>
@@ -990,7 +996,7 @@ html.js .rv.on{opacity:1;transform:none}
     </article>
 
     <article class="caso cliente rv">
-      <div class="caso-head"><img class="caso-ava" src="cli-elena.webp" alt="Retrato de Elena Isa" width="176" height="176" loading="lazy" decoding="async"><span class="tag">Comunidad + IA + retiros</span><a class="caso-ig" href="https://www.instagram.com/elenaisa_yoga/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Elena Isa, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@elenaisa_yoga</a><h3>Elena Isa — yoga y retiros</h3></div>
+      <div class="caso-head"><img class="caso-ava" src="cli-elena.webp" alt="Retrato de Elena Isa" width="176" height="176" loading="lazy" decoding="async"><span class="tag">Comunidad + IA + retiros</span><span class="caso-ig"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@elenaisa_yoga</span><h3>Elena Isa — yoga y retiros</h3></div>
       <div class="ad">
         <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Retiros de yoga en Cataluña y Lombok, y mucha gente que preguntaba y no cerraba: <b>«nunca acabas de hacer el enganche final»</b>.</p></div>
         <span class="ad-flecha" aria-hidden="true">→</span>
@@ -1004,7 +1010,7 @@ html.js .rv.on{opacity:1;transform:none}
     </article>
 
     <article class="caso cliente rv">
-      <div class="caso-head"><img class="caso-ava" src="cli-liveokey.webp" alt="Logotipo de LiveOkey" width="104" height="104" loading="lazy" decoding="async"><span class="tag">Growth partner desde 2024</span><a class="caso-ig" href="https://www.instagram.com/liveokeypeople/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de LiveOkey, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@liveokeypeople</a><h3>LiveOkey — la comunidad de viajes de surf de la que soy growth partner</h3></div>
+      <div class="caso-head"><img class="caso-ava" src="cli-liveokey.webp" alt="Logotipo de LiveOkey" width="104" height="104" loading="lazy" decoding="async"><span class="tag">Growth partner desde 2024</span><span class="caso-ig"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@liveokeypeople</span><h3>LiveOkey — la comunidad de viajes de surf de la que soy growth partner</h3></div>
       <div class="ad">
         <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Un año llevándole la web como proveedor externo. No sirvió de nada: el fundador estuvo a punto de dejarlo todo.</p></div>
         <span class="ad-flecha" aria-hidden="true">→</span>
@@ -1060,7 +1066,7 @@ html.js .rv.on{opacity:1;transform:none}
 
     <article class="caso cliente con-shot rv">
       <div class="caso-main">
-        <div class="caso-head"><img class="caso-ava caso-ava-svg" src="../marca/logos/vibra-v.svg" alt="Logotipo de VIBRA" width="200" height="200" loading="lazy" decoding="async"><span class="tag lab">Mi comunidad</span><a class="caso-ig" href="https://www.instagram.com/vibra.society/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de VIBRA, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@vibra.society</a><h3>VIBRA — el mismo método, aplicado a mi comunidad</h3></div>
+        <div class="caso-head"><img class="caso-ava caso-ava-svg" src="../marca/logos/vibra-v.svg" alt="Logotipo de VIBRA" width="200" height="200" loading="lazy" decoding="async"><span class="tag lab">Mi comunidad</span><span class="caso-ig"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@vibra.society</span><h3>VIBRA — el mismo método, aplicado a mi comunidad</h3></div>
         <div class="ad">
           <div class="ad-col ad-de"><span class="ad-k">En julio</span><p><b>Cero.</b> Sin comunidad, sin plataforma y sin datos: solo la idea.</p></div>
           <span class="ad-flecha" aria-hidden="true">→</span>
@@ -1079,12 +1085,12 @@ html.js .rv.on{opacity:1;transform:none}
     </article>
 
     <article class="caso cliente rv">
-      <div class="caso-head"><img class="caso-ava" src="cli-paloma.webp" alt="Retrato de Paloma Quintana" width="176" height="176" loading="lazy" decoding="async"><span class="tag">Crecimiento + suscripción</span><a class="caso-ig" href="https://www.instagram.com/nutricionconq/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Paloma Quintana, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@nutricionconq</a><h3>Paloma Quintana — nutrición integrativa y deportiva</h3></div>
+      <div class="caso-head"><img class="caso-ava" src="cli-paloma.webp" alt="Retrato de Paloma Quintana" width="176" height="176" loading="lazy" decoding="async"><span class="tag">Crecimiento + suscripción</span><span class="caso-ig"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@nutricionconq</span><h3>Paloma Quintana — nutrición integrativa y deportiva</h3></div>
       <p class="caso-txt">Crece con un modelo de <b>suscripción</b> detrás.</p>
     </article>
 
     <article class="caso cliente rv">
-      <div class="caso-head"><span class="caso-ava caso-ini" role="img" aria-label="GÜO Tech">GÜO</span><span class="tag">A escala</span><a class="caso-ig" href="https://www.instagram.com/guotech.io/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de GÜO Tech, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@guotech.io</a><h3>GÜO Tech — de idea a +3M€ facturados en un año</h3></div>
+      <div class="caso-head"><span class="caso-ava caso-ini" role="img" aria-label="GÜO Tech">GÜO</span><span class="tag">A escala</span><span class="caso-ig"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@guotech.io</span><h3>GÜO Tech — de idea a +3M€ facturados en un año</h3></div>
       <div class="ad">
         <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Una idea y ninguna máquina: ni captación, ni CRM, ni lanzamientos.</p></div>
         <span class="ad-flecha" aria-hidden="true">→</span>
@@ -1111,7 +1117,7 @@ html.js .rv.on{opacity:1;transform:none}
     </article>
 
     <article class="caso cliente rv">
-      <div class="caso-head"><img class="caso-ava" src="cli-comunidaddelsol.webp" alt="Logotipo de Comunidad del Sol" width="104" height="104" loading="lazy" decoding="async"><span class="tag">Comunidad + eventos</span><a class="caso-ig" href="https://www.instagram.com/comunidaddelsol.madrid/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Comunidad del Sol, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@comunidaddelsol.madrid</a><h3>Comunidad del Sol — covivienda consciente</h3></div>
+      <div class="caso-head"><img class="caso-ava" src="cli-comunidaddelsol.webp" alt="Logotipo de Comunidad del Sol" width="104" height="104" loading="lazy" decoding="async"><span class="tag">Comunidad + eventos</span><span class="caso-ig"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@comunidaddelsol.madrid</span><h3>Comunidad del Sol — covivienda consciente</h3></div>
       <div class="ad">
         <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Vendían algo enorme —una forma de vivir, con ticket de vivienda— y <b>no había camino</b> entre descubrirles y comprar.</p></div>
         <span class="ad-flecha" aria-hidden="true">→</span>
@@ -1124,7 +1130,7 @@ html.js .rv.on{opacity:1;transform:none}
     </article>
 
     <article class="caso cliente rv">
-      <div class="caso-head"><img class="caso-ava" src="cli-mazinn.webp" alt="Logotipo de Mazinn" width="176" height="176" loading="lazy" decoding="async"><span class="tag">Automatización + IA</span><a class="caso-ig" href="https://www.instagram.com/mazinncrew/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Mazinn Crew, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@mazinncrew</a><h3>Mazinn Crew — una comunidad de +2.000 embajadores</h3></div>
+      <div class="caso-head"><img class="caso-ava" src="cli-mazinn.webp" alt="Logotipo de Mazinn" width="176" height="176" loading="lazy" decoding="async"><span class="tag">Automatización + IA</span><span class="caso-ig"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@mazinncrew</span><h3>Mazinn Crew — una comunidad de +2.000 embajadores</h3></div>
       <div class="ad">
         <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Toda la operación de <b>+2.000 embajadores</b> se sostenía a mano, tarea por tarea.</p></div>
         <span class="ad-flecha" aria-hidden="true">→</span>
@@ -1211,54 +1217,6 @@ html.js .rv.on{opacity:1;transform:none}
   </div>
 </section>
 
-<!-- LAS DOS LÍNEAS DE VIBRA BUSINESS (bloque nuevo, 16/10; pendiente del OK de Abraham).
-     Retiros corporativos: sin precios ni paquetes publicados (manual §5), sin fotos de banco. -->
-<section id="lineas" class="seccion alt">
-  <div class="wrap">
-    <p class="sec-kicker rv">VIBRA Business</p>
-    <h2 class="sec-title rv">Las dos líneas de VIBRA Business.</h2>
-    <p class="sec-intro rv">Mismo logo, mismos colores y la misma forma de trabajar: con un objetivo cerrado antes de empezar.</p>
-    <div class="lineas">
-      <article class="linea rv">
-        <span class="cap-n">Línea A</span>
-        <h3>Crecimiento de comunidades</h3>
-        <p>Lo que cuenta esta página: sistemas de crecimiento y lanzamiento para <b>líderes de comunidades</b>. Consultoría, máquina llave en mano y lanzamiento conjunto, en ese orden.</p>
-        <a class="btn btn-linea" href="#metodo">Ver las tres fases <span aria-hidden="true">↑</span></a>
-      </article>
-      <article class="linea rv">
-        <span class="cap-n">Línea B</span>
-        <h3>Retiros corporativos</h3>
-        <p>Llevar a equipos directivos, ejecutivos o de trabajo a un lugar distinto de su oficina para lograr los objetivos que se marcan para ese fin de semana, esos días laborables o esa semana. <b>El objetivo del equipo manda</b>: se cierra antes de salir y se vuelve con decisiones y un responsable para cada una. Cada retiro se diseña a medida; cuéntame el tuyo.</p>
-        <a class="btn btn-principal" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20quiero%20saber%20m%C3%A1s%20de%20los%20retiros%20corporativos%20de%20VIBRA%20Business" target="_blank" rel="noopener" data-evento="clic_whatsapp_retiros">Hablar de un retiro corporativo</a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- FAQs — objeciones reales que salen en las consultorías. -->
-<section id="faqs" class="seccion">
-  <div class="wrap">
-    <p class="sec-kicker rv">Antes de escribirme</p>
-    <h2 class="sec-title rv">Lo que suelen preguntarme.</h2>
-    <aside class="guia guia--pj rv">
-      <img class="guia-pj" src="pj-4-pregunta.webp" alt="" aria-hidden="true" width="560" height="1007" loading="lazy" decoding="async">
-      <p><span class="guia-n">Abraham</span>Estas ocho salen en casi todas las primeras llamadas. Te las contesto ya y nos ahorramos ese rato.</p>
-    </aside>
-
-    <div class="faq-list rv">
-      <details><summary>He delegado antes y me ha ido mal. ¿Por qué esto va a ser distinto?</summary><div class="faq-c"><p>Porque no te pido que sueltes lo tuyo: te pido una hora a la semana y los accesos. Yo construyo, tú pruebas y te lo explico en sesión — nada se monta a puerta cerrada. Y todo queda a tu nombre desde el primer día, así que si un día te vas, te lo llevas funcionando.</p></div></details>
-      <details><summary>¿Esto no me va a despersonalizar la comunidad?</summary><div class="faq-c"><p><b>No se automatiza lo humano:</b> los mensajes, los audios, las bienvenidas y la cara siguen siendo tuyos. Lo que automatizo es todo lo demás — que la gente entre sola, que no se escape nadie y que llenar deje de depender de que te acuerdes.</p></div></details>
-      <details><summary>Es mi proyecto y no lo quiero perder. ¿De quién es lo que se construye?</summary><div class="faq-c"><p>Tuyo. Web, CRM, cobros, newsletter, cuentas, contenidos y datos: a tu nombre y en tus cuentas desde el día uno. Yo no guardo nada ni retengo accesos. Lo único que sigue siendo mío es mi metodología.</p></div></details>
-      <details><summary>¿Cuánto dura cada fase?</summary><div class="faq-c"><p>La consultoría, <b>tres semanas</b>. La máquina, entre dos y cuatro según el negocio. Y el lanzamiento conjunto va a tu ritmo: mientras tanto te acompaño en los viajes que ya tengas en el calendario, y cuando tú quieras —no tiene por qué ser nada más acabar la máquina— le ponemos fecha a uno nuevo y lo lanzamos juntos.</p></div></details>
-      <details><summary>¿Qué cuesta mantenerlo después?</summary><div class="faq-c"><p>Conmigo, nada: <b>no hay permanencia</b> ni cuotas. Y no dependes de mí: cuando terminamos —con la máquina montada y el lanzamiento conjunto vivido con mi comunidad VIBRA— <b>vuelas por tu cuenta</b>. Todo se queda tuyo y funcionando.</p></div></details>
-      <details><summary>¿Me garantizas que voy a llenar?</summary><div class="faq-c"><p>No, y desconfía de quien te lo garantice: depende de tu producto, tu precio, tu destino y lo que inviertas. Lo que sí garantizo es lo que entrego, con plazos escritos. Y si termino y no está lo que dice el plan, te devuelvo lo pagado.</p></div></details>
-      <details><summary>¿Y si aún no tengo claro qué vender?</summary><div class="faq-c"><p>No te preocupes: eso lo vemos en la consultoría. Lo que sí necesito es que traigas varias ideas y ganas de sacar adelante una. Yo te ayudo a <b>poner el foco</b> y a construir la máquina de ese modelo de negocio.</p></div></details>
-      <details><summary>¿Cuánto cuesta?</summary><div class="faq-c"><p>Depende del negocio, y por eso no hay precio en esta página: el número sale con tus cifras delante, en el plan escrito. Lo que sí es fijo es el modelo — la fase de lanzamiento va en variable: <b>si tú no ganas, yo no gano.</b></p></div></details>
-    </div>
-  </div>
-</section>
-
-<!-- Cierre: fondo negro verdoso, "Abraham Rojo · VIBRA business", contacto y la V como firma -->
 <section id="hablemos" class="cierre-sec sobre-oscuro">
   <div class="wrap">
     <div class="cierre-zona">
@@ -1269,17 +1227,13 @@ html.js .rv.on{opacity:1;transform:none}
       <p>Escríbeme y hablamos sin compromiso: qué tienes montado, qué te está costando y si esto tiene sentido para ti. De esa llamada sales con dos o tres movimientos para aplicar esa misma semana, decidas lo que decidas. Y si seguimos, lo primero que recibes es <b>un plan escrito para tu negocio</b>: tu punto de partida, tu objetivo con cifra y tu calendario. No hay plantilla, y no hay dos iguales. Y si veo que no puedo ayudarte, te lo digo.</p>
       <span class="remate">Y si te sirve, seguimos ✳</span>
       <div class="botones">
-        <a class="btn btn-acento" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20saber%20m%C3%A1s%20del%20M%C3%A9todo%20VIBRA" target="_blank" rel="noopener" data-evento="clic_whatsapp_metodo">Escríbeme por WhatsApp</a>
+        <a class="btn btn-acento" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20agendar%20una%20llamada%20para%20hablar%20del%20M%C3%A9todo%20VIBRA" target="_blank" rel="noopener" data-evento="clic_whatsapp_metodo">Escríbeme y agendamos la llamada</a>
       </div>
     </div>
     </div>
     <div class="firma">
       <span class="firma-v"><img src="../marca/logos/vibra-v.svg" width="200" height="200" loading="lazy" decoding="async" alt=""></span>
-      <p class="firma-nombre">Abraham Rojo<small>VIBRA business · crecimiento de comunidades y retiros corporativos</small></p>
-      <ul class="firma-contacto">
-        <li><a href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20saber%20m%C3%A1s%20del%20M%C3%A9todo%20VIBRA" target="_blank" rel="noopener" data-evento="clic_whatsapp_metodo">WhatsApp</a></li>
-        <li><a href="mailto:abrahamrojomartinez@gmail.com" data-evento="clic_staff_mail">abrahamrojomartinez@gmail.com</a></li>
-      </ul>
+      <p class="firma-nombre">Abraham Rojo<small>VIBRA business · crecimiento de comunidades</small></p>
     </div>
   </div>
 </section>
@@ -1287,35 +1241,10 @@ html.js .rv.on{opacity:1;transform:none}
 </main>
 
 <footer class="pie sobre-oscuro" id="pie">
-  <div class="wrap">
+  <div class="wrap pie-solo">
     <img class="pie-logo" src="../marca/logos/vibra-business-sobre-noche.svg" width="425" height="150" loading="lazy" decoding="async" alt="VIBRA Business">
-    <p class="pie-frase">Sistemas de crecimiento para líderes de comunidades y retiros corporativos con un objetivo cerrado.</p>
-    <div class="pie-cols">
-      <nav aria-labelledby="pie-business">
-        <h2 class="pie-t" id="pie-business">VIBRA Business</h2>
-        <ul>
-          <li><a href="#metodo">Método VIBRA</a></li>
-          <li><a href="#lineas">Retiros corporativos</a></li>
-          <li><a href="#faqs">Preguntas frecuentes</a></li>
-        </ul>
-      </nav>
-      <nav aria-labelledby="pie-society">
-        <h2 class="pie-t" id="pie-society">VIBRA Society</h2>
-        <ul>
-          <li><a href="/">vibrasociety.es</a></li>
-          <li><a href="/#calendario">Calendario 26·27</a></li>
-          <li><a href="/comunidad?utm_source=metodo-vibra&amp;utm_medium=pie">Haz tu Carta VIBRA</a></li>
-        </ul>
-      </nav>
-      <div>
-        <h2 class="pie-t">Contacto</h2>
-        <ul>
-          <li><a href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20saber%20m%C3%A1s%20del%20M%C3%A9todo%20VIBRA" target="_blank" rel="noopener" data-evento="clic_whatsapp_metodo">WhatsApp</a></li>
-          <li><a href="mailto:abrahamrojomartinez@gmail.com" data-evento="clic_staff_mail">abrahamrojomartinez@gmail.com</a></li>
-          <li><a href="https://www.instagram.com/vibra.society/" target="_blank" rel="noopener">@vibra.society</a></li>
-        </ul>
-      </div>
-    </div>
+    <p class="pie-frase">¿Lideras una comunidad y quieres que se llene sin depender de ti? Escríbeme por WhatsApp y agendamos una llamada. Sin compromiso: si no puedo ayudarte, te lo digo.</p>
+    <a class="btn pie-wa" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20agendar%20una%20llamada%20para%20hablar%20del%20M%C3%A9todo%20VIBRA" target="_blank" rel="noopener" data-evento="clic_whatsapp_metodo_pie">Agendar una llamada por WhatsApp</a>
     <div class="pie-final">
       <span>© 2026 VIBRA · Abraham Rojo</span>
       <span class="pie-sello"><img src="../marca/logos/sello-que-nunca.svg" width="400" height="400" loading="lazy" decoding="async" alt=""><span>Que nunca te quiten tu vibra.</span></span>
