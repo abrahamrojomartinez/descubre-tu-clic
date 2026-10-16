@@ -43,6 +43,16 @@
   status = 200
   force = true
 
+# /habito-21-dias → la página de acceso del reto "El Sistema del Clic · 21 días"
+# (sitio habitos-diarios-vibra-acceso-3994ea11, repo infoproducto-habitos-diarios:
+# un solo index.html sin enlaces internos, así que no hay prefijo que quitar).
+# Es el regalo de /comunidad/gracias y el destino tras pagar en /habitos-diarios/.
+[[redirects]]
+  from = "/habito-21-dias/*"
+  to = "https://habitos-diarios-vibra-acceso-3994ea11.netlify.app/:splat"
+  status = 200
+  force = true
+
 # /comunidad → el formulario de entrada a VIBRA y la plataforma, que es OTRO
 # proyecto de Netlify (repo vibra-platform-pre-release, Next.js con
 # basePath /comunidad). Proxy (200): la dirección sigue siendo
@@ -62,3 +72,12 @@
   status = 200
   force = true
   headers = {X-Vibra-Host = "vibrasociety.es"}
+
+# El calendario 26·27 vive en calendario-26-27.json (única fuente: la landing lo
+# pinta y el formulario /comunidad lo lee en el navegador). CORS abierto para que
+# también lo pueda leer una rama de pruebas del formulario en otro dominio.
+[[headers]]
+  for = "/calendario-26-27.json"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cache-Control = "public, max-age=300, must-revalidate"
