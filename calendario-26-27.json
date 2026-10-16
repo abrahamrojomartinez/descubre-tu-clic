@@ -23,6 +23,7 @@
       "nota": "",
       "paginaPropia": "/flow-fest/",
       "hasta": "2026-11-08",
+      "enVivo": true,
       "reservable": false,
       "stripeUrl": null,
       "agotado": false

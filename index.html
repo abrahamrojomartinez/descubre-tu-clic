@@ -197,6 +197,18 @@ a{color:inherit}
 .disco:nth-child(1){z-index:3}.disco:nth-child(2){z-index:2}.disco:nth-child(3){z-index:1} /* el primero encima, como en la historia */
 .plan-flecha{position:absolute;right:14px;bottom:10px;width:32px;height:32px;color:var(--vibra-coral-texto);opacity:0;transform:translateX(12px);transition:opacity .2s ease,transform .2s ease;pointer-events:none} /* móvil: a la altura de los discos */
 .plan-flecha svg{display:block;width:100%;height:100%}
+/* Evento que se está viviendo ahora («enVivo» en calendario-26-27.json): fila más oscura, fecha en noche y marca «En vivo» con un punto que late */
+.en-vivo .plan{background:var(--vibra-noche);color:var(--vibra-crema);box-shadow:0 0 0 2px var(--vibra-coral-vivo)}
+.en-vivo .plan-fecha{background:#1f2521;color:var(--vibra-crema)}
+.en-vivo .plan-con,.en-vivo .plan-linea{color:var(--vibra-crema-suave)}
+.en-vivo .plan-flecha{color:var(--vibra-crema)}
+.en-vivo .plan:hover,.en-vivo .plan:focus-visible,.en-vivo .plan.activo{background:#343b36;box-shadow:0 0 0 2px var(--vibra-coral-vivo),0 0 0 8px rgba(247,101,91,.25),0 14px 34px rgba(247,101,91,.4)}
+.en-vivo .plan:hover .plan-fecha,.en-vivo .plan:focus-visible .plan-fecha,.en-vivo .plan.activo .plan-fecha{background:#1f2521}
+.plan-vivo{display:inline-flex;align-items:center;gap:7px;margin-bottom:6px;padding:4px 10px 4px 8px;border-radius:var(--vibra-radio-pastilla);background:var(--vibra-crema);color:var(--vibra-noche);font:800 11px/1 var(--font-titular);letter-spacing:.22em;text-transform:uppercase}
+.vivo-punto{position:relative;width:9px;height:9px;border-radius:50%;background:var(--vibra-coral-vivo);flex:none}
+.vivo-punto::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--vibra-coral-vivo);animation:vivo-late 1.6s ease-out infinite}
+@keyframes vivo-late{0%{transform:scale(1);opacity:.75}100%{transform:scale(2.8);opacity:0}}
+@media (prefers-reduced-motion:reduce){.vivo-punto::after{animation:none}}
 html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activa en móvil: la flecha se ve siempre */
 .plan:hover,.plan:focus-visible,.plan.activo{z-index:2;transform:translateY(-2px) scale(1.015);background:var(--vibra-crema-2);box-shadow:0 0 0 2px var(--vibra-coral),0 0 0 8px rgba(235,94,85,.22),0 14px 34px rgba(235,94,85,.38)}
 .plan:hover .plan-fecha,.plan:focus-visible .plan-fecha,.plan.activo .plan-fecha{background:var(--vibra-coral-vivo)}
@@ -380,7 +392,6 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
         <li><a class="cab-enl" href="#calendario">Calendario</a></li>
         <li class="cab-esc"><a class="cab-enl" href="#vivido">Lo vivido</a></li>
         <li class="cab-esc"><a class="cab-enl" href="#entrar">Cómo entrar</a></li>
-        <li class="cab-esc" data-hasta="2026-11-08"><a class="cab-enl" href="/flow-fest/" data-evento="clic_flow_fest">Flow Fest</a></li>
       </ul>
       <a class="btn btn-principal" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=nav">Entra a VIBRA</a>
     </nav>
@@ -405,7 +416,6 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
         <a class="enl-crema" href="#calendario">Ver el calendario <span aria-hidden="true">&nbsp;↓</span></a>
       </div>
       <p class="hero-nota">gratis · 2 minutos · tu Carta VIBRA y dentro</p>
-      <a class="pildora" href="/flow-fest/" data-evento="clic_flow_fest" data-hasta="2026-11-08">Lo próximo · 7 NOV · Flow Fest en Madrid&nbsp;<span aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -422,10 +432,11 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
   </header>
   <ol class="cal-lista">
     <!-- calendario:inicio · lo que hay hasta calendario:fin lo genera scripts/calendario.py desde calendario-26-27.json: no editar a mano -->
-    <li class="reveal" data-hasta="2026-11-08">
-      <a class="plan" href="/flow-fest/" data-evento="clic_flow_fest" aria-label="Flow Fest, 7 de noviembre: Madrid · tardeo fitness. Con @travelsmob y @phoenixclub.es. Ver la página de Flow Fest">
+    <li class="reveal en-vivo" data-hasta="2026-11-08">
+      <a class="plan" href="/flow-fest/" data-evento="clic_flow_fest" aria-label="En vivo ahora. Flow Fest, 7 de noviembre: Madrid · tardeo fitness. Con @travelsmob y @phoenixclub.es. Ver la página de Flow Fest">
         <p class="plan-fecha"><time datetime="2026-11-07"><span class="plan-dia">7</span><span class="plan-mes">nov</span></time></p>
         <div class="plan-cuerpo">
+          <span class="plan-vivo" aria-hidden="true"><span class="vivo-punto"></span>En vivo</span>
           <h3 class="plan-t">Flow Fest</h3>
           <p class="plan-linea">Madrid · tardeo fitness</p>
           <p class="plan-con">Con @travelsmob y @phoenixclub.es</p>

@@ -8,6 +8,7 @@
 archivo en el navegador, así que con publicar esta web basta). Solo se toca lo que hay entre
 <!-- calendario:inicio --> y <!-- calendario:fin -->; el resto de index.html no se mira.
 Sin dependencias: Python 3 de serie.
+Campo opcional por plan: "enVivo": true → la fila sale con la marca «En vivo» (punto que late) mientras se vive el evento.
 """
 import json
 import re
@@ -127,7 +128,8 @@ def fila(p, temporada):
         attr_evento += ' data-agotado="true"'
         cierre = "Plazas agotadas. " + cierre
 
-    label = f"{titulo}, {legible}: {linea.rstrip('.')}."
+    vivo = bool(p.get("enVivo"))  # opcional: el evento se está viviendo ahora (fila con la marca «En vivo»)
+    label = ("En vivo ahora. " if vivo else "") + f"{titulo}, {legible}: {linea.rstrip('.')}."
     if con:
         label += f" Con {con}."
     label += f" {cierre}"
@@ -139,10 +141,11 @@ def fila(p, temporada):
                       f'sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">')
 
     lineas = [
-        f'    <li class="reveal" data-hasta="{p["hasta"]}">',
+        f'    <li class="reveal{" en-vivo" if vivo else ""}" data-hasta="{p["hasta"]}">',
         f'      <a class="plan" href="{href}"{attr_evento} aria-label="{escape(label, quote=True)}">',
         f'        <p class="plan-fecha"><time datetime="{datetime_}">{dia}</time></p>',
         '        <div class="plan-cuerpo">',
+        *(['          <span class="plan-vivo" aria-hidden="true"><span class="vivo-punto"></span>En vivo</span>'] if vivo else []),
         f'          <h3 class="plan-t">{escape(titulo)}</h3>',
         f'          <p class="plan-linea">{escape(linea)}</p>',
     ]
