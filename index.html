@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Hanken+Grotesk:wght@400..800&display=swap">
 <!-- Simple Analytics: solo la cola de eventos. El script lo inyecta Netlify (no añadirlo aquí). -->
 <script>window.sa_event=window.sa_event||function(){var a=[].slice.call(arguments);window.sa_event.q?window.sa_event.q.push(a):window.sa_event.q=[a]};document.documentElement.classList.add('js');</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"VIBRA Society","url":"https://vibrasociety.es/","logo":"https://vibrasociety.es/apple-touch-icon.png","email":"staff@vibrasociety.es","sameAs":["https://www.instagram.com/vibra.society/"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"VIBRA Society","url":"https://vibrasociety.es/","logo":"https://vibrasociety.es/apple-touch-icon.png","email":"abrahamrojomartinez@gmail.com","sameAs":["https://www.instagram.com/vibra.society/"]}</script>
 <style>
 /* ── A · Tokens del manual v4 §4 (literales; la v5 solo cambiará valores) ── */
 :root{
@@ -57,7 +57,8 @@
 
 /* ── B · Capa web ── */
 :root{
-  --gutter:16px;--contenedor:1120px;--seccion-y:64px;--cab-h:64px;
+  --gutter:16px;--contenedor:1120px;--seccion-y:56px;--cab-h:56px;
+  --vibra-coral-vivo:#F7655B; /* derivado del coral, solo para el bloque de fecha de la fila activa del calendario */
   --t-hero:clamp(2.75rem,1.6rem + 6vw,5.5rem);
   --t-h2:clamp(2rem,1.35rem + 3vw,3.5rem);
   --t-h3:clamp(1.375rem,1.15rem + 1vw,1.75rem);
@@ -69,7 +70,7 @@
 @media (min-width:768px){:root{--gutter:24px;--seccion-y:96px;--t-texto:1.0625rem;--t-ante:.8125rem;--cab-h:72px}}
 @media (min-width:1200px){:root{--gutter:32px;--seccion-y:128px}}
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%;text-size-adjust:100%} /* 80 px bajo la cabecera fija: anclas y foco con teclado */
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--cab-h) + 16px);-webkit-text-size-adjust:100%;text-size-adjust:100%} /* 16 px bajo la cabecera fija: anclas y foco con teclado */
 body{margin:0;background:var(--vibra-crema);color:var(--vibra-noche);font:400 var(--t-texto)/1.55 var(--font-texto);-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-top:var(--cab-h)}
 h1,h2{text-wrap:balance;max-width:16ch}
 h1,h2,h3,p,ol,ul,figure,blockquote{margin:0}
@@ -131,10 +132,10 @@ a{color:inherit}
 @media (min-width:1024px){.cab-esc{display:block}}
 
 /* ── 3 · Hero ── */
-.hero{display:flex;align-items:flex-start;min-height:clamp(560px,calc(100vh - var(--cab-h)),900px);min-height:clamp(560px,calc(100svh - var(--cab-h)),900px)}
+.hero{display:flex;align-items:flex-start;min-height:clamp(520px,86vh,760px);min-height:clamp(520px,86svh,760px)} /* móvil: no llena la pantalla; el calendario asoma por debajo */
 .hero > picture > img{object-position:56% 50%}
 .hero::before{background:linear-gradient(180deg,rgba(43,50,45,.70) 0%,rgba(43,50,45,.66) 55%,rgba(43,50,45,.55) 100%)}
-.hero-in{width:100%;max-width:calc(var(--contenedor) + 2 * var(--gutter));margin:0 auto;padding:28px 16px}
+.hero-in{width:100%;max-width:calc(var(--contenedor) + 2 * var(--gutter));margin:0 auto;padding:14px 16px 28px}
 .hero-txt{max-width:840px}
 .hero .vibra-antetitulo{color:var(--vibra-crema)}
 .hero h1{font-size:clamp(2.5rem,1rem + 6vw,5rem);max-width:none;margin:14px 0 16px}
@@ -147,7 +148,7 @@ a{color:inherit}
 .pildora{display:inline-flex;align-items:center;min-height:48px;margin-top:18px;padding:0 18px;border:1px solid rgba(245,239,224,.5);border-radius:var(--vibra-radio-pastilla);font:600 14px/1.2 var(--font-texto);color:var(--vibra-crema);text-decoration:none;transition:border-color .15s}
 .pildora:hover{border-color:var(--vibra-crema)}
 @media (min-width:768px){
-  .hero{align-items:center}
+  .hero{align-items:center;min-height:clamp(560px,calc(100vh - var(--cab-h)),900px);min-height:clamp(560px,calc(100svh - var(--cab-h)),900px)}
   .hero > picture > img{object-position:50% 50%}
   .hero::before{background:linear-gradient(90deg,rgba(43,50,45,.70) 0%,rgba(43,50,45,.62) 45%,rgba(43,50,45,.55) 100%)}
   .hero-in{padding:56px var(--gutter)}
@@ -173,12 +174,14 @@ a{color:inherit}
 .cal-sub strong{color:var(--vibra-crema);font-weight:600}
 .cal-lista{list-style:none;margin:0 auto;padding:0;max-width:880px;display:grid;gap:12px}
 .cal-lista > li{position:relative}
-/* Cada fila es un único <a>. Sin JS la etiqueta («Quiero ir →») va en línea, bajo los discos.
-   Con JS (.js) es una pastilla que aparece al pasar el ratón, al enfocar o, en móvil (sin hover),
-   cuando la fila cruza la franja central de la pantalla (.activo, ver el script). */
-.plan{position:relative;display:grid;grid-template-columns:88px minmax(0,1fr);grid-template-areas:"fecha cuerpo" "fecha aliados" "fecha accion";grid-template-rows:1fr auto auto;min-height:88px;border-radius:var(--vibra-radio);overflow:hidden;background:var(--vibra-crema);color:var(--vibra-noche);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
-.plan:focus-visible{outline:3px solid var(--vibra-crema);outline-offset:3px}
-.plan-fecha{grid-area:fecha;margin:0;background:var(--vibra-coral);color:var(--vibra-noche);display:grid;place-items:center;text-align:center;padding:14px 4px}
+/* Cada fila es un único <a> y no lleva ninguna etiqueta de texto (decisión de Abraham, 16/10): el aria-label ya lo dice todo.
+   Estado activo = al pasar el ratón, al enfocar o, en móvil (sin hover), cuando la fila cruza la franja central de la pantalla
+   (.activo, ver el script). «Se ilumina y se nota clicable» sin palabras: la fila sube 2 px y crece un 1,5 %, anillo coral de 2 px
+   con un resplandor coral suave, el bloque de fecha pasa a coral vivo, el fondo crema se aclara (crema-2) y una flecha grande (SVG,
+   coral-texto) entra deslizándose por el borde derecho. Nada se atenúa ni se desenfoca. 200 ms; sin escala con reduced-motion. */
+.plan{position:relative;display:grid;grid-template-columns:88px minmax(0,1fr);grid-template-areas:"fecha cuerpo" "fecha aliados";grid-template-rows:1fr auto;min-height:88px;border-radius:var(--vibra-radio);overflow:hidden;background:var(--vibra-crema);color:var(--vibra-noche);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease,background-color .2s ease}
+.plan:focus-visible{outline:3px solid var(--vibra-crema);outline-offset:5px}
+.plan-fecha{grid-area:fecha;margin:0;background:var(--vibra-coral);color:var(--vibra-noche);display:grid;place-items:center;text-align:center;padding:14px 4px;transition:background-color .2s ease}
 .plan-dia{display:block;font:800 var(--t-cifra)/1 var(--font-titular);font-variation-settings:"opsz" 96;letter-spacing:-.015em;white-space:nowrap}
 .plan-dia.rango{letter-spacing:-.03em}
 .plan-mes{display:block;margin-top:6px;font:800 1.1875rem/1 var(--font-titular);letter-spacing:.2em;text-transform:uppercase;margin-right:-.2em} /* 19 px: negro verdoso sobre coral, en negrita desde 18 px (manual §2) */
@@ -187,39 +190,30 @@ a{color:inherit}
 .plan-t{margin:0;font:800 var(--t-h3)/1.05 var(--font-titular);font-variation-settings:"opsz" 96;letter-spacing:-.015em}
 .plan-linea{margin:4px 0 0;color:var(--vibra-tinta-2)}
 .plan-con{margin:6px 0 0;color:var(--vibra-coral-texto);font-weight:600;font-size:var(--t-nota);line-height:1.4}
-.plan-aliados{grid-area:aliados;display:flex;align-items:center;margin-top:-6px;padding:0 16px 10px 20px} /* móvil: discos de 36 px bajo la línea «Con @…» (la fila crece ~13 px) */
+.plan-aliados{grid-area:aliados;display:flex;align-items:center;margin-top:-6px;padding:0 60px 10px 20px} /* móvil: discos de 36 px bajo la línea «Con @…»; a la derecha queda el sitio de la flecha */
 .plan-aliados:empty{display:none}
 .disco{position:relative;width:36px;height:36px;border-radius:50%;object-fit:cover;margin-left:-10px;box-shadow:0 0 0 2px var(--vibra-crema)}
 .disco:first-child{margin-left:0}
 .disco:nth-child(1){z-index:3}.disco:nth-child(2){z-index:2}.disco:nth-child(3){z-index:1} /* el primero encima, como en la historia */
-.plan-accion{grid-area:accion;margin-top:0;padding:0 16px 14px 20px;font:600 var(--t-nota)/1.2 var(--font-texto);color:var(--vibra-coral-texto);white-space:nowrap}
-.flecha{display:inline-block;transition:transform .2s}
-.plan:hover .plan-accion-t{text-decoration:underline;text-underline-offset:3px}
-.plan:hover .flecha{transform:translateX(3px)}
-/* Con JS: la etiqueta es una pastilla (botón principal: noche sobre crema, texto 600 a 18 px) centrada sobre la parte crema.
-   Para que sea coral: background coral + color noche. Se evita porque el CTA coral del calendario, la barra fija de móvil
-   y la fila de Flow Fest (conversión secundaria, spec §0) estarían a la vista a la vez: solo un botón de acento por pantalla. */
-.js .plan{grid-template-areas:"fecha cuerpo" "fecha aliados";grid-template-rows:1fr auto}
-.js .plan-cuerpo,.js .plan-aliados{transition:opacity .2s ease,filter .2s ease}
-.js .plan-accion{grid-column:2 / -1;grid-row:1 / -1;place-self:center;z-index:2;margin:0;padding:13px 22px;border-radius:var(--vibra-radio-pastilla);background:var(--vibra-noche);color:var(--vibra-crema);font:600 1.125rem/1 var(--font-texto);box-shadow:0 6px 18px rgba(43,50,45,.25);opacity:0;transform:scale(.94);pointer-events:none;transition:opacity .2s ease,transform .2s ease}
-.js .plan:hover,.js .plan:focus-visible,.js .plan.activo{z-index:2;transform:scale(1.025);box-shadow:0 14px 36px rgba(0,0,0,.35)}
-.js .plan:hover .plan-cuerpo,.js .plan:hover .plan-aliados,.js .plan:focus-visible .plan-cuerpo,.js .plan:focus-visible .plan-aliados,.js .plan.activo .plan-cuerpo,.js .plan.activo .plan-aliados{opacity:.55;filter:blur(1px)}
-.js .plan:hover .plan-accion,.js .plan:focus-visible .plan-accion,.js .plan.activo .plan-accion{opacity:1;transform:none}
-.js .plan:hover .plan-accion-t{text-decoration:none}
+.plan-flecha{position:absolute;right:14px;bottom:10px;width:32px;height:32px;color:var(--vibra-coral-texto);opacity:0;transform:translateX(12px);transition:opacity .2s ease,transform .2s ease;pointer-events:none} /* móvil: a la altura de los discos */
+.plan-flecha svg{display:block;width:100%;height:100%}
+html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activa en móvil: la flecha se ve siempre */
+.plan:hover,.plan:focus-visible,.plan.activo{z-index:2;transform:translateY(-2px) scale(1.015);background:var(--vibra-crema-2);box-shadow:0 0 0 2px var(--vibra-coral),0 0 0 8px rgba(235,94,85,.22),0 14px 34px rgba(235,94,85,.38)}
+.plan:hover .plan-fecha,.plan:focus-visible .plan-fecha,.plan.activo .plan-fecha{background:var(--vibra-coral-vivo)}
+.plan:hover .plan-flecha,.plan:focus-visible .plan-flecha,.plan.activo .plan-flecha{opacity:1;transform:none}
 .cal-cta{text-align:center;margin:32px 0 0}
 .cal-nota{text-align:center;color:var(--vibra-crema-suave);font-size:var(--t-nota);margin:14px 0 0}
 .cal-pie{text-align:center;color:var(--vibra-crema-suave);font-size:var(--t-nota);line-height:1.5;margin:28px auto 0;max-width:46ch}
 .cal-pie a{color:var(--vibra-crema);font-weight:600;text-underline-offset:3px;display:inline-block;padding:12px 0;margin:-12px 0}
 @media (max-width:599px){.plan-nota{letter-spacing:0;white-space:nowrap}} /* cabe en la celda de 88 px sin el eje wdth */
 @media (min-width:600px){
-  .plan{grid-template-columns:clamp(88px,20vw,180px) minmax(0,1fr) auto 9.5rem;grid-template-areas:"fecha cuerpo aliados accion";grid-template-rows:auto}
-  .js .plan{grid-template-columns:clamp(88px,20vw,180px) minmax(0,1fr) auto;grid-template-areas:"fecha cuerpo aliados"}
+  .plan{grid-template-columns:clamp(88px,20vw,180px) minmax(0,1fr) auto;grid-template-areas:"fecha cuerpo aliados";grid-template-rows:auto}
   .plan-fecha{padding:14px 8px}
   .plan-cuerpo{align-self:center;padding:16px 12px 16px 20px}
-  .plan-aliados{align-self:center;justify-content:flex-end;margin:0;padding:0 16px 0 0}
+  .plan-aliados{align-self:center;justify-content:flex-end;margin:0;padding:0 64px 0 0} /* 64 px: el sitio de la flecha a la derecha de los discos */
   .disco{width:52px;height:52px;margin-left:-12px}
   .disco:first-child{margin-left:0}
-  .plan-accion{align-self:center;margin:0;padding:0 20px 0 4px;text-align:right}
+  .plan-flecha{top:50%;bottom:auto;right:18px;width:36px;height:36px;margin-top:-18px} /* escritorio: centrada en la fila */
 }
 @media (min-width:768px){.cal-cab > img{object-position:50% 35%}}
 
@@ -364,8 +358,8 @@ a{color:inherit}
   html{scroll-behavior:auto}
   *,*::before,*::after{transition:none!important;animation:none!important}
   .js .reveal,.js .reveal-fundido{opacity:1;transform:none}
-  .btn:hover,.plan:hover .flecha{transform:none}
-  .js .plan:hover,.js .plan:focus-visible,.js .plan.activo,.js .plan-accion{transform:none}
+  .btn:hover{transform:none}
+  .plan:hover,.plan:focus-visible,.plan.activo,.plan-flecha{transform:none} /* la fila se ilumina igual, pero no crece ni sube */
 }
 </style>
 </head>
@@ -427,8 +421,9 @@ a{color:inherit}
     </div>
   </header>
   <ol class="cal-lista">
+    <!-- calendario:inicio · lo que hay hasta calendario:fin lo genera scripts/calendario.py desde calendario-26-27.json: no editar a mano -->
     <li class="reveal" data-hasta="2026-11-08">
-      <a class="plan" href="/flow-fest/" data-evento="clic_flow_fest" aria-label="Flow Fest, 7 de noviembre, en Madrid: tardeo fitness con @travelsmob y @phoenixclub.es. Ver el Flow Fest">
+      <a class="plan" href="/flow-fest/" data-evento="clic_flow_fest" aria-label="Flow Fest, 7 de noviembre: Madrid · tardeo fitness. Con @travelsmob y @phoenixclub.es. Ver la página de Flow Fest">
         <p class="plan-fecha"><time datetime="2026-11-07"><span class="plan-dia">7</span><span class="plan-mes">nov</span></time></p>
         <div class="plan-cuerpo">
           <h3 class="plan-t">Flow Fest</h3>
@@ -440,11 +435,11 @@ a{color:inherit}
           <img class="disco" src="img/aliados/travelsmob.webp" srcset="img/aliados/travelsmob.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
           <img class="disco" src="img/aliados/phoenixclub-es.webp" srcset="img/aliados/phoenixclub-es.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
         </div>
-        <span class="plan-accion" aria-hidden="true"><span class="plan-accion-t">Ver el Flow Fest</span> <span class="flecha">→</span></span>
+        <span class="plan-flecha" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
       </a>
     </li>
     <li class="reveal" data-hasta="2026-12-09">
-      <a class="plan" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cal_palmar" aria-label="El Palmar, del 2 al 8 de diciembre: surf, clic y cowork con @liveokeypeople. Entra a VIBRA para reservar plaza">
+      <a class="plan" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cal_palmar" aria-label="El Palmar, del 2 al 8 de diciembre: Surf, clic &amp; cowork. Con @liveokeypeople. Entra a VIBRA para reservar plaza">
         <p class="plan-fecha"><time datetime="2026-12-02"><span class="plan-dia rango">2–8</span><span class="plan-mes">dic</span></time></p>
         <div class="plan-cuerpo">
           <h3 class="plan-t">El Palmar</h3>
@@ -454,11 +449,11 @@ a{color:inherit}
         <div class="plan-aliados" aria-hidden="true">
           <img class="disco" src="img/aliados/liveokeypeople.webp" srcset="img/aliados/liveokeypeople.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
         </div>
-        <span class="plan-accion" aria-hidden="true"><span class="plan-accion-t">Quiero ir</span> <span class="flecha">→</span></span>
+        <span class="plan-flecha" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
       </a>
     </li>
     <li class="reveal" data-hasta="2026-12-20">
-      <a class="plan" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cal_kalma" aria-label="Kalma Fest, 19 de diciembre: Tu Mini Ciudad, cowork y coliving previo, más festival, con @comunidaddelsol.madrid. Entra a VIBRA para reservar plaza">
+      <a class="plan" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cal_kalma" aria-label="Kalma Fest, 19 de diciembre: Tu Mini Ciudad (cowork y coliving previo) + festival. Con @comunidaddelsol.madrid. Entra a VIBRA para reservar plaza">
         <p class="plan-fecha"><time datetime="2026-12-19"><span class="plan-dia">19</span><span class="plan-mes">dic</span></time></p>
         <div class="plan-cuerpo">
           <h3 class="plan-t">Kalma Fest</h3>
@@ -468,11 +463,11 @@ a{color:inherit}
         <div class="plan-aliados" aria-hidden="true">
           <!-- globo provisional: pedir original --><img class="disco" src="img/aliados/comunidaddelsol-madrid.webp" srcset="img/aliados/comunidaddelsol-madrid.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
         </div>
-        <span class="plan-accion" aria-hidden="true"><span class="plan-accion-t">Quiero ir</span> <span class="flecha">→</span></span>
+        <span class="plan-flecha" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
       </a>
     </li>
     <li class="reveal" data-hasta="2027-04-01">
-      <a class="plan" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cal_marruecos" aria-label="Marruecos, en marzo: surf, culture y cowork con @liveokeypeople y @triangulosurfmorocco. Entra a VIBRA para reservar plaza">
+      <a class="plan" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cal_marruecos" aria-label="Marruecos, en marzo: Surf, culture &amp; cowork. Con @liveokeypeople y @triangulosurfmorocco. Entra a VIBRA para reservar plaza">
         <p class="plan-fecha"><time datetime="2027-03"><span class="plan-dia">MAR</span></time></p>
         <div class="plan-cuerpo">
           <h3 class="plan-t">Marruecos</h3>
@@ -483,11 +478,11 @@ a{color:inherit}
           <img class="disco" src="img/aliados/liveokeypeople.webp" srcset="img/aliados/liveokeypeople.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
           <!-- globo provisional: pedir original --><img class="disco" src="img/aliados/triangulosurfmorocco.webp" srcset="img/aliados/triangulosurfmorocco.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
         </div>
-        <span class="plan-accion" aria-hidden="true"><span class="plan-accion-t">Quiero ir</span> <span class="flecha">→</span></span>
+        <span class="plan-flecha" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
       </a>
     </li>
     <li class="reveal" data-hasta="2027-04-27">
-      <a class="plan" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cal_maldivas_abr" aria-label="Maldivas, del 19 al 26 de abril: Thulusdhoo, yoga, surf y propósito con @elenaisa_yoga. Entra a VIBRA para reservar plaza">
+      <a class="plan" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cal_maldivas_abr" aria-label="Maldivas, del 19 al 26 de abril: Thulusdhoo · yoga, surf y propósito. Con @elenaisa_yoga. Entra a VIBRA para reservar plaza">
         <p class="plan-fecha"><time datetime="2027-04-19"><span class="plan-dia rango">19–26</span><span class="plan-mes">abr</span></time></p>
         <div class="plan-cuerpo">
           <h3 class="plan-t">Maldivas</h3>
@@ -497,11 +492,11 @@ a{color:inherit}
         <div class="plan-aliados" aria-hidden="true">
           <img class="disco" src="img/aliados/elenaisa_yoga.webp" srcset="img/aliados/elenaisa_yoga.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
         </div>
-        <span class="plan-accion" aria-hidden="true"><span class="plan-accion-t">Quiero ir</span> <span class="flecha">→</span></span>
+        <span class="plan-flecha" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
       </a>
     </li>
     <li class="reveal" data-hasta="2027-06-01">
-      <a class="plan" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cal_maldivas_may" aria-label="Maldivas, en mayo: surf y propósito con @calaveritahotels y @liveokeypeople. Entra a VIBRA para reservar plaza">
+      <a class="plan" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cal_maldivas_may" aria-label="Maldivas, en mayo: Surf y propósito. Con @calaveritahotels y @liveokeypeople. Entra a VIBRA para reservar plaza">
         <p class="plan-fecha"><time datetime="2027-05"><span class="plan-dia">MAY</span></time></p>
         <div class="plan-cuerpo">
           <h3 class="plan-t">Maldivas</h3>
@@ -512,11 +507,11 @@ a{color:inherit}
           <!-- globo provisional: pedir original --><img class="disco" src="img/aliados/calaveritahotels.webp" srcset="img/aliados/calaveritahotels.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
           <img class="disco" src="img/aliados/liveokeypeople.webp" srcset="img/aliados/liveokeypeople.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
         </div>
-        <span class="plan-accion" aria-hidden="true"><span class="plan-accion-t">Quiero ir</span> <span class="flecha">→</span></span>
+        <span class="plan-flecha" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
       </a>
     </li>
     <li class="reveal" data-hasta="2027-07-01">
-      <a class="plan" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cal_bali_jun" aria-label="Bali, en junio, con teletrabajo: el viaje que te cambiará la vida, con @reviondo.r. Entra a VIBRA para reservar plaza">
+      <a class="plan" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cal_bali_jun" aria-label="Bali, en junio, con teletrabajo: El viaje que te cambiará la vida. Sal del piloto automático. Con @reviondo.r. Entra a VIBRA para reservar plaza">
         <p class="plan-fecha"><time datetime="2027-06"><span class="plan-dia">JUN</span><span class="plan-nota">+ teletrabajo</span></time></p>
         <div class="plan-cuerpo">
           <h3 class="plan-t">Bali</h3>
@@ -527,11 +522,11 @@ a{color:inherit}
           <img class="disco" src="img/aliados/flowfest.webp" srcset="img/aliados/flowfest.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
           <img class="disco" src="img/aliados/reviondo-r.webp" srcset="img/aliados/reviondo-r.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
         </div>
-        <span class="plan-accion" aria-hidden="true"><span class="plan-accion-t">Quiero ir</span> <span class="flecha">→</span></span>
+        <span class="plan-flecha" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
       </a>
     </li>
     <li class="reveal" data-hasta="2027-08-01">
-      <a class="plan" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cal_bali_jul" aria-label="Bali, en julio, con teletrabajo: el viaje que te cambiará la vida, con @liveokeypeople, una semana o 15 días. Entra a VIBRA para reservar plaza">
+      <a class="plan" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cal_bali_jul" aria-label="Bali, en julio, con teletrabajo: El viaje que te cambiará la vida. Sal del piloto automático. Con @liveokeypeople · una semana o 15 días. Entra a VIBRA para reservar plaza">
         <p class="plan-fecha"><time datetime="2027-07"><span class="plan-dia">JUL</span><span class="plan-nota">+ teletrabajo</span></time></p>
         <div class="plan-cuerpo">
           <h3 class="plan-t">Bali</h3>
@@ -541,13 +536,14 @@ a{color:inherit}
         <div class="plan-aliados" aria-hidden="true">
           <img class="disco" src="img/aliados/liveokeypeople.webp" srcset="img/aliados/liveokeypeople.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
         </div>
-        <span class="plan-accion" aria-hidden="true"><span class="plan-accion-t">Quiero ir</span> <span class="flecha">→</span></span>
+        <span class="plan-flecha" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>
       </a>
     </li>
+    <!-- calendario:fin -->
   </ol>
   <p class="cal-cta"><a class="btn btn-acento" id="cta-cal" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=calendario">Entra a VIBRA <span aria-hidden="true">→</span></a></p>
   <p class="cal-nota">Las plazas de cada plan se mueven dentro, en el grupo.</p>
-  <p class="cal-pie">¿Tienes una comunidad y quieres organizar tu viaje con VIBRA? Escríbeme a <a href="mailto:staff@vibrasociety.es?subject=Organizar%20un%20viaje%20con%20VIBRA" data-evento="clic_staff_mail">staff@vibrasociety.es</a></p>
+  <p class="cal-pie">¿Tienes una comunidad y quieres organizar tu viaje con VIBRA? Escríbeme a <a href="mailto:abrahamrojomartinez@gmail.com?subject=Organizar%20un%20viaje%20con%20VIBRA" data-evento="clic_staff_mail">abrahamrojomartinez@gmail.com</a></p>
 </section>
 
 <!-- 5 · Lo vivido -->
@@ -691,7 +687,7 @@ a{color:inherit}
       <p>Empezar, crecer, escalar o automatizar — sin que pierda su alma. Y si quieres organizar tu viaje con VIBRA, escríbeme.</p>
       <p class="lideres-enl">
         <a class="enl-crema" href="/metodo-vibra/" data-evento="clic_metodo_vibra">Ver el Método VIBRA&nbsp;<span aria-hidden="true">→</span></a>
-        <a class="enl-crema" href="mailto:staff@vibrasociety.es" data-evento="clic_staff_mail">staff@vibrasociety.es</a>
+        <a class="enl-crema" href="mailto:abrahamrojomartinez@gmail.com" data-evento="clic_staff_mail">abrahamrojomartinez@gmail.com</a>
       </p>
     </aside>
   </div>
@@ -731,7 +727,7 @@ a{color:inherit}
       <div>
         <h2 class="pie-t">Contacto</h2>
         <ul>
-          <li><a href="mailto:staff@vibrasociety.es" data-evento="clic_staff_mail">staff@vibrasociety.es</a></li>
+          <li><a href="mailto:abrahamrojomartinez@gmail.com" data-evento="clic_staff_mail">abrahamrojomartinez@gmail.com</a></li>
           <li><a href="https://www.instagram.com/vibra.society/" target="_blank" rel="noopener">@vibra.society</a></li>
         </ul>
       </div>

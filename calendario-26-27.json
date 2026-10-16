@@ -1,0 +1,190 @@
+{
+  "temporada": "26·27",
+  "actualizado": "2026-10-16",
+  "planes": [
+    {
+      "id": "2627-flow-fest",
+      "mes": "NOV",
+      "fecha": "7",
+      "titulo": "Flow Fest",
+      "etiqueta": "Flow Fest",
+      "linea": "Madrid · tardeo fitness",
+      "meta": "Tardeo fitness en Madrid · sáb 7 nov",
+      "valor": "Flow Fest · tardeo fitness en Madrid (sáb 7 nov)",
+      "con": [
+        "@travelsmob",
+        "@phoenixclub.es"
+      ],
+      "globos": [
+        "flowfest",
+        "travelsmob",
+        "phoenixclub-es"
+      ],
+      "nota": "",
+      "paginaPropia": "/flow-fest/",
+      "hasta": "2026-11-08",
+      "reservable": false,
+      "stripeUrl": null,
+      "agotado": false
+    },
+    {
+      "id": "2627-el-palmar",
+      "mes": "DIC",
+      "fecha": "2–8",
+      "titulo": "El Palmar",
+      "etiqueta": "El Palmar",
+      "linea": "Surf, clic & cowork",
+      "meta": "Surf, clic & cowork · 2–8 dic",
+      "valor": "El Palmar · surf, clic & cowork (2–8 dic)",
+      "con": [
+        "@liveokeypeople"
+      ],
+      "globos": [
+        "liveokeypeople"
+      ],
+      "nota": "",
+      "paginaPropia": null,
+      "hasta": "2026-12-09",
+      "reservable": true,
+      "stripeUrl": "https://buy.stripe.com/7sYfZhdbmdyH8myfTtgfu0g",
+      "agotado": false
+    },
+    {
+      "id": "2627-kalma-fest",
+      "mes": "DIC",
+      "fecha": "19",
+      "titulo": "Kalma Fest",
+      "etiqueta": "Kalma Fest",
+      "linea": "Tu Mini Ciudad (cowork y coliving previo) + festival",
+      "meta": "Tu Mini Ciudad (cowork y coliving previo) + festival · sáb 19 dic",
+      "valor": "Kalma Fest · Tu Mini Ciudad (cowork y coliving previo) + festival (sáb 19 dic)",
+      "con": [
+        "@comunidaddelsol.madrid"
+      ],
+      "globos": [
+        "comunidaddelsol-madrid"
+      ],
+      "nota": "",
+      "paginaPropia": null,
+      "hasta": "2026-12-20",
+      "reservable": true,
+      "stripeUrl": "https://buy.stripe.com/28E8wPc7i52b8my9v5gfu0h",
+      "agotado": false
+    },
+    {
+      "id": "2627-marruecos",
+      "mes": "MAR",
+      "fecha": "",
+      "titulo": "Marruecos",
+      "etiqueta": "Marruecos",
+      "linea": "Surf, culture & cowork",
+      "meta": "Surf, culture & cowork · marzo",
+      "valor": "Marruecos · surf, culture & cowork (marzo)",
+      "con": [
+        "@liveokeypeople",
+        "@triangulosurfmorocco"
+      ],
+      "globos": [
+        "liveokeypeople",
+        "triangulosurfmorocco"
+      ],
+      "nota": "",
+      "paginaPropia": null,
+      "hasta": "2027-04-01",
+      "reservable": true,
+      "stripeUrl": "https://buy.stripe.com/6oUaEXdbm1PZ46iePpgfu0i",
+      "agotado": false
+    },
+    {
+      "id": "2627-maldivas-abril",
+      "mes": "ABR",
+      "fecha": "19–26",
+      "titulo": "Maldivas",
+      "etiqueta": "Maldivas",
+      "linea": "Thulusdhoo · yoga, surf y propósito",
+      "meta": "Yoga, surf y propósito · 19–26 abr",
+      "valor": "Maldivas · yoga, surf y propósito (19–26 abr)",
+      "con": [
+        "@elenaisa_yoga"
+      ],
+      "globos": [
+        "elenaisa_yoga"
+      ],
+      "nota": "",
+      "paginaPropia": null,
+      "hasta": "2027-04-27",
+      "reservable": true,
+      "stripeUrl": "https://buy.stripe.com/eVq28rdbm2U3fP0bDdgfu0f",
+      "agotado": false
+    },
+    {
+      "id": "2627-maldivas-mayo",
+      "mes": "MAY",
+      "fecha": "",
+      "titulo": "Maldivas",
+      "etiqueta": "Surf y propósito en Maldivas",
+      "linea": "Surf y propósito",
+      "meta": "Mayo",
+      "valor": "Surf y propósito en Maldivas (mayo)",
+      "con": [
+        "@calaveritahotels",
+        "@liveokeypeople"
+      ],
+      "globos": [
+        "calaveritahotels",
+        "liveokeypeople"
+      ],
+      "nota": "",
+      "paginaPropia": null,
+      "hasta": "2027-06-01",
+      "reservable": true,
+      "stripeUrl": "https://buy.stripe.com/fZubJ10oAcuDauG0Yzgfu0j",
+      "agotado": false
+    },
+    {
+      "id": "2627-bali-junio",
+      "mes": "JUN",
+      "fecha": "",
+      "titulo": "Bali",
+      "etiqueta": "Bali (junio)",
+      "linea": "El viaje que te cambiará la vida. Sal del piloto automático.",
+      "meta": "El viaje que te cambiará la vida",
+      "valor": "Bali (junio): el viaje que te cambiará la vida",
+      "con": [
+        "@reviondo.r"
+      ],
+      "globos": [
+        "flowfest",
+        "reviondo-r"
+      ],
+      "nota": "+ teletrabajo",
+      "paginaPropia": null,
+      "hasta": "2027-07-01",
+      "reservable": true,
+      "stripeUrl": "https://buy.stripe.com/7sYbJ10oA3Y78my8r1gfu0k",
+      "agotado": false
+    },
+    {
+      "id": "2627-bali-julio",
+      "mes": "JUL",
+      "fecha": "",
+      "titulo": "Bali",
+      "etiqueta": "Bali (julio)",
+      "linea": "El viaje que te cambiará la vida. Sal del piloto automático.",
+      "meta": "El viaje que te cambiará la vida",
+      "valor": "Bali (julio): el viaje que te cambiará la vida",
+      "con": [
+        "@liveokeypeople · una semana o 15 días"
+      ],
+      "globos": [
+        "liveokeypeople"
+      ],
+      "nota": "+ teletrabajo",
+      "paginaPropia": null,
+      "hasta": "2027-08-01",
+      "reservable": true,
+      "stripeUrl": "https://buy.stripe.com/bJe7sLb3ebqzbyK22Dgfu0l",
+      "agotado": false
+    }
+  ]
+}
