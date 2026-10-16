@@ -243,10 +243,6 @@ a{color:inherit}
 .cap p b{color:var(--vibra-noche);font-weight:600}
 .cap-num{display:grid;place-items:center;min-height:160px}
 .cap-num span{font-family:var(--font-titular);font-weight:800;font-variation-settings:"opsz" 96;font-size:clamp(96px,8vw + 40px,160px);line-height:1;color:var(--vibra-coral);letter-spacing:-.04em}
-.cap-extra{margin-top:4px}
-.cap-extra .cap-n{color:var(--vibra-crema);margin-bottom:8px}
-.cap-extra .cap-n::before{background:var(--vibra-crema)}
-.cap-extra p{margin:0;font-size:17px;line-height:1.5}
 @media (max-width:820px){
   .cap{grid-template-columns:1fr;gap:14px;padding:30px 24px}
   .cap-num{min-height:0;order:-1;justify-items:start}
@@ -277,6 +273,20 @@ a{color:inherit}
   .cap-ej.dos .cap-ej-t,.cap-ej.dos .cap-ej-acc{grid-column:1 / -1}
 }
 @media (max-width:820px){.cap-ej{padding-top:22px;gap:20px}}
+/* Recorrido pantalla a pantalla (Fase 2): tres móviles en fila; en móvil, carrusel */
+.ej-pasos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;max-width:880px;min-width:0}
+.ej-paso{min-width:0;display:flex;flex-direction:column}
+.ej-paso .fnl-n{letter-spacing:.14em;align-items:flex-start;line-height:1.35}
+.ej-paso .fnl-n b{flex:none;margin-top:-4px}
+@media (max-width:899px){.ej-paso .fnl-n{letter-spacing:.1em;font-size:11px;min-height:2.7em}}
+.ej-paso .fnl-shot{background:var(--vibra-crema-2);box-shadow:0 14px 30px -22px rgba(43,50,45,.55)}
+.ej-paso p{margin:0;font-size:13.5px;line-height:1.45;color:var(--vibra-tinta-2)}
+.ej-pasos-hint{display:none}
+@media (max-width:699px){
+  .ej-pasos{display:flex;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;gap:14px;margin:0 -24px;padding:2px 24px 12px;scroll-padding:0 24px;scrollbar-width:thin}
+  .ej-paso{flex:0 0 74%;scroll-snap-align:start}
+  .ej-pasos-hint{display:block;margin:-10px 0 -6px;font-size:13.5px;font-weight:600;color:var(--vibra-noche)}
+}
 
 /* ── Clientes y casos ── */
 .caso{background:var(--vibra-crema-2);border:1px solid var(--vibra-linea);border-radius:var(--vibra-radio);padding:26px 30px;margin-top:16px}
@@ -666,16 +676,17 @@ html.js .rv.on{opacity:1;transform:none}
           <button class="ver-ej" data-abrir="ej-diagnostico" data-evento="clic_ejemplo_diagnostico">Ver un caso real →</button>
         </div>
         <div class="cap-num" aria-hidden="true"><span>1</span></div>
-        <!-- Ejemplos reales de la fase 1: salen del panel de la comunidad VIBRA (sin nombres). -->
+        <!-- Ejemplos reales de la fase 1: el panel de Sara · Reviondo al cerrar su Fase 1
+             (su resultado económico, desenfocado) y el interés por plan de la lista de VIBRA. -->
         <div class="cap-ej">
           <span class="cap-ej-t">Lo que sale de la auditoría</span>
           <figure class="mk-fig ancha">
-            <div class="cap-scroll"><img class="cap-img" src="ej-fase1-interes-plan.webp" width="1600" height="458" loading="lazy" decoding="async" alt="Gráfico de barras «Interés por plan»: cuántas personas han marcado cada plan en el test, del más pedido al menos"></div>
-            <figcaption class="mk-pie">Qué planes pide tu gente antes de ponerles fecha: sale del registro de interesados, y con eso se decide el calendario. <span class="cap-desliza">Desliza para verla entera →</span></figcaption>
+            <div class="cap-scroll"><img class="cap-img" src="ej-fase1-panel-sara.webp" width="1600" height="1393" loading="lazy" decoding="async" alt="Panel de Sara · Reviondo: a la izquierda, la Fase 1 entera —propuesta de valor, clienta, el camino de su gente, método de lanzamiento, lo que publica, números y calendario— y las cinco sesiones; a la derecha, «Todo lo que has logrado»: de 12 a 53 personas en su comunidad, de 3 a 7 reservas pagadas y su primer retiro Modo Avión con 10 personas"></div>
+            <figcaption class="mk-pie">Así queda el panel de una clienta al cerrar la Fase 1: a la izquierda, todo lo que ya tiene en la mano; a la derecha, lo que ha conseguido, con sus números y con fecha. Es el de Sara · Reviondo. <span class="cap-desliza">Desliza para verla entera →</span></figcaption>
           </figure>
           <figure class="mk-fig ancha">
-            <div class="cap-scroll"><img class="cap-img" src="ej-fase1-ingredientes.webp" width="1600" height="1115" loading="lazy" decoding="async" alt="Panel «Qué tiene que tener un plan de VIBRA»: seis ingredientes —escenario, ritmo, comunidad, mesa, rituales y crecimiento—, cada uno con la cifra que lo sostiene"></div>
-            <figcaption class="mk-pie">Y la lectura de esos datos: seis ingredientes que tiene que tener cada plan, con la cifra que sostiene cada uno. Así se hizo con la lista de VIBRA; así se hace con la tuya. <span class="cap-desliza">Desliza para verla entera →</span></figcaption>
+            <div class="cap-scroll"><img class="cap-img" src="ej-fase1-interes-plan.webp" width="1600" height="458" loading="lazy" decoding="async" alt="Gráfico de barras «Interés por plan»: cuántas personas han marcado cada plan en el test, del más pedido al menos"></div>
+            <figcaption class="mk-pie">Qué planes pide tu gente antes de ponerles fecha: sale del registro de interesados, y con eso se decide el calendario. <span class="cap-desliza">Desliza para verla entera →</span></figcaption>
           </figure>
         </div>
       </article>
@@ -688,20 +699,30 @@ html.js .rv.on{opacity:1;transform:none}
           <button class="ver-ej" data-abrir="ej-embudo" data-evento="clic_ejemplo_embudo">Ver un ejemplo montado →</button>
         </div>
         <div class="cap-num" aria-hidden="true"><span>2</span></div>
-        <!-- Ejemplos reales de la fase 2: una web montada en una Fase 2 y la lista de VIBRA creciendo. -->
-        <div class="cap-ej dos">
-          <span class="cap-ej-t">La máquina, montada</span>
-          <figure class="mk-fig">
-            <div class="cap-scroll"><img class="cap-img" src="ej-fase2-web-retiros.webp" width="1200" height="580" loading="lazy" decoding="async" alt="Portada de la web de una escuela de yoga: clases y viajes de yoga, surf y escalada, con los botones «Ver los próximos viajes» y «Entra en mi comunidad»"></div>
-            <figcaption class="mk-pie">Una web real, montada en una Fase 2: los viajes y la entrada a la comunidad en la misma portada. Una sola decisión, sin salidas laterales.</figcaption>
-          </figure>
-          <figure class="mk-fig">
-            <div class="cap-scroll"><img class="cap-img" src="ej-fase2-lista-crece.webp" width="1030" height="738" loading="lazy" decoding="async" alt="Gráfico «Personas en la lista»: acumulado día a día desde el 7 de julio hasta octubre, que termina en 122"></div>
-            <figcaption class="mk-pie">Así crece una lista desde que se abre la puerta: la de VIBRA, 122 personas en 14 semanas. Sin contestar mensajes uno a uno.</figcaption>
-          </figure>
+        <!-- Ejemplo real de la fase 2: el recorrido de Elena Isa, de su puerta a la clase de regalo tras reservar. -->
+        <div class="cap-ej">
+          <span class="cap-ej-t">La máquina, montada: el recorrido de Elena</span>
+          <p class="ej-pasos-hint">Desliza para verlo →</p>
+          <ol class="ej-pasos">
+            <li class="ej-paso">
+              <span class="fnl-n"><b>1</b> Entra por su enlace</span>
+              <figure class="fnl-shot"><img src="ej-fase2-elena-1-puerta.webp" width="780" height="1600" loading="lazy" decoding="async" alt="Móvil con la puerta de la comunidad de Elena Isa: «Yoga, surf y escalada. Y un grupo con el que ir», una foto de grupo y el aviso de que al entrar recibe una clase grabada"></figure>
+              <p>Un solo enlace en su bio: qué hace, para quién es y qué se lleva al entrar.</p>
+            </li>
+            <li class="ej-paso">
+              <span class="fnl-n"><b>2</b> Rellena su formulario</span>
+              <figure class="fnl-shot"><img src="ej-fase2-elena-2-formulario.webp" width="780" height="1600" loading="lazy" decoding="async" alt="Móvil con el formulario de entrada: «¿Qué te apetece?», con el viaje de surf y yoga a Lombok marcado, y «¿Has viajado ya conmigo?»"></figure>
+              <p>Dice qué viaje le apetece y si ya ha viajado con ella. Elena sabe a quién escribir, y de qué.</p>
+            </li>
+            <li class="ej-paso">
+              <span class="fnl-n"><b>3</b> Su regalo, al reservar</span>
+              <figure class="fnl-shot"><img src="ej-fase2-elena-3-regalo.webp" width="780" height="1600" loading="lazy" decoding="async" alt="Móvil con la página que llega tras reservar: «Tu regalo por reservar · Una hora de Rocket, para ir llegando a Lombok», con la clase en vídeo"></figure>
+              <p>Paga la señal y aterriza aquí: su clase de yoga de regalo, sola. Elena no tiene que mandar nada.</p>
+            </li>
+          </ol>
           <div class="cap-ej-acc">
-            <a class="btn-ej" href="https://vibrasociety.es/comunidad?utm_source=metodo-vibra&amp;utm_medium=fase2" target="_blank" rel="noopener" data-evento="clic_ejemplo_comunidad">Recorrer el embudo de VIBRA <span class="flecha" aria-hidden="true">→</span></a>
-            <span class="ej-nota">Se abre en otra pestaña. Empieza en una pregunta y termina en el grupo: dos minutos.</span>
+            <a class="btn-ej" href="https://vibra-business-ejemplos.netlify.app/regalo/" target="_blank" rel="noopener" data-evento="clic_ejemplo_regalo">Ver su página de regalo <span class="flecha" aria-hidden="true">→</span></a>
+            <span class="ej-nota">Se abre en otra pestaña. Es la página que le llega a quien reserva con Elena.</span>
           </div>
         </div>
       </article>
@@ -729,16 +750,11 @@ html.js .rv.on{opacity:1;transform:none}
             <figcaption class="mk-pie">El cuaderno del viaje de Asturias: lo que fue contestando la gente que reservó, leído del CRM en el momento. Con eso se cierran los grupos y el material, sin perseguir a nadie. <span class="cap-desliza">Desliza para verla entera →</span></figcaption>
           </figure>
           <div class="cap-ej-acc">
-            <a class="btn-ej" href="https://vibrasociety.es/viaje-vibra-con-liveokey/" target="_blank" rel="noopener" data-evento="clic_ejemplo_viaje">Ver el viaje montado <span class="flecha" aria-hidden="true">→</span></a>
-            <span class="ej-nota">Se abre en otra pestaña. La página del viaje a Asturias, lanzado junto a LiveOkey.</span>
+            <a class="btn-ej" href="https://vibrasociety.es/viaje-vibra-con-liveokey/previa/" target="_blank" rel="noopener" data-evento="clic_ejemplo_viaje">Ver el viaje montado <span class="flecha" aria-hidden="true">→</span></a>
+            <span class="ej-nota">Se abre en otra pestaña. La previa «Nos vamos al norte»; bajando, llegas al viaje a Asturias con LiveOkey.</span>
           </div>
         </div>
       </article>
-
-      <div class="cap-extra caja rv">
-        <span class="cap-n">Y si quieres, me quedo</span>
-        <p><b>Growth partner:</b> cada mes una pieza nueva funcionando y los números encima de la mesa. Revisión mensual y salida fácil, siempre.</p>
-      </div>
 
     </div>
   </div>
@@ -769,7 +785,7 @@ html.js .rv.on{opacity:1;transform:none}
       <div class="ad">
         <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Retiros de yoga en Cataluña y Lombok, y mucha gente que preguntaba y no cerraba: <b>«nunca acabas de hacer el enganche final»</b>.</p></div>
         <span class="ad-flecha" aria-hidden="true">→</span>
-        <div class="ad-col ad-a"><span class="ad-k">Lo que ya pasa</span><p>Su <b>test de entrada</b>, su grupo de Lombok con su <b>enlace de reserva</b> y su calendario. La portada de web que ves arriba, en la Fase 2, es la suya. La Fase 2 arrancó el 14 de octubre.</p></div>
+        <div class="ad-col ad-a"><span class="ad-k">Lo que ya pasa</span><p>Su <b>test de entrada</b>, su grupo de Lombok con su <b>enlace de reserva</b> y su calendario. El recorrido que ves arriba, en la Fase 2, es el suyo. La Fase 2 arrancó el 14 de octubre.</p></div>
       </div>
       <div class="caso-stats">
         <span class="chip">Test de <b>entrada</b></span>
