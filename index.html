@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Hanken+Grotesk:wght@400..800&display=swap">
 <!-- Simple Analytics: solo la cola de eventos. El script lo inyecta Netlify (no añadirlo aquí). -->
 <script>window.sa_event=window.sa_event||function(){var a=[].slice.call(arguments);window.sa_event.q?window.sa_event.q.push(a):window.sa_event.q=[a]};document.documentElement.classList.add('js');</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"VIBRA Society","url":"https://vibrasociety.es/","logo":"https://vibrasociety.es/apple-touch-icon.png","email":"staff@vibrasociety.com","sameAs":["https://www.instagram.com/vibra.society/"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"VIBRA Society","url":"https://vibrasociety.es/","logo":"https://vibrasociety.es/apple-touch-icon.png","email":"staff@vibrasociety.es","sameAs":["https://www.instagram.com/vibra.society/"]}</script>
 <style>
 /* ── A · Tokens del manual v4 §4 (literales; la v5 solo cambiará valores) ── */
 :root{
@@ -172,35 +172,54 @@ a{color:inherit}
 .cal-sub{color:var(--vibra-crema-suave);font-size:var(--t-lead);line-height:1.45}
 .cal-sub strong{color:var(--vibra-crema);font-weight:600}
 .cal-lista{list-style:none;margin:0 auto;padding:0;max-width:880px;display:grid;gap:12px}
-.plan{display:grid;grid-template-columns:88px minmax(0,1fr);grid-template-areas:"fecha cuerpo" "fecha accion";grid-template-rows:1fr auto;min-height:88px;border-radius:var(--vibra-radio);overflow:hidden;background:var(--vibra-crema);color:var(--vibra-noche);text-decoration:none}
+.cal-lista > li{position:relative}
+/* Cada fila es un único <a>. Sin JS la etiqueta («Quiero ir →») va en línea, bajo los discos.
+   Con JS (.js) es una pastilla que aparece al pasar el ratón, al enfocar o, en móvil (sin hover),
+   cuando la fila cruza la franja central de la pantalla (.activo, ver el script). */
+.plan{position:relative;display:grid;grid-template-columns:88px minmax(0,1fr);grid-template-areas:"fecha cuerpo" "fecha aliados" "fecha accion";grid-template-rows:1fr auto auto;min-height:88px;border-radius:var(--vibra-radio);overflow:hidden;background:var(--vibra-crema);color:var(--vibra-noche);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
 .plan:focus-visible{outline:3px solid var(--vibra-crema);outline-offset:3px}
 .plan-fecha{grid-area:fecha;margin:0;background:var(--vibra-coral);color:var(--vibra-noche);display:grid;place-items:center;text-align:center;padding:14px 4px}
 .plan-dia{display:block;font:800 var(--t-cifra)/1 var(--font-titular);font-variation-settings:"opsz" 96;letter-spacing:-.015em;white-space:nowrap}
 .plan-dia.rango{letter-spacing:-.03em}
 .plan-mes{display:block;margin-top:6px;font:800 1.1875rem/1 var(--font-titular);letter-spacing:.2em;text-transform:uppercase;margin-right:-.2em} /* 19 px: negro verdoso sobre coral, en negrita desde 18 px (manual §2) */
 .plan-nota{display:block;margin-top:6px;font:800 10px/1.2 var(--font-titular);letter-spacing:.15em;text-transform:uppercase}
-.plan-cuerpo{grid-area:cuerpo;padding:14px 16px 0 20px;min-width:0}
+.plan-cuerpo{grid-area:cuerpo;padding:14px 16px 12px 20px;min-width:0}
 .plan-t{margin:0;font:800 var(--t-h3)/1.05 var(--font-titular);font-variation-settings:"opsz" 96;letter-spacing:-.015em}
 .plan-linea{margin:4px 0 0;color:var(--vibra-tinta-2)}
 .plan-con{margin:6px 0 0;color:var(--vibra-coral-texto);font-weight:600;font-size:var(--t-nota);line-height:1.4}
-.plan-aliados{grid-area:aliados;display:none}
-.disco{width:52px;height:52px;border-radius:50%;object-fit:cover;margin-left:-12px;box-shadow:0 0 0 2px var(--vibra-crema)}
-.disco:first-child{margin-left:0;position:relative;z-index:1} /* el primero encima: su logo llega al borde */
-.plan-accion{grid-area:accion;align-self:end;padding:8px 16px 14px 20px;font:600 var(--t-nota)/1.2 var(--font-texto);color:var(--vibra-coral-texto);white-space:nowrap}
-.flecha{display:inline-block;transition:transform .15s}
+.plan-aliados{grid-area:aliados;display:flex;align-items:center;margin-top:-6px;padding:0 16px 10px 20px} /* móvil: discos de 36 px bajo la línea «Con @…» (la fila crece ~13 px) */
+.plan-aliados:empty{display:none}
+.disco{position:relative;width:36px;height:36px;border-radius:50%;object-fit:cover;margin-left:-10px;box-shadow:0 0 0 2px var(--vibra-crema)}
+.disco:first-child{margin-left:0}
+.disco:nth-child(1){z-index:3}.disco:nth-child(2){z-index:2}.disco:nth-child(3){z-index:1} /* el primero encima, como en la historia */
+.plan-accion{grid-area:accion;margin-top:0;padding:0 16px 14px 20px;font:600 var(--t-nota)/1.2 var(--font-texto);color:var(--vibra-coral-texto);white-space:nowrap}
+.flecha{display:inline-block;transition:transform .2s}
 .plan:hover .plan-accion-t{text-decoration:underline;text-underline-offset:3px}
 .plan:hover .flecha{transform:translateX(3px)}
+/* Con JS: la etiqueta es una pastilla (botón principal: noche sobre crema, texto 600 a 18 px) centrada sobre la parte crema.
+   Para que sea coral: background coral + color noche. Se evita porque el CTA coral del calendario, la barra fija de móvil
+   y la fila de Flow Fest (conversión secundaria, spec §0) estarían a la vista a la vez: solo un botón de acento por pantalla. */
+.js .plan{grid-template-areas:"fecha cuerpo" "fecha aliados";grid-template-rows:1fr auto}
+.js .plan-cuerpo,.js .plan-aliados{transition:opacity .2s ease,filter .2s ease}
+.js .plan-accion{grid-column:2 / -1;grid-row:1 / -1;place-self:center;z-index:2;margin:0;padding:13px 22px;border-radius:var(--vibra-radio-pastilla);background:var(--vibra-noche);color:var(--vibra-crema);font:600 1.125rem/1 var(--font-texto);box-shadow:0 6px 18px rgba(43,50,45,.25);opacity:0;transform:scale(.94);pointer-events:none;transition:opacity .2s ease,transform .2s ease}
+.js .plan:hover,.js .plan:focus-visible,.js .plan.activo{z-index:2;transform:scale(1.025);box-shadow:0 14px 36px rgba(0,0,0,.35)}
+.js .plan:hover .plan-cuerpo,.js .plan:hover .plan-aliados,.js .plan:focus-visible .plan-cuerpo,.js .plan:focus-visible .plan-aliados,.js .plan.activo .plan-cuerpo,.js .plan.activo .plan-aliados{opacity:.55;filter:blur(1px)}
+.js .plan:hover .plan-accion,.js .plan:focus-visible .plan-accion,.js .plan.activo .plan-accion{opacity:1;transform:none}
+.js .plan:hover .plan-accion-t{text-decoration:none}
 .cal-cta{text-align:center;margin:32px 0 0}
 .cal-nota{text-align:center;color:var(--vibra-crema-suave);font-size:var(--t-nota);margin:14px 0 0}
 .cal-pie{text-align:center;color:var(--vibra-crema-suave);font-size:var(--t-nota);line-height:1.5;margin:28px auto 0;max-width:46ch}
 .cal-pie a{color:var(--vibra-crema);font-weight:600;text-underline-offset:3px;display:inline-block;padding:12px 0;margin:-12px 0}
 @media (max-width:599px){.plan-nota{letter-spacing:0;white-space:nowrap}} /* cabe en la celda de 88 px sin el eje wdth */
 @media (min-width:600px){
-  .plan{grid-template-columns:clamp(88px,20vw,180px) minmax(0,1fr) 108px 9.5rem;grid-template-areas:"fecha cuerpo aliados accion";grid-template-rows:auto}
+  .plan{grid-template-columns:clamp(88px,20vw,180px) minmax(0,1fr) auto 9.5rem;grid-template-areas:"fecha cuerpo aliados accion";grid-template-rows:auto}
+  .js .plan{grid-template-columns:clamp(88px,20vw,180px) minmax(0,1fr) auto;grid-template-areas:"fecha cuerpo aliados"}
   .plan-fecha{padding:14px 8px}
   .plan-cuerpo{align-self:center;padding:16px 12px 16px 20px}
-  .plan-aliados{display:flex;align-items:center;justify-content:flex-end;padding-right:12px}
-  .plan-accion{align-self:center;padding:0 20px 0 4px;text-align:right}
+  .plan-aliados{align-self:center;justify-content:flex-end;margin:0;padding:0 16px 0 0}
+  .disco{width:52px;height:52px;margin-left:-12px}
+  .disco:first-child{margin-left:0}
+  .plan-accion{align-self:center;margin:0;padding:0 20px 0 4px;text-align:right}
 }
 @media (min-width:768px){.cal-cab > img{object-position:50% 35%}}
 
@@ -346,6 +365,7 @@ a{color:inherit}
   *,*::before,*::after{transition:none!important;animation:none!important}
   .js .reveal,.js .reveal-fundido{opacity:1;transform:none}
   .btn:hover,.plan:hover .flecha{transform:none}
+  .js .plan:hover,.js .plan:focus-visible,.js .plan.activo,.js .plan-accion{transform:none}
 }
 </style>
 </head>
@@ -416,8 +436,9 @@ a{color:inherit}
           <p class="plan-con">Con @travelsmob y @phoenixclub.es</p>
         </div>
         <div class="plan-aliados" aria-hidden="true">
-          <img class="disco" src="img/aliados/travelsmob.webp" srcset="img/aliados/travelsmob.webp 104w" sizes="52px" width="104" height="104" loading="lazy" decoding="async" alt="">
-          <img class="disco" src="img/aliados/phoenix.webp" srcset="img/aliados/phoenix.webp 104w" sizes="52px" width="104" height="104" loading="lazy" decoding="async" alt="">
+          <img class="disco" src="img/aliados/flowfest.webp" srcset="img/aliados/flowfest.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
+          <img class="disco" src="img/aliados/travelsmob.webp" srcset="img/aliados/travelsmob.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
+          <img class="disco" src="img/aliados/phoenixclub-es.webp" srcset="img/aliados/phoenixclub-es.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
         </div>
         <span class="plan-accion" aria-hidden="true"><span class="plan-accion-t">Ver el Flow Fest</span> <span class="flecha">→</span></span>
       </a>
@@ -431,7 +452,7 @@ a{color:inherit}
           <p class="plan-con">Con @liveokeypeople</p>
         </div>
         <div class="plan-aliados" aria-hidden="true">
-          <img class="disco" src="img/aliados/disco-liveokey.webp" srcset="img/aliados/disco-liveokey.webp 104w" sizes="52px" width="104" height="104" loading="lazy" decoding="async" alt="">
+          <img class="disco" src="img/aliados/liveokeypeople.webp" srcset="img/aliados/liveokeypeople.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
         </div>
         <span class="plan-accion" aria-hidden="true"><span class="plan-accion-t">Quiero ir</span> <span class="flecha">→</span></span>
       </a>
@@ -444,7 +465,9 @@ a{color:inherit}
           <p class="plan-linea">Tu Mini Ciudad (cowork y coliving previo) + festival</p>
           <p class="plan-con">Con @comunidaddelsol.madrid</p>
         </div>
-        <div class="plan-aliados" aria-hidden="true"></div>
+        <div class="plan-aliados" aria-hidden="true">
+          <!-- globo provisional: pedir original --><img class="disco" src="img/aliados/comunidaddelsol-madrid.webp" srcset="img/aliados/comunidaddelsol-madrid.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
+        </div>
         <span class="plan-accion" aria-hidden="true"><span class="plan-accion-t">Quiero ir</span> <span class="flecha">→</span></span>
       </a>
     </li>
@@ -457,7 +480,8 @@ a{color:inherit}
           <p class="plan-con">Con @liveokeypeople y @triangulosurfmorocco</p>
         </div>
         <div class="plan-aliados" aria-hidden="true">
-          <img class="disco" src="img/aliados/disco-liveokey.webp" srcset="img/aliados/disco-liveokey.webp 104w" sizes="52px" width="104" height="104" loading="lazy" decoding="async" alt="">
+          <img class="disco" src="img/aliados/liveokeypeople.webp" srcset="img/aliados/liveokeypeople.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
+          <!-- globo provisional: pedir original --><img class="disco" src="img/aliados/triangulosurfmorocco.webp" srcset="img/aliados/triangulosurfmorocco.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
         </div>
         <span class="plan-accion" aria-hidden="true"><span class="plan-accion-t">Quiero ir</span> <span class="flecha">→</span></span>
       </a>
@@ -470,7 +494,9 @@ a{color:inherit}
           <p class="plan-linea">Thulusdhoo · yoga, surf y propósito</p>
           <p class="plan-con">Con @elenaisa_yoga</p>
         </div>
-        <div class="plan-aliados" aria-hidden="true"></div>
+        <div class="plan-aliados" aria-hidden="true">
+          <img class="disco" src="img/aliados/elenaisa_yoga.webp" srcset="img/aliados/elenaisa_yoga.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
+        </div>
         <span class="plan-accion" aria-hidden="true"><span class="plan-accion-t">Quiero ir</span> <span class="flecha">→</span></span>
       </a>
     </li>
@@ -483,7 +509,8 @@ a{color:inherit}
           <p class="plan-con">Con @calaveritahotels y @liveokeypeople</p>
         </div>
         <div class="plan-aliados" aria-hidden="true">
-          <img class="disco" src="img/aliados/disco-liveokey.webp" srcset="img/aliados/disco-liveokey.webp 104w" sizes="52px" width="104" height="104" loading="lazy" decoding="async" alt="">
+          <!-- globo provisional: pedir original --><img class="disco" src="img/aliados/calaveritahotels.webp" srcset="img/aliados/calaveritahotels.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
+          <img class="disco" src="img/aliados/liveokeypeople.webp" srcset="img/aliados/liveokeypeople.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
         </div>
         <span class="plan-accion" aria-hidden="true"><span class="plan-accion-t">Quiero ir</span> <span class="flecha">→</span></span>
       </a>
@@ -496,7 +523,9 @@ a{color:inherit}
           <p class="plan-linea">El viaje que te cambiará la vida. Sal del piloto automático.</p>
           <p class="plan-con">Con @reviondo.r</p>
         </div>
-        <div class="plan-aliados" aria-hidden="true"></div>
+        <div class="plan-aliados" aria-hidden="true">
+          <img class="disco" src="img/aliados/reviondo-r.webp" srcset="img/aliados/reviondo-r.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
+        </div>
         <span class="plan-accion" aria-hidden="true"><span class="plan-accion-t">Quiero ir</span> <span class="flecha">→</span></span>
       </a>
     </li>
@@ -509,7 +538,7 @@ a{color:inherit}
           <p class="plan-con">Con @liveokeypeople · una semana o 15 días</p>
         </div>
         <div class="plan-aliados" aria-hidden="true">
-          <img class="disco" src="img/aliados/disco-liveokey.webp" srcset="img/aliados/disco-liveokey.webp 104w" sizes="52px" width="104" height="104" loading="lazy" decoding="async" alt="">
+          <img class="disco" src="img/aliados/liveokeypeople.webp" srcset="img/aliados/liveokeypeople.webp 104w" sizes="(min-width: 600px) 52px, 36px" width="104" height="104" loading="lazy" decoding="async" alt="">
         </div>
         <span class="plan-accion" aria-hidden="true"><span class="plan-accion-t">Quiero ir</span> <span class="flecha">→</span></span>
       </a>
@@ -517,7 +546,7 @@ a{color:inherit}
   </ol>
   <p class="cal-cta"><a class="btn btn-acento" id="cta-cal" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=calendario">Entra a VIBRA <span aria-hidden="true">→</span></a></p>
   <p class="cal-nota">Las plazas de cada plan se mueven dentro, en el grupo.</p>
-  <p class="cal-pie">¿Tienes una comunidad y quieres organizar tu viaje con VIBRA? Escríbeme a <a href="mailto:staff@vibrasociety.com?subject=Organizar%20un%20viaje%20con%20VIBRA" data-evento="clic_staff_mail">staff@vibrasociety.com</a></p>
+  <p class="cal-pie">¿Tienes una comunidad y quieres organizar tu viaje con VIBRA? Escríbeme a <a href="mailto:staff@vibrasociety.es?subject=Organizar%20un%20viaje%20con%20VIBRA" data-evento="clic_staff_mail">staff@vibrasociety.es</a></p>
 </section>
 
 <!-- 5 · Lo vivido -->
@@ -661,7 +690,7 @@ a{color:inherit}
       <p>Empezar, crecer, escalar o automatizar — sin que pierda su alma. Y si quieres organizar tu viaje con VIBRA, escríbeme.</p>
       <p class="lideres-enl">
         <a class="enl-crema" href="/metodo-vibra/" data-evento="clic_metodo_vibra">Ver el Método VIBRA&nbsp;<span aria-hidden="true">→</span></a>
-        <a class="enl-crema" href="mailto:staff@vibrasociety.com" data-evento="clic_staff_mail">staff@vibrasociety.com</a>
+        <a class="enl-crema" href="mailto:staff@vibrasociety.es" data-evento="clic_staff_mail">staff@vibrasociety.es</a>
       </p>
     </aside>
   </div>
@@ -701,7 +730,7 @@ a{color:inherit}
       <div>
         <h2 class="pie-t">Contacto</h2>
         <ul>
-          <li><a href="mailto:staff@vibrasociety.com" data-evento="clic_staff_mail">staff@vibrasociety.com</a></li>
+          <li><a href="mailto:staff@vibrasociety.es" data-evento="clic_staff_mail">staff@vibrasociety.es</a></li>
           <li><a href="https://www.instagram.com/vibra.society/" target="_blank" rel="noopener">@vibra.society</a></li>
         </ul>
       </div>
@@ -729,6 +758,23 @@ $$('[data-hasta]').forEach(function(el){if(hoy>=new Date(el.dataset.hasta))el.hi
 var cab=d.getElementById('cab');
 function filete(){cab.classList.toggle('con-filete',window.scrollY>8);}
 addEventListener('scroll',filete,{passive:true});filete();
+/* Calendario sin hover (móvil): la fila que cruza la franja central de la pantalla lleva .activo; si hay dos, la primera. El toque navega. */
+var planes=[].slice.call($$('.plan')),mqTacto=matchMedia('(hover: none)'),ioPlan=null;
+function centroPlan(){
+  if(ioPlan){ioPlan.disconnect();ioPlan=null;}
+  planes.forEach(function(p){p.classList.remove('activo');});
+  if(!mqTacto.matches||!('IntersectionObserver' in window))return;
+  var dentro=new Set();
+  ioPlan=new IntersectionObserver(function(es){
+    es.forEach(function(e){e.isIntersecting?dentro.add(e.target):dentro.delete(e.target);});
+    var primero=null;
+    for(var i=0;i<planes.length;i++){if(dentro.has(planes[i])){primero=planes[i];break;}}
+    planes.forEach(function(p){p.classList.toggle('activo',p===primero);});
+  },{rootMargin:'-40% 0px -40% 0px'});
+  planes.forEach(function(p){ioPlan.observe(p);});
+}
+centroPlan();
+mqTacto.addEventListener?mqTacto.addEventListener('change',centroPlan):mqTacto.addListener(centroPlan);
 var rev=$$('.reveal,.reveal-fundido');
 if(!('IntersectionObserver' in window)){rev.forEach(function(e){e.classList.add('visto');});return;}
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visto');io.unobserve(e.target);}});},{rootMargin:'0px 0px -6% 0px'});
