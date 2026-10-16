@@ -109,31 +109,22 @@ a{color:inherit}
 }
 
 /* ── Hero: portada Business a fondo negro verdoso ── */
-.hero{position:relative;isolation:isolate;background:var(--vibra-noche);color:var(--vibra-crema);overflow:hidden;padding:28px 0 56px}
+.hero{position:relative;isolation:isolate;background:var(--vibra-noche);color:var(--vibra-crema);overflow:hidden;padding:28px 0 44px}
 .hero .wrap{position:relative;z-index:1}
-.hero-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px}
-.hero-logo{display:none;width:176px;line-height:0} /* en móvil la cabecera ya lleva el logo justo encima: no se repite */
-.hero-logo img{width:100%}
 .hero .vibra-antetitulo{color:var(--vibra-crema)}
-.hero h1{font-size:var(--t-hero);max-width:13ch;margin:40px 0 18px}
+.hero h1{font-size:var(--t-hero);max-width:13ch;margin:26px 0 18px}
 .hero h1 .coral{color:var(--vibra-coral)}
 .hero .sub{font-size:var(--t-lead);line-height:1.45;color:var(--vibra-crema);max-width:46ch}
 .hero .sub b{font-weight:600;color:var(--vibra-crema)}
 .cta-row{display:flex;flex-direction:column;align-items:stretch;gap:12px;margin-top:28px}
 .cta-row .btn{width:100%}
 .cta-note{font-size:var(--t-nota);line-height:1.4;color:var(--vibra-crema-suave);text-align:center}
-/* la onda en pulso cruza la portada una vez (linea-pico.svg, coral) */
-.hero-onda{position:absolute;z-index:0;right:-10%;bottom:-4px;width:min(92vw,420px);color:var(--vibra-coral);pointer-events:none;line-height:0}
-.hero-onda svg{display:block;width:100%;height:auto}
 @media (min-width:768px){
-  .hero{padding-top:36px}
-  .hero-logo{display:block;width:220px}
-  .hero h1{margin:64px 0 22px}
+  .hero{padding-top:44px;padding-bottom:60px}
+  .hero h1{margin:36px 0 22px}
   .cta-row{flex-direction:row;align-items:center;gap:22px;margin-top:34px}
   .cta-row .btn{width:auto}
   .cta-note{text-align:left;max-width:30ch}
-  .hero{padding-bottom:72px}
-  .hero-onda{right:-2%;bottom:-16px;width:min(46vw,620px)}
 }
 @media (min-width:1024px){.hero h1{max-width:15ch}}
 
@@ -151,6 +142,7 @@ a{color:inherit}
 .plazas-fila span.lleno{background:var(--vibra-coral);border-color:var(--vibra-coral);transform:scale(1.14)}
 .plazas-fila span.tope{background:var(--vibra-noche);border-color:var(--vibra-noche)}
 .plazas-btn{background:transparent;border:1.5px solid var(--vibra-noche);color:var(--vibra-noche);border-radius:var(--vibra-radio-pastilla);min-height:44px;padding:9px 20px;font:inherit;font-size:15px;font-weight:600;cursor:pointer;transition:background-color .2s,color .2s}
+@media (max-width:420px){.plazas-btn{font-size:14px;padding:9px 16px}}
 .plazas-btn:hover{background:var(--vibra-noche);color:var(--vibra-crema)}
 .plazas-btn[hidden]{display:none}
 .plazas-msg{margin-top:14px;font-size:16.5px;line-height:1.5;color:var(--vibra-tinta-2);min-height:1.2em}
@@ -161,16 +153,14 @@ a{color:inherit}
 .plazas-sig[hidden]{display:none}
 @keyframes sigEntra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-.miedo{background:var(--vibra-crema-2);border:1px solid var(--vibra-linea);border-radius:var(--vibra-radio);padding:40px 40px;margin-top:40px;display:grid;grid-template-columns:1.35fr .65fr;gap:38px;align-items:center}
-.miedo-nota{font-family:var(--font-titular);font-weight:800;text-transform:uppercase;letter-spacing:.3em;font-size:var(--t-ante);margin-bottom:14px}
-.miedo-nota::before{content:"";display:inline-block;width:28px;height:2px;margin-right:10px;vertical-align:middle;background:var(--vibra-coral)}
+.miedo{background:var(--vibra-crema-2);border:1px solid var(--vibra-linea);border-radius:var(--vibra-radio);padding:32px 36px;margin-top:36px;display:grid;grid-template-columns:1fr 240px;gap:34px;align-items:center}
 .miedo .q{font-family:var(--font-titular);font-weight:800;font-variation-settings:"opsz" 96;letter-spacing:-.015em;line-height:1.05;font-size:clamp(1.5rem,1.1rem + 2vw,2.125rem);max-width:22ch;text-wrap:balance}
-.miedo p:not(.q):not(.miedo-nota){margin-top:18px;color:var(--vibra-tinta-2);max-width:62ch}
+.miedo p:not(.q){margin-top:16px;color:var(--vibra-tinta-2);max-width:62ch}
 .miedo p b{color:var(--vibra-noche);font-weight:600}
-.miedo-ola{display:block;margin-top:22px;width:132px;color:var(--vibra-coral)}
 .miedo-foto img{width:100%;border-radius:var(--vibra-radio)}
-@media (max-width:860px){.miedo{grid-template-columns:1fr;gap:26px;padding:30px 24px}.miedo-foto{max-width:330px}}
-@media (max-width:560px){.miedo{padding:26px 18px}}
+@media (max-width:860px){.miedo{grid-template-columns:1fr;gap:20px;padding:28px 24px}
+  .miedo-foto img{height:190px;object-fit:cover;object-position:center 42%}}
+@media (max-width:560px){.miedo{padding:24px 18px}}
 
 /* ── Te va a sonar ── */
 .caida{list-style:none;margin:6px 0 4px;padding:0;display:grid;max-width:620px}
@@ -187,8 +177,6 @@ a{color:inherit}
 .sonar-q::before{content:"";position:absolute;top:0;left:26px;width:28px;height:3px;background:var(--vibra-coral)}
 .sonar-q blockquote{margin:0;font-family:var(--font-titular);font-weight:800;font-size:19px;line-height:1.25;letter-spacing:-.01em;color:var(--vibra-noche)}
 .sonar-q figcaption{margin-top:12px;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--vibra-tinta-2);font-weight:600}
-.sonar-pie{margin:26px auto 0;max-width:640px;text-align:center;color:var(--vibra-tinta-2)}
-.sonar-pie b{color:var(--vibra-noche);font-weight:600}
 @media (max-width:720px){.sonar-grid{grid-template-columns:1fr}}
 
 /* ── La guía: Abraham aparece a lo largo de la página ── */
@@ -234,6 +222,16 @@ a{color:inherit}
   .cam-linea i{width:36px;height:36px;font-size:15px}}
 
 /* ── Tres fases (número de paso en coral, Bricolage) ── */
+/* cabecera de la sección con Abraham marcando el tres junto al titular */
+.met-cab{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"k pj" "t pj" "i pj";column-gap:24px;align-items:end}
+.met-cab .sec-kicker{grid-area:k}
+.met-cab .sec-title{grid-area:t}
+.met-cab .sec-intro{grid-area:i}
+.met-pj{grid-area:pj;align-self:end;height:290px;width:auto;margin:0 10px -36px 0;filter:drop-shadow(0 16px 24px rgba(43,50,45,.20))}
+@media (max-width:820px){
+  .met-cab{grid-template-areas:"k pj" "t pj" "i i";column-gap:6px}
+  .met-pj{height:178px;margin:0 -6px 6px 0;align-self:end}
+}
 .capitulos{margin-top:36px;display:grid;gap:14px}
 .cap{display:grid;grid-template-columns:1fr 220px;gap:30px;align-items:center;background:var(--vibra-crema);border:1px solid var(--vibra-linea);border-radius:var(--vibra-radio);padding:36px 38px;overflow:hidden}
 .cap-n{display:block;font-family:var(--font-titular);font-weight:800;font-size:var(--t-ante);letter-spacing:.3em;text-transform:uppercase;color:var(--vibra-noche);margin-bottom:12px}
@@ -262,6 +260,15 @@ a{color:inherit}
 @media (max-width:699px){
   .mk-fig.ancha .cap-img{min-width:720px}
   .mk-fig.ancha .cap-desliza{display:block;margin-top:3px;font-weight:600;color:var(--vibra-noche)}
+}
+/* Fase 1: el menú del panel, partido en dos columnas a la misma altura */
+.mk-fig.menu{max-width:600px}
+.mk-fig.menu .cap-scroll{background:#F7F2E4}
+.menu-cols{display:grid;grid-template-columns:1fr 1fr;align-items:start}
+.menu-cols img{display:block;width:100%;height:auto}
+@media (max-width:699px){
+  .menu-cols{min-width:440px}
+  .mk-fig.menu .cap-desliza{display:block;margin-top:3px;font-weight:600;color:var(--vibra-noche)}
 }
 .cap-ej-acc{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:-4px}
 .btn-ej{display:inline-flex;align-items:center;gap:8px;min-height:44px;background:var(--vibra-noche);color:var(--vibra-crema);font:600 14.5px/1.2 var(--font-texto);border-radius:var(--vibra-radio-pastilla);padding:11px 18px;text-decoration:none;transition:background-color .2s,transform .15s}
@@ -331,14 +338,27 @@ details[open] summary::before{transform:rotate(90deg)}
 .otros-label b{font-family:var(--font-titular);font-weight:800;font-size:18px}
 .otros-label span{font-size:14px;color:var(--vibra-tinta-2)}
 .otros-label i{flex:1;height:1px;background:var(--vibra-linea);display:block}
-@media (max-width:560px){.otros-label.origen{flex-wrap:wrap;gap:6px 10px}.otros-label.origen i{flex:1 1 100%}}
+@media (max-width:560px){.otros-label{flex-wrap:wrap;gap:4px 10px}.otros-label i{flex:1 1 100%}}
 .tray{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .tray .chip{font-size:13px;background:var(--vibra-crema-2)}
-.caso-fotos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
-.caso-fotos figure{margin:0}
-.caso-fotos img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:var(--vibra-radio);border:1px solid var(--vibra-linea);background:var(--vibra-crema)}
-.caso-fotos figcaption{margin-top:9px;font-size:14px;line-height:1.5;color:var(--vibra-tinta-2)}
-@media (max-width:520px){.caso-fotos{gap:11px}.caso-fotos figcaption{font-size:13px}}
+.caso-fotos{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;margin-top:16px}
+.caso-fotos figure{margin:0;display:flex;gap:13px;align-items:flex-start}
+.caso-fotos img{flex:none;display:block;width:112px;height:140px;object-fit:cover;border-radius:10px;border:1px solid var(--vibra-linea);background:var(--vibra-crema)}
+.caso-fotos figcaption{margin:0;font-size:13.5px;line-height:1.5;color:var(--vibra-tinta-2)}
+@media (max-width:640px){.caso-fotos{grid-template-columns:1fr;gap:12px}.caso-fotos img{width:76px;height:95px}.caso-fotos figcaption{font-size:13px}}
+/* avatar de iniciales para quien no tiene logo publicado (noche/crema, sin inventar marcas) */
+.caso-ini{display:grid;place-items:center;background:var(--vibra-noche);color:var(--vibra-crema);font-family:var(--font-titular);font-weight:800;font-size:14px;letter-spacing:-.01em;line-height:1}
+.caso.cliente .caso-ini{font-size:15px}
+/* VIBRA: la tarjeta lleva al lado una pantalla de móvil con el calendario */
+.caso.con-shot{display:grid;grid-template-columns:minmax(0,1fr) 152px;gap:0 30px;align-items:start}
+.caso-main{min-width:0}
+.caso-shot{margin:0}
+.caso-shot img{display:block;width:100%;height:auto;border-radius:18px;border:1px solid var(--vibra-linea);box-shadow:0 14px 30px -20px rgba(43,50,45,.6)}
+.caso-shot figcaption{margin-top:9px;font-size:13px;line-height:1.45;color:var(--vibra-tinta-2)}
+@media (max-width:760px){.caso.con-shot{display:block}
+  .caso-shot{display:flex;align-items:flex-end;gap:14px;margin-top:16px}
+  .caso-shot img{flex:none;width:136px;border-radius:14px}
+  .caso-shot figcaption{margin:0 0 6px}}
 
 /* ── Embudo real, pantalla a pantalla ── */
 .fnl-intro{color:var(--vibra-tinta-2);max-width:660px;margin:0 0 30px;font-size:17px;line-height:1.6}
@@ -360,6 +380,13 @@ details[open] summary::before{transform:rotate(90deg)}
 .caso .fnl-scroll{margin:0}
 .caso .fnl-rail{padding:0}
 .caso-embudo .fnl-cierre{margin-top:15px;font-size:15.5px;max-width:62ch}
+/* LiveOkey: el embudo, en pequeño (las cuatro pantallas caben en una fila en escritorio) */
+.caso-embudo .fnl-rail{gap:14px}
+.caso-embudo .fnl-step{flex:0 0 150px}
+.caso-embudo .fnl-n{font-size:11px;letter-spacing:.14em}
+.caso-embudo .fnl-step p{font-size:13.5px;line-height:1.45}
+@media (min-width:700px){.caso-embudo .fnl-hint{display:none}}
+@media (max-width:640px){.caso-embudo .fnl-step{flex-basis:128px}}
 
 /* ── Sección de impacto (una, a fondo coral): la cifra real de la página ── */
 .impacto{background:var(--vibra-coral);color:var(--vibra-noche);padding:var(--seccion-y) 0}
@@ -377,22 +404,20 @@ details[open] summary::before{transform:rotate(90deg)}
 .yo .txt{flex:1;min-width:260px}
 .yo p{margin-top:14px;color:var(--vibra-tinta-2);max-width:64ch;line-height:1.6}
 .yo p b{color:var(--vibra-noche);font-weight:600}
-.banda-foto{margin-top:28px;border-radius:var(--vibra-radio);overflow:hidden;position:relative;line-height:0;isolation:isolate}
-.banda-foto img{width:100%;height:clamp(170px,24vw,260px);object-fit:cover;object-position:center 42%;display:block}
-.banda-foto::after{content:"";position:absolute;inset:auto 0 0 0;height:50%;background:linear-gradient(180deg,rgba(43,50,45,0),rgba(43,50,45,.72))}
-.banda-foto figcaption{position:absolute;left:20px;bottom:14px;z-index:1;font-weight:600;font-size:16px;line-height:1.3;color:var(--vibra-crema)}
 
 /* ── Encajamos / no encajamos ── */
 .encaja{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px}
 @media (max-width:760px){.encaja{grid-template-columns:1fr}}
 .col{border-radius:var(--vibra-radio);padding:24px 26px;border:1px solid var(--vibra-linea);background:var(--vibra-crema-2)}
-.col.no{border-style:dashed;background:transparent}
+.col.no{border:1.5px solid var(--vibra-coral);background:#FBE9E4} /* «no encajamos»: en rojo de la marca para que destaque */
+.col.no b.tit{color:var(--vibra-coral-texto)}
+.col.no li{color:var(--vibra-noche)}
 .col b.tit{font-family:var(--font-titular);font-weight:800;font-size:20px;display:block;margin-bottom:12px}
 .col ul{list-style:none;display:grid;gap:9px;margin:0;padding:0}
 .col li{font-size:15.5px;color:var(--vibra-tinta-2);padding-left:24px;position:relative;line-height:1.5}
 .col li::before{position:absolute;left:0;top:0;font-weight:700}
 .col.si li::before{content:'✓';color:var(--vibra-verde)}
-.col.no li::before{content:'✕';color:var(--vibra-tinta-3)}
+.col.no li::before{content:'✕';color:var(--vibra-coral-texto)}
 .granquote{text-align:center;padding:52px 20px 6px}
 .granquote p{font-family:var(--font-titular);font-weight:800;font-variation-settings:"opsz" 96;letter-spacing:-.015em;line-height:1.05;font-size:clamp(1.625rem,1.1rem + 3vw,2.5rem);max-width:20ch;margin:0 auto;text-wrap:balance}
 .granquote p span{color:var(--vibra-coral)}
@@ -541,22 +566,16 @@ html.js .rv.on{opacity:1;transform:none}
 
 <main id="contenido">
 
-<!-- Portada: fondo negro verdoso, logo en crema arriba a la izquierda, antetítulo arriba a la derecha -->
+<!-- Portada: fondo negro verdoso, limpia (el logo ya va en la barra de arriba) -->
 <header class="hero sobre-oscuro" id="hero">
   <div class="wrap">
-    <div class="hero-top">
-      <span class="hero-logo"><img src="../marca/logos/vibra-business-horizontal-sobre-noche.svg" width="786" height="100" alt="VIBRA Business"></span>
-      <p class="vibra-antetitulo">VIBRA Business · Crecimiento de comunidades</p>
-    </div>
+    <p class="vibra-antetitulo">VIBRA Business · Crecimiento de comunidades</p>
     <h1>Tu comunidad puede crecer sin perder el <span class="coral">alma.</span></h1>
     <p class="sub">Construyo la máquina que llena tus viajes, tus retiros o tus plazas — y la manejas <b>hablando</b>, como quien manda un audio. Lo humano lo sigues escribiendo tú.</p>
     <div class="cta-row">
       <a class="btn btn-acento" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20lidero%20una%20comunidad%20y%20quiero%20saber%20m%C3%A1s%20del%20M%C3%A9todo%20VIBRA" target="_blank" rel="noopener" data-evento="clic_whatsapp_metodo">Cuéntame tu comunidad</a>
       <span class="cta-note">Sin compromiso. La primera conversación es una consultoría, no una venta.</span>
     </div>
-  </div>
-  <div class="hero-onda" aria-hidden="true">
-    <svg viewBox="0 0 1000 200" focusable="false"><use href="#onda-pulso"/></svg>
   </div>
 </header>
 
@@ -568,7 +587,7 @@ html.js .rv.on{opacity:1;transform:none}
            width="560" height="1007" fetchpriority="high" decoding="async">
     <div class="plazas rv" id="plazas">
       <div class="plazas-fila" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-      <button class="plazas-btn" id="plazasBtn">Toca para llenarlas →</button>
+      <button class="plazas-btn" id="plazasBtn">Toca para ver cómo se llenan tus plazas →</button>
       <p class="plazas-msg" id="plazasMsg" role="status"></p>
       <!-- Cuando exista el vídeo, este botón pasa a abrirlo. Hoy lleva al método. -->
       <a class="plazas-sig" id="plazasSig" href="#metodo" hidden>Cómo se llenan esas siete <span aria-hidden="true">↓</span></a>
@@ -577,10 +596,8 @@ html.js .rv.on{opacity:1;transform:none}
 
     <div class="miedo rv">
         <div class="miedo-txt">
-          <p class="miedo-nota">Me lo preguntan siempre</p>
           <p class="q">«¿Y este de fuera no me va a despersonalizar la comunidad?»</p>
-          <p>Es la primera pregunta que me hacen. Y es la correcta. La respuesta está en la regla con la que trabajo: <b>no se automatiza lo humano.</b> Los mensajes, los audios, las bienvenidas, la cara — eso es tuyo y ahí no entro. Lo que automatizo es todo lo demás: que la gente entre sola, que no se te escape nadie, que llenar deje de depender de que tú te acuerdes.</p>
-          <svg class="miedo-ola" viewBox="0 0 1000 200" aria-hidden="true" focusable="false"><use href="#onda-pulso"/></svg>
+          <p><b>No se automatiza lo humano.</b> Los mensajes, los audios, las bienvenidas, la cara — eso es tuyo y ahí no entro. Automatizo todo lo demás: que la gente entre sola, que no se te escape nadie, que llenar deje de depender de que te acuerdes. Y que montar lo de cada viaje —el formulario, su web, el panel con toda tu gente— sea cuestión de <b>decirlo en voz alta</b>.</p>
         </div>
         <figure class="miedo-foto">
           <img src="abraham-surf.webp" width="720" height="900" loading="lazy" decoding="async" alt="Abraham remando sobre la tabla de surf">
@@ -593,8 +610,7 @@ html.js .rv.on{opacity:1;transform:none}
      Regla: sin nombres, sin destinos, sin cifras que identifiquen a nadie. -->
 <section id="sonar" class="seccion alt">
   <div class="wrap">
-    <p class="sec-kicker rv">De mis consultorías</p>
-    <h2 class="sec-title rv">Si diriges una comunidad, esto te va a sonar.</h2>
+    <h2 class="sec-kicker rv">El problema real</h2>
     <ol class="caida rv">
       <li><span>01</span><p>Alguien te escribe: <b>«me interesa, mándame info».</b></p></li>
       <li><span>02</span><p>Le mandas el dossier. Contesta que le encanta.</p></li>
@@ -602,7 +618,7 @@ html.js .rv.on{opacity:1;transform:none}
       <li><span>04</span><p>Le pides la señal.</p></li>
       <li><span>05</span><p><b>Cri cri.</b> Y vuelta a empezar con el siguiente.</p></li>
     </ol>
-    <p class="caida-pie rv">Se repite en casi todas las consultorías que hago. No falla el producto: falla que <b>entre el interés y la reserva no hay nada</b> — solo tú, contestando mensajes.</p>
+    <p class="caida-pie rv">No falla el producto: falla que <b>entre el interés y la reserva no hay nada</b> — solo tú, contestando mensajes.</p>
 
     <aside class="guia guia--pj rv">
       <img class="guia-pj" src="pj-2-senala.webp" alt="" aria-hidden="true" width="560" height="1007" loading="lazy" decoding="async">
@@ -613,9 +629,8 @@ html.js .rv.on{opacity:1;transform:none}
       <figure class="sonar-q rv"><blockquote>«Mucha gente me pide información y luego nunca acabo de hacer el enganche final. Ese es mi mayor problema.»</blockquote><figcaption>organiza retiros internacionales</figcaption></figure>
       <figure class="sonar-q rv"><blockquote>«"Sí, quiero venir, quiero venir." Vale, pues hazme la paga y señal… y de repente, cri cri.»</blockquote><figcaption>llena sus plazas a mano</figcaption></figure>
       <figure class="sonar-q rv"><blockquote>«La comunicación para mí es un trabajón.»</blockquote><figcaption>lidera retiros de yoga</figcaption></figure>
-      <figure class="sonar-q rv"><blockquote>«Esto se vende solo, está tirado… y luego no te escribe ni títere.»</blockquote><figcaption>lanzó su primer viaje en grupo</figcaption></figure>
+      <figure class="sonar-q rv"><blockquote>«Esto se vende solo, está tirado… y luego no te escriben apenas y tienes que ir detrás.»</blockquote><figcaption>lanzó su primer viaje en grupo</figcaption></figure>
     </div>
-    <p class="sonar-pie rv">Ninguna es inventada: salen de mis consultorías de las últimas semanas. Y en casi ningún caso el problema era el producto — el producto era buenísimo. <b>Lo que no había era nada debajo.</b></p>
   </div>
 </section>
 
@@ -658,13 +673,12 @@ html.js .rv.on{opacity:1;transform:none}
 
 <section id="metodo" class="seccion alt">
   <div class="wrap">
-    <p class="sec-kicker rv">Cómo funciona</p>
-    <h2 class="sec-title rv">Tres fases. Se empieza por la primera.</h2>
-    <p class="sec-intro rv">No es una agencia que te entrega cosas y se va. Es abrir tu negocio, montar la máquina, encenderla contigo — y que todo lo construido quede tuyo.</p>
-    <aside class="guia guia--pj rv">
-      <img class="guia-pj" src="pj-3-tres.webp" alt="" aria-hidden="true" width="560" height="1007" loading="lazy" decoding="async">
-      <p><span class="guia-n">Abraham</span>Tres fases y un orden. Si te saltas la primera, las otras dos se montan a ciegas. Por eso empezamos siempre por ahí.</p>
-    </aside>
+    <div class="met-cab">
+      <p class="sec-kicker rv">Cómo funciona</p>
+      <h2 class="sec-title rv">Tres fases. Se empieza por la primera.</h2>
+      <p class="sec-intro rv">No es una agencia que te entrega cosas y se va. Es abrir tu negocio, montar la máquina, encenderla contigo — y que todo lo construido quede tuyo.</p>
+      <img class="met-pj rv" src="pj-3-tres.webp" alt="" aria-hidden="true" width="560" height="1007" loading="lazy" decoding="async">
+    </div>
 
     <div class="capitulos">
 
@@ -677,12 +691,15 @@ html.js .rv.on{opacity:1;transform:none}
         </div>
         <div class="cap-num" aria-hidden="true"><span>1</span></div>
         <!-- Ejemplos reales de la fase 1: el menú del panel de Sara · Reviondo al cerrar su Fase 1
-             (todo lo demás, desenfocado: son sus datos) y el interés por plan de la lista de VIBRA. -->
+             (solo el menú, partido en dos columnas; sus datos no salen) y el interés por plan de la lista de VIBRA. -->
         <div class="cap-ej">
           <span class="cap-ej-t">Lo que sale de la auditoría</span>
-          <figure class="mk-fig ancha">
-            <div class="cap-scroll"><img class="cap-img" src="ej-fase1-panel-sara.webp" width="1600" height="1393" loading="lazy" decoding="async" alt="Menú del panel de Sara · Reviondo al cerrar su Fase 1: su plan, propuesta de valor, clienta, el camino de su gente, método de lanzamiento, lo que publica, sus números, su calendario y sus cinco sesiones. El resto del panel va desenfocado."></div>
-            <figcaption class="mk-pie">Así queda el panel de una clienta al cerrar la Fase 1: cada pieza de su estrategia, por partes y en un mismo enlace. Es el de Sara · Reviondo; lo suyo, desenfocado. <span class="cap-desliza">Desliza para verla entera →</span></figcaption>
+          <figure class="mk-fig menu">
+            <div class="cap-scroll"><div class="menu-cols">
+              <img src="ej-fase1-menu-1.webp" width="368" height="884" loading="lazy" decoding="async" alt="Menú del panel de Sara · Reviondo, primera mitad: «Tu proyecto, por partes», su plan y la Fase 1 con su propuesta de valor, su clienta, el camino de su gente, su método de lanzamiento, lo que publica, sus números y su calendario">
+              <img src="ej-fase1-menu-2.webp" width="368" height="448" loading="lazy" decoding="async" alt="Segunda mitad del menú: «Y además, lo logrado» y sus cinco sesiones">
+            </div></div>
+            <figcaption class="mk-pie">Así queda el panel de una clienta al cerrar la Fase 1: cada pieza de su estrategia, por partes y en un mismo enlace. Es el menú del de Sara · Reviondo. <span class="cap-desliza">Desliza para verlo entero →</span></figcaption>
           </figure>
           <figure class="mk-fig ancha">
             <div class="cap-scroll"><img class="cap-img" src="ej-fase1-interes-plan.webp" width="1600" height="458" loading="lazy" decoding="async" alt="Gráfico de barras «Interés por plan»: cuántas personas han marcado cada plan en el test, del más pedido al menos"></div>
@@ -694,7 +711,7 @@ html.js .rv.on{opacity:1;transform:none}
       <article class="cap rv">
         <div class="cap-txt">
           <span class="cap-n">Fase 2</span>
-          <h3>Te construyo la máquina</h3>
+          <h3>Tu máquina</h3>
           <p>Todo lo que hoy te come horas — la web, los cobros, el grupo, el contenido, los datos, la publicidad — montado, conectado y funcionando. Tú aquí no construyes nada: la pruebas, te la explico y <b>la manejas hablando</b>. La lista de piezas no está en esta página a propósito: tu máquina se diseña sobre tu negocio, no sobre una plantilla. Y se queda <b>tuya para siempre</b>, sin permanencia.</p>
         </div>
         <div class="cap-num" aria-hidden="true"><span>2</span></div>
@@ -733,12 +750,12 @@ html.js .rv.on{opacity:1;transform:none}
           <button class="ver-ej" data-abrir="ej-planning" style="display:none">Ver cómo queda un viaje montado →</button>
         </div>
         <div class="cap-num" aria-hidden="true"><span>3</span></div>
-        <!-- Ejemplo real de la fase 3: el viaje de VIBRA montado (la previa «Nos vamos al norte»). -->
+        <!-- Ejemplo real de la fase 3: el planning hora a hora del viaje de VIBRA con LiveOkey (copia limpia, sin teléfonos). -->
         <div class="cap-ej">
           <span class="cap-ej-t">Cómo se monta un viaje</span>
           <div class="cap-ej-acc">
-            <a class="btn-ej" href="https://vibrasociety.es/viaje-vibra-con-liveokey/previa/" target="_blank" rel="noopener" data-evento="clic_ejemplo_viaje">Ver el viaje montado <span class="flecha" aria-hidden="true">→</span></a>
-            <span class="ej-nota">Se abre en otra pestaña. La previa «Nos vamos al norte»; bajando, llegas al viaje a Asturias con LiveOkey.</span>
+            <a class="btn-ej" href="https://vibrasociety.es/viaje-vibra-con-liveokey/itinerario/ejemplo/" target="_blank" rel="noopener" data-evento="clic_ejemplo_viaje">Ver el viaje montado <span class="flecha" aria-hidden="true">→</span></a>
+            <span class="ej-nota">Se abre en otra pestaña. El planning hora a hora del viaje a Asturias con LiveOkey.</span>
           </div>
         </div>
       </article>
@@ -751,14 +768,14 @@ html.js .rv.on{opacity:1;transform:none}
   <div class="wrap">
     <p class="sec-kicker rv">Clientes</p>
     <h2 class="sec-title rv">Esto no es teoría. Es lo que hago cada semana.</h2>
-    <p class="sec-intro rv">Primero, tres líderes de comunidades como la tuya que están ahora mismo dentro del método. Después, de dónde sale: mi comunidad, la de la que soy growth partner y los sistemas a más escala que lo preceden.</p>
+    <p class="sec-intro rv">Líderes de comunidades como la tuya, mi propia comunidad y los sistemas a más escala de los que sale el método.</p>
 
     <article class="caso cliente rv">
       <div class="caso-head"><img class="caso-ava" src="cli-sara.webp" alt="Logotipo de Reviondo" width="176" height="176" loading="lazy" decoding="async"><span class="tag">Comunidad + IA + retiros</span><a class="caso-ig" href="https://www.instagram.com/reviondo.r/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Sara · Reviondo, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@reviondo.r</a><h3>Sara · Reviondo — desconexión digital</h3></div>
       <div class="ad">
         <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Retiros de fin de semana que funcionaban, y <b>la temporada por decidir</b>: sin calendario y sin programa detrás.</p></div>
         <span class="ad-flecha" aria-hidden="true">→</span>
-        <div class="ad-col ad-a"><span class="ad-k">Lo que ya pasa</span><p>Su temporada con <b>fechas hasta junio</b>, su programa <b>Modo Avión</b> y su retiro de octubre celebrado, con muy buen feedback. Ahora, la Fase 2.</p></div>
+        <div class="ad-col ad-a"><span class="ad-k">Lo que ya pasa</span><p>Su temporada con <b>fechas hasta junio</b>, su programa <b>Modo Avión</b> y su retiro de octubre celebrado, con muy buen feedback.</p></div>
       </div>
       <div class="caso-stats">
         <span class="chip">Fase 1 <b>hecha</b></span>
@@ -772,29 +789,17 @@ html.js .rv.on{opacity:1;transform:none}
       <div class="ad">
         <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Retiros de yoga en Cataluña y Lombok, y mucha gente que preguntaba y no cerraba: <b>«nunca acabas de hacer el enganche final»</b>.</p></div>
         <span class="ad-flecha" aria-hidden="true">→</span>
-        <div class="ad-col ad-a"><span class="ad-k">Lo que ya pasa</span><p>Su <b>test de entrada</b>, su grupo de Lombok con su <b>enlace de reserva</b> y su calendario. El recorrido que ves arriba, en la Fase 2, es el suyo. La Fase 2 arrancó el 14 de octubre.</p></div>
+        <div class="ad-col ad-a"><span class="ad-k">Lo que ya pasa</span><p>Su <b>test de entrada</b>, su grupo de Lombok con su <b>enlace de reserva</b> y su calendario. El recorrido que ves arriba, en la Fase 2, es el suyo.</p></div>
       </div>
       <div class="caso-stats">
         <span class="chip">Test de <b>entrada</b></span>
         <span class="chip">Grupo de Lombok <b>con reserva</b></span>
-        <span class="chip">Fase 2 <b>en marcha</b></span>
+        <span class="chip">Su recorrido, <b>montado</b></span>
       </div>
     </article>
 
     <article class="caso cliente rv">
-      <div class="caso-head"><img class="caso-ava" src="cli-paloma.webp" alt="Retrato de Paloma Quintana" width="176" height="176" loading="lazy" decoding="async"><span class="tag">Crecimiento + suscripción</span><a class="caso-ig" href="https://www.instagram.com/nutricionconq/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Paloma Quintana, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@nutricionconq</a><h3>Paloma Quintana — nutrición integrativa y deportiva</h3></div>
-      <p class="caso-txt">Crece con un modelo de <b>suscripción</b> detrás. Lo que ya tiene en la mano: <b>su cuaderno y su panel</b>, entregados.</p>
-      <div class="caso-stats">
-        <span class="chip">Cuaderno <b>entregado</b></span>
-        <span class="chip">Panel <b>entregado</b></span>
-        <span class="chip">Crecimiento + <b>suscripción</b></span>
-      </div>
-    </article>
-
-    <div class="otros-label origen rv"><b>De dónde sale el método</b><span>mi comunidad, LiveOkey y los sistemas a escala</span><i></i></div>
-
-    <article class="caso destacado rv">
-      <div class="caso-head"><span class="tag">Growth partner desde 2024</span><a class="caso-ig" href="https://www.instagram.com/liveokeypeople/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de LiveOkey, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@liveokeypeople</a><h3>LiveOkey — la comunidad de viajes de surf de la que soy growth partner</h3></div>
+      <div class="caso-head"><img class="caso-ava" src="cli-liveokey.webp" alt="Logotipo de LiveOkey" width="104" height="104" loading="lazy" decoding="async"><span class="tag">Growth partner desde 2024</span><a class="caso-ig" href="https://www.instagram.com/liveokeypeople/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de LiveOkey, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@liveokeypeople</a><h3>LiveOkey — la comunidad de viajes de surf de la que soy growth partner</h3></div>
       <div class="ad">
         <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Un año llevándole la web como proveedor externo. No sirvió de nada: el fundador estuvo a punto de dejarlo todo.</p></div>
         <span class="ad-flecha" aria-hidden="true">→</span>
@@ -813,7 +818,7 @@ html.js .rv.on{opacity:1;transform:none}
 
       <div class="caso-embudo">
         <span class="ce-t">El embudo real, pantalla a pantalla</span>
-        <span class="ce-s">Esto no es un esquema: son las pantallas por las que pasa hoy alguien que descubre LiveOkey en Instagram. De un desconocido a un viajero que recibe cada viaje antes que nadie.</span>
+        <span class="ce-s">No es un esquema: son las pantallas por las que pasa hoy alguien que descubre LiveOkey en Instagram.</span>
         <p class="fnl-hint">Desliza para verlo →</p>
         <div class="fnl-scroll">
           <div class="fnl-rail">
@@ -844,25 +849,37 @@ html.js .rv.on{opacity:1;transform:none}
 
           </div>
         </div>
-        <p class="fnl-cierre">Tres niveles de prioridad y un orden que no cambia nunca: <b>Instagram → Casi Okey → LiveOkey People</b>. Quien ya ha viajado se entera antes. No es un programa de puntos: es fidelización metida en la estructura, y es lo que hace que un viaje se llene sin anunciarlo.</p>
+        <p class="fnl-cierre">Tres niveles y un orden que no cambia: <b>Instagram → Casi Okey → LiveOkey People</b>. Quien ya ha viajado se entera antes — por eso un viaje se llena sin anunciarlo.</p>
       </div>
     </article>
 
-    <article class="caso rv">
-      <div class="caso-head"><span class="tag lab">Mi comunidad</span><h3>VIBRA — y el mismo método, aplicado a la mía</h3></div>
-      <div class="ad">
-        <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Cero. Sin comunidad, sin plataforma y sin datos: solo la idea.</p></div>
-        <span class="ad-flecha" aria-hidden="true">→</span>
-        <div class="ad-col ad-a"><span class="ad-k">Qué consiguió</span><p>Comunidad viva en semanas, con web, CRM y analítica conectados y cada release medido. <b>No te voy a pedir nada que no esté haciendo yo.</b></p></div>
+    <article class="caso cliente con-shot rv">
+      <div class="caso-main">
+        <div class="caso-head"><img class="caso-ava caso-ava-svg" src="../marca/logos/vibra-v.svg" alt="Logotipo de VIBRA" width="200" height="200" loading="lazy" decoding="async"><span class="tag lab">Mi comunidad</span><a class="caso-ig" href="https://www.instagram.com/vibra.society/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de VIBRA, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@vibra.society</a><h3>VIBRA — el mismo método, aplicado a mi comunidad</h3></div>
+        <div class="ad">
+          <div class="ad-col ad-de"><span class="ad-k">En julio</span><p><b>Cero.</b> Sin comunidad, sin plataforma y sin datos: solo la idea.</p></div>
+          <span class="ad-flecha" aria-hidden="true">→</span>
+          <div class="ad-col ad-a"><span class="ad-k">En septiembre</span><p>Todo el <b>calendario de la temporada</b>, con prerreservas, y la comunidad de WhatsApp en <b>más de 80 personas</b>. <b>No te voy a pedir nada que no esté haciendo yo.</b></p></div>
+        </div>
+        <div class="caso-stats">
+          <span class="chip">De cero a temporada completa en <b>dos meses</b></span>
+          <span class="chip"><b>+80</b> en el grupo de WhatsApp</span>
+          <span class="chip">Web, CRM y analítica <b>conectados</b></span>
+        </div>
       </div>
-      <div class="caso-stats">
-        <span class="chip">Del cero a comunidad viva en <b>semanas</b></span>
-        <span class="chip">Web, CRM y analítica <b>conectados</b></span>
-      </div>
+      <figure class="caso-shot">
+        <img src="caso-vibra-calendario.webp" width="344" height="900" loading="lazy" decoding="async" alt="El calendario de la temporada 26·27 de VIBRA en el móvil: Flow Fest en Madrid, El Palmar, Kalma Fest y Marruecos, cada plan con su fecha y sus aliados">
+        <figcaption>El calendario de la temporada, tal cual se ve hoy en vibrasociety.es.</figcaption>
+      </figure>
     </article>
 
-    <article class="caso rv">
-      <div class="caso-head"><span class="tag">A escala</span><a class="caso-ig" href="https://www.instagram.com/guotech.io/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de GÜO Tech, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@guotech.io</a><h3>GÜO Tech — de idea a +3M€ facturados en un año</h3></div>
+    <article class="caso cliente rv">
+      <div class="caso-head"><img class="caso-ava" src="cli-paloma.webp" alt="Retrato de Paloma Quintana" width="176" height="176" loading="lazy" decoding="async"><span class="tag">Crecimiento + suscripción</span><a class="caso-ig" href="https://www.instagram.com/nutricionconq/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Paloma Quintana, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@nutricionconq</a><h3>Paloma Quintana — nutrición integrativa y deportiva</h3></div>
+      <p class="caso-txt">Crece con un modelo de <b>suscripción</b> detrás.</p>
+    </article>
+
+    <article class="caso cliente rv">
+      <div class="caso-head"><span class="caso-ava caso-ini" role="img" aria-label="GÜO Tech">GÜO</span><span class="tag">A escala</span><a class="caso-ig" href="https://www.instagram.com/guotech.io/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de GÜO Tech, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@guotech.io</a><h3>GÜO Tech — de idea a +3M€ facturados en un año</h3></div>
       <div class="ad">
         <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Una idea y ninguna máquina: ni captación, ni CRM, ni lanzamientos.</p></div>
         <span class="ad-flecha" aria-hidden="true">→</span>
@@ -888,8 +905,8 @@ html.js .rv.on{opacity:1;transform:none}
       </div></details>
     </article>
 
-    <article class="caso rv">
-      <div class="caso-head"><span class="tag">Comunidad + eventos</span><a class="caso-ig" href="https://www.instagram.com/comunidaddelsol.madrid/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Comunidad del Sol, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@comunidaddelsol.madrid</a><h3>Comunidad del Sol — covivienda consciente</h3></div>
+    <article class="caso cliente rv">
+      <div class="caso-head"><img class="caso-ava" src="cli-comunidaddelsol.webp" alt="Logotipo de Comunidad del Sol" width="104" height="104" loading="lazy" decoding="async"><span class="tag">Comunidad + eventos</span><a class="caso-ig" href="https://www.instagram.com/comunidaddelsol.madrid/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Comunidad del Sol, se abre en otra pestaña"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>@comunidaddelsol.madrid</a><h3>Comunidad del Sol — covivienda consciente</h3></div>
       <div class="ad">
         <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Vendían algo enorme —una forma de vivir, con ticket de vivienda— y <b>no había camino</b> entre descubrirles y comprar.</p></div>
         <span class="ad-flecha" aria-hidden="true">→</span>
@@ -901,8 +918,8 @@ html.js .rv.on{opacity:1;transform:none}
       </div>
     </article>
 
-    <article class="caso rv">
-      <div class="caso-head"><span class="tag">Automatización + IA</span><h3>Mazinn Crew — una comunidad de +2.000 embajadores</h3></div>
+    <article class="caso cliente rv">
+      <div class="caso-head"><span class="caso-ava caso-ini" role="img" aria-label="Mazinn Crew">MC</span><span class="tag">Automatización + IA</span><h3>Mazinn Crew — una comunidad de +2.000 embajadores</h3></div>
       <div class="ad">
         <div class="ad-col ad-de"><span class="ad-k">De dónde partía</span><p>Toda la operación de <b>+2.000 embajadores</b> se sostenía a mano, tarea por tarea.</p></div>
         <span class="ad-flecha" aria-hidden="true">→</span>
@@ -956,10 +973,6 @@ html.js .rv.on{opacity:1;transform:none}
         <p>Pero la razón por la que hago esto es otra: soy parte de una comunidad de viajes desde 2021, y he visto desde dentro lo que cuesta sostenerla. <b>VIBRA nace de ahí</b> — de querer que las comunidades con propósito crezcan sin convertirse en otra cosa.</p>
       </div>
     </div>
-    <figure class="banda-foto rv">
-      <img src="abraham-oficina.webp" width="1200" height="545" loading="lazy" decoding="async" alt="Abraham trabajando con el portátil, con motos aparcadas en la calle">
-      <figcaption>Mi oficina, últimamente.</figcaption>
-    </figure>
   </div>
 </section>
 
@@ -982,7 +995,7 @@ html.js .rv.on{opacity:1;transform:none}
         <ul>
           <li>Buscas seguidores. Yo trabajo para que se llenen plazas, no para inflar números.</li>
           <li>Quieres resultados sin tocar nada de cómo trabajas hoy.</li>
-          <li>Aún no tienes producto: primero hay que tener qué vender.</li>
+          <li>Aún no tienes ni una idea de qué vender: primero hace falta algo que sacar adelante.</li>
           <li>Quieres externalizar la relación con tu gente. Eso no lo hago.</li>
         </ul>
       </div>
@@ -1029,12 +1042,12 @@ html.js .rv.on{opacity:1;transform:none}
 
     <div class="faq-list rv">
       <details><summary>He delegado antes y me ha ido mal. ¿Por qué esto va a ser distinto?</summary><div class="faq-c"><p>Porque no te pido que sueltes lo tuyo: te pido una hora a la semana y los accesos. Yo construyo, tú pruebas y te lo explico en sesión — nada se monta a puerta cerrada. Y todo queda a tu nombre desde el primer día, así que si un día te vas, te lo llevas funcionando.</p></div></details>
-      <details><summary>¿Esto no me va a despersonalizar la comunidad?</summary><div class="faq-c"><p>Es la primera pregunta que me hacen y es la correcta. <b>No se automatiza lo humano:</b> los mensajes, los audios, las bienvenidas y la cara siguen siendo tuyos. Lo que automatizo es todo lo demás — que la gente entre sola, que no se escape nadie y que llenar deje de depender de que te acuerdes.</p></div></details>
+      <details><summary>¿Esto no me va a despersonalizar la comunidad?</summary><div class="faq-c"><p><b>No se automatiza lo humano:</b> los mensajes, los audios, las bienvenidas y la cara siguen siendo tuyos. Lo que automatizo es todo lo demás — que la gente entre sola, que no se escape nadie y que llenar deje de depender de que te acuerdes.</p></div></details>
       <details><summary>Es mi proyecto y no lo quiero perder. ¿De quién es lo que se construye?</summary><div class="faq-c"><p>Tuyo. Web, CRM, cobros, newsletter, cuentas, contenidos y datos: a tu nombre y en tus cuentas desde el día uno. Yo no guardo nada ni retengo accesos. Lo único que sigue siendo mío es mi metodología.</p></div></details>
-      <details><summary>¿Cuánto dura cada fase?</summary><div class="faq-c"><p>La consultoría, unas dos semanas. La máquina, entre dos y cuatro semanas según el negocio. El lanzamiento va en paralelo — no se construye primero y se lanza después, porque casi siempre hay una fecha encima.</p></div></details>
-      <details><summary>¿Qué cuesta mantenerlo después?</summary><div class="faq-c"><p>Poco, y a propósito: casi todas las herramientas que uso tienen plan gratuito. El gasto fijo real son unos pocos euros al mes. Nada de cuotas conmigo: <b>no hay permanencia.</b></p></div></details>
+      <details><summary>¿Cuánto dura cada fase?</summary><div class="faq-c"><p>La consultoría, <b>tres semanas</b>. La máquina, entre dos y cuatro según el negocio. Y el lanzamiento conjunto va a tu ritmo: mientras tanto te acompaño en los viajes que ya tengas en el calendario, y cuando tú quieras —no tiene por qué ser nada más acabar la máquina— le ponemos fecha a uno nuevo y lo lanzamos juntos.</p></div></details>
+      <details><summary>¿Qué cuesta mantenerlo después?</summary><div class="faq-c"><p>Conmigo, nada: <b>no hay permanencia</b> ni cuotas. Y no dependes de mí: cuando terminamos —con la máquina montada y el lanzamiento conjunto vivido con mi comunidad VIBRA— <b>vuelas por tu cuenta</b>. Todo se queda tuyo y funcionando.</p></div></details>
       <details><summary>¿Me garantizas que voy a llenar?</summary><div class="faq-c"><p>No, y desconfía de quien te lo garantice: depende de tu producto, tu precio, tu destino y lo que inviertas. Lo que sí garantizo es lo que entrego, con plazos escritos. Y si termino y no está lo que dice el plan, te devuelvo lo pagado.</p></div></details>
-      <details><summary>¿Y si aún no tengo claro qué vender?</summary><div class="faq-c"><p>Entonces todavía no es momento de máquina, y te lo diré en la primera llamada. Primero hay que tener qué vender; montar un embudo antes de eso solo acelera el problema.</p></div></details>
+      <details><summary>¿Y si aún no tengo claro qué vender?</summary><div class="faq-c"><p>No te preocupes: eso lo vemos en la consultoría. Lo que sí necesito es que traigas varias ideas y ganas de sacar adelante una. Yo te ayudo a <b>poner el foco</b> y a construir la máquina de ese modelo de negocio.</p></div></details>
       <details><summary>¿Cuánto cuesta?</summary><div class="faq-c"><p>Depende del negocio, y por eso no hay precio en esta página: el número sale con tus cifras delante, en el plan escrito. Lo que sí es fijo es el modelo — la fase de lanzamiento va en variable: <b>si tú no ganas, yo no gano.</b></p></div></details>
     </div>
   </div>
@@ -1104,13 +1117,6 @@ html.js .rv.on{opacity:1;transform:none}
     </div>
   </div>
 </footer>
-
-<!-- La onda en pulso (linea-pico.svg del manual), definida una vez y reutilizada con <use> -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <defs>
-    <path id="onda-pulso" fill="currentColor" d="M0.83 132.28C22.29 138.36 52.88 142.28 63.11 116.76 67.71 105.38 76.51 99.39 87.7 105.89 105.02 116.44 120.55 152.51 138.74 124.08 150.35 106.21 163.62 89.31 186.83 101.01 202.13 108.84 211.2 125.7 224.42 132.79 233.31 137.21 237.23 127.45 241.14 120.35 246.07 111.37 248.93 102.57 259.29 96.03 276.47 86.77 293.61 102.2 302.59 115.19 309.22 123.35 314.34 133.2 321.98 136.61 322.54 136.34 322.17 136.8 323.69 135.46 333.27 124.31 336.08 109.11 342.67 94.93 345.84 87.79 350.08 79.63 357.96 75.76 393.01 63.74 391.22 119.89 405.36 137.26 405.59 137.44 405.22 137.21 404.57 137.03 404.34 136.94 402.87 137.07 403.01 137.17 406.19 135.92 412.87 129.61 416.04 125.79 434.24 107.04 445.48 85.11 459.11 62.36 463.9 54.94 474.91 52.87 480.72 60.33 485.88 67.06 485 75.99 485.42 82.81 485.78 112.61 483.71 154.07 483.3 184.06L480.49 184.29C471.87 148.27 469.98 109.67 463.58 73.69 463.44 73.28 463.12 72.72 463.49 73.55 464 74.57 464.96 75.63 466.16 76.36 469.57 78.76 474.45 77.88 477.17 75.58 466.99 99.3 454.37 124.54 437.19 144.67 425.63 159.55 405.36 176.04 386.7 160.06 369.57 143.85 369.43 122.1 361.83 102.62 361.46 101.33 360.31 99.49 360.63 99.81 363.21 102.07 368.09 102.53 370.67 100.04 357.18 117.91 354.09 150.39 329.17 159.23 307.8 165.26 294.48 141.45 285.36 128.18 281.08 122.47 276.47 114.92 270.02 113.67 269.79 113.77 269.5 113.59 269.59 113.63 261.78 117.58 258.82 128.32 255.12 135.81 248.25 149.6 238.98 164.9 221.73 160.78 202.07 155.26 189.09 134.95 172.66 123.46 152.63 110.1 143.85 131.34 134.33 145.23 123.72 160.61 103.43 173.21 85.69 157.72 76.37 150.11 71.21 138.07 64.97 129.37 59.17 121.95 55.26 119.63 48.63 126.33 40.26 135.42 38.7 148.37 31.41 157.41 22.7 169.38 10.19 169.42 0 164.7Z"/>
-  </defs>
-</svg>
 
 <script>
   try{
@@ -1249,7 +1255,7 @@ html.js .rv.on{opacity:1;transform:none}
     <button class="ej-x" data-cerrar aria-label="Cerrar">✕</button>
     <div class="ej-box ej-marco">
       <!-- El src se pone al abrir: asi la pagina de fuera no se descarga hasta que se pide. -->
-      <iframe class="ej-iframe" data-src="https://vibrasociety.es/viaje-vibra-con-liveokey/itinerario/"
+      <iframe class="ej-iframe" data-src="https://vibrasociety.es/viaje-vibra-con-liveokey/itinerario/ejemplo/"
               title="Planning hora a hora del viaje a Asturias, VIBRA × LiveOkey"
               referrerpolicy="no-referrer" loading="lazy"></iframe>
     </div>
