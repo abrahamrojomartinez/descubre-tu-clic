@@ -1,0 +1,27 @@
+# vibrasociety.es · instrucciones para buscadores y asistentes de IA
+User-agent: *
+Allow: /
+Disallow: /habito-21-dias/
+Disallow: /comunidad/api/
+Disallow: /comunidad/backfill
+Disallow: /comunidad/dentro
+Disallow: /comunidad/mi-carta
+Disallow: /comunidad/entrar
+
+# Asistentes de IA: bienvenidos a leer y citar la web
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://vibrasociety.es/sitemap.xml
