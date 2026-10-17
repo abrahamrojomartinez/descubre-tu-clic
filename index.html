@@ -366,19 +366,19 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
 
 /* ── 14 · Microinteracciones ── */
 /* Entradas con vibración (solo con JS y sin "reducir movimiento"): cada plan del calendario entra de lado y tiembla en horizontal; la Carta sube girando y vibra como un móvil */
-@keyframes plan-entra{0%{opacity:0;transform:translateX(-72px) scale(.92) rotate(-2deg)}42%{opacity:1;transform:translateX(12px) scale(1.02) rotate(.8deg)}54%{transform:translateX(-9px) rotate(-.6deg)}66%{transform:translateX(7px) rotate(.4deg)}77%{transform:translateX(-4px) rotate(-.2deg)}88%{transform:translateX(2px)}100%{opacity:1;transform:none}}
-@keyframes plan-entra-d{0%{opacity:0;transform:translateX(72px) scale(.92) rotate(2deg)}42%{opacity:1;transform:translateX(-12px) scale(1.02) rotate(-.8deg)}54%{transform:translateX(9px) rotate(.6deg)}66%{transform:translateX(-7px) rotate(-.4deg)}77%{transform:translateX(4px) rotate(.2deg)}88%{transform:translateX(-2px)}100%{opacity:1;transform:none}}
+@keyframes plan-entra{0%{opacity:0;transform:translateX(-72px) rotate(-2deg)}42%{opacity:1;transform:translateX(12px) rotate(.8deg)}54%{transform:translateX(-9px) rotate(-.6deg)}66%{transform:translateX(7px) rotate(.4deg)}77%{transform:translateX(-4px) rotate(-.2deg)}88%{transform:translateX(2px)}100%{opacity:1;transform:none}}
+@keyframes plan-entra-d{0%{opacity:0;transform:translateX(72px) rotate(2deg)}42%{opacity:1;transform:translateX(-12px) rotate(-.8deg)}54%{transform:translateX(9px) rotate(.6deg)}66%{transform:translateX(-7px) rotate(-.4deg)}77%{transform:translateX(4px) rotate(.2deg)}88%{transform:translateX(-2px)}100%{opacity:1;transform:none}}
 @keyframes carta-entra{0%{opacity:0;transform:translateY(48px) rotate(-8deg) scale(.86)}45%{opacity:1;transform:translateY(-6px) rotate(2deg) scale(1.03)}55%{transform:rotate(-2.5deg) scale(1.02)}62%{transform:rotate(2.5deg) scale(1.02)}69%{transform:rotate(-2deg) scale(1.01)}76%{transform:rotate(1.5deg)}83%{transform:rotate(-1deg)}90%{transform:rotate(.5deg)}100%{opacity:1;transform:none}}
 @media (prefers-reduced-motion:no-preference){
-  .cal-lista li.espera{opacity:0;transform:translateX(-72px) scale(.92) rotate(-2deg);transition:none}
-  .cal-lista li.espera:nth-child(even){transform:translateX(72px) scale(.92) rotate(2deg)}
+  .cal-lista li.espera{opacity:0;transform:translateX(-72px);transition:none}
+  .cal-lista li.espera:nth-child(even){transform:translateX(72px)}
   .cal-lista li.espera.visto{opacity:1;transform:none;animation:plan-entra .95s cubic-bezier(.2,.7,.3,1) var(--d,0ms) backwards}
   .cal-lista li.espera:nth-child(even).visto{animation-name:plan-entra-d}
   .cal-lista li.espera.visto .plan-fecha{animation:fecha-pop .55s cubic-bezier(.3,1.6,.5,1) calc(var(--d,0ms) + .5s) backwards}
   .js .carta.espera{opacity:0;transform:translateY(48px) rotate(-8deg) scale(.86);transition:none}
   .js .carta.espera.visto{opacity:1;transform:none;animation:carta-entra 1.3s cubic-bezier(.2,.7,.3,1) .1s backwards}
 }
-.calendario,#entrar{overflow:hidden} /* lo que entra de lado nunca ensancha la página */
+.calendario,#entrar{overflow:hidden;overflow:clip} /* lo que entra de lado nunca ensancha la página; clip no crea contenedor de scroll (la Carta gira con el scroll de la página) */
 .js .reveal{opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease}
 .js .reveal-fundido{opacity:0;transition:opacity .6s ease}
 .js .reveal.visto,.js .reveal-fundido.visto{opacity:1;transform:none}
@@ -400,16 +400,16 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
 
 /* ── VIBRA en movimiento: la marca vibra ──
    Todo con transform/opacity (no repinta ni mueve el resto), solo con prefers-reduced-motion:no-preference,
-   y lo que se repite (zumbido de los botones, la Carta, la onda) solo mientras está en pantalla (.en-pantalla, ver el script)
-   y como mucho 3 veces cada vez que entra (nada se mueve solo más de unos segundos: WCAG 2.2.2). */
+   Lo que se repite (zumbido de los botones y de la Carta, la onda) lo lanza el script mientras está en pantalla, con ritmo de llamada
+   de móvil, y acaba antes de 5 s cada vez que entra (WCAG 2.2.2). */
 @keyframes fecha-pop{0%{transform:none}45%{transform:scale(1.14)}100%{transform:none}}
-@keyframes plan-zumba{0%,100%{transform:translateY(-2px) scale(1.015)}12%{transform:translate(-5px,-2px) scale(1.03) rotate(-.8deg)}24%{transform:translate(5px,-2px) scale(1.03) rotate(.8deg)}36%{transform:translate(-4px,-2px) scale(1.025) rotate(-.5deg)}48%{transform:translate(3px,-2px) scale(1.02) rotate(.3deg)}62%{transform:translate(-1px,-2px) scale(1.015)}}
+@keyframes plan-zumba{0%,100%{transform:translateY(-2px) scale(1.015)}10%{transform:translate(-9px,-2px) scale(1.035) rotate(-1.5deg)}22%{transform:translate(8px,-2px) scale(1.035) rotate(1.4deg)}34%{transform:translate(-6px,-2px) scale(1.03) rotate(-1deg)}46%{transform:translate(4px,-2px) scale(1.02) rotate(.6deg)}60%{transform:translate(-2px,-2px) scale(1.015) rotate(-.2deg)}}
 @keyframes plan-latido{0%,100%{transform:none}14%{transform:translateX(-5px) rotate(-.5deg)}28%{transform:translateX(5px) rotate(.5deg)}42%{transform:translateX(-3px) rotate(-.3deg)}56%{transform:translateX(2px)}70%{transform:translateX(-1px)}}
 @keyframes flecha-empuja{0%,100%{transform:none}50%{transform:translateX(7px)}}
-@keyframes zumbido{0%,20%,100%{transform:none}2%{transform:translateX(-3px) rotate(-3deg)}4%{transform:translateX(3px) rotate(3deg)}6%{transform:translateX(-3px) rotate(-2.5deg)}8%{transform:translateX(3px) rotate(2deg)}10%{transform:translateX(-2px) rotate(-1.5deg)}12%{transform:translateX(1px) rotate(.8deg)}14%{transform:none}}
-@keyframes zumbido-onda{0%{transform:none;opacity:.75}20%{transform:scale(1.04,1.4);opacity:0}100%{transform:scale(1.04,1.4);opacity:0}}
+@keyframes zumbido{0%,100%{transform:none}14%{transform:translateX(-3px) rotate(-3deg)}29%{transform:translateX(3px) rotate(3deg)}43%{transform:translateX(-3px) rotate(-2.5deg)}57%{transform:translateX(3px) rotate(2deg)}71%{transform:translateX(-2px) rotate(-1.5deg)}86%{transform:translateX(1px) rotate(.8deg)}}
+@keyframes zumbido-onda{0%{transform:none;opacity:.75}100%{transform:scale(1.04,1.4);opacity:0}}
 @keyframes zumbido-ya{0%,100%{transform:none}20%{transform:translateX(-3px) rotate(-3deg)}40%{transform:translateX(3px) rotate(3deg)}60%{transform:translateX(-2px) rotate(-1.5deg)}80%{transform:translateX(1px) rotate(.8deg)}}
-@keyframes carta-zumba{0%,20%,100%{transform:none}2%{transform:rotate(-3.5deg) scale(1.03)}4%{transform:rotate(3.5deg) scale(1.03)}6%{transform:rotate(-3deg) scale(1.025)}8%{transform:rotate(2.5deg) scale(1.02)}10%{transform:rotate(-1.8deg) scale(1.015)}12%{transform:rotate(1deg)}14%{transform:rotate(-.4deg)}16%{transform:none}}
+@keyframes carta-zumba{0%,100%{transform:none}12.5%{transform:rotate(-3.5deg) scale(1.03)}25%{transform:rotate(3.5deg) scale(1.03)}37.5%{transform:rotate(-3deg) scale(1.025)}50%{transform:rotate(2.5deg) scale(1.02)}62.5%{transform:rotate(-1.8deg) scale(1.015)}75%{transform:rotate(1deg)}87.5%{transform:rotate(-.4deg)}}
 @keyframes carta-scroll{from{transform:rotate(-5deg) translateY(24px)}to{transform:rotate(4deg) translateY(-24px)}}
 @keyframes tarjeta-entra{0%{opacity:0;transform:translateY(40px) rotate(-3deg) scale(.95)}50%{opacity:1;transform:translateY(-5px) rotate(1.6deg) scale(1.01)}64%{transform:rotate(-1.1deg)}78%{transform:rotate(.6deg)}90%{transform:rotate(-.2deg)}100%{opacity:1;transform:none}}
 @keyframes paso-pop{0%{opacity:0;transform:scale(.3) rotate(-25deg)}60%{opacity:1;transform:scale(1.2) rotate(8deg)}80%{transform:scale(.95) rotate(-4deg)}100%{opacity:1;transform:none}}
@@ -423,23 +423,23 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
   .js .paso.reveal.visto .paso-n{display:inline-block;animation:paso-pop .7s cubic-bezier(.3,1.4,.5,1) .2s backwards}
   /* Calendario: la fila que cruza el centro de la pantalla tiembla (móvil: .activo; PC: .latido o al pasar el ratón) y su flecha empuja */
   .plan.latido{animation:plan-latido .5s ease-out}
-  .plan.activo,.plan:hover{animation:plan-zumba .55s ease-out}
-  .plan:hover .plan-flecha,.plan.activo .plan-flecha{animation:flecha-empuja 1.1s ease-in-out .3s infinite}
-  /* Botones de acento: zumbido de móvil cada 4,2 s con una onda que sale; al pasar el ratón, zumbido al momento */
+  .plan.activo,.plan:hover{animation:plan-zumba .6s ease-out}
+  .plan:hover .plan-flecha svg,.plan.activo .plan-flecha svg{animation:flecha-empuja 1.1s ease-in-out .3s 3}
+  /* Botones de acento: zumbido de móvil (3 veces, una cada 1,6 s) con una onda que sale; al pasar el ratón, zumbido al momento */
   .btn-acento{position:relative}
   .btn-acento::after{content:"";position:absolute;inset:-2px;border-radius:inherit;border:2px solid var(--vibra-coral);opacity:0;pointer-events:none}
-  .btn-acento.en-pantalla{animation:zumbido 4.2s ease-in-out 1s 3}
-  .btn-acento.en-pantalla::after{animation:zumbido-onda 4.2s ease-out 1s 3}
+  .btn-acento.zumba{animation:zumbido .6s ease-in-out}
+  .btn-acento.zumba::after{animation:zumbido-onda .84s ease-out}
   .btn-acento:hover,.btn-acento:focus-visible{animation:zumbido-ya .45s ease-out}
   .btn:active{transform:scale(.96)}
   /* La Carta: tras entrar, vibra como un móvil que recibe un aviso; y gira un poco según haces scroll */
-  .carta.en-pantalla .carta-mueve{animation:carta-zumba 5s ease-in-out 1.6s 3}
+  .carta.zumba .carta-mueve{animation:carta-zumba .8s ease-in-out}
   @supports (animation-timeline:view()){
     .carta img{animation:carta-scroll linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
   }
   /* La onda de la banda late */
   .banda .onda svg{transform-origin:50% 62%}
-  .banda .onda.en-pantalla svg{animation:onda-pulso 2.6s ease-in-out 3}
+  .banda .onda.en-pantalla svg{animation:onda-pulso 1.6s ease-in-out 3}
 }
 main > section[id]{scroll-margin-top:-16px} /* las secciones ya traen su aire: sin tira de la anterior bajo la cabecera */
 @media print{.js .reveal,.js .reveal-fundido{opacity:1!important;transform:none!important;transition:none!important;animation:none!important}}
@@ -848,10 +848,11 @@ function centroPlan(){
   if(!mqTacto.matches||!('IntersectionObserver' in window))return;
   var dentro=new Set();
   ioPlan=new IntersectionObserver(function(es){
-    es.forEach(function(e){e.isIntersecting?dentro.add(e.target):dentro.delete(e.target);});
-    var primero=null;
-    for(var i=0;i<planes.length;i++){if(dentro.has(planes[i])){primero=planes[i];break;}}
-    planes.forEach(function(p){p.classList.toggle('activo',p===primero);});
+    var marco=false;
+    es.forEach(function(e){e.isIntersecting?dentro.add(e.target):dentro.delete(e.target);if(!e.rootBounds)marco=true;});
+    /* dentro de un marco de otro origen (vista previa) el navegador ignora rootMargin: se elige la fila del medio de las que se ven */
+    var vis=planes.filter(function(p){return dentro.has(p);}),elegido=vis.length?vis[marco?(vis.length-1)>>1:0]:null;
+    planes.forEach(function(p){p.classList.toggle('activo',p===elegido);});
   },{rootMargin:'-40% 0px -40% 0px'});
   planes.forEach(function(p){ioPlan.observe(p);});
 }
@@ -860,6 +861,13 @@ mqTacto.addEventListener?mqTacto.addEventListener('change',centroPlan):mqTacto.a
 var rev=[].slice.call($$('.reveal,.reveal-fundido'));
 if(!('IntersectionObserver' in window)){rev.forEach(function(e){e.classList.add('visto');});return;}
 var mov=matchMedia('(prefers-reduced-motion: no-preference)').matches;
+/* Zumbido de móvil: 3 vibraciones cortas (botones) o 2 (la Carta, cuando ya ha entrado), una cada 1,6 s; todo acaba antes de 5 s */
+function zumbaSi(t,si){
+  clearTimeout(t._z);t.classList.remove('zumba');if(!si||!mov)return;
+  var carta=t.matches('.carta'),n=0,tope=carta?2:3;
+  t._z=setTimeout(function uno(){t.classList.remove('zumba');void t.offsetWidth;t.classList.add('zumba');if(++n<tope)t._z=setTimeout(uno,1600);},carta?(t.classList.contains('espera')?1500:300):700);
+}
+$$('.btn-acento,.carta').forEach(function(e){e.addEventListener('animationend',function(ev){if(ev.animationName==='zumbido'||ev.animationName==='carta-zumba')e.classList.remove('zumba');});});
 /* Entradas: decide el observer, que mide contra la pantalla real (también dentro de un marco, como la vista previa).
    Primer aviso: si ya se ve, aparece tal cual; si no, los planes y la Carta se arman (.espera) para entrar vibrando.
    Después, entra cuando asoma una quinta parte (o 120 px). Los planes que entran juntos van escalonados (--d). */
@@ -867,33 +875,36 @@ var aviso1=new Set(),tanda=0,tandaT=0;
 function ver(t){
   if(t.classList.contains('espera')&&t.tagName==='LI'){var ahora=performance.now();if(ahora-tandaT>300)tanda=0;tandaT=ahora;t.style.setProperty('--d',(tanda++*110)+'ms');}
   t.classList.add('visto');io.unobserve(t);
+  if(t.matches('.carta'))zumbaSi(t,true); /* la Carta vibra cuando acaba de entrar */
+  /* carrusel de «Lo vivido»: si se ve una tarjeta, se ven todas (las de la derecha no deben quedarse ocultas para quien no desliza, ni para Google) */
+  var c=t.parentElement;if(c&&c.classList.contains('carrusel'))[].forEach.call(c.children,function(x){if(!x.classList.contains('visto')){x.classList.add('visto');io.unobserve(x);}});
 }
 var io=new IntersectionObserver(function(es){es.forEach(function(e){var t=e.target;
   if(!aviso1.has(t)){aviso1.add(t);
-    if(e.isIntersecting){t.classList.add('visto');io.unobserve(t);}
+    if(e.isIntersecting)ver(t);
     else if(mov&&t.matches('.cal-lista > li,.carta'))t.classList.add('espera');
     return;}
   if(e.isIntersecting&&(e.intersectionRatio>=.2||e.intersectionRect.height>120))ver(t);
-});},{threshold:[0,.2,.4]});
+});},{threshold:[0,.2,.4],rootMargin:'0px 0px -15% 0px'});
 rev.forEach(function(e){io.observe(e);});
 /* Redes de seguridad por si el observer no avisa (navegadores raros): al cargar y al hacer scroll se mira a mano */
 setTimeout(function(){rev.forEach(function(e){if(!aviso1.has(e)&&e.getBoundingClientRect().top<innerHeight)e.classList.add('visto');});},1200);
 var pend=rev.slice();
-function mira(){var lim=innerHeight*.9;pend=pend.filter(function(e){if(e.classList.contains('visto'))return false;if(e.getBoundingClientRect().top<lim){ver(e);return false;}return true;});if(!pend.length){removeEventListener('scroll',mira);removeEventListener('resize',mira);}}
+function mira(){var lim=innerHeight*.75;pend=pend.filter(function(e){if(e.classList.contains('visto'))return false;if(e.getBoundingClientRect().top<lim){ver(e);return false;}return true;});if(!pend.length){removeEventListener('scroll',mira);removeEventListener('resize',mira);}}
 addEventListener('scroll',mira,{passive:true});addEventListener('resize',mira);
 if(mov){
-  /* Lo que vibra en bucle (botones de acento, Carta, onda) solo se anima mientras está en pantalla */
-  var ioV=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('en-pantalla',e.isIntersecting);});});
-  $$('.btn-acento,.carta,.banda .onda').forEach(function(e){ioV.observe(e);});
+  /* Lo que vibra solo (botones de acento, Carta, onda) se anima mientras está en pantalla, por encima de la barra */
+  var ioV=new IntersectionObserver(function(es){es.forEach(function(e){var t=e.target;t.classList.toggle('en-pantalla',e.isIntersecting);if(t.matches('.onda'))return;if(t.matches('.carta')&&!t.classList.contains('visto'))return;zumbaSi(t,e.isIntersecting);});},{rootMargin:'0px 0px -15% 0px'});
+  $$('.btn-acento,.carta,.banda .onda').forEach(function(e){if(!e.closest('.barra'))ioV.observe(e);});
   /* PC: cada plan tiembla al cruzar el centro de la pantalla (en móvil lo hace .activo) */
-  var ioL=new IntersectionObserver(function(es){if(mqTacto.matches)return;es.forEach(function(e){if(e.isIntersecting){var p=e.target;p.classList.remove('latido');void p.offsetWidth;p.classList.add('latido');}});},{rootMargin:'-45% 0px -45% 0px'});
+  var ioL=new IntersectionObserver(function(es){if(mqTacto.matches)return;es.forEach(function(e){if(e.isIntersecting&&e.rootBounds){var p=e.target;p.classList.remove('latido');void p.offsetWidth;p.classList.add('latido');}});},{rootMargin:'-45% 0px -45% 0px'});
   planes.forEach(function(p){ioL.observe(p);p.addEventListener('animationend',function(ev){if(ev.animationName==='plan-latido')p.classList.remove('latido');});});
 }
 /* Android: un toque háptico corto al pulsar un botón de acento o un plan (iPhone no lo permite; no pasa nada) */
 $$('.btn-acento,.plan').forEach(function(el){el.addEventListener('click',function(){try{navigator.vibrate&&navigator.vibrate(15);}catch(_){}});});
 window.vibraOK=1;
-var barra=d.getElementById('barra'),heroDentro=true,tapan=new Set();
-function pinta(){barra.classList.toggle('visible',!heroDentro&&tapan.size===0);}
+var barra=d.getElementById('barra'),heroDentro=true,tapan=new Set(),barraBtn=barra.querySelector('.btn-acento'),barraVis=false;
+function pinta(){var v=!heroDentro&&tapan.size===0;barra.classList.toggle('visible',v);if(v!==barraVis){barraVis=v;if(barraBtn)zumbaSi(barraBtn,v);}} /* el botón de la barra zumba al aparecer */
 new IntersectionObserver(function(es){heroDentro=es[es.length-1].isIntersecting;pinta();}).observe(d.getElementById('hero'));
 var io2=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?tapan.add(e.target):tapan.delete(e.target);});pinta();});
 ['cta-cal','cta-entrar','cierre','pie'].forEach(function(id){var el=d.getElementById(id);if(el)io2.observe(el);});
