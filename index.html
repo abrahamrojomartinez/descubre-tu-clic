@@ -298,7 +298,7 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
 @media (min-width:768px){.detras-fondo{padding:96px var(--gutter)}.detras-fondo > img{object-position:50% 30%}}
 .detras-rejilla{display:grid;grid-template-columns:120px minmax(0,1fr);grid-template-areas:"foto cab" "texto texto";column-gap:18px;row-gap:24px;align-items:center}
 .detras-foto{grid-area:foto}
-.detras-foto img{width:120px;height:150px;object-fit:cover;object-position:50% 35%;border-radius:var(--vibra-radio)}
+.detras-foto img{width:120px;height:150px;object-fit:cover;object-position:50% 30%;border-radius:var(--vibra-radio)}
 .detras-foto figcaption{margin-top:8px;font-size:13px}
 .detras-cab{grid-area:cab}
 .detras-texto{grid-area:texto}
@@ -363,13 +363,14 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
 @keyframes plan-entra-d{0%{opacity:0;transform:translateX(36px)}55%{opacity:1;transform:translateX(-5px)}68%{transform:translateX(4px)}80%{transform:translateX(-3px)}90%{transform:translateX(1px)}100%{opacity:1;transform:none}}
 @keyframes carta-entra{0%{opacity:0;transform:translateY(48px) rotate(-8deg) scale(.86)}45%{opacity:1;transform:translateY(-6px) rotate(2deg) scale(1.03)}55%{transform:rotate(-2.5deg) scale(1.02)}62%{transform:rotate(2.5deg) scale(1.02)}69%{transform:rotate(-2deg) scale(1.01)}76%{transform:rotate(1.5deg)}83%{transform:rotate(-1deg)}90%{transform:rotate(.5deg)}100%{opacity:1;transform:none}}
 @media (prefers-reduced-motion:no-preference){
-  .js .cal-lista li.reveal{opacity:0;transform:translateX(-36px);transition:none}
-  .js .cal-lista li.reveal:nth-child(even){transform:translateX(36px)}
-  .js .cal-lista li.reveal.visto{animation:plan-entra .8s cubic-bezier(.2,.7,.3,1) both}
-  .js .cal-lista li.reveal:nth-child(even).visto{animation-name:plan-entra-d}
-  .js .carta.reveal{opacity:0;transform:translateY(48px) rotate(-8deg) scale(.86);transition:none}
-  .js .carta.reveal.visto{animation:carta-entra 1.3s cubic-bezier(.2,.7,.3,1) .1s both}
+  .cal-lista li.espera{opacity:0;transform:translateX(-36px);transition:none}
+  .cal-lista li.espera:nth-child(even){transform:translateX(36px)}
+  .cal-lista li.espera.visto{animation:plan-entra .8s cubic-bezier(.2,.7,.3,1) both}
+  .cal-lista li.espera:nth-child(even).visto{animation-name:plan-entra-d}
+  .carta.espera{opacity:0;transform:translateY(48px) rotate(-8deg) scale(.86);transition:none}
+  .carta.espera.visto{animation:carta-entra 1.3s cubic-bezier(.2,.7,.3,1) .1s both}
 }
+.calendario,#entrar{overflow:hidden} /* lo que entra de lado nunca ensancha la página */
 .js .reveal{opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease}
 .js .reveal-fundido{opacity:0;transition:opacity .6s ease}
 .js .reveal.visto,.js .reveal-fundido.visto{opacity:1;transform:none}
@@ -658,8 +659,7 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
 <section class="detras seccion" aria-labelledby="detras-t">
   <div class="contenedor detras-rejilla">
     <figure class="detras-foto reveal">
-      <img src="metodo-vibra/abraham-surf.webp" srcset="img/abraham-surf-240.webp 240w, img/abraham-surf-360.webp 360w, metodo-vibra/abraham-surf.webp 720w" sizes="(min-width: 768px) 360px, 120px" width="720" height="900" loading="lazy" decoding="async" alt="Abraham, fundador de VIBRA, rema tumbado en su tabla">
-      <figcaption class="nota">Mi oficina, últimamente.</figcaption>
+      <img src="img/abraham-retrato.webp" srcset="img/abraham-retrato-240.webp 240w, img/abraham-retrato-360.webp 360w, img/abraham-retrato.webp 720w" sizes="(min-width: 768px) 360px, 120px" width="720" height="900" loading="lazy" decoding="async" alt="Retrato de Abraham, fundador de VIBRA Society, en blanco y negro">
     </figure>
     <header class="detras-cab">
       <p class="vibra-antetitulo">Quién está detrás</p>
@@ -803,8 +803,14 @@ function centroPlan(){
 }
 centroPlan();
 mqTacto.addEventListener?mqTacto.addEventListener('change',centroPlan):mqTacto.addListener(centroPlan);
-var rev=$$('.reveal,.reveal-fundido');
+var rev=[].slice.call($$('.reveal,.reveal-fundido'));
+/* Planes y Carta: la entrada con vibración solo se arma si aún están por debajo de la pantalla */
+if(matchMedia('(prefers-reduced-motion: no-preference)').matches)$$('.cal-lista > li.reveal,.carta.reveal').forEach(function(e){if(e.getBoundingClientRect().top>innerHeight)e.classList.add('espera');});
 if(!('IntersectionObserver' in window)){rev.forEach(function(e){e.classList.add('visto');});return;}
+/* Red de seguridad por si el observer no salta (marcos, navegadores raros): también se mira al hacer scroll */
+var pend=rev.slice();
+function mira(){var lim=innerHeight*.94;pend=pend.filter(function(e){if(e.classList.contains('visto'))return false;if(e.getBoundingClientRect().top<lim){e.classList.add('visto');return false;}return true;});if(!pend.length){removeEventListener('scroll',mira);removeEventListener('resize',mira);}}
+addEventListener('scroll',mira,{passive:true});addEventListener('resize',mira);
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visto');io.unobserve(e.target);}});},{rootMargin:'0px 0px -6% 0px'});
 rev.forEach(function(e){io.observe(e);});
 var barra=d.getElementById('barra'),heroDentro=true,tapan=new Set();
