@@ -168,7 +168,7 @@ a{color:inherit}
 
 /* ── 4 · Calendario (guía §5, filas como un único enlace) ── */
 .calendario{background:var(--vibra-noche);color:var(--vibra-crema);padding:0 var(--gutter) var(--seccion-y)}
-.cal-cab{padding:52px 0 32px;max-width:880px;margin:0 auto}
+.calendario .cal-cab{padding:56px 0 36px;max-width:880px;margin:0 auto}
 .cal-ante{color:var(--vibra-crema);max-width:none;white-space:nowrap}
 .cal-lista{list-style:none;margin:0 auto;padding:0;max-width:880px;display:grid;gap:12px}
 .cal-lista > li{position:relative}
@@ -212,7 +212,7 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
 .plan:hover .plan-fecha,.plan:focus-visible .plan-fecha,.plan.activo .plan-fecha{background:var(--vibra-coral-vivo)}
 .plan:hover .plan-flecha,.plan:focus-visible .plan-flecha,.plan.activo .plan-flecha{opacity:1;transform:none}
 .cal-cta{text-align:center;margin:32px 0 0}
-@media (min-width:768px){.cal-cab{padding:96px 0 44px;max-width:880px;margin:0 auto}}
+@media (min-width:768px){.calendario .cal-cab{padding:96px 0 44px;max-width:880px;margin:0 auto}}
 .cal-nota{text-align:center;color:var(--vibra-crema-suave);font-size:var(--t-nota);margin:14px 0 0}
 @media (max-width:599px){.plan-nota{letter-spacing:0;white-space:nowrap}} /* cabe en la celda de 88 px sin el eje wdth */
 @media (min-width:600px){
@@ -446,9 +446,9 @@ main > section[id]{scroll-margin-top:-16px} /* las secciones ya traen su aire: s
 
 <!-- 4 · Calendario 26·27 -->
 <section class="calendario sobre-oscuro" id="calendario" aria-labelledby="cal-t">
-  <header class="cal-cab">
+  <div class="cal-cab">
     <h2 id="cal-t" class="vibra-antetitulo cal-ante">Calendario 26·27</h2>
-  </header>
+  </div>
   <ol class="cal-lista">
     <!-- calendario:inicio · lo que hay hasta calendario:fin lo genera scripts/calendario.py desde calendario-26-27.json: no editar a mano -->
     <li class="reveal en-vivo" data-hasta="2026-11-08">
@@ -812,16 +812,25 @@ function centroPlan(){
 centroPlan();
 mqTacto.addEventListener?mqTacto.addEventListener('change',centroPlan):mqTacto.addListener(centroPlan);
 var rev=[].slice.call($$('.reveal,.reveal-fundido'));
-/* Planes y Carta: la entrada con vibración solo se arma si aún están por debajo de la pantalla */
-if(matchMedia('(prefers-reduced-motion: no-preference)').matches)$$('.cal-lista > li.reveal,.carta.reveal').forEach(function(e){if(e.getBoundingClientRect().top>innerHeight)e.classList.add('espera');});
 if(!('IntersectionObserver' in window)){rev.forEach(function(e){e.classList.add('visto');});return;}
-/* Red de seguridad por si el observer no salta (marcos, navegadores raros): también se mira al hacer scroll */
+/* Planes y Carta (entrada con vibración): decide el observer, que mide contra la pantalla real también dentro de un marco.
+   Primer aviso: si ya se ve, aparece tal cual; si no, se arma (.espera) y entra cuando asoma una cuarta parte. */
+var mov=matchMedia('(prefers-reduced-motion: no-preference)').matches;
+var anima=[].slice.call($$('.cal-lista > li.reveal,.carta.reveal')),visto1=new Set();
+var ioA=new IntersectionObserver(function(es){es.forEach(function(e){var t=e.target;
+  if(!visto1.has(t)){visto1.add(t);if(!e.isIntersecting&&mov&&!t.classList.contains('visto')){t.classList.add('espera');return;}}
+  if(e.isIntersecting&&(e.intersectionRatio>=.25||!t.classList.contains('espera')||e.boundingClientRect.height*e.intersectionRatio>160)){t.classList.add('visto');ioA.unobserve(t);}
+});},{threshold:[0,.25,.5]});
+anima.forEach(function(e){ioA.observe(e);});
+setTimeout(function(){anima.forEach(function(e){if(!visto1.has(e)&&e.getBoundingClientRect().top<innerHeight)e.classList.add('visto');});},1200); /* si el observer no avisa */
+var resto=rev.filter(function(e){return anima.indexOf(e)<0;});
+/* Red de seguridad por si el observer no salta (navegadores raros): también se mira al hacer scroll */
 var pend=rev.slice();
 function mira(){var lim=innerHeight*.94;pend=pend.filter(function(e){if(e.classList.contains('visto'))return false;if(e.getBoundingClientRect().top<lim){e.classList.add('visto');return false;}return true;});if(!pend.length){removeEventListener('scroll',mira);removeEventListener('resize',mira);}}
 addEventListener('scroll',mira,{passive:true});addEventListener('resize',mira);
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visto');io.unobserve(e.target);}});},{rootMargin:'0px 0px -6% 0px'});
-rev.forEach(function(e){io.observe(e);});
-rev.forEach(function(e){if(!e.classList.contains('espera')&&e.getBoundingClientRect().top<innerHeight)e.classList.add('visto');}); /* lo que ya asoma al cargar (también en el 6 % de abajo) */
+resto.forEach(function(e){io.observe(e);});
+resto.forEach(function(e){if(e.getBoundingClientRect().top<innerHeight)e.classList.add('visto');}); /* lo que ya asoma al cargar (también en el 6 % de abajo) */
 window.vibraOK=1;
 var barra=d.getElementById('barra'),heroDentro=true,tapan=new Set();
 function pinta(){barra.classList.toggle('visible',!heroDentro&&tapan.size===0);}
