@@ -81,3 +81,15 @@
   [headers.values]
     Access-Control-Allow-Origin = "*"
     Cache-Control = "public, max-age=300, must-revalidate"
+
+# Fotos y logos: 1 hora de caché en el navegador (volver a la landing en la misma
+# sesión no las descarga otra vez; un cambio de imagen se ve en menos de 1 h).
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/marca/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"

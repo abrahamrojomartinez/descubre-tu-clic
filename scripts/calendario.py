@@ -92,9 +92,10 @@ def validar(doc):
 
 
 def fecha_corta(p):
-    """«7 nov», «2–8 dic» o, si el plan solo tiene mes, «jun»."""
-    mes = ABREV[MESES[p["mes"].upper()][0]]
-    return f'{p["fecha"].strip()} {mes}'.strip()
+    """«7 nov», «2–8 dic» o, si el plan solo tiene mes, «junio» (sin día, la abreviatura confunde)."""
+    nombre = MESES[p["mes"].upper()][0]
+    dia = p["fecha"].strip()
+    return f"{dia} {ABREV[nombre]}" if dia else nombre
 
 
 def fila(p, temporada):
