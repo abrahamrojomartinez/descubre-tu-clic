@@ -163,14 +163,10 @@ a{color:inherit}
 
 /* ── 4 · Calendario (guía §5, filas como un único enlace) ── */
 .calendario{background:var(--vibra-noche);color:var(--vibra-crema);padding:0 var(--gutter) var(--seccion-y)}
-.cal-cab{position:relative;isolation:isolate;text-align:center;margin:0 calc(-1 * var(--gutter)) 28px;padding:44px var(--gutter) 40px}
-.cal-cab > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;z-index:-2}
-.cal-cab::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(43,50,45,.70),rgba(43,50,45,.70) 70%,#2B322D)}
-.cal-cab-in{max-width:640px;margin:0 auto}
+.cal-cab{text-align:center;padding:48px 0 28px}
 .cal-ante{color:var(--vibra-crema);display:inline-flex;align-items:center;gap:12px;margin-right:-.3em}
 .cal-ante::before{margin:0}
 .cal-ante::after{content:"";width:28px;height:2px;background:var(--vibra-coral)} /* sobre foto el texto va en crema; el coral, solo en los filetes */
-.calendario h2{font-size:clamp(3rem,1.6rem + 6vw,5.5rem);margin:12px auto 0;max-width:none}
 .cal-lista{list-style:none;margin:0 auto;padding:0;max-width:880px;display:grid;gap:12px}
 .cal-lista > li{position:relative}
 /* Cada fila es un único <a> y no lleva ninguna etiqueta de texto (decisión de Abraham, 16/10): el aria-label ya lo dice todo.
@@ -224,7 +220,6 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
   .disco:first-child{margin-left:0}
   .plan-flecha{top:50%;bottom:auto;right:18px;width:36px;height:36px;margin-top:-18px} /* escritorio: centrada en la fila */
 }
-@media (min-width:768px){.cal-cab > img{object-position:50% 35%}}
 
 /* ── 5 · Lo vivido ── */
 .vivido{background:var(--vibra-crema-2)}
@@ -329,18 +324,18 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
 .lideres-enl{display:flex;flex-wrap:wrap;column-gap:28px;margin-top:8px}
 
 /* ── 10 · Cierre coral ── */
-.cierre{background:var(--vibra-coral);text-align:center;padding:var(--seccion-y) var(--gutter)}
-.cierre h2{color:var(--vibra-noche);font-size:clamp(2.125rem,1.1rem + 4.4vw,4.5rem);margin:0 auto}
-.cierre-txt{color:var(--vibra-noche);font-weight:600;font-size:18px;margin-top:16px}
+.cierre{text-align:center;padding:var(--seccion-y) var(--gutter);min-height:460px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.cierre > img{object-position:30% 50%}
+.firma{background:var(--vibra-coral);text-align:center;padding:48px var(--gutter)}
+.cierre h2{font-size:clamp(2.125rem,1.1rem + 4.4vw,4.5rem);margin:0 auto}
+.cierre-txt{font-weight:600;font-size:18px;margin-top:16px}
 .cierre .btn{margin-top:28px}
-.cierre-firma{width:280px;margin:56px auto 0}
+.cierre-firma{width:280px;margin:0 auto}
 @media (min-width:768px){.cierre-firma{width:400px}}
 
 /* ── 11 · Pie ── */
 .pie{background:var(--vibra-noche);color:var(--vibra-crema);padding:56px var(--gutter) 32px}
-.pie-logo{width:160px}
-.pie-frase{margin-top:18px;color:var(--vibra-crema-suave);max-width:38ch}
-.pie-cols{display:grid;gap:28px;margin-top:40px}
+.pie-cols{display:grid;gap:28px}
 .pie-t{font:800 var(--t-ante)/1 var(--font-titular);letter-spacing:.3em;text-transform:uppercase;color:var(--vibra-crema-suave);margin-bottom:6px}
 .pie ul{list-style:none;margin:0;padding:0}
 .pie li a{display:inline-flex;align-items:center;min-height:48px;color:var(--vibra-crema);font-weight:600;text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:4px;transition:text-decoration-color .15s}
@@ -428,11 +423,7 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
 <!-- 4 · Calendario 26·27 -->
 <section class="calendario sobre-oscuro" id="calendario" aria-labelledby="cal-t">
   <header class="cal-cab">
-    <img src="img/cal-fondo.webp" srcset="img/cal-fondo-800.webp 800w, img/cal-fondo.webp 1300w" sizes="100vw" width="1300" height="659" loading="lazy" decoding="async" alt="">
-    <div class="cal-cab-in">
-      <p class="vibra-antetitulo cal-ante">Temporada 26·27</p>
-      <h2 id="cal-t" class="vibra-titular">Calendario</h2>
-    </div>
+    <h2 id="cal-t" class="vibra-antetitulo cal-ante">Calendario</h2>
   </header>
   <ol class="cal-lista">
     <!-- calendario:inicio · lo que hay hasta calendario:fin lo genera scripts/calendario.py desde calendario-26-27.json: no editar a mano -->
@@ -706,20 +697,22 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
 </section>
 
 <!-- 10 · Cierre -->
-<section class="cierre vibra-sobre-coral" id="cierre" aria-labelledby="cierre-t">
+<section class="cierre foto-velada sobre-oscuro" id="cierre" aria-labelledby="cierre-t">
+  <img src="img/cal-fondo.webp" srcset="img/cal-fondo-800.webp 800w, img/cal-fondo.webp 1300w" sizes="100vw" width="1300" height="659" loading="lazy" decoding="async" alt="Un grupo de amigos en el agua, esperando la ola con sus tablas">
   <h2 id="cierre-t" class="vibra-titular">Que nunca te quiten tu vibra.</h2>
   <p class="cierre-txt">La puerta está abierta.</p>
-  <a class="btn btn-principal" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cierre">Entra a VIBRA <span aria-hidden="true">→</span></a>
-  <img class="cierre-firma" src="marca/logos/vibra-society-claim-sobre-coral.svg" width="426" height="180" loading="lazy" decoding="async" alt="VIBRA Society. Descubre tu clic">
+  <a class="btn btn-acento" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cierre">Entra a VIBRA <span aria-hidden="true">→</span></a>
 </section>
+
+<div class="firma vibra-sobre-coral">
+  <img class="cierre-firma" src="marca/logos/vibra-society-claim-sobre-coral.svg" width="426" height="180" loading="lazy" decoding="async" alt="VIBRA Society. Descubre tu clic">
+</div>
 
 </main>
 
 <!-- 11 · Pie -->
 <footer class="pie sobre-oscuro" id="pie">
   <div class="contenedor">
-    <img class="pie-logo" src="marca/logos/vibra-society-sobre-noche.svg" width="425" height="150" loading="lazy" decoding="async" alt="VIBRA Society">
-    <p class="pie-frase">Viajes, eventos y planes con propósito para salir del piloto automático.</p>
     <div class="pie-cols">
       <nav aria-labelledby="pie-planes">
         <h2 class="pie-t" id="pie-planes">Planes</h2>
