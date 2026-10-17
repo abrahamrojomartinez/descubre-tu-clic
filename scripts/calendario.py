@@ -114,6 +114,7 @@ def fila(p, temporada):
 
     con = lista_con(p["con"])
     titulo, linea = p["titulo"].strip(), p["linea"].strip()
+    titulo_html = escape(titulo).replace("Flow Fest", '<span class="ff">Flow Fest</span>')  # el nombre del festival, destacado
 
     if p["paginaPropia"]:
         href = p["paginaPropia"]
@@ -146,7 +147,7 @@ def fila(p, temporada):
         f'        <p class="plan-fecha"><time datetime="{datetime_}">{dia}</time></p>',
         '        <div class="plan-cuerpo">',
         *(['          <span class="plan-vivo" aria-hidden="true"><span class="vivo-punto"></span>En vivo</span>'] if vivo else []),
-        f'          <h3 class="plan-t">{escape(titulo)}</h3>',
+        f'          <h3 class="plan-t">{titulo_html}</h3>',
         f'          <p class="plan-linea">{escape(linea)}</p>',
     ]
     if con:

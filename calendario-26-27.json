@@ -1,6 +1,6 @@
 {
   "temporada": "26·27",
-  "actualizado": "2026-10-16",
+  "actualizado": "2026-10-17",
   "planes": [
     {
       "id": "2627-flow-fest",
@@ -146,11 +146,11 @@
       "id": "2627-bali-junio",
       "mes": "JUN",
       "fecha": "",
-      "titulo": "Bali",
-      "etiqueta": "Bali (junio)",
-      "linea": "El viaje que te cambiará la vida. Sal del piloto automático.",
-      "meta": "El viaje que te cambiará la vida",
-      "valor": "Bali (junio): el viaje que te cambiará la vida",
+      "titulo": "Flow Fest Bali",
+      "etiqueta": "Flow Fest Bali (junio)",
+      "linea": "Tu Flow Fest en Bali, con vacaciones o teletrabajo.",
+      "meta": "Flow Fest en Bali · vacaciones o teletrabajo",
+      "valor": "Flow Fest Bali (junio): vacaciones o teletrabajo",
       "con": [
         "@reviondo.r"
       ],
@@ -169,11 +169,11 @@
       "id": "2627-bali-julio",
       "mes": "JUL",
       "fecha": "",
-      "titulo": "Bali",
-      "etiqueta": "Bali (julio)",
-      "linea": "El viaje que te cambiará la vida. Sal del piloto automático.",
-      "meta": "El viaje que te cambiará la vida",
-      "valor": "Bali (julio): el viaje que te cambiará la vida",
+      "titulo": "Bali Lifestyle & Cowork",
+      "etiqueta": "Bali Lifestyle & Cowork (julio)",
+      "linea": "Vacaciones o cowork, tú eliges: te preparamos el paquete.",
+      "meta": "Vacaciones o cowork en Bali",
+      "valor": "Bali Lifestyle & Cowork (julio): vacaciones o cowork en Bali",
       "con": [
         "@liveokeypeople · una semana o 15 días"
       ],
