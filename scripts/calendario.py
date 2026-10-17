@@ -166,7 +166,16 @@ def main():
         return 2
     bloque = "\n".join(fila(p, doc["temporada"]) for p in doc["planes"])
 
+    pie = "\n".join(
+        f'          <li data-hasta="{p["hasta"]}"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_'
+        f'{UTM.get(p["id"]) or sufijo_automatico(p["id"])}">{escape(p["etiqueta"])}</a></li>'
+        for p in doc["planes"])
     html = INDEX.read_text(encoding="utf-8")
+    original = html
+    a, b = html.find("<!-- pie-planes:inicio"), html.find("<!-- pie-planes:fin -->")
+    if a >= 0 and b > a:
+        a = html.index("-->", a) + 3
+        html = html[:a] + "\n" + pie + "\n          " + html[b:]
     i, j = html.find(INICIO), html.find(FIN)
     if i < 0 or j < 0 or j < i:
         print("index.html no tiene los marcadores <!-- calendario:inicio … --> y <!-- calendario:fin -->", file=sys.stderr)
@@ -175,12 +184,12 @@ def main():
     nuevo = html[:fin_marcador_inicio] + "\n" + bloque + "\n    " + html[j:]
 
     if "--check" in sys.argv[1:]:
-        if nuevo == html:
+        if nuevo == original:
             print("index.html está al día con calendario-26-27.json")
             return 0
         print("index.html NO está al día: ejecuta python3 scripts/calendario.py", file=sys.stderr)
         return 1
-    if nuevo == html:
+    if nuevo == original:
         print("index.html ya estaba al día (sin cambios)")
     else:
         INDEX.write_text(nuevo, encoding="utf-8")

@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Hanken+Grotesk:wght@400..800&display=swap">
 <!-- Simple Analytics: solo la cola de eventos. El script lo inyecta Netlify (no añadirlo aquí). -->
 <script>window.sa_event=window.sa_event||function(){var a=[].slice.call(arguments);window.sa_event.q?window.sa_event.q.push(a):window.sa_event.q=[a]};document.documentElement.classList.add('js');</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"VIBRA Society","url":"https://vibrasociety.es/","logo":"https://vibrasociety.es/apple-touch-icon.png","email":"abrahamrojomartinez@gmail.com","sameAs":["https://www.instagram.com/vibra.society/"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://vibrasociety.es/#vibra", "name": "VIBRA Society", "alternateName": "VIBRA", "url": "https://vibrasociety.es/", "logo": "https://vibrasociety.es/apple-touch-icon.png", "email": "abrahamrojomartinez@gmail.com", "sameAs": ["https://www.instagram.com/vibra.society/"], "slogan": "Que nunca te quiten tu vibra", "description": "Comunidad con propósito: viajes, eventos y planes para salir del piloto automático, con gente como tú.", "areaServed": {"@type": "Country", "name": "España"}}, {"@type": "WebSite", "@id": "https://vibrasociety.es/#web", "url": "https://vibrasociety.es/", "name": "VIBRA Society", "inLanguage": "es-ES", "publisher": {"@id": "https://vibrasociety.es/#vibra"}}, {"@type": "WebPage", "@id": "https://vibrasociety.es/", "url": "https://vibrasociety.es/", "name": "VIBRA Society · Descubre tu clic", "inLanguage": "es-ES", "isPartOf": {"@id": "https://vibrasociety.es/#web"}, "about": {"@id": "https://vibrasociety.es/#vibra"}, "mainEntity": {"@id": "https://vibrasociety.es/#dudas"}}, {"@type": "FAQPage", "@id": "https://vibrasociety.es/#dudas", "mainEntity": [{"@type": "Question", "name": "¿Qué es VIBRA Society exactamente? +", "acceptedAnswer": {"@type": "Answer", "text": "Una comunidad de gente con trabajo, con poco tiempo y con ganas de más. Hacemos viajes, eventos y planes con propósito para salir del piloto automático. Conectas por cómo eres, no por lo que aparentas."}}, {"@type": "Question", "name": "¿Esto me va a costar algo? +", "acceptedAnswer": {"@type": "Answer", "text": "Entrar a VIBRA es gratis. Cada viaje y cada evento se cuenta dentro, en el grupo, con todos sus detalles, y tú decides si vas."}}, {"@type": "Question", "name": "¿Tengo que dejar mi trabajo o saber surfear? +", "acceptedAnswer": {"@type": "Answer", "text": "No y no. No tienes por qué romper con todo de golpe: hay planes de un día en tu ciudad y viajes con teletrabajo. Y VIBRA no es surf: cada persona vive su propio primer clic."}}, {"@type": "Question", "name": "¿Y si no conozco a nadie? +", "acceptedAnswer": {"@type": "Answer", "text": "Para eso está el grupo de WhatsApp: os conocéis antes del plan, no el primer día."}}, {"@type": "Question", "name": "¿Por dónde empiezo si estoy dudando? +", "acceptedAnswer": {"@type": "Answer", "text": "Por tu Carta VIBRA : 7 preguntas y 2 minutos. Luego decides."}}]}]}</script>
 <style>
 /* ── A · Tokens del manual v4 §4 (literales; la v5 solo cambiará valores) ── */
 :root{
@@ -373,6 +373,12 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
   .btn:hover{transform:none}
   .plan:hover,.plan:focus-visible,.plan.activo,.plan-flecha{transform:none} /* la fila se ilumina igual, pero no crece ni sube */
 }
+
+/* Pie (17/10): iconos de contacto y marca de WhatsApp en el paso 3 */
+.pie-iconos{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+.pie-ico{display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(245,239,224,.4);border-radius:50%;color:var(--vibra-crema);transition:border-color .15s,background-color .15s}
+.pie-ico:hover,.pie-ico:focus-visible{border-color:var(--vibra-crema);background:rgba(245,239,224,.1)}
+.ico-wa{display:inline-block;vertical-align:-.12em;margin-left:.15em}
 </style>
 </head>
 <body>
@@ -580,7 +586,6 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
             <p class="t-ante">Asturias · con @liveokeypeople</p>
             <h3>Viaje VIBRA × LiveOkey.</h3>
             <p>Ya es historia.</p>
-            <a class="enl" href="/viaje-vibra-con-liveokey/" data-evento="clic_viaje_liveokey">Mira cómo fue&nbsp;<span aria-hidden="true">→</span></a>
           </div>
         </article>
         <article class="tarjeta t-b reveal">
@@ -633,7 +638,7 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
     <ol class="pasos">
       <li class="paso reveal"><span class="paso-n" aria-hidden="true">1</span><div><h3>Responde 7 preguntas.</h3><p>Sin respuestas buenas ni malas: van de cómo eres, no de lo que aparentas.</p></div></li>
       <li class="paso reveal"><span class="paso-n" aria-hidden="true">2</span><div><h3>Cuéntanos qué te mueve.</h3><p>Surf, montaña, música, lo que sabes hacer… y el viaje que sueñas.</p></div></li>
-      <li class="paso reveal"><span class="paso-n" aria-hidden="true">3</span><div><h3>Recibe tu Carta VIBRA y entra al grupo.</h3><p>Te llega a tu correo y entras al grupo de WhatsApp, donde nacen todos los planes.</p></div></li>
+      <li class="paso reveal"><span class="paso-n" aria-hidden="true">3</span><div><h3>Recibe tu Carta VIBRA y entra al grupo <svg class="ico-wa" viewBox="0 0 24 24" width="22" height="22" aria-label="WhatsApp" role="img"><path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></h3><p>Te llega a tu correo y entras al grupo de WhatsApp, donde nacen todos los planes.</p></div></li>
     </ol>
     <figure class="carta reveal">
       <img src="carta-vibra-abraham.webp" srcset="img/carta-vibra-600.webp 600w, carta-vibra-abraham.webp 760w" sizes="(min-width: 768px) 300px, 240px" width="760" height="1351" loading="lazy" decoding="async" alt="Ejemplo de Carta VIBRA: la de Abraham">
@@ -658,7 +663,7 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
       <h2 id="detras-t" class="vibra-titular h2">Descubre tu clic.</h2>
     </header>
     <div class="detras-texto reveal">
-      <p class="lead">Soy Abraham. Trabajo en una oficina. Y aun así estoy construyendo la vida que quiero. No hace falta dejarlo todo para salir del piloto automático: <strong>hace falta hacer clic. Y hacerlo con tu gente.</strong> Yo lo llamo el clic. No se compra: se provoca.</p>
+      <p class="lead">Soy Abraham. Trabajo en una oficina. Y aun así estoy construyendo la vida que quiero. No hace falta dejarlo todo para salir del piloto automático: <strong>hace falta empezar algo. Y hacerlo con tu gente.</strong> Yo lo llamo el clic. No se compra: se provoca.</p>
       <div class="caja">
         <p class="caja-linea">No es motivación. Es un plan.</p>
         <p class="caja-linea">No es hacerlo solo. Es hacerlo con tu gente.</p>
@@ -698,7 +703,6 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
       <p>Empezar, crecer, escalar o automatizar — sin que pierda su alma. Y si quieres organizar tu viaje con VIBRA, escríbeme.</p>
       <p class="lideres-enl">
         <a class="enl-crema" href="/metodo-vibra/" data-evento="clic_metodo_vibra">Ver el Método VIBRA&nbsp;<span aria-hidden="true">→</span></a>
-        <a class="enl-crema" href="mailto:abrahamrojomartinez@gmail.com" data-evento="clic_staff_mail">abrahamrojomartinez@gmail.com</a>
       </p>
     </aside>
   </div>
@@ -724,22 +728,30 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
         <h2 class="pie-t" id="pie-planes">Planes</h2>
         <ul>
           <li><a href="#calendario">Calendario</a></li>
-          <li data-hasta="2026-11-08"><a href="/flow-fest/" data-evento="clic_flow_fest">Flow Fest</a></li>
-          <li><a href="/viaje-vibra-con-liveokey/" data-evento="clic_viaje_liveokey">Viaje VIBRA × LiveOkey</a></li>
+          <!-- pie-planes:inicio · lo genera scripts/calendario.py desde calendario-26-27.json: no editar a mano -->
+          <li data-hasta="2026-11-08"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_flow">Flow Fest</a></li>
+          <li data-hasta="2026-12-09"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_palmar">El Palmar</a></li>
+          <li data-hasta="2026-12-20"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_kalma">Kalma Fest</a></li>
+          <li data-hasta="2027-04-01"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_marruecos">Marruecos</a></li>
+          <li data-hasta="2027-04-27"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_maldivas_abr">Maldivas</a></li>
+          <li data-hasta="2027-06-01"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_maldivas_may">Surf y propósito en Maldivas</a></li>
+          <li data-hasta="2027-07-01"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_bali_jun">Bali (junio)</a></li>
+          <li data-hasta="2027-08-01"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_bali_jul">Bali (julio)</a></li>
+          <!-- pie-planes:fin -->
         </ul>
       </nav>
       <nav aria-labelledby="pie-comunidad">
         <h2 class="pie-t" id="pie-comunidad">Comunidad</h2>
         <ul>
           <li><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie">Haz tu Carta VIBRA</a></li>
-          <li><a href="/metodo-vibra/" data-evento="clic_metodo_vibra">Método VIBRA</a></li>
+          <li><a href="/metodo-vibra/" data-evento="clic_metodo_vibra">Método VIBRA Business</a></li>
         </ul>
       </nav>
       <div>
         <h2 class="pie-t">Contacto</h2>
-        <ul>
-          <li><a href="mailto:abrahamrojomartinez@gmail.com" data-evento="clic_staff_mail">abrahamrojomartinez@gmail.com</a></li>
-          <li><a href="https://www.instagram.com/vibra.society/" target="_blank" rel="noopener">@vibra.society</a></li>
+        <ul class="pie-iconos">
+          <li><a class="pie-ico" href="mailto:abrahamrojomartinez@gmail.com" data-evento="clic_staff_mail" aria-label="Escríbenos un correo"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></a></li>
+          <li><a class="pie-ico" href="https://www.instagram.com/vibra.society/" target="_blank" rel="noopener" aria-label="Instagram de VIBRA Society, se abre en otra pestaña"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a></li>
         </ul>
       </div>
     </div>
