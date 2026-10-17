@@ -91,6 +91,12 @@ def validar(doc):
     return errores
 
 
+def fecha_corta(p):
+    """«7 nov», «2–8 dic» o, si el plan solo tiene mes, «jun»."""
+    mes = ABREV[MESES[p["mes"].upper()][0]]
+    return f'{p["fecha"].strip()} {mes}'.strip()
+
+
 def fila(p, temporada):
     mes = p["mes"].upper()
     nombre_mes, n = MESES[mes]
@@ -169,7 +175,7 @@ def main():
 
     pie = "\n".join(
         f'          <li data-hasta="{p["hasta"]}"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_'
-        f'{UTM.get(p["id"]) or sufijo_automatico(p["id"])}">{escape(p["etiqueta"])}</a></li>'
+        f'{UTM.get(p["id"]) or sufijo_automatico(p["id"])}">{escape(p["titulo"])} · {escape(fecha_corta(p))}</a></li>'
         for p in doc["planes"])
     html = INDEX.read_text(encoding="utf-8")
     original = html

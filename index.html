@@ -170,10 +170,7 @@ a{color:inherit}
 .cal-ante{color:var(--vibra-crema);display:inline-flex;align-items:center;gap:12px;margin-right:-.3em}
 .cal-ante::before{margin:0}
 .cal-ante::after{content:"";width:28px;height:2px;background:var(--vibra-coral)} /* sobre foto el texto va en crema; el coral, solo en los filetes */
-.calendario h2{font-size:clamp(3rem,1.6rem + 6vw,5.5rem);margin:0 auto;max-width:none}
-.cal-temp{color:var(--vibra-coral-vivo)}
-.cal-sub{color:var(--vibra-crema-suave);font-size:var(--t-lead);line-height:1.45}
-.cal-sub strong{color:var(--vibra-crema);font-weight:600}
+.calendario h2{font-size:clamp(3rem,1.6rem + 6vw,5.5rem);margin:12px auto 0;max-width:none}
 .cal-lista{list-style:none;margin:0 auto;padding:0;max-width:880px;display:grid;gap:12px}
 .cal-lista > li{position:relative}
 /* Cada fila es un único <a> y no lleva ninguna etiqueta de texto (decisión de Abraham, 16/10): el aria-label ya lo dice todo.
@@ -217,8 +214,6 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
 .plan:hover .plan-flecha,.plan:focus-visible .plan-flecha,.plan.activo .plan-flecha{opacity:1;transform:none}
 .cal-cta{text-align:center;margin:32px 0 0}
 .cal-nota{text-align:center;color:var(--vibra-crema-suave);font-size:var(--t-nota);margin:14px 0 0}
-.cal-pie{text-align:center;color:var(--vibra-crema-suave);font-size:var(--t-nota);line-height:1.5;margin:28px auto 0;max-width:46ch}
-.cal-pie a{color:var(--vibra-crema);font-weight:600;text-underline-offset:3px;display:inline-block;padding:12px 0;margin:-12px 0}
 @media (max-width:599px){.plan-nota{letter-spacing:0;white-space:nowrap}} /* cabe en la celda de 88 px sin el eje wdth */
 @media (min-width:600px){
   .plan{grid-template-columns:clamp(88px,20vw,180px) minmax(0,1fr) auto;grid-template-areas:"fecha cuerpo aliados";grid-template-rows:auto}
@@ -435,7 +430,8 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
   <header class="cal-cab">
     <img src="img/cal-fondo.webp" srcset="img/cal-fondo-800.webp 800w, img/cal-fondo.webp 1300w" sizes="100vw" width="1300" height="659" loading="lazy" decoding="async" alt="">
     <div class="cal-cab-in">
-      <h2 id="cal-t" class="vibra-titular">Calendario <span class="cal-temp">26·27</span></h2>
+      <p class="vibra-antetitulo cal-ante">Temporada 26·27</p>
+      <h2 id="cal-t" class="vibra-titular">Calendario</h2>
     </div>
   </header>
   <ol class="cal-lista">
@@ -562,7 +558,6 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
   </ol>
   <p class="cal-cta"><a class="btn btn-acento" id="cta-cal" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=calendario">Entra a VIBRA <span aria-hidden="true">→</span></a></p>
   <p class="cal-nota">Las plazas de cada plan se mueven dentro, en el grupo.</p>
-  <p class="cal-pie">¿Tienes una comunidad y quieres organizar tu viaje con VIBRA? Escríbeme a <a href="mailto:abrahamrojomartinez@gmail.com?subject=Organizar%20un%20viaje%20con%20VIBRA" data-evento="clic_staff_mail">abrahamrojomartinez@gmail.com</a></p>
 </section>
 
 <!-- 5 · Lo vivido -->
@@ -731,14 +726,14 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
         <ul>
           <li><a href="#calendario">Calendario</a></li>
           <!-- pie-planes:inicio · lo genera scripts/calendario.py desde calendario-26-27.json: no editar a mano -->
-          <li data-hasta="2026-11-08"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_flow">Flow Fest</a></li>
-          <li data-hasta="2026-12-09"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_palmar">El Palmar</a></li>
-          <li data-hasta="2026-12-20"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_kalma">Kalma Fest</a></li>
-          <li data-hasta="2027-04-01"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_marruecos">Marruecos</a></li>
-          <li data-hasta="2027-04-27"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_maldivas_abr">Maldivas</a></li>
-          <li data-hasta="2027-06-01"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_maldivas_may">Surf y propósito en Maldivas</a></li>
-          <li data-hasta="2027-07-01"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_bali_jun">Flow Fest Bali (junio)</a></li>
-          <li data-hasta="2027-08-01"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_bali_jul">Bali Lifestyle &amp; Cowork (julio)</a></li>
+          <li data-hasta="2026-11-08"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_flow">Flow Fest · 7 nov</a></li>
+          <li data-hasta="2026-12-09"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_palmar">El Palmar · 2–8 dic</a></li>
+          <li data-hasta="2026-12-20"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_kalma">Kalma Fest · 19 dic</a></li>
+          <li data-hasta="2027-04-01"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_marruecos">Marruecos · mar</a></li>
+          <li data-hasta="2027-04-27"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_maldivas_abr">Maldivas · 19–26 abr</a></li>
+          <li data-hasta="2027-06-01"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_maldivas_may">Maldivas · may</a></li>
+          <li data-hasta="2027-07-01"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_bali_jun">Flow Fest Bali · jun</a></li>
+          <li data-hasta="2027-08-01"><a href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=pie_bali_jul">Bali Lifestyle &amp; Cowork · jul</a></li>
           <!-- pie-planes:fin -->
         </ul>
       </nav>
