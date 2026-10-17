@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="img/hero-maldivas-m.webp" imagesrcset="img/hero-maldivas-m-800.webp 800w, img/hero-maldivas-m.webp 1200w" imagesizes="100vw" media="(max-width: 767px)" fetchpriority="high">
 <link rel="preload" as="image" href="img/hero-maldivas-d.webp" imagesrcset="img/hero-maldivas-d-1280.webp 1280w, img/hero-maldivas-d.webp 1920w" imagesizes="100vw" media="(min-width: 768px)" fetchpriority="high">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Hanken+Grotesk:wght@400..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Hanken+Grotesk:wght@400..800&family=Anton&display=swap">
 <!-- Simple Analytics: solo la cola de eventos. El script lo inyecta Netlify (no añadirlo aquí). -->
 <script>window.sa_event=window.sa_event||function(){var a=[].slice.call(arguments);window.sa_event.q?window.sa_event.q.push(a):window.sa_event.q=[a]};document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://vibrasociety.es/#vibra", "name": "VIBRA Society", "alternateName": "VIBRA", "url": "https://vibrasociety.es/", "logo": "https://vibrasociety.es/apple-touch-icon.png", "email": "abrahamrojomartinez@gmail.com", "sameAs": ["https://www.instagram.com/vibra.society/"], "slogan": "Que nunca te quiten tu vibra", "description": "Comunidad con propósito: viajes, eventos y planes para salir del piloto automático, con gente como tú.", "areaServed": {"@type": "Country", "name": "España"}}, {"@type": "WebSite", "@id": "https://vibrasociety.es/#web", "url": "https://vibrasociety.es/", "name": "VIBRA Society", "inLanguage": "es-ES", "publisher": {"@id": "https://vibrasociety.es/#vibra"}}, {"@type": "WebPage", "@id": "https://vibrasociety.es/", "url": "https://vibrasociety.es/", "name": "VIBRA Society · Descubre tu clic", "inLanguage": "es-ES", "isPartOf": {"@id": "https://vibrasociety.es/#web"}, "about": {"@id": "https://vibrasociety.es/#vibra"}, "mainEntity": {"@id": "https://vibrasociety.es/#dudas"}}, {"@type": "FAQPage", "@id": "https://vibrasociety.es/#dudas", "mainEntity": [{"@type": "Question", "name": "¿Qué es VIBRA Society exactamente? +", "acceptedAnswer": {"@type": "Answer", "text": "Una comunidad de gente con trabajo, con poco tiempo y con ganas de más. Hacemos viajes, eventos y planes con propósito para salir del piloto automático. Conectas por cómo eres, no por lo que aparentas."}}, {"@type": "Question", "name": "¿Esto me va a costar algo? +", "acceptedAnswer": {"@type": "Answer", "text": "Entrar a VIBRA es gratis. Cada viaje y cada evento se cuenta dentro, en el grupo, con todos sus detalles, y tú decides si vas."}}, {"@type": "Question", "name": "¿Tengo que dejar mi trabajo o saber surfear? +", "acceptedAnswer": {"@type": "Answer", "text": "No y no. No tienes por qué romper con todo de golpe: hay planes de un día en tu ciudad y viajes con teletrabajo. Y VIBRA no es surf: cada persona vive su propio primer clic."}}, {"@type": "Question", "name": "¿Y si no conozco a nadie? +", "acceptedAnswer": {"@type": "Answer", "text": "Para eso está el grupo de WhatsApp: os conocéis antes del plan, no el primer día."}}, {"@type": "Question", "name": "¿Por dónde empiezo si estoy dudando? +", "acceptedAnswer": {"@type": "Answer", "text": "Por tu Carta VIBRA : 7 preguntas y 2 minutos. Luego decides."}}]}]}</script>
@@ -132,16 +132,16 @@ a{color:inherit}
 @media (min-width:1024px){.cab-esc{display:block}}
 
 /* ── 3 · Hero ── */
-.hero{display:flex;align-items:stretch;min-height:clamp(520px,calc(100vh - var(--cab-h)),780px);min-height:clamp(520px,calc(100svh - var(--cab-h)),780px)} /* móvil: llena justo la primera pantalla; el texto arriba, la foto en medio y los botones al alcance del pulgar */
+.hero{display:flex;align-items:stretch;min-height:clamp(480px,calc(100vh - var(--cab-h) - 80px),620px);min-height:clamp(480px,calc(100svh - var(--cab-h) - 80px),620px)} /* móvil: llena justo la primera pantalla; el texto arriba, la foto en medio y los botones al alcance del pulgar */
 .hero > picture > img{object-position:56% 50%}
 .hero::before{background:linear-gradient(180deg,rgba(43,50,45,.70) 0%,rgba(43,50,45,.66) 55%,rgba(43,50,45,.55) 100%)}
-.hero-in{display:flex;width:100%;max-width:calc(var(--contenedor) + 2 * var(--gutter));margin:0 auto;padding:30px 16px 22px}
-.hero-txt{display:flex;flex-direction:column;width:100%;max-width:840px}
+.hero-in{display:flex;width:100%;max-width:calc(var(--contenedor) + 2 * var(--gutter));margin:0 auto;padding:34px 16px 34px}
+.hero-txt{display:flex;flex-direction:column;justify-content:center;width:100%;max-width:840px}
 .hero .vibra-antetitulo{color:var(--vibra-crema)}
-.hero h1{font-size:clamp(2.5rem,1rem + 6vw,5rem);max-width:none;margin:22px 0 22px}
+.hero h1{font-size:clamp(2.5rem,1rem + 6vw,5rem);max-width:none;margin:20px 0 18px}
 .br-esc{display:none}
 .hero-lead{max-width:36ch}
-.hero-acciones{display:flex;flex-direction:column;align-items:stretch;margin-top:auto;padding-top:28px}
+.hero-acciones{display:flex;flex-direction:column;align-items:stretch;margin-top:0;padding-top:32px}
 .hero-acciones .btn{width:100%}
 .hero-acciones .enl-crema{justify-content:center}
 .hero-nota{margin-top:10px;font-size:var(--t-nota);line-height:1.4;color:var(--vibra-crema);text-align:center} /* crema y no crema-suave: sobre la foto, el suave baja de 3:1 */
@@ -163,14 +163,15 @@ a{color:inherit}
 
 /* ── 4 · Calendario (guía §5, filas como un único enlace) ── */
 .calendario{background:var(--vibra-noche);color:var(--vibra-crema);padding:0 var(--gutter) var(--seccion-y)}
-.cal-cab{position:relative;isolation:isolate;text-align:center;margin:0 calc(-1 * var(--gutter)) 40px;padding:var(--seccion-y) var(--gutter) 56px}
+.cal-cab{position:relative;isolation:isolate;text-align:center;margin:0 calc(-1 * var(--gutter)) 28px;padding:44px var(--gutter) 40px}
 .cal-cab > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;z-index:-2}
 .cal-cab::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(43,50,45,.70),rgba(43,50,45,.70) 70%,#2B322D)}
 .cal-cab-in{max-width:640px;margin:0 auto}
 .cal-ante{color:var(--vibra-crema);display:inline-flex;align-items:center;gap:12px;margin-right:-.3em}
 .cal-ante::before{margin:0}
 .cal-ante::after{content:"";width:28px;height:2px;background:var(--vibra-coral)} /* sobre foto el texto va en crema; el coral, solo en los filetes */
-.calendario h2{font-size:clamp(3rem,1.6rem + 6vw,5.5rem);margin:12px auto 16px;max-width:none}
+.calendario h2{font-size:clamp(3rem,1.6rem + 6vw,5.5rem);margin:0 auto;max-width:none}
+.cal-temp{color:var(--vibra-coral-vivo)}
 .cal-sub{color:var(--vibra-crema-suave);font-size:var(--t-lead);line-height:1.45}
 .cal-sub strong{color:var(--vibra-crema);font-weight:600}
 .cal-lista{list-style:none;margin:0 auto;padding:0;max-width:880px;display:grid;gap:12px}
@@ -380,9 +381,8 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
 .pie-ico{display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(245,239,224,.4);border-radius:50%;color:var(--vibra-crema);transition:border-color .15s,background-color .15s}
 .pie-ico:hover,.pie-ico:focus-visible{border-color:var(--vibra-crema);background:rgba(245,239,224,.1)}
 .ico-wa{display:inline-block;vertical-align:-.12em;margin-left:.15em}
-/* «Flow Fest» destacado: el amarillo de su logo con borde negro verdoso (17/10) */
-.ff{background:#F0C018;color:var(--vibra-noche);border:2px solid var(--vibra-noche);border-radius:8px;padding:0 .26em;white-space:nowrap;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-.en-vivo .ff{border-color:var(--vibra-crema)}
+/* «Flow Fest» con la tipografía de su web (Anton), en la tinta normal (17/10) */
+.ff{font-family:"Anton",Impact,"Arial Black",sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.015em;font-size:1.12em;white-space:nowrap;font-variation-settings:normal}
 </style>
 </head>
 <body>
@@ -435,9 +435,7 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
   <header class="cal-cab">
     <img src="img/cal-fondo.webp" srcset="img/cal-fondo-800.webp 800w, img/cal-fondo.webp 1300w" sizes="100vw" width="1300" height="659" loading="lazy" decoding="async" alt="">
     <div class="cal-cab-in">
-      <p class="vibra-antetitulo cal-ante">Temporada 26·27</p>
-      <h2 id="cal-t" class="vibra-titular">Calendario</h2>
-      <p class="cal-sub"><strong>Descubre tu próximo clic.</strong> Elige tu plan y reserva tu plaza antes que nadie.</p>
+      <h2 id="cal-t" class="vibra-titular">Calendario <span class="cal-temp">26·27</span></h2>
     </div>
   </header>
   <ol class="cal-lista">
