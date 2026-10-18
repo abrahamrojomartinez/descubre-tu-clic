@@ -168,8 +168,13 @@ a{color:inherit}
 
 /* ── 4 · Calendario (guía §5, filas como un único enlace) ── */
 .calendario{background:var(--vibra-noche);color:var(--vibra-crema);padding:0 var(--gutter) var(--seccion-y)}
-.calendario .cal-cab{padding:56px 0 36px;max-width:880px;margin:0 auto}
-.cal-ante{color:var(--vibra-crema);max-width:none;white-space:nowrap}
+.calendario .cal-cab{text-align:center;padding:56px 0 36px;max-width:640px;margin:0 auto}
+.cal-ante{color:var(--vibra-crema);display:inline-flex;align-items:center;gap:12px;margin-right:-.3em} /* guion coral a cada lado */
+.cal-ante::before{margin:0}
+.cal-ante::after{content:"";width:28px;height:2px;background:var(--vibra-coral)}
+.calendario h2{font-size:clamp(3rem,1.6rem + 6vw,5.5rem);margin:12px auto 16px;max-width:none}
+.cal-sub{color:var(--vibra-crema-suave);font-size:var(--t-lead);line-height:1.45}
+.cal-sub strong{color:var(--vibra-crema);font-weight:600}
 .cal-lista{list-style:none;margin:0 auto;padding:0;max-width:880px;display:grid;gap:12px}
 .cal-lista > li{position:relative}
 /* Cada fila es un único <a> y no lleva ninguna etiqueta de texto (decisión de Abraham, 16/10): el aria-label ya lo dice todo.
@@ -212,7 +217,7 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
 .plan:hover .plan-fecha,.plan:focus-visible .plan-fecha,.plan.activo .plan-fecha{background:var(--vibra-coral-vivo)}
 .plan:hover .plan-flecha,.plan:focus-visible .plan-flecha,.plan.activo .plan-flecha{opacity:1;transform:none}
 .cal-cta{text-align:center;margin:32px 0 0}
-@media (min-width:768px){.calendario .cal-cab{padding:96px 0 44px;max-width:880px;margin:0 auto}}
+@media (min-width:768px){.calendario .cal-cab{padding:96px 0 48px}}
 .cal-nota{text-align:center;color:var(--vibra-crema-suave);font-size:var(--t-nota);margin:14px 0 0}
 @media (max-width:599px){.plan-nota{letter-spacing:0;white-space:nowrap}} /* cabe en la celda de 88 px sin el eje wdth */
 @media (min-width:600px){
@@ -493,7 +498,9 @@ main > section[id]{scroll-margin-top:-16px} /* las secciones ya traen su aire: s
 <!-- 4 · Calendario 26·27 -->
 <section class="calendario sobre-oscuro" id="calendario" aria-labelledby="cal-t">
   <div class="cal-cab">
-    <h2 id="cal-t" class="vibra-antetitulo cal-ante">Calendario 26·27</h2>
+    <p class="vibra-antetitulo cal-ante">Temporada 26·27</p>
+    <h2 id="cal-t" class="vibra-titular">Calendario</h2>
+    <p class="cal-sub"><strong>Descubre tu próximo clic.</strong> Elige tu plan y reserva tu plaza antes que nadie.</p>
   </div>
   <ol class="cal-lista">
     <!-- calendario:inicio · lo que hay hasta calendario:fin lo genera scripts/calendario.py desde calendario-26-27.json: no editar a mano -->
