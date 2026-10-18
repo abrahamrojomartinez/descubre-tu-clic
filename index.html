@@ -448,6 +448,29 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
   .banda .onda svg{transform-origin:50% 62%}
   .banda .onda.en-pantalla svg{animation:onda-pulso 1.6s ease-in-out 3}
 }
+/* ── Vídeo de la cabecera (fachada: miniatura + play; el iframe de YouTube solo al pulsar) ── */
+.hero-in{flex-direction:column} /* móvil: el vídeo va debajo del texto */
+.hero-txt{flex:1 0 auto}
+.hero-video{margin-top:30px;width:100%}
+.video-fachada{position:relative;display:block;aspect-ratio:16/9;border-radius:var(--vibra-radio);overflow:hidden;background:var(--vibra-noche);box-shadow:0 18px 44px -16px rgba(0,0,0,.55);color:var(--vibra-crema);text-decoration:none}
+.video-fachada img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.video-play{position:absolute;left:50%;top:50%;z-index:1;width:72px;height:72px;margin:-36px 0 0 -36px;display:grid;place-items:center;border-radius:50%;background:var(--vibra-coral);color:var(--vibra-noche-hondo);box-shadow:0 0 0 8px rgba(235,94,85,.28);transition:transform .2s ease}
+.video-play svg{margin-left:4px}
+.video-fachada:hover img{transform:scale(1.03)}
+.video-fachada:hover .video-play,.video-fachada:focus-visible .video-play{transform:scale(1.08)}
+.video-fachada:focus-visible{outline:3px solid var(--vibra-crema);outline-offset:3px}
+.hero-video iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:var(--vibra-radio);background:#000}
+@media (prefers-reduced-motion:no-preference){
+  @keyframes video-late{0%{box-shadow:0 0 0 0 rgba(235,94,85,.55)}70%{box-shadow:0 0 0 18px rgba(235,94,85,0)}100%{box-shadow:0 0 0 0 rgba(235,94,85,0)}}
+  .video-play{animation:video-late 2s ease-out 1s 3}
+}
+@media (min-width:768px){.hero-video{max-width:560px}}
+@media (min-width:1024px){
+  /* PC: el texto a la izquierda y el vídeo a la derecha */
+  .hero-in{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:56px;align-items:center}
+  .hero h1{font-size:clamp(2.75rem,1rem + 3.6vw,4.6rem)}
+  .hero-video{margin-top:0;max-width:none}
+}
 main > section[id]{scroll-margin-top:-16px} /* las secciones ya traen su aire: sin tira de la anterior bajo la cabecera */
 @media print{.js .reveal,.js .reveal-fundido{opacity:1!important;transform:none!important;transition:none!important;animation:none!important}}
 </style>
@@ -493,6 +516,14 @@ main > section[id]{scroll-margin-top:-16px} /* las secciones ya traen su aire: s
         <a class="enl-crema" href="#calendario">Ver el calendario <span aria-hidden="true">&nbsp;↓</span></a>
       </div>
       <p class="hero-nota">gratis · 2 minutos · tu Carta VIBRA y dentro</p>
+    </div>
+    <!-- Vídeo: fachada ligera (miniatura propia + play). YouTube no carga nada hasta que se pulsa;
+         sin JS, el enlace abre el vídeo en YouTube. -->
+    <div class="hero-video">
+      <a class="video-fachada" href="https://youtu.be/GyvhHNxxr3I" data-yt="GyvhHNxxr3I" data-evento="video_play" aria-label="Ver el vídeo «Así se vive en VIBRA: surf, cowork y comunidad en Asturias»">
+        <img src="img/video-asturias.webp" srcset="img/video-asturias-640.webp 640w, img/video-asturias.webp 1280w" sizes="(min-width: 1024px) 520px, (min-width: 768px) 560px, calc(100vw - 32px)" width="1280" height="720" loading="lazy" decoding="async" alt="">
+        <span class="video-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path fill="currentColor" d="M8 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 8 5.5Z"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
@@ -843,6 +874,14 @@ $$('a[href^="/comunidad"]').forEach(function(a){a.addEventListener('click',funct
   sa_event('clic_entrar_vibra');sa_event('cta_'+m);
 });});
 $$('[data-evento]').forEach(function(el){el.addEventListener('click',function(){sa_event(el.dataset.evento);});});
+/* Vídeo de la cabecera: al pulsar, se cambia la miniatura por el reproductor (youtube-nocookie, sin cookies hasta entonces) */
+$$('.video-fachada').forEach(function(a){a.addEventListener('click',function(ev){
+  ev.preventDefault();var id=a.dataset.yt,f=d.createElement('iframe');
+  f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1';
+  f.title='Así se vive en VIBRA: surf, cowork y comunidad en Asturias';
+  f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;
+  a.replaceWith(f);
+});});
 var hoy=new Date();
 $$('[data-hasta]').forEach(function(el){if(hoy>=new Date(el.dataset.hasta))el.hidden=true;});
 /* Pastilla que pasa sola a «En vivo» en su momento (data-vivo-desde, hora de Madrid), sin publicar nada; también si la página sigue abierta */
