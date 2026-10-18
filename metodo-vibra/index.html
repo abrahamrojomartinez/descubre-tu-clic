@@ -395,6 +395,11 @@ details[open] summary::before{transform:rotate(90deg)}
 .pregunta-t{font-size:clamp(2.5rem,1.2rem + 6vw,5.5rem);line-height:1.02;letter-spacing:-.015em;max-width:14ch;margin:6px auto 24px}
 .pregunta-txt{font-size:clamp(1.125rem,1rem + .5vw,1.375rem);line-height:1.5;color:var(--vibra-crema-suave);max-width:40ch;margin:0 auto 14px}
 .pregunta-txt b{color:var(--vibra-crema);font-weight:600}
+.pregunta-vero{display:inline-flex;align-items:center;gap:14px;margin:6px auto 26px;padding:10px 18px 10px 10px;border:1px solid rgba(245,239,224,.25);border-radius:999px;color:var(--vibra-crema);text-decoration:none;text-align:left;font-size:15px;line-height:1.35}
+.pregunta-vero img{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none}
+.pregunta-vero b{font-weight:700}
+.pregunta-ig{color:var(--vibra-crema-suave);text-decoration:underline;text-decoration-color:var(--vibra-coral);text-underline-offset:3px}
+.pregunta-vero:hover{border-color:var(--vibra-crema)}
 .pregunta-cta{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:12px 0;font-weight:600;font-size:18px;color:var(--vibra-crema);text-decoration:underline;text-decoration-color:var(--vibra-coral);text-decoration-thickness:2px;text-underline-offset:6px}
 .pregunta-cta:hover{text-decoration-color:var(--vibra-crema)}
 .impacto{background:var(--vibra-coral);color:var(--vibra-noche);padding:var(--seccion-y) 0}
@@ -1061,6 +1066,10 @@ html.js .rv.on{opacity:1;transform:none}
     <p class="sec-kicker rv">La pregunta</p>
     <h2 class="pregunta-t rv" id="pregunta-t">¿Alguna vez has pedido <span class="coral">ayuda?</span></h2>
     <p class="pregunta-txt rv">Se la hice a Vero en nuestra primera consultoría. Me contestó: <b>«No, me lo he gestionado siempre yo».</b> Después lo contó en su Instagram: fue la pregunta que le hizo clic.</p>
+    <a class="pregunta-vero rv" href="https://www.instagram.com/vero.enesencia/" target="_blank" rel="noopener" data-evento="clic_instagram_vero">
+      <img src="vero-enesencia.webp" width="240" height="240" loading="lazy" decoding="async" alt="Vero, de @vero.enesencia">
+      <span><b>Vero</b> · Sanación energética y retiros<br><span class="pregunta-ig">Míralo en su Instagram @vero.enesencia →</span></span>
+    </a>
     <p class="pregunta-txt rv">Si tu respuesta también es no, no es que no puedas con todo. Es que <b>nadie llena plazas solo.</b></p>
     <a class="pregunta-cta rv" href="https://wa.me/34678703227?text=Hola%20Abraham%2C%20nunca%20he%20pedido%20ayuda%20con%20mi%20comunidad%20y%20creo%20que%20es%20el%20momento" target="_blank" rel="noopener" data-evento="clic_whatsapp_pregunta">Esta vez, pídela <span aria-hidden="true">→</span></a>
   </div>
