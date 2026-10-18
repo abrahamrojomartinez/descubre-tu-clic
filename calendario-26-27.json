@@ -23,7 +23,8 @@
       "nota": "",
       "paginaPropia": "/flow-fest/",
       "hasta": "2026-11-08",
-      "enVivo": true,
+      "aviso": "Últimas plazas",
+      "enVivoDesde": "2026-11-07T00:01:00+01:00",
       "reservable": false,
       "stripeUrl": null,
       "agotado": false

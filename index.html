@@ -510,10 +510,10 @@ main > section[id]{scroll-margin-top:-16px} /* las secciones ya traen su aire: s
   <ol class="cal-lista">
     <!-- calendario:inicio · lo que hay hasta calendario:fin lo genera scripts/calendario.py desde calendario-26-27.json: no editar a mano -->
     <li class="reveal en-vivo" data-hasta="2026-11-08">
-      <a class="plan" href="/flow-fest/" data-evento="clic_flow_fest" aria-label="En vivo ahora. Flow Fest, 7 de noviembre: Madrid · tardeo fitness. Con @travelsmob y @phoenixclub.es. Ver la página de Flow Fest">
+      <a class="plan" href="/flow-fest/" data-evento="clic_flow_fest" aria-label="Últimas plazas. Flow Fest, 7 de noviembre: Madrid · tardeo fitness. Con @travelsmob y @phoenixclub.es. Ver la página de Flow Fest">
         <p class="plan-fecha"><time datetime="2026-11-07"><span class="plan-dia">7</span><span class="plan-mes">nov</span></time></p>
         <div class="plan-cuerpo">
-          <span class="plan-vivo" aria-hidden="true"><span class="vivo-punto"></span>En vivo</span>
+          <span class="plan-vivo" aria-hidden="true" data-vivo-desde="2026-11-07T00:01:00+01:00"><span class="vivo-punto"></span><span class="vivo-txt">Últimas plazas</span></span>
           <h3 class="plan-t"><span class="ff">Flow Fest</span></h3>
           <p class="plan-linea">Madrid · tardeo fitness</p>
           <p class="plan-con">Con @travelsmob y @phoenixclub.es</p>
@@ -845,6 +845,12 @@ $$('a[href^="/comunidad"]').forEach(function(a){a.addEventListener('click',funct
 $$('[data-evento]').forEach(function(el){el.addEventListener('click',function(){sa_event(el.dataset.evento);});});
 var hoy=new Date();
 $$('[data-hasta]').forEach(function(el){if(hoy>=new Date(el.dataset.hasta))el.hidden=true;});
+/* Pastilla que pasa sola a «En vivo» en su momento (data-vivo-desde, hora de Madrid), sin publicar nada; también si la página sigue abierta */
+$$('[data-vivo-desde]').forEach(function(el){
+  var t=new Date(el.dataset.vivoDesde).getTime();if(isNaN(t))return;
+  function enVivo(){var txt=el.querySelector('.vivo-txt'),a=el.closest('.plan');if(txt)txt.textContent='En vivo';if(a)a.setAttribute('aria-label',a.getAttribute('aria-label').replace(/^[^.]+\. /,'En vivo ahora. '));el.removeAttribute('data-vivo-desde');}
+  var falta=t-Date.now();if(falta<=0)enVivo();else if(falta<864e5)setTimeout(enVivo,falta);
+});
 var cab=d.getElementById('cab');
 function filete(){cab.classList.toggle('con-filete',window.scrollY>8);}
 addEventListener('scroll',filete,{passive:true});filete();

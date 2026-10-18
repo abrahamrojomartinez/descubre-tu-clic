@@ -8,7 +8,11 @@
 archivo en el navegador, así que con publicar esta web basta). Solo se toca lo que hay entre
 <!-- calendario:inicio --> y <!-- calendario:fin -->; el resto de index.html no se mira.
 Sin dependencias: Python 3 de serie.
-Campo opcional por plan: "enVivo": true → la fila sale con la marca «En vivo» (punto que late) mientras se vive el evento.
+Campos opcionales por plan (fila destacada en noche con una pastilla y un punto que late):
+  "enVivo": true                 → la pastilla dice «En vivo» desde ya.
+  "aviso": "Últimas plazas"      → la pastilla dice ese texto…
+  "enVivoDesde": "AAAA-MM-DDTHH:MM:SS+01:00" → …y a partir de ese momento (hora de Madrid) el navegador la cambia
+                                   solo a «En vivo», sin publicar nada (ver data-vivo-desde en el script de index.html).
 """
 import json
 import re
@@ -85,6 +89,8 @@ def validar(doc):
             errores.append(f"{pid}: «hasta» debe ser AAAA-MM-DD")
         if p.get("fecha") and not re.fullmatch(r"\d{1,2}([–-]\d{1,2})?", p["fecha"]):
             errores.append(f"{pid}: «fecha» debe ser un día («7»), un rango («2–8») o vacía")
+        if p.get("enVivoDesde") and not re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?[+-]\d{2}:\d{2}", p["enVivoDesde"]):
+            errores.append(f"{pid}: «enVivoDesde» debe ser AAAA-MM-DDTHH:MM:SS+01:00 (hora de Madrid con su desfase)")
         for g in p.get("globos", []):
             if not (ALIADOS / f"{g}.webp").is_file():
                 errores.append(f"{pid}: falta img/aliados/{g}.webp")
@@ -136,8 +142,13 @@ def fila(p, temporada):
         attr_evento += ' data-agotado="true"'
         cierre = "Plazas agotadas. " + cierre
 
-    vivo = bool(p.get("enVivo"))  # opcional: el evento se está viviendo ahora (fila con la marca «En vivo»)
-    label = ("En vivo ahora. " if vivo else "") + f"{titulo}, {legible}: {linea.rstrip('.')}."
+    aviso_txt = p.get("aviso") or ""
+    desde = p.get("enVivoDesde") or ""
+    vivo = bool(p.get("enVivo") or aviso_txt or desde)  # fila destacada con pastilla (ver docstring)
+    pastilla = "En vivo" if p.get("enVivo") or not aviso_txt else aviso_txt
+    prefijo = "En vivo ahora. " if pastilla == "En vivo" else f"{pastilla.rstrip('.')}. "
+    label = (prefijo if vivo else "") + f"{titulo}, {legible}: {linea.rstrip('.')}."
+    attr_desde = f' data-vivo-desde="{escape(desde, quote=True)}"' if desde and pastilla != "En vivo" else ""
     if con:
         label += f" Con {con}."
     label += f" {cierre}"
@@ -153,7 +164,7 @@ def fila(p, temporada):
         f'      <a class="plan" href="{href}"{attr_evento} aria-label="{escape(label, quote=True)}">',
         f'        <p class="plan-fecha"><time datetime="{datetime_}">{dia}</time></p>',
         '        <div class="plan-cuerpo">',
-        *(['          <span class="plan-vivo" aria-hidden="true"><span class="vivo-punto"></span>En vivo</span>'] if vivo else []),
+        *([f'          <span class="plan-vivo" aria-hidden="true"{attr_desde}><span class="vivo-punto"></span><span class="vivo-txt">{escape(pastilla)}</span></span>'] if vivo else []),
         f'          <h3 class="plan-t">{titulo_html}</h3>',
         f'          <p class="plan-linea">{escape(linea)}</p>',
     ]
