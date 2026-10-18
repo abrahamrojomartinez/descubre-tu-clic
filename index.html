@@ -168,7 +168,10 @@ a{color:inherit}
 
 /* ── 4 · Calendario (guía §5, filas como un único enlace) ── */
 .calendario{background:var(--vibra-noche);color:var(--vibra-crema);padding:0 var(--gutter) var(--seccion-y)}
-.calendario .cal-cab{text-align:center;padding:56px 0 36px;max-width:640px;margin:0 auto}
+.calendario .cal-cab{position:relative;isolation:isolate;text-align:center;margin:0 calc(-1 * var(--gutter)) 40px;padding:var(--seccion-y) var(--gutter) 56px}
+.cal-cab > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;z-index:-2}
+.cal-cab::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(43,50,45,.70),rgba(43,50,45,.70) 70%,#2B322D)} /* foto velada que funde con el noche de las tarjetas */
+.cal-cab-in{max-width:640px;margin:0 auto}
 .cal-ante{color:var(--vibra-crema);display:inline-flex;align-items:center;gap:12px;margin-right:-.3em} /* guion coral a cada lado */
 .cal-ante::before{margin:0}
 .cal-ante::after{content:"";width:28px;height:2px;background:var(--vibra-coral)}
@@ -217,7 +220,7 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
 .plan:hover .plan-fecha,.plan:focus-visible .plan-fecha,.plan.activo .plan-fecha{background:var(--vibra-coral-vivo)}
 .plan:hover .plan-flecha,.plan:focus-visible .plan-flecha,.plan.activo .plan-flecha{opacity:1;transform:none}
 .cal-cta{text-align:center;margin:32px 0 0}
-@media (min-width:768px){.calendario .cal-cab{padding:96px 0 48px}}
+@media (min-width:768px){.cal-cab > img{object-position:50% 35%}}
 .cal-nota{text-align:center;color:var(--vibra-crema-suave);font-size:var(--t-nota);margin:14px 0 0}
 @media (max-width:599px){.plan-nota{letter-spacing:0;white-space:nowrap}} /* cabe en la celda de 88 px sin el eje wdth */
 @media (min-width:600px){
@@ -339,13 +342,11 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
 .lideres-enl{display:flex;flex-wrap:wrap;column-gap:28px;margin-top:8px}
 
 /* ── 10 · Cierre coral ── */
-.cierre{text-align:center;padding:var(--seccion-y) var(--gutter);min-height:460px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.cierre > img{object-position:30% 50%}
-.firma{background:var(--vibra-coral);text-align:center;padding:48px var(--gutter)}
-.cierre h2{font-size:clamp(2.125rem,1.1rem + 4.4vw,4.5rem);margin:0 auto}
-.cierre-txt{font-weight:600;font-size:18px;margin-top:16px}
+.cierre{background:var(--vibra-coral);text-align:center;padding:var(--seccion-y) var(--gutter)}
+.cierre h2{color:var(--vibra-noche);font-size:clamp(2.125rem,1.1rem + 4.4vw,4.5rem);margin:0 auto}
+.cierre-txt{color:var(--vibra-noche);font-weight:600;font-size:18px;margin-top:16px}
 .cierre .btn{margin-top:28px}
-.cierre-firma{width:280px;margin:0 auto}
+.cierre-firma{width:280px;margin:56px auto 0}
 @media (min-width:768px){.cierre-firma{width:400px}}
 
 /* ── 11 · Pie ── */
@@ -431,11 +432,12 @@ html:not(.js) .plan-flecha{opacity:1;transform:none} /* sin JS no hay fila activ
   .plan.activo,.plan:hover{animation:plan-zumba .6s ease-out}
   .plan:hover .plan-flecha svg,.plan.activo .plan-flecha svg{animation:flecha-empuja 1.1s ease-in-out .3s 3}
   /* Botones de acento: zumbido de móvil (3 veces, una cada 1,6 s) con una onda que sale; al pasar el ratón, zumbido al momento */
-  .btn-acento{position:relative}
-  .btn-acento::after{content:"";position:absolute;inset:-2px;border-radius:inherit;border:2px solid var(--vibra-coral);opacity:0;pointer-events:none}
-  .btn-acento.zumba{animation:zumbido .6s ease-in-out}
-  .btn-acento.zumba::after{animation:zumbido-onda .84s ease-out}
-  .btn-acento:hover,.btn-acento:focus-visible{animation:zumbido-ya .45s ease-out}
+  .btn-acento,.cierre .btn{position:relative}
+  .btn-acento::after,.cierre .btn::after{content:"";position:absolute;inset:-2px;border-radius:inherit;border:2px solid var(--vibra-coral);opacity:0;pointer-events:none}
+  .cierre .btn::after{border-color:var(--vibra-noche)}
+  .btn-acento.zumba,.cierre .btn.zumba{animation:zumbido .6s ease-in-out}
+  .btn-acento.zumba::after,.cierre .btn.zumba::after{animation:zumbido-onda .84s ease-out}
+  .btn-acento:hover,.btn-acento:focus-visible,.cierre .btn:hover,.cierre .btn:focus-visible{animation:zumbido-ya .45s ease-out}
   .btn:active{transform:scale(.96)}
   /* La Carta: tras entrar, vibra como un móvil que recibe un aviso; y gira un poco según haces scroll */
   .carta.zumba .carta-mueve{animation:carta-zumba .8s ease-in-out}
@@ -498,9 +500,12 @@ main > section[id]{scroll-margin-top:-16px} /* las secciones ya traen su aire: s
 <!-- 4 · Calendario 26·27 -->
 <section class="calendario sobre-oscuro" id="calendario" aria-labelledby="cal-t">
   <div class="cal-cab">
-    <p class="vibra-antetitulo cal-ante">Temporada 26·27</p>
-    <h2 id="cal-t" class="vibra-titular">Calendario</h2>
-    <p class="cal-sub"><strong>Descubre tu próximo clic.</strong> Elige tu plan y reserva tu plaza antes que nadie.</p>
+    <img src="img/cal-fondo.webp" srcset="img/cal-fondo-800.webp 800w, img/cal-fondo.webp 1300w" sizes="(max-width: 767px) 910px, 100vw" width="1300" height="659" loading="lazy" decoding="async" alt="">
+    <div class="cal-cab-in">
+      <p class="vibra-antetitulo cal-ante">Temporada 26·27</p>
+      <h2 id="cal-t" class="vibra-titular">Calendario</h2>
+      <p class="cal-sub"><strong>Descubre tu próximo clic.</strong> Elige tu plan y reserva tu plaza antes que nadie.</p>
+    </div>
   </div>
   <ol class="cal-lista">
     <!-- calendario:inicio · lo que hay hasta calendario:fin lo genera scripts/calendario.py desde calendario-26-27.json: no editar a mano -->
@@ -776,16 +781,12 @@ main > section[id]{scroll-margin-top:-16px} /* las secciones ya traen su aire: s
 </section>
 
 <!-- 10 · Cierre -->
-<section class="cierre foto-velada sobre-oscuro" id="cierre" aria-labelledby="cierre-t">
-  <img src="img/cal-fondo.webp" srcset="img/cal-fondo-800.webp 800w, img/cal-fondo.webp 1300w" sizes="(max-width: 767px) 910px, 100vw" width="1300" height="659" loading="lazy" decoding="async" alt="Un grupo de amigos en el agua, esperando la ola con sus tablas">
+<section class="cierre vibra-sobre-coral" id="cierre" aria-labelledby="cierre-t">
   <h2 id="cierre-t" class="vibra-titular">Que nunca te quiten tu vibra.</h2>
   <p class="cierre-txt">La puerta está abierta.</p>
-  <a class="btn btn-acento" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cierre">Entra a VIBRA <span aria-hidden="true">→</span></a>
-</section>
-
-<div class="firma vibra-sobre-coral">
+  <a class="btn btn-principal" href="/comunidad?utm_source=descubre-tu-clic&amp;utm_medium=cierre">Entra a VIBRA <span aria-hidden="true">→</span></a>
   <img class="cierre-firma" src="marca/logos/vibra-society-claim-sobre-coral.svg" width="426" height="180" loading="lazy" decoding="async" alt="VIBRA Society. Descubre tu clic">
-</div>
+</section>
 
 </main>
 
@@ -874,7 +875,7 @@ function zumbaSi(t,si){
   var carta=t.matches('.carta'),n=0,tope=carta?2:3;
   t._z=setTimeout(function uno(){t.classList.remove('zumba');void t.offsetWidth;t.classList.add('zumba');if(++n<tope)t._z=setTimeout(uno,1600);},carta?(t.classList.contains('espera')?1500:300):700);
 }
-$$('.btn-acento,.carta').forEach(function(e){e.addEventListener('animationend',function(ev){if(ev.animationName==='zumbido'||ev.animationName==='carta-zumba')e.classList.remove('zumba');});});
+$$('.btn-acento,.cierre .btn,.carta').forEach(function(e){e.addEventListener('animationend',function(ev){if(ev.animationName==='zumbido'||ev.animationName==='carta-zumba')e.classList.remove('zumba');});});
 /* Entradas: decide el observer, que mide contra la pantalla real (también dentro de un marco, como la vista previa).
    Primer aviso: si ya se ve, aparece tal cual; si no, los planes y la Carta se arman (.espera) para entrar vibrando.
    Después, entra cuando asoma una quinta parte (o 120 px). Los planes que entran juntos van escalonados (--d). */
@@ -902,13 +903,13 @@ addEventListener('scroll',mira,{passive:true});addEventListener('resize',mira);
 if(mov){
   /* Lo que vibra solo (botones de acento, Carta, onda) se anima mientras está en pantalla, por encima de la barra */
   var ioV=new IntersectionObserver(function(es){es.forEach(function(e){var t=e.target;t.classList.toggle('en-pantalla',e.isIntersecting);if(t.matches('.onda'))return;if(t.matches('.carta')&&!t.classList.contains('visto'))return;zumbaSi(t,e.isIntersecting);});},{rootMargin:'0px 0px -15% 0px'});
-  $$('.btn-acento,.carta,.banda .onda').forEach(function(e){if(!e.closest('.barra'))ioV.observe(e);});
+  $$('.btn-acento,.cierre .btn,.carta,.banda .onda').forEach(function(e){if(!e.closest('.barra'))ioV.observe(e);});
   /* PC: cada plan tiembla al cruzar el centro de la pantalla (en móvil lo hace .activo) */
   var ioL=new IntersectionObserver(function(es){if(mqTacto.matches)return;es.forEach(function(e){if(e.isIntersecting&&e.rootBounds){var p=e.target;p.classList.remove('latido');void p.offsetWidth;p.classList.add('latido');}});},{rootMargin:'-45% 0px -45% 0px'});
   planes.forEach(function(p){ioL.observe(p);p.addEventListener('animationend',function(ev){if(ev.animationName==='plan-latido')p.classList.remove('latido');});});
 }
 /* Android: un toque háptico corto al pulsar un botón de acento o un plan (iPhone no lo permite; no pasa nada) */
-$$('.btn-acento,.plan').forEach(function(el){el.addEventListener('click',function(){try{navigator.vibrate&&navigator.vibrate(15);}catch(_){}});});
+$$('.btn-acento,.cierre .btn,.plan').forEach(function(el){el.addEventListener('click',function(){try{navigator.vibrate&&navigator.vibrate(15);}catch(_){}});});
 window.vibraOK=1;
 var barra=d.getElementById('barra'),heroDentro=true,tapan=new Set(),barraBtn=barra.querySelector('.btn-acento'),barraVis=false;
 function pinta(){var v=!heroDentro&&tapan.size===0;barra.classList.toggle('visible',v);if(v!==barraVis){barraVis=v;if(barraBtn)zumbaSi(barraBtn,v);}} /* el botón de la barra zumba al aparecer */
