@@ -1,6 +1,6 @@
 {
   "temporada": "26·27",
-  "actualizado": "2026-10-17",
+  "actualizado": "2026-10-22",
   "planes": [
     {
       "id": "2627-flow-fest",
@@ -98,43 +98,21 @@
       "agotado": false
     },
     {
-      "id": "2627-maldivas-abril",
-      "mes": "ABR",
-      "fecha": "19–26",
-      "titulo": "Maldivas",
-      "etiqueta": "Maldivas",
-      "linea": "Thulusdhoo · yoga, surf y propósito",
-      "meta": "Yoga, surf y propósito · 19–26 abr",
-      "valor": "Maldivas · yoga, surf y propósito (19–26 abr)",
-      "con": [
-        "@elenaisa_yoga"
-      ],
-      "globos": [
-        "elenaisa_yoga"
-      ],
-      "nota": "",
-      "paginaPropia": null,
-      "hasta": "2027-04-27",
-      "reservable": true,
-      "stripeUrl": "https://buy.stripe.com/28E00j3AM66ffP0cHhgfu0p",
-      "agotado": false
-    },
-    {
       "id": "2627-maldivas-mayo",
       "mes": "MAY",
       "fecha": "",
       "titulo": "Maldivas",
       "etiqueta": "Surf y propósito en Maldivas",
-      "linea": "Surf y propósito",
-      "meta": "Mayo",
+      "linea": "Surf, propósito y ¡modo avión activado!",
+      "meta": "Surf, propósito y modo avión · mayo",
       "valor": "Surf y propósito en Maldivas (mayo)",
       "con": [
         "@calaveritahotels",
-        "@liveokeypeople"
+        "@reviondo.r"
       ],
       "globos": [
         "calaveritahotels",
-        "liveokeypeople"
+        "reviondo-r"
       ],
       "nota": "",
       "paginaPropia": null,
@@ -152,12 +130,9 @@
       "linea": "Tu Flow Fest en Bali, con vacaciones o teletrabajo",
       "meta": "Flow Fest en Bali · vacaciones o teletrabajo",
       "valor": "Flow Fest Bali (junio): vacaciones o teletrabajo",
-      "con": [
-        "@reviondo.r"
-      ],
+      "con": [],
       "globos": [
-        "flowfest",
-        "reviondo-r"
+        "flowfest"
       ],
       "nota": "+ teletrabajo",
       "paginaPropia": null,
@@ -186,6 +161,32 @@
       "hasta": "2027-08-01",
       "reservable": true,
       "stripeUrl": "https://buy.stripe.com/7sY9AT4EQ3Y732e0Yzgfu0s",
+      "agotado": false
+    },
+    {
+      "id": "2627-pais-vasco-septiembre",
+      "mes": "SEP",
+      "fecha": "",
+      "titulo": "País Vasco",
+      "etiqueta": "País Vasco (septiembre)",
+      "linea": "Surf y yoga con propósito",
+      "meta": "Surf y yoga con propósito · Bilbao",
+      "valor": "País Vasco · surf y yoga con propósito (septiembre)",
+      "con": [
+        "@liveokeypeople",
+        "@elenaisa_yoga",
+        "Moana Eco Surf House"
+      ],
+      "globos": [
+        "liveokeypeople",
+        "moana-ecosurfhouse",
+        "elenaisa_yoga"
+      ],
+      "nota": "",
+      "paginaPropia": null,
+      "hasta": "2027-10-01",
+      "reservable": true,
+      "stripeUrl": null,
       "agotado": false
     }
   ]
