@@ -186,7 +186,7 @@
       "paginaPropia": null,
       "hasta": "2027-10-01",
       "reservable": true,
-      "stripeUrl": null,
+      "stripeUrl": "https://buy.stripe.com/7sY6oH9ZaeCLbyKbDdgfu0t",
       "agotado": false
     }
   ]
